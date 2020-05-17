@@ -1,0 +1,399 @@
+ .displaySection {
+    width: 100%;
+    margin-left: 30px;
+}
+.questionSection {
+    width: 100%;
+    float: left;
+    clear: both;
+    padding: 40px 0;
+}
+.child {
+	padding: 5px ;
+	
+	text-align: center;
+	width: 100%;
+	margin-right: 10px;
+	border-radius: 21px;
+}
+@media only screen and (max-width: 1199px)
+{
+.questionSection {
+    padding: 20px 0;
+}}
+.questionSection .sectionContent {
+    padding: 0 40px;
+    margin: 0 0 30px;
+    width: 100%;
+    float: left;
+    clear: both;
+}
+@media only screen and (max-width: 1199px)
+{
+.questionSection .sectionContent {
+    margin: 0 0 20px;
+}}
+@media only screen and (max-width: 768px)
+{
+.questionSection .sectionContent {
+    padding: 0 15px;
+}}
+.questionSection .sectionContent .leftSide {
+    float: left;
+}
+@media only screen and (max-width: 768px)
+{
+.questionSection .sectionContent .leftSide {
+    width: calc(100% - 85px);
+}}
+.questionSection .sectionContent .leftSide h3 {
+    font-size: 32px;
+    margin: 0 0 20px;
+    color: #000;
+    line-height: normal;
+    font-family: Gotham Bold,Arial,Georgia,serif;
+}
+@media only screen and (max-width: 1199px)
+{
+.questionSection .sectionContent .leftSide h3 {
+    font-size: 24px;
+    margin: 0 0 10px;
+}}
+@media only screen and (max-width: 768px)
+{
+.questionSection .sectionContent .leftSide h3 {
+    font-size: 20px;
+}}
+.questionSection .sectionContent .leftSide h3 img {
+    vertical-align: sub;
+}
+.questionSection .sectionContent .leftSide p {
+    font-size: 16px;
+    margin: 0 0 15px;
+    color: #637282;
+    float: left;
+    font-weight: normal;
+}
+@media only screen and (max-width: 1199px)
+{
+.questionSection .sectionContent .leftSide p {
+    font-size: 15px;
+    margin: 0 0 15px;
+}}
+@media only screen and (max-width: 768px)
+{
+.questionSection .sectionContent .leftSide p {
+    font-size: 14px;
+}}
+.questionSection .sectionContent .rightSide {
+    float: right;
+}
+@media only screen and (max-width: 1199px)
+{
+.questionSection .sectionContent .rightSide {
+    padding: 10px 0 0;
+}}
+@media only screen and (max-width: 768px)
+{
+.questionSection .sectionContent .rightSide {
+    width: 70px;
+    float: right;
+}}
+.questionSection .sectionContent .rightSide .viewAll {
+    float: left;
+    position: relative;
+    margin: 0 0 0 20px;
+    background: #0071e4;
+    color: #fff;
+    border-radius: 3px;
+    height: 40px;
+    padding: 2px 30px 2px 2px;
+    overflow: hidden;
+    font-family: Gotham Bold,Arial,Georgia,serif;
+    text-transform: uppercase;
+    font-size: 14px;
+    cursor: pointer;
+}
+@media only screen and (max-width: 1199px)
+{
+.questionSection .sectionContent .rightSide .viewAll {
+    height: 35px;
+    padding: 2px 15px 2px 2px;
+    font-size: 13px;
+}}
+@media only screen and (max-width: 768px)
+{
+.questionSection .sectionContent .rightSide .viewAll {
+    padding: 2px;
+    font-size: 12px;
+    line-height: 32px;
+    text-align: center;
+    width: 100%;
+    margin: 0;
+}}
+.questionSection .sectionContent .rightSide .viewAll em {
+    display: inline-block;
+    background: #0080e7;
+    width: 40px;
+    height: 100%;
+    text-align: center;
+    margin: 0 24px 0 0;
+    font-size: 14px;
+    line-height: 38px;
+}
+@media only screen and (max-width: 1199px)
+{
+.questionSection .sectionContent .rightSide .viewAll em {
+    width: 35px;
+    margin: 0 9px 0 0;
+    font-size: 13px;
+    line-height: 32px;
+}}
+@media only screen and (max-width: 768px)
+{
+.questionSection .sectionContent .rightSide .viewAll em {
+    display: none;
+}}
+.questionSection .questionRow {
+    position: relative;
+    width: 100%;
+    float: left;
+    clear: both;
+    padding: 0;
+}
+@media only screen and (max-width: 768px)
+{
+ .drag-scroll-content {
+    padding: 0 15px!important;
+}}
+.questionSection .questionRow .questionbox {
+    width: 600px;
+    min-height: 288px;
+    position: relative;
+    box-shadow: 0 0 10px 1px rgba(33,33,33,.1);
+    border-radius: 5px;
+    background: #fff;
+    margin: 0 30px 0 0;
+    overflow: hidden;
+    white-space: normal;
+    text-align: left;
+    vertical-align: top;
+}
+@media only screen and (max-width: 1199px)
+{
+.questionSection .questionRow .questionbox {
+    width: 500px;
+    min-height: 232px;
+}}
+@media only screen and (max-width: 768px)
+{
+.questionSection .questionRow .questionbox {
+    width: calc(100% - 60px);
+    min-height: auto;
+}}
+.questionSection .questionRow .questionbox h3:before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 20px;
+    top: 13px;
+    width: 30px;
+    height: 30px;
+    border: 2px solid rgba(99,114,130,.3);
+    text-align: center;
+    line-height: 30px;
+    background: #fff;
+    border-radius: 100px;
+    box-sizing: border-box;
+}
+@media only screen and (max-width: 768px)
+{
+.questionSection .questionRow .questionbox h3:before {
+    left: 10px;
+}}
+@media only screen and (max-width: 1199px)
+{
+.questionSection .questionRow .questionbox h3:before {
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    top: 10px;
+}}
+.questionSection .questionRow .questionbox h3 {
+    position: relative;
+    font-family: Gotham Bold,Arial,Georgia,serif;
+    font-size: 18px;
+    color: #000;
+    display: block;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 15px 20px 20px 60px;
+    height: 73px;
+}
+@media only screen and (max-width: 1199px)
+{
+.questionSection .questionRow .questionbox h3 {
+    font-size: 14px;
+    padding: 15px 15px 15px 55px;
+    height: 62px;
+}}
+@media only screen and (max-width: 768px)
+{
+.questionSection .questionRow .questionbox h3 {
+    font-size: 13px;
+    padding: 10px 10px 10px 45px;
+}}
+.questionSection .questionRow .questionbox.completed h3:before {
+    font-family: engineer,Georgia,serif;
+    content: "h";
+    background: #00c853;
+    border: none;
+    font-size: 16px;
+    color: #fff;
+}
+@media only screen and (max-width: 768px)
+{
+.questionSection .questionRow .questionbox.completed h3:before {
+    font-size: 14px;
+}}
+
+
+@media only screen and (max-width: 1199px)
+{
+.questionSection .questionRow .questionbox.questionbox.completed h3:before {
+    font-size: 14px;
+}}
+.questionSection .questionRow .questionbox .answearSet {
+    width: 100%;
+    background: #eef5fd;
+    float: left;
+    clear: both;
+    padding: 10px;
+}
+@media only screen and (max-width: 768px){
+.questionSection .questionRow .questionbox .answearSet {
+   
+    padding: 5px;
+}
+}
+.questionSection .questionRow .questionbox .answearSet ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+.questionSection .questionRow .questionbox .answearSet ul li {
+    width: 50%;
+    float: left;
+    list-style-type: none;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    padding: 10px;
+}
+@media only screen and (max-width: 768px)
+{
+.questionSection .questionRow .questionbox .answearSet ul li {
+    width: 100%;
+    clear: both;
+    padding: 5px;
+}}
+.questionSection .questionRow .questionbox .answearSet ul li input[type=checkbox] {
+    position: absolute;
+    z-index: -22;
+    top: -100px;
+    left: -100px;
+}
+.questionSection .questionRow .questionbox .answearSet ul  li  label {
+    display: block;
+    position: relative;
+    width: 100%;
+    float: left;
+    clear: both;
+    background: #fff;
+    box-shadow: 0 0 10px 1px rgba(33,33,33,.1);
+    border-radius: 4px;
+    padding: 15px;
+    font-size: 16px;
+    margin: 0;
+    cursor: pointer;
+    color: #637282;
+}
+@media only screen and (max-width: 768px){
+    .questionSection .questionRow .questionbox .answearSet ul  li  label {
+        padding: 10px;
+    }
+    
+}
+@media only screen and (max-width: 1199px){
+    .questionSection .questionRow .questionbox .answearSet ul  li  label {
+        padding: 10px;
+    }
+}
+.questionSection .questionRow .questionbox .answearSet ul li .answearIcon {
+    width: 45px;
+    float: left;
+    margin: 0 15px 0 0;
+}
+@media only screen and (max-width: 768px){
+    .questionSection .questionRow .questionbox .answearSet ul li .answearIcon {
+        width:35px
+    }
+
+}
+@media only screen and (max-width: 1199px){
+    .questionSection .questionRow .questionbox .answearSet ul li .answearIcon {
+        width:35px
+    }
+
+}
+.questionSection .questionRow .questionbox .answearSet ul li .answearIcon img {
+    max-width: 100%;
+}
+.questionSection .questionRow .questionbox .answearSet ul li label:after {
+    content: "";
+    display: block;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    border: 2px solid rgba(99,114,130,.3);
+    text-align: center;
+    line-height: 30px;
+    background: #fff;
+    border-radius: 100px;
+}
+@media only screen and (max-width: 768px){
+    .questionSection .questionRow .questionbox .answearSet ul li label:after {
+        width: 25px;
+    height: 25px;
+    line-height: 25px;
+    }  
+}
+@media only screen and (max-width: 768px){
+    .questionSection .questionRow .questionbox .answearSet ul li label:after {
+        width: 25px;
+        height: 25px;
+        line-height: 25px;
+    }  
+}
+@media only screen and (max-width: 768px)
+{
+.questionSection .questionRow .questionbox.completed .answearSet ul li input[type=checkbox]:checked + label:after {
+    font-size: 14px;
+}}
+@media only screen and (max-width: 1199px)
+{
+.questionSection .questionRow .questionbox.completed .answearSet ul li input[type=checkbox]:checked + label:after {
+    font-size: 14px;
+}}
+.questionSection .questionRow .questionbox.completed .answearSet ul li input[type=checkbox]:checked + label:after {
+    content: "h";
+    background: #00c853;
+    border: none;
+    font-size: 16px;
+    color: #fff;
+}

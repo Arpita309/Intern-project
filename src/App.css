@@ -1,0 +1,18 @@
+.App {
+  text-align: center;
+}
+body{
+box-sizing: border-box;
+    background: #e8effa;
+    background-attachment: fixed;
+    background-position: 0 0;
+    width: 100%;
+    min-height: 100vh;
+    padding: 60px 0 0;
+    font-family: Gotham Book,Arial,Georgia,serif;
+    font-size: 14px;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}

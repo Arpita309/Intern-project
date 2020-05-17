@@ -1,0 +1,203 @@
+.displaySection {
+    width: 100%;
+    margin-left: 30px;
+	
+}
+
+.child {
+	padding: 5px ;
+	
+	text-align: center;
+	width: 100%;
+	margin-right: 10px;
+	border-radius: 21px;
+}
+.trendingSection {
+    width: 100%;
+    float: left;
+    clear: both;
+    padding: 40px 0;
+}
+@media only screen and (max-width: 1199px)
+{
+.trendingSection {
+    padding: 20px 0;
+}}
+.trendingSection .sectionContent {
+    padding: 0 40px;
+    margin: 0 0 30px;
+    width: 100%;
+    float: left;
+    clear: both;
+}
+@media only screen and (max-width: 768px)
+{
+.trendingSection .sectionContent {
+    padding: 0 15px;
+}}
+@media only screen and (max-width: 1199px)
+{
+.trendingSection .sectionContent {
+    margin: 0 0 20px;
+}}
+.trendingSection .sectionContent h3 {
+    font-size: 32px;
+    margin: 0 0 20px;
+    color: #000;
+    line-height: normal;
+    float: left;
+    
+}
+.trendingSection .sectionContent h3 img {
+    vertical-align: sub;
+
+}
+.trendingSection .sectionContent p {
+    font-size: 16px;
+    margin: 0 0 15px;
+    float: left;
+    color: #637282;
+    font-weight: normal;
+    
+}
+@media only screen and (max-width: 768px)
+{
+.trendingSection .sectionContent p {
+    font-size: 14px;
+}}
+@media only screen and (max-width: 1199px)
+{
+.trendingSection .sectionContent p {
+    font-size: 15px;
+    margin: 0 0 15px;
+}}
+.trendingSection .trendingItemrow {
+    width: 100%;
+    float: left;
+    clear: both;
+    padding: 0;
+    position: relative;
+}
+@media only screen and (max-width: 768px)
+{
+.trendingSection .trendingItemrow .trendingItembox {
+    width: 280px;
+}}
+@media only screen and (max-width: 1199px)
+{
+.trendingSection .trendingItemrow .trendingItembox {
+    padding: 15px;
+    width: 300px;
+}}
+.trendingSection .trendingItemrow .trendingItembox {
+    width: 350px;
+    background: #fff;
+    box-shadow: 0 0 10px 1px rgba(33,33,33,.1);
+    border-radius: 12px;
+    padding: 25px;
+    margin: 0 20px 0 0;
+    overflow: hidden;
+    white-space: normal;
+    text-align: left;
+}
+.trendingSection .trendingItemrow .trendingItembox .trendingItemImage {
+    float: left;
+   height: 54px;
+    width: 54px;
+}
+@media only screen and (max-width: 768px)
+{
+.trendingSection .trendingItemrow .trendingItembox .trendingItemtext {
+    padding: 0 0 0 10px;
+}}
+.trendingSection .trendingItemrow .trendingItembox .trendingItemtext {
+    float: left;
+    width: calc(100% - 54px);
+    padding: 0 0 0 20px;
+    margin: 0 0 10px;
+    min-height: 120px;
+}
+.trendingSection .trendingItemrow .trendingItembox .trendingItemtext h3 {
+    color: #212121;
+    font-size: 20px;
+    margin: 0 0 8px;
+    
+    line-height: normal;
+}
+@media only screen and (max-width: 1199px)
+{
+.trendingSection .trendingItemrow .trendingItembox .trendingItemtext h3 {
+    font-size: 16px;
+    margin: 0 0 5px;
+}}
+.trendingSection .trendingItemrow .trendingItembox .trendingItemtext p {
+    font-size: 15px;
+    color: #637282;
+    margin: 0 0 8px;
+    font-weight: normal;
+}
+@media only screen and (max-width: 768px)
+{
+    .trendingSection .trendingItemrow .trendingItembox .trendingItemtext p {
+        font-size: 13px;
+    line-height: 17px;
+    }   
+}
+@media only screen and (max-width: 1199px)
+{
+    .trendingSection .trendingItemrow .trendingItembox .trendingItemtext p {
+        font-size: 14px;
+    }   
+}
+.trendingSection .trendingItemrow .trendingItembox .buildAppButton {
+    background: #fff;
+    border-radius: 3px;
+    margin: 0 0 20px;
+    border: 2px solid #0070e0;
+    height: 45px;
+    text-align: center;
+    font-size: 14px;
+    color: #0070e0;
+    padding: 0;
+    width: 100%;
+    cursor: pointer;
+    font-family: Gotham Bold,Arial,Georgia,serif;
+}
+.trendingSection .trendingItemrow .trendingItembox .trendingItemFooter {
+    position: relative;
+    width: 100%;
+    float: left;
+    clear: both;
+    padding: 20px 0 0;
+}
+/*.trendingSection .trendingItemrow .trendingItembox .trendingItemFooter:before {
+    
+    width: 200%;
+    height: 1px;
+    border-top: 1px solid rgba(33,33,33,.1);
+    display: block;
+    position: absolute;
+    top: 0;
+    left: -50%;
+}*/
+.trendingSection .trendingItemrow .trendingItembox .trendingItemFooter h4 {
+    float: left;
+    font-size: 16px;
+    color: #212121;
+    margin: 0;
+    line-height: 22px;
+    font-weight: bold;
+    
+}
+.trendingSection .trendingItemrow .trendingItembox .trendingItemFooter h4 .span {
+    display: block;
+    color: #637282;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: normal;
+    
+}
+.trendingSection .trendingItemrow .trendingItembox .trendingItemFooter h4:last-child {
+    float: right;
+    text-align: right;
+}
