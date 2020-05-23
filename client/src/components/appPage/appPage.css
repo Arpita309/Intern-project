@@ -1,0 +1,753 @@
+.middlePart {
+    min-height: calc(100vh - 100px);
+    float: left;
+    width: 100%;
+    clear: both;
+}
+.templateSection {
+    width: 100%;
+    float: left;
+    clear: both;
+    padding: 20px 25px;
+}
+@media only screen and (max-width: 768px)
+{
+.templateSection {
+    padding: 20px 0;
+}}
+@media only screen and (max-width: 1199px)
+{
+.templateSection {
+    padding: 20px 5px;
+}}
+.templateSection .templateTop {
+    width: 100%;
+    float: left;
+    clear: both;
+    margin: 0 0 30px;
+}
+@media only screen and (max-width: 1199px)
+{
+.templateSection .templateTop {
+    margin: 0 0 10px;
+}}
+.templateSection .templateTop .templateSearch {
+    float: left;
+    margin: 0 0 20px;
+}
+@media only screen and (max-width: 768px)
+{
+.templateSection .templateTop .templateSearch {
+    width: 100%;
+}}
+.templateSection .templateTop .templateSearch h3 {
+    font-size: 20px;
+    margin: 0 0 10px;
+    color: #000;
+    line-height: normal;
+    font-family: Gotham Bold,Arial,Georgia,serif;
+    display: none;
+}
+@media only screen and (max-width: 768px)
+{
+.templateSection .templateTop .templateSearch h3 {
+    display: block;
+}}
+.visible-xs{
+    display: none!important;
+}
+@media (max-width: 767px){
+.visible-xs {
+    display: block!important;
+}}
+.templateSection .templateTop .templateSearch ul {
+    margin: 0;
+    padding: 0;
+}
+@media only screen and (max-width: 768px)
+{
+.templateSection .templateTop .templateSearch ul {
+    display: flex;
+    justify-content: space-between;
+}}
+.templateSection .templateTop .templateSearch ul li {
+    float: left;
+    margin: 0 15px 0 0;
+    list-style-type: none;
+}
+@media only screen and (max-width: 768px)
+{
+.templateSection .templateTop .templateSearch ul li {
+    width: calc(50% - 5px);
+    margin: 0;
+}}
+@media only screen and (max-width: 1199px)
+{
+.templateSection .templateTop .templateSearch ul li {
+    margin: 0 10px 0 0;
+}}
+.templateSection .templateTop .templateSearch ul li label {
+    font-family: Gotham Bold,Arial,Georgia,serif;
+    color: #767b8c;
+    font-size: 13px;
+    display: block;
+    height: 20px;
+    font-weight: bold;
+}
+.templateSection .templateTop .templateSearch ul li .searchInput {
+    position: relative;
+    width: 250px;
+}
+@media only screen and (max-width: 768px)
+{
+.templateSection .templateTop .templateSearch ul li .searchInput {
+    width: 100%;
+}}
+@media only screen and (max-width: 1199px)
+{
+.templateSection .templateTop .templateSearch ul li .searchInput {
+    width: 190px;
+}}
+.templateSection .templateTop .templateSearch ul li .searchInput input {
+    height: 40px;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 0 10px 1px rgba(0,112,224,.1);
+    border-radius: 4px;
+    border: 1px solid rgba(0,112,224,.3);
+    padding: 6px 30px 6px 10px;
+    font-size: 12px;
+    color: #000;
+}
+@media only screen and (max-width: 1199px)
+{
+.templateSection .templateTop .templateSearch ul li .searchInput input {
+    font-size: 12px;
+    padding: 6px 30px 6px 5px;
+}}
+.templateSection .templateTop .templateSearch ul li .searchInput .clear {
+    position: absolute;
+    right: 10px;
+    top: 11px;
+    z-index: 4;
+    color: rgba(0,0,0,.2);
+    font-size: 17px;
+    cursor: pointer;
+    display: none;
+}
+@media (max-width: 768px)
+{
+.hidden-xs {
+    display: none!important;
+}}
+.templateSection .templateTop .templateSearch ul li .searchButton {
+    border-radius: 4px;
+    background: #0070e0;
+    height: 40px;
+    width: 50px;
+    cursor: pointer;
+    color: #fff;
+    text-align: center;
+    padding: 0;
+    font-size: 16px;
+    line-height: 44px;
+    border: none;
+}
+
+@media only screen and (max-width: 1199px)
+{
+.templateSection .templateTop .templateSearch ul li .searchButton {
+    width: 40px;
+}}
+.templateSection .templateTop .templateToolbar {
+    float: right;
+    margin: 0 0 20px;
+    padding: 25px 0 0;
+}
+@media only screen and (max-width: 768px)
+{
+.templateSection .templateTop .templateToolbar {
+    padding: 0;
+    width: 100%;
+}}
+.templateSection .templateTop .templateToolbar .templateFilter {
+    float: left;
+    position: relative;
+    margin: 0 15px 0 0;
+    z-index: 999;
+}
+@media only screen and (max-width: 1199px)
+{
+.templateSection .templateTop .templateToolbar .templateFilter {
+    margin: 0 10px 0 0;
+}}
+.templateSection .templateTop .templateToolbar .templateFilter .filterIcon {
+    box-shadow: 0 0 10px 1px rgba(99,114,130,.1);
+    border-radius: 4px;
+    background: #637282;
+    height: 40px;
+    width: 50px;
+    cursor: pointer;
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+    line-height: 48px;
+}
+.templateSection .templateTop .templateToolbar .templateFilter .filterIcon.active {
+    background-color: white;
+    color:#637282;
+}
+@media only screen and (max-width: 1199px)
+{
+.templateSection .templateTop .templateToolbar .templateFilter .filterIcon {
+    width: 40px;
+}}
+.templateSection .templateTop .templateToolbar .templateFilter .filterClose.active {
+    display: block !important;
+}
+
+
+.icon-funnel:before {
+    content: "";
+}
+.templateSection .templateTop .templateToolbar .templateFilter .filterItemBox {
+    position: absolute;
+    top: 99%;
+    right: 0;
+    width: 250px;
+    background: #fff;
+    border-radius: 6px 0 6px 6px;
+    box-shadow: 0 0 10px 1px rgba(99,114,130,.1);
+    transform: scale(0);
+    transform-origin: top right;
+    z-index: -9;
+    opacity: 0;
+    transition: all .3s ease-in-out;
+}
+@media only screen and (max-width: 768px)
+{
+.templateSection .templateTop .templateToolbar .templateFilter .filterItemBox {
+    left: 0;
+    right: auto;
+    border-radius: 0 6px 6px 6px;
+    transform-origin: top left;
+}}
+.templateSection .templateTop .templateToolbar .templateFilter .filterItemBox:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: -5px;
+    right: 0;
+    background: #fff;
+    width: 50px;
+    height: 10px;
+}
+.templateSection .templateTop .templateToolbar .templateFilter .filterItemBox.active {
+    transform: scale(1);
+    z-index: 99;
+    opacity: 1;
+}
+.templateSection .templateTop .templateToolbar .templateFilter .filterItemBox .filterItemHolder {
+    position: relative;
+    padding: 15px;
+    width: 100%;
+    float: left;
+    clear: both;
+}
+.templateSection .templateTop .templateToolbar .templateFilter .filterItemBox .filterItemHolder .filterSection .filterRow {
+    width: 100%;
+    float: left;
+    clear: both;
+    padding: 0 0 15px;
+    margin: 0 0 20px;
+    border-bottom: 1px solid rgba(25,36,65,.1);
+}
+.templateSection .templateTop .templateToolbar .templateFilter .filterItemBox .filterItemHolder .filterSection .filterRow h4 {
+    text-transform: uppercase;
+    margin: 0 0 10px;
+    font-size: 12px;
+    color: rgba(20,26,50,.6);
+    
+}
+.templateSection .templateTop .templateToolbar .templateFilter .filterItemBox .filterItemHolder .filterSection .filterRow ul {
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+.templateSection .templateTop .templateToolbar .templateFilter .filterItemBox .filterItemHolder .filterSection .filterRow ul.categoryList {
+    max-height: 141px;
+    overflow: hidden;
+    transition: all .8s ease-in-out;
+}
+.templateSection .templateTop .templateToolbar .templateFilter .filterItemBox .filterItemHolder .filterSection .filterRow ul li {
+    margin: 0 0 4px;
+    font-size: 13px;
+    color: #000;
+    position: relative;
+    overflow: hidden;
+    list-style-type: none;
+}
+.templateSection .templateTop .templateToolbar .templateFilter .filterItemBox .filterItemHolder .filterSection .filterRow ul li input {
+    position: absolute;
+    left: -30px;
+    top: 0;
+    height: 12.8px;
+    width:12.8px;
+}
+input[type=checkbox] {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 4px 0 0;
+    margin-top: 1px\9;
+    line-height: normal;
+}
+.templateSection .templateTop .templateToolbar .templateFilter .filterItemBox .filterItemHolder .filterSection .filterRow ul li label {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    padding: 0 0 0 22px;
+    line-height: 17px;
+    font-weight: 400;
+}
+.templateSection .templateTop .templateToolbar .templateFilter .filterItemBox .filterItemHolder .filterSection .filterRow ul li label:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 16px;
+    height: 16px;
+    background: hsla(0,0%,100%,.5);
+    border: 1px solid rgba(25,36,65,.5);
+    border-radius: 2px;
+    transition: all .3s ease-in-out;
+}
+.templateSection .templateTop .templateToolbar .templateFilter .filterItemBox .filterItemHolder .filterSection .filterRow .moreButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    margin: 0 0 0 22px;
+    color: #195ecc;
+    padding: 0;
+    font-weight: bold;
+}
+button{
+    -webkit-appearance: button;
+}
+.templateSection .templateTop .templateToolbar .templateFilter .filterItemBox .filterItemHolder .filterSection .filterRow .rangeSlider {
+    width: 100%;
+    float: left;
+    padding: 0 14px 0 9px;
+}
+.ng5-slider.animate .ng5-slider-bar-wrapper {
+    -webkit-transition: all linear .3s;
+    transition: all linear .3s;
+}
+.ng5-slider .ng5-slider-bar-wrapper {
+    left: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-top: -16px;
+    padding-top: 16px;
+    width: 100%;
+    height: 32px;
+    z-index: 1;
+}
+.ng5-slider .ng5-slider-span {
+    white-space: nowrap;
+    position: absolute;
+    display: inline-block;
+}
+.ng5-slider .ng5-slider-bar {
+    left: 0;
+    width: 100%;
+    height: 4px;
+    z-index: 1;
+    background: #d8e0f3;
+    border-radius: 2px;
+}
+.ng5-slider .ng5-slider-bar-wrapper.ng5-slider-left-out-selection .ng5-slider-bar {
+    background: #df002d;
+}
+.templateSection .templateTop .templateToolbar .templateFilter .filterItemBox .filterItemHolder .filterSection .filterRow .rangeSlider .ng5-slider .ng5-slider-bar {
+    height: 2px;
+}
+.templateSection .templateTop .templateToolbar .templateFilter .filterItemBox .filterItemHolder .filterSection .filterRow:last-child {
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+.templateSection .templateTop .templateToolbar .templateSorting {
+    float: left;
+    position: relative;
+    margin: 0 15px 0 0;
+    z-index: 99;
+}
+@media only screen and (max-width: 1199px)
+{
+.templateSection .templateTop .templateToolbar .templateSorting {
+    margin: 0 10px 0 0;
+}}
+.templateSection .templateTop .templateToolbar .templateSorting .sortingIcon {
+    box-shadow: 0 0 10px 1px rgba(99,114,130,.1);
+    border-radius: 4px;
+    background: #637282;
+    height: 40px;
+    width: 50px;
+    cursor: pointer;
+    text-align: center;
+    transition: all .3s ease-in-out;
+    color: #fff;
+    font-size: 16px;
+    line-height: 48px;
+}
+@media only screen and (max-width: 1199px)
+{
+.templateSection .templateTop .templateToolbar .templateSorting .sortingIcon {
+    width: 40px;
+}}
+.templateSection .templateTop .templateToolbar .templateSorting:hover .sortingIcon {
+    background: #fff;
+    border-radius: 4px 4px 0 0;
+    color: #637282;
+}
+.templateSection .templateTop .templateToolbar .templateSorting .sortItems {
+    position: absolute;
+    top: 99%;
+    right: 0;
+    width: 220px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 6px 0 6px 6px;
+    box-shadow: 0 0 10px 1px rgba(99,114,130,.1);
+    transform: scale(0);
+    transform-origin: top right;
+    z-index: -9;
+    opacity: 0;
+    transition: all .3s ease-in-out;
+}
+@media only screen and (max-width: 768px)
+{
+.templateSection .templateTop .templateToolbar .templateSorting .sortItems {
+    left: 0;
+    right: auto;
+    border-radius: 0 6px 6px 6px;
+    transform-origin: top left;
+}}
+.templateSection .templateTop .templateToolbar .templateSorting:hover .sortItems {
+    transform: scale(1);
+    z-index: 9;
+    opacity: 1;
+}
+.templateSection .templateTop .templateToolbar .templateSorting .sortItems:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: -5px;
+    right: 0;
+    background: #fff;
+    width: 50px;
+    height: 10px;
+}
+@media only screen and (max-width: 768px)
+{
+.templateSection .templateTop .templateToolbar .templateSorting .sortItems:before {
+    left: 0;
+    right: auto;
+}}
+.templateSection .templateTop .templateToolbar .templateSorting .sortItems h4 {
+    font-size: 12px;
+    font-family: Gotham Bold,Arial,Georgia,serif;
+    color: rgba(0,0,0,.4);
+    margin: 0 0 10px;
+}
+.templateSection .templateTop .templateToolbar .templateSorting .sortItems ul {
+    margin: 0;
+    padding: 0;
+}
+.templateSection .templateTop .templateToolbar .templateSorting .sortItems ul li {
+    display: block;
+    margin: 8px 0;
+    position: relative;
+    color: #1a1a1a;
+    font-size: 13px;
+    cursor: pointer;
+}
+.templateSection .templateTop .templateToolbar .templateSorting .sortItems ul li:after {
+    content: "";
+    position: absolute;
+    top: 1px;
+    right: 0;
+    display: block;
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    line-height: 18px;
+    border-radius: 100px;
+    border: 1px solid hsla(0,0%,73.3%,.5);
+    color: #fff;
+    font-size: 11px;
+}
+.templateSection .templateTop .templateToolbar .templateSorting .sortItems ul li.active:after {
+    font-family: engineer,Georgia,serif!important;
+    content: "h";
+    background: #00c853;
+    border: none;
+}
+.templateSection .templateTop .templateToolbar .searchButton {
+    float: left;
+    position: relative;
+    margin: 0 10px 0 0;
+    z-index: 99;
+}
+.visible-xs{
+    display: none!important;
+}
+@media (max-width: 767px){
+.visible-xs {
+    display: block!important;
+}}
+
+.templateSection .templateTop .templateToolbar .searchButton .searchIcon {
+    box-shadow: 0 0 10px 1px rgba(99,114,130,.1);
+    border-radius: 4px;
+    background: #0070e0;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    text-align: center;
+    transition: all .3s ease-in-out;
+    color: #fff;
+    font-size: 16px;
+    line-height: 48px;
+}
+.templateSection .templateTop .templateToolbar .customTemplate {
+    float: left;
+    position: relative;
+    height: 40px;
+    box-shadow: 0 0 10px 1px rgba(51,164,87,.1);
+    border-radius: 4px;
+    background: #33a457;
+    color: #fff;
+    padding: 10px 20px 10px 10px;
+    cursor: pointer;
+}
+@media only screen and (max-width: 768px)
+{
+.templateSection .templateTop .templateToolbar .customTemplate {
+    width: calc(100% - 150px);
+    text-align: center;
+    padding: 10px;
+    
+}}
+.templateToolbar .customTemplate em {
+    float: left;
+    display: block;
+    margin: 2px 10px 0 0;
+    font-size: 13px;
+}
+@media only screen and (max-width: 768px)
+{
+.templateSection .templateTop .templateToolbar .customTemplate em {
+    display: none;
+}}
+.templateSection .templateTop .templateToolbar .customTemplate span {
+    float: left;
+    display: block;
+    
+    font-size: 13px;
+    font-weight: bold;
+}
+@media only screen and (max-width: 768px)
+{
+.templateSection .templateTop .templateToolbar .customTemplate span {
+    width: 100%;
+   
+}}
+.templateSection .templateListing {
+    width: 100%;
+    float: left;
+    clear: both;
+}
+.templateSection .templateListing .templateRow {
+    width: 100%;
+    float: left;
+    clear: both;
+    margin: 0 0 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+@media only screen and (max-width: 768px)
+{
+.templateSection .templateListing .templateRow {
+    padding: 0 8px;
+}}
+.templateSection .templateListing .templateRow {
+    width: 100%;
+    float: left;
+    clear: both;
+    margin: 0 0 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+@media only screen and (max-width: 768px)
+{
+.templateSection .templateListing .templateRow {
+    padding: 0 8px;
+}}
+.templateSection .templateListing .templateRow .templateBox {
+    width: calc(33.33% - 30px);
+    margin: 0 15px 30px;
+    background: #fff;
+    box-shadow: 0 0 10px 1px rgba(33,33,33,.1);
+    border-radius: 12px;
+    padding: 25px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+}
+@media only screen and (max-width: 768px)
+{
+.templateSection .templateListing .templateRow .templateBox {
+    width: calc(50% - 14px);
+    margin: 0 7px 15px;
+    padding: 10px;
+}}
+@media only screen and (max-width: 991px)
+{
+.templateSection .templateListing .templateRow .templateBox {
+    width: calc(50% - 30px);
+}}
+@media only screen and (max-width: 1199px)
+{
+.templateSection .templateListing .templateRow .templateBox {
+    padding: 15px;
+}}
+.templateSection .templateListing .templateRow .templateBox h3 {
+    color: #212121;
+    font-size: 20px;
+    margin: 0 0 12px;
+    
+}
+@media only screen and (max-width: 768px)
+{
+.templateSection .templateListing .templateRow .templateBox h3 {
+    font-size: 16px;
+}}
+@media only screen and (max-width: 1199px)
+{
+.templateSection .templateListing .templateRow .templateBox h3 {
+    font-size: 18px;
+    margin: 0 0 6px;
+}}
+.templateSection .templateListing .templateRow .templateBox p {
+    font-size: 15px;
+    color: #637282;
+    margin: 0 0 15px;
+    display: block;
+    min-height: 60px;
+}
+@media only screen and (max-width: 768px)
+{
+.templateSection .templateListing .templateRow .templateBox p {
+    font-size: 13px;
+    line-height: 18px;
+}}
+@media only screen and (max-width: 1199px)
+{
+.templateSection .templateListing .templateRow .templateBox p {
+    font-size: 14px;
+}}
+.templateSection .templateListing .templateRow .templateBox .tickBox {
+    float: left;
+    margin: 50px 0 20px;
+    width: 30px;
+    height: 30px;
+    border: 2px solid rgba(99,114,130,.3);
+    text-align: center;
+    line-height: 30px;
+    background: #fff;
+    border-radius: 100px;
+}
+@media only screen and (max-width: 768px)
+{
+.templateSection .templateListing .templateRow .templateBox .tickBox {
+    margin: 20px 0;
+}}
+.templateSection .templateListing .templateRow .templateBox img {
+    float: right;
+    width: 25%;
+    height: auto;
+}
+@media only screen and (max-width: 1199px)
+{
+.templateSection .templateListing .templateRow .templateBox img {
+    width: 35%;
+}}
+.templateSection .templateListing .templateRow .templateBox .appListFooter {
+    position: relative;
+    width: 100%;
+    float: left;
+    clear: both;
+    padding: 20px 0 0;
+    margin: 25px 0 0;
+    min-height: 45px;
+}
+@media only screen and (max-width: 1199px)
+{
+.templateSection .templateListing .templateRow .templateBox .appListFooter {
+    margin: 15px 0 0;
+}}
+.templateSection .templateListing .templateRow .templateBox .appListFooter:before {
+    content: "";
+    width: 200%;
+    height: 1px;
+    border-top: 1px solid rgba(33,33,33,.1);
+    display: block;
+    position: absolute;
+    top: 0;
+    left: -50%;
+}
+.templateSection .templateListing .templateRow .templateBox .appListFooter .appPrice {
+    float: left;
+}
+.templateSection .templateListing .templateRow .templateBox .appListFooter .appPrice span {
+    display: block;
+    color: #637282;
+    text-transform: uppercase;
+    font-size: 13px;
+}
+.templateSection .templateListing .templateRow .templateBox .appListFooter .appPrice strong {
+    float: left;
+    font-size: 19px;
+    color: #212121;
+    
+}
+.apps-detailbtn {
+    border: 1px solid #f31597;
+    background: #fff;
+    color: #f31597;
+    font-size: 12px;
+    position: absolute;
+    top: 20px;
+    right: 0;
+    padding: 5px 15px;
+    height: 28px;
+    border-radius: 4px;
+    margin: 14px 0 0 15px;
+    transition: all .05s ease-in-out;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+@media (max-width: 1200px)
+{
+.apps-detailbtn {
+    position: relative;
+    display: block;
+    text-align: center;
+    margin: 0 0 20px;
+    padding: 10px;
+    height: inherit;
+    float: left;
+    width: 100%;
+}}

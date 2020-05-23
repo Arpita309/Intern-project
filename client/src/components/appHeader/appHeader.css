@@ -1,0 +1,310 @@
+.offerbarTop {
+    width: 100%;
+    float: left;
+    clear: both;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    padding: 0 15px;
+    background: #0070e0;
+    top: 0;
+    left: 0;
+    position: fixed;
+    z-index: 99999;
+    cursor: pointer;
+}
+.offerbarTop .offerHolder {
+    display: inline-block;
+    position: relative;
+    height: 35px;
+    cursor: pointer;
+    max-width: calc(100% - 50px);
+}
+.offerbarTop .offerHolder p {
+    display: block;
+    padding: 0 10px 0 35px;
+    margin: 0;
+    color: #fff;
+    line-height: 35px;
+    float: left;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+@media only screen and (max-width: 768px)
+{
+.offerbarTop .offerHolder p {
+    padding: 0 5px 0 25px;
+    font-size: 13px;
+}}
+.offerbarTop .offerHolder p:before {
+    content: "";
+    position: absolute;
+    width: 22px;
+    height: 20px;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    background: url("https://studio.builder.ai/sprite.0f9ea927f8d92a2964e9.png") -3px -352px no-repeat;
+}
+.offerbarTop .offerHolder .dropDownMenu {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    margin: 0 0 0 5px;
+}
+.offerbarTop .offerHolder .dropDownMenu span {
+    background: #fff;
+    color: #333;
+    font-size: 13px;
+    width: 15px;
+    height: 15px;
+    border-radius: 40px;
+    text-align: center;
+    line-height: 19px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.offerbarTop .offerHolder a {
+    display: inline-block;
+    vertical-align: middle;
+    background: rgba(0,0,0,.2);
+    color: #fff;
+    text-decoration: none;
+    line-height: normal;
+    padding: 4px 7px;
+    border-radius: 4px;
+    font-size: 11px;
+    margin: 0 0 0 10px;
+    font-family: Gotham Bold,Arial,Georgia,serif;
+}
+#header {
+    box-sizing: border-box;
+    width: 100%;
+    height: 60px;
+    float: left;
+    clear: both;
+    background: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+    padding: 0 0 0 50px;
+    margin: 0 0 25px;
+    box-shadow: 0 16px 74px 0 rgba(67,109,244,.05);
+}
+@media only screen and (max-width: 768px)
+{
+#header {
+    padding: 0 15px;
+}}
+@media (max-width: 768px)
+{
+#header {
+    z-index: 9999999;
+}}
+.container-fluid::before{
+    display: table;
+    content: " ";
+}
+.container-fluid::after{
+    
+        clear: both;
+    
+}
+.row:before {
+    display: table;
+    content: " ";
+}
+#header .logo {
+    float: left;
+    padding: 15px 0;
+    cursor: pointer;
+}
+a {
+    color: #428bca;
+    text-decoration: none;
+}
+#header .logo img {
+    max-height: 36px;
+    width: auto;
+    vertical-align: middle;
+}
+@media only screen and (max-width: 768px)
+{
+#header .logo .mainLogo {
+    display: none;
+}}
+#header .logo .smallLogo {
+    display: none;
+}
+@media only screen and (max-width: 768px)
+{
+#header .logo .smallLogo {
+    display: block;
+}}
+.mobilebreadcrums {
+    display: none;
+    float: left;
+    align-items: center;
+    margin: 18px 0 0 15px;
+}
+@media only screen and (max-width: 1199px)
+{
+#header .mobilebreadcrums {
+    display: flex;
+}}
+.mobilebreadcrums strong {
+    font-size: 18px;
+    color: #000;
+    margin: 0 5px 0 0;
+}
+.mobilebreadcrums span {
+    font-size: 18px;
+    color: #9a9a9a;
+}
+.breadcrums {
+    float: left;
+    padding: 20px 0 0 15px;
+}
+@media only screen and (max-width: 1199px)
+{
+#header .breadcrums {
+    display: none;
+}}
+.breadcrums ul {
+    margin: 0;
+    padding: 0;
+}
+.breadcrums li {
+    float: left;
+    list-style-type: none;
+    display: block;
+    vertical-align: middle;
+    position: relative;
+    font-size: 13px;
+    color: #000;
+    padding: 2px 5px 2px 20px;
+    margin: 0 2px 0 0;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+    line-height: 15px;
+}
+.breadcrums li.active {
+    font-family: Gotham Bold,Arial,Georgia,serif;
+    color: #0070e0;
+}
+.breadcrums li.disablelink {
+    cursor: auto;
+    pointer-events: none;
+    color: rgba(0,0,0,.5);
+}
+.mobileClick {
+    float: right;
+    display: none;
+    width: 35px;
+    height: 60px;
+    text-align: center;
+    line-height: 72px;
+    color: #0070e0;
+    font-size: 22px;
+    cursor: pointer;
+    margin: 0 0 0 10px;
+    position: relative;
+}
+@media only screen and (max-width: 768px)
+{
+.mobileClick, .mobuserLogin {
+    display: block;
+}}
+[class^=icon-]:before {
+    font-family: engineer,Georgia,serif!important;
+    font-style: normal!important;
+    font-weight: 400!important;
+    font-variant: normal!important;
+    text-transform: none!important;
+    
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.icon-hamicon:before {
+    content: "";
+}
+.expOnlineBx {
+    width: 232px;
+    padding: 0 22px;
+    height:40px
+}
+.requestDemo {
+    float: right;
+    cursor: pointer;
+    background: #0070e0;
+    font-family: Gotham Bold,Arial,Georgia,serif;
+    position: relative;
+    color: #fff;
+    border: 1px solid #0070e0;
+    border-radius: 5px;
+    text-transform: uppercase;
+    margin: 13px 10px 0 0;
+    font-size: 12px;
+}
+@media only screen and (max-width: 768px)
+{
+.requestDemo {
+    background: #0070e0;
+    border-radius: 5px;
+    margin-right: 0;
+    padding: 0;
+    margin-top: 15px;
+}}
+@media only screen and (max-width: 991px)
+{
+.requestDemo {
+    margin: 13px 10px 0 0;
+    font-size: 12px;
+}}
+@media (max-width: 768px)
+{
+.hidden-xs {
+    display: none!important;
+}}
+.expOnlineBx .expertavail {
+    padding-left: 61px!important;
+}
+.requestDemo .text {
+    font-size: 12px;
+    display: block;
+    cursor: pointer;
+    font-weight: 700;
+    float: left;
+    position: relative;
+    font-family: Gotham Bold,Arial,Georgia,serif;
+    padding: 7px 12px;
+}
+@media only screen and (max-width: 768px)
+{
+.requestDemo .text {
+    font-size: 11px;
+    padding: 8px 16px;
+    margin: 0;
+    color: #fff;
+    font-family: Gotham Book,Arial,Georgia,serif;
+    
+}}
+.expOnlineBx .expertavail .expert-icons {
+    width: 207px;
+    display: inline-block;
+    -webkit-animation: mymove .9s 1;
+    animation: mymove .9s 1;
+    left: 13px;
+    position: absolute;
+    top: 6px;
+    opacity: 1;
+}
+.expOnlineBx .expertavail .expert-icons img {
+    width: auto;
+    max-width: 35px;
+}
