@@ -55,7 +55,7 @@ class ProblemSolve extends React.Component{
                              <div className='problemListing'>
                              {this.state.data.map(value => {
                                  return(
-                                    <div key={value._id} >
+                                    <React.Fragment key={value._id} >
                                     <div className='problembox'>
                                        <h3>{value.h3}</h3>
                                     <div className='problemSet'>
@@ -100,7 +100,7 @@ class ProblemSolve extends React.Component{
                                     </div>   
 
                                 </div>
-                                </div> )})}
+                                </React.Fragment> )})}
                                 
                              </div>
                          </div>

@@ -2,16 +2,21 @@ import React from 'react'
 import './appPage.css'
 import AppHeader from '../appHeader/appHeader';
 import axios from 'axios'
+import {Link} from 'react-router-dom'
+import { CarouselCaption } from 'reactstrap';
 
 class Apppage extends React.Component{
     constructor(props){
         super(props);
         this.state={
-           isOpen:'false',
-           data:[]
+           isOpen:false,
+           data:[],
+           search:''
 
         }
         this.toggleFilter=this.toggleFilter.bind(this)
+        this.handleChange=this.handleChange.bind(this);
+        this.Clear=this.Clear.bind(this);
     }
     componentDidMount() {
         axios.get(`http://localhost:4000/app-row`)
@@ -23,8 +28,21 @@ class Apppage extends React.Component{
     toggleFilter=()=>{
         this.setState({isOpen:!this.state.isOpen})
     }
+    handleChange(e){
+        this.setState({search:e.target.value})
+    }
+    Clear(){
+        this.setState({search:''})
+    }
     render(){
-        
+        let filtered=this.state.data.filter((value)=>{
+            
+            return value.h3.toLowerCase().indexOf(this.state.search.toLowerCase())!==-1;
+        })
+        const length=filtered.length
+        console.log(length)
+    const Result=()=>{if(this.state.search)  {return(<div><div class="resultFound">{filtered.length} apps found for a</div><button type="button" class="backButton" onClick={this.Clear}><em class="icon-prev"><i class="fas fa-angle-left" style={{marginLeft:'0px'}}></i></em>Back</button></div>)} else return(null)}
+    const NotFound=()=>{if(length==0) {return(<div className="searchNotFound"><img src="https://studio.builder.ai/assets/images/searchNotFound.png" alt=""></img><h3>NO RESULTS FOUND</h3><h4>We searched far and wide and couldn’t find<br/> any template matching your search.</h4><button type="button" className="button1"><em className="icon-plus"></em> Custom Template </button></div>)} else return(null)}
         return (
             <div>
                 <AppHeader/>
@@ -37,9 +55,9 @@ class Apppage extends React.Component{
                                     <li>
                                         <label>I want to build  like</label>
                                         <div className="searchInput">
-                                            <input type="text" className="ng-untouched ng-pristine ng-valid"></input>
+                                            <input type="text" className="ng-untouched ng-pristine ng-valid" onChange={this.handleChange}></input>
                                             <span class="clear">
-                                                 <em class="icon-crossnew"></em>
+                                                <em class="icon-crossnew" onClick={this.Clear}><i class="fas fa-times-circle" style={{marginRight:'5px'}}></i></em>
                                             </span>
                                         </div>
                                     </li>
@@ -48,7 +66,7 @@ class Apppage extends React.Component{
                                         <div className="searchInput">
                                             <input type="text" placeholder="Ex. doctors, teachers, mothers etc" className="ng-untouched ng-pristine ng-valid"></input>
                                             <span className="clear">
-                                                <em className="icon-crossnew"></em>
+                                                <em className="icon-crossnew"><i class="fas fa-times-circle" style={{marginRight:'5px'}}></i></em>
                                             </span>
                                         </div>
                                     </li>
@@ -189,17 +207,22 @@ class Apppage extends React.Component{
                                      </div>
                                  </div>
                                  <div class="customTemplate">
-                                     <em class="icon-plus" ></em>
+                                     <em class="icon-plus" ><i class="fas fa-plus"></i></em>
                                      
                                     <span>Custom Template</span>
                                 </div>
-                                <div className='templateListing withLock'>
+                                
+                            </div>
+                        </div>
+                        <div className='templateListing withLock'>
+                                    <Result/>
+                                    <NotFound/>
                                     <div className='templateRow'>
-                                      {this.state.data.map(value => {
+                                      {filtered.map(value => {
                                             
                                             return (
-                                                <div key={value._id} >
-                                                <div className='templateBox'>
+                                                <React.Fragment key={value._id} >
+                                                 <div className='templateBox' >
                                                     <h3>{value.h3}</h3>
                                                     <p>{value.p}</p>
                                                     <div className='tickBox'></div>
@@ -212,13 +235,12 @@ class Apppage extends React.Component{
                                                         <a target="_blank" class="btn apps-detailbtn" href="#/apps/9gag-funny-gifs-pics-memes-videos-for-igtv?exp=global&amp;currency_id=1"> View Details </a>
                                                     </div>
                                                 </div>
-                                                </div>)})}
+                                                </React.Fragment>)})}
                                     </div>
                                     
                                 </div>
-                            </div>
-                        </div>
                     </div>
+                    
                 </div>
             </div>
             

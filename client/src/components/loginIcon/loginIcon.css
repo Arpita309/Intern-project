@@ -1,0 +1,287 @@
+.mobuserLogin {
+    display: none;
+    float: right;
+    color: #0070e0;
+    font-size: 25px;
+    width: 25px;
+    height: 60px;
+    cursor: pointer;
+    line-height: 70px;
+    margin: 0 0 0 20px;
+}
+@media (max-width: 576px)
+{
+.mobuserLogin {
+    margin-left: 10px;
+}}
+@media only screen and (max-width: 768px)
+{
+ .mobuserLogin {
+    display: block;
+}}
+.loginPanel {
+    float: right;
+    margin-right: 10px;
+}
+@media only screen and (max-width: 768px)
+{
+#header .loginPanel, #header .newProject, #header .selectedCurrency, #header .userPanel {
+    display: none;
+}}
+.loginoverlayPopup {
+    width: calc(100% - 30px);
+    background: #fff;
+    border-radius: 20px;
+    text-align: center;
+}
+.commonPopUp .popHolder {
+    background: #fff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 3;
+    border-radius: 8px;
+}
+@media (max-width: 576px)
+{
+.loginoverlayPopup {
+    width: 90%;
+}}
+.loginoverlayPopup .login-list {
+    padding: 30px 20px;
+    border-bottom: 1px solid #e2e7ed;
+}
+.loginoverlayPopup .login-list .login_txt {
+    padding-bottom: 10px;
+    color: #000;
+    opacity: .7;
+    font-size: 15px;
+    margin: 0;
+}
+.loginoverlayPopup .login-list .login_btn {
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    background: #f4f7fc;
+    color: #0070e0;
+    font-size: 25px;
+    
+    text-transform: uppercase;
+    border: 1px solid #fff;
+    width: 100%;
+   
+    
+}
+.loginoverlayPopup .login-list .login_btn.pink {
+    background: #f31597;
+    color: #fff;
+}
+.loginoverlayPopup .login-list:last-child {
+    border-bottom: none;
+}
+.commonPopUp.active .popHolder {
+    -webkit-animation: popupanimation .1s ease-in-out;
+    animation: popupanimation .1s ease-in-out;
+}
+.commonPopUp {
+    opacity: 0;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: none;
+    overflow-y: auto;
+}
+@media only screen and (max-width: 768px)
+{
+.commonPopUp {
+    height: 100%;
+}}
+.commonPopUp.active {
+    opacity: 1;
+    z-index: 9999999;
+    display: block;
+}
+.commonPopUp .popOverlay {
+    background: transparent;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+.commonPopUp.active .popOverlay {
+    background: rgba(0,0,0,.5);
+    -webkit-animation: popupfade .2s ease-in-out;
+    animation: popupfade .2s ease-in-out;
+}
+.loginPanel {
+    float: right;
+    margin-right: 10px;
+}
+@media only screen and (max-width: 768px)
+{
+#header .loginPanel {
+    display: none;
+}}
+.loginPanel.ul {
+    margin: 0;
+    padding: 0;
+}
+.loginPanel .loginDropdown .li {
+    display: block;
+    float: left;
+    list-style-type: none;
+    margin: 13px 0 0;
+    position: relative;
+}
+.loginPanel  button {
+    display: block;
+    padding: 8px 26px;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #fff;
+    background: #0071e4;
+    text-decoration: none;
+    position: relative;
+    z-index: 96;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all .2s ease-in-out;
+    width: 100%;
+    font-weight: 700;
+}
+.loginPanel  .loginDropdown {
+    position: absolute;
+    top: calc(100% + 7px);
+    right: 0;
+    z-index: 9;
+    display: none;
+    top: 50px;
+    box-shadow: 0 5px 10px rgba(0,0,0,.05);
+    border-radius: 10px;
+    border: 1px solid #e6e6e8;
+    background: #fff;
+}
+.loginPanel  .loginDropdown.ol {
+    padding: 0;
+    margin: 0;
+    float: left;
+    display: block;
+    z-index: 9;
+    width: 260px;
+}
+.loginPanel  .loginDropdown.ol  .li {
+    padding: 15px;
+    width: 100%;
+    clear: both;
+    margin: 0;
+    text-align: left;
+    font-size: 13px;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    color: #333;
+    text-transform: none;
+    display: flex;
+    align-items: center;
+}
+.loginPanel  .loginDropdown  .user-icon-box {
+    height: 40px;
+    width: 40px;
+    background: #f4f7fc;
+    position: relative;
+    border-radius: 50%;
+    line-height: 40px;
+    text-align: center;
+    margin-right: 10px;
+}
+.loginPanel  .loginDropdown  .user-icon-box em {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    color: #0572e0;
+    font-size: 17px;
+    position: relative;
+    left: 2px;
+    top: 1px;
+}
+.loginPanel  .loginDropdown  .user-txt {
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 12px;
+}
+.loginPanel  .loginDropdown:before {
+    content: "";
+    display: block;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: -6px;
+    right: 30px;
+    background: #fff;
+    border-left: 1px solid #d2d2d4;
+    border-top: 1px solid #d2d2d4;
+    transform: rotate(45deg);
+}
+.loginPanel.ul .loginDropdown:after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 26px;
+    position: absolute;
+    top: -21px;
+    right: 0;
+    background: #fff;
+    opacity: 0;
+}
+.tooltip-inner {
+    
+    background-color: #fff;
+    color: #000;
+    border: 1px solid gainsboro;
+    border-radius: 8px;
+   max-width:100%;
+   
+  }
+  
+  .tooltip .tooltip-arrow {
+    border-bottom: 5px solid red !important;}
+ .sales{
+     font-weight: bold;
+     color:#0071e4;
+     margin-top: 0px;
+     margin-left: 50px;
+    
+ } 
+ .login{
+    font-weight: bold;
+    color:#0071e4;
+    margin-top: 0px;
+    
+    
+   
+} 
+ .ref{
+     font-weight: normal;
+ }
+ .tool .fas{
+    
+    margin-right: 50px;
+    justify-self: center;
+     
+ }
+ .demo{
+    color:black;
+    font-size: 13px;
+    
+        
+    }
+    .signin{
+        margin-top: 18px;
+        margin-left:10px;
+        font-size: 15px;
+        
+        width:110px;
+        padding:auto;
+    }
+

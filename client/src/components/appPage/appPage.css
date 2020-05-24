@@ -135,6 +135,9 @@
     cursor: pointer;
     display: none;
 }
+.templateSection .templateTop .templateSearch ul li .searchInput:hover .clear {
+    display: block;
+}
 @media (max-width: 768px)
 {
 .hidden-xs {
@@ -577,24 +580,14 @@ button{
     display: flex;
     flex-wrap: wrap;
 }
+
 @media only screen and (max-width: 768px)
 {
 .templateSection .templateListing .templateRow {
     padding: 0 8px;
 }}
-.templateSection .templateListing .templateRow {
-    width: 100%;
-    float: left;
-    clear: both;
-    margin: 0 0 20px;
-    display: flex;
-    flex-wrap: wrap;
-}
-@media only screen and (max-width: 768px)
-{
-.templateSection .templateListing .templateRow {
-    padding: 0 8px;
-}}
+
+
 .templateSection .templateListing .templateRow .templateBox {
     width: calc(33.33% - 30px);
     margin: 0 15px 30px;
@@ -623,6 +616,12 @@ button{
 .templateSection .templateListing .templateRow .templateBox {
     padding: 15px;
 }}
+@media only screen and (min-width: 1700px)
+{
+.templateSection .templateListing .templateRow .templateBox {
+    width: calc(25% - 30px);
+}}
+
 .templateSection .templateListing .templateRow .templateBox h3 {
     color: #212121;
     font-size: 20px;
@@ -646,6 +645,7 @@ button{
     margin: 0 0 15px;
     display: block;
     min-height: 60px;
+    font-weight: normal;
 }
 @media only screen and (max-width: 768px)
 {
@@ -751,3 +751,83 @@ button{
     float: left;
     width: 100%;
 }}
+.templateSection .templateListing .resultFound {
+    width: 100%;
+    float: left;
+    clear: both;
+    margin: 0 0 15px;
+    padding: 0 0 0 15px;
+    font-size: 13px;
+    color: #808695;
+}
+.templateSection .templateListing .backButton {
+    width: 70px;
+    height: 25px;
+    box-shadow: 0 2px 5px rgba(25,36,65,.1);
+    border-radius: 4px;
+    background: #208a20;
+    border: none;
+    cursor: pointer;
+    margin: 0 0 20px 15px;
+    font-size: 13px;
+    font-family: Gotham Bold,Arial,Georgia,serif;
+    color: #fff;
+    line-height: 21px;
+}
+.templateSection .templateListing .backButton em {
+    font-size: 12px;
+    float: left;
+    line-height: 11px;
+    margin: 4px 0 0;
+}
+[class^=icon-]:before, [data-icon]:before {
+    font-family: engineer,Georgia,serif!important;
+    font-style: normal!important;
+    font-weight: 400!important;
+    font-variant: normal!important;
+    text-transform: none!important;
+    
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+ .searchNotFound {
+    text-align: center;
+    float: left;
+    padding: 0 0 50px;
+    width: 100%;
+    clear: both;
+}
+ .searchNotFound img {
+    max-width: 100%;
+    height: auto;
+}
+ .searchNotFound h3 {
+    color: rgba(20,26,50,.6);
+    font-size: 17px;
+    
+    margin: 0 0 10px;
+}
+ .searchNotFound h4 {
+    font-size: 16px;
+    color: rgba(20,26,50,.6);
+    margin: 0 0 20px;
+   
+}
+ .searchNotFound button {
+    padding: 6px 12px;
+    width: auto;
+    background: #208a20;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 4px;
+    border: none;
+    margin: 0 10px;
+    color: #fff;
+    
+}
+ .searchNotFound button .icon-plus {
+    position: relative;
+    bottom: -2px;
+    left: -4px;
+}

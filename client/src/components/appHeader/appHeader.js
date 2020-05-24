@@ -1,7 +1,8 @@
 import React from 'react'
 import './appHeader.css'
 import  Drawer  from '../drawer/drawer'
-
+import CurrencyBox from '../currencyBox/currencyBox'
+import LoginIcon from '../loginIcon/loginIcon'
 class AppHeader extends React.Component{
     render(){
         return (
@@ -19,8 +20,8 @@ class AppHeader extends React.Component{
                     <div className='container-fluid'>
                         <div className='row'>
                             <div className='logo'>
-                                <a><img width="107" height="26" alt="" class="mainLogo" src="https://studio.builder.ai/assets/images/engineer-logo.png"></img></a>
-                                <a><img width="26" height="35" alt="" class="smallLogo" src="https://studio.builder.ai/assets/images/logoSmall.png"></img></a>
+                                <a href='http://localhost:3000/'><img width="107" height="26" alt="" class="mainLogo" src="https://studio.builder.ai/assets/images/engineer-logo.png"></img></a>
+                                <a href='http://localhost:3000/'><img width="26" height="35" alt="" class="smallLogo" src="https://studio.builder.ai/assets/images/logoSmall.png"></img></a>
                             </div>
                             <div className='mobilebreadcrums'>
                                  <strong>Apps</strong>
@@ -37,14 +38,19 @@ class AppHeader extends React.Component{
 
                                 </div>
                             </div>
-                            <div className='mobileClick'>
-                                <em class="icon-hamicon"><Drawer/></em>
-                            </div>
-                            <div className="requestDemo hidden-xs expOnlineBx">
+                            
+                            <div className="requestDemo hidden-xs expOnlineBx" style={{marginLeft:'400px'}}>
                                 <div className="text text-uppercase expertavail">
                                     <span className="expert-icons"><img src="https://studio.builder.ai/assets/images/expert_btn.png" alt="experts" className="one"></img></span> 
                                     Experts online 
                                 </div>
+                            </div>
+                            <div style={{marginLeft:'60px',verticalAlign:'center'}}>
+                               <CurrencyBox/>
+                            </div>
+                            <LoginIcon/>
+                            <div className='mobileClick'>
+                                <em class="icon-hamicon" ><Drawer/></em>
                             </div>
                         </div>
                     </div>
