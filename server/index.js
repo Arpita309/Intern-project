@@ -41,33 +41,16 @@ app.use('/app-row',appRouter);
 
 
 
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/html');
-    res.end('<html><body><h1>This is an Express Server</h1></body></html>');
     
-    });*/
-/*const client = new MongoClient(uri, { useNewUrlParser: true });
-client.connect(err => {
-  const collection = client.db("builder-db").collection("question-row");
-  
-  
-  const data= collection.find({}).toArray();
-  data.then((docs)=>{console.log(docs)})
-
-  app.get('/question-row',(req,res)=>{
-    collection.find().toArray((error,result)=>{
-        if(error)throw error;
-        res.json(result)
-    })
-    
-})
 
   // perform actions on the collection object
   
 });*/
 
 
-
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
+});
 
 const server = http.createServer(app);
 

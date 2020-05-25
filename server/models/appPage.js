@@ -6,18 +6,18 @@ const Currency = mongoose.Types.Currency;
 const AppSchema = new Schema({
     h3: {
         type: String,
-        required: true,
-        unique: true
+        required: true
+        
     },
     p: {
         type: String,
-        required: true,
-        unique: true
+        required: true
+       
     },
     img: {
         type: String,
-        required: true,
-        unique: true
+        required: true
+        
     },
     price: {
         type: Currency,
@@ -25,9 +25,9 @@ const AppSchema = new Schema({
        
     },
     a: {
-        type: String,
+        type: String
         
-        unique: true
+        
     },
     
     

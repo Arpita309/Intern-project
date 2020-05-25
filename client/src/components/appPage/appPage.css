@@ -831,3 +831,298 @@ button{
     bottom: -2px;
     left: -4px;
 }
+.commonPopUp {
+    opacity: 0;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: none;
+    overflow-y: auto;
+}
+@media only screen and (max-width: 768px)
+{
+.commonPopUp {
+    height: 100%;
+}}
+.commonPopUp.active {
+    opacity: 1;
+    z-index: 9999999;
+    display: block;
+}
+.commonPopUp .popOverlay {
+    
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+.commonPopUp.active .popOverlay {
+    background: rgba(0,0,0,.5);
+   
+    animation: popupfade .2s ease-in-out;
+}
+.addNewTemplate {
+    width: calc(100% - 30px);
+    max-width: 740px;
+    display: flex;
+}
+@media only screen and (max-width: 768px)
+{
+.addNewTemplate {
+    display: block;
+}}
+.commonPopUp .popHolder {
+    background: #fff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 3;
+    border-radius: 8px;
+}
+.commonPopUp.active .popHolder {
+    
+    animation: popupanimation .1s ease-in-out;
+}
+.commonPopUp .popHolder .closePopUp {
+    position: absolute;
+    cursor: pointer;
+    z-index: 9;
+    top: 5px;
+    right: 5px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 16px;
+    color: rgba(0,0,0,.6);
+}
+@media only screen and (max-width: 768px)
+{
+.addNewTemplate .closePopUp {
+    color: #fff!important;
+}}
+.addNewTemplate .tempLeft {
+    box-sizing: border-box;
+    width: 360px;
+    float: left;
+    min-height: 500px;
+    background: url('https://studio.builder.ai/templatesPopup.d58625299ae839eafbf9.png') no-repeat 100%;
+    padding: 40px 20px;
+    border-radius: 7px 0 0 7px;
+}
+@media only screen and (max-width: 768px)
+{
+.addNewTemplate .tempLeft {
+    box-sizing: border-box;
+    width: 100%;
+    clear: both;
+    min-height: auto;
+    background: url('https://studio.builder.ai/bgShape.275730f2f844ae5a7c14.png') 50%;
+    border-radius: 8px 8px 0 0;
+    padding: 15px 40px 15px 15px;
+}}
+.addNewTemplate .tempLeft h3 {
+    font-size: 22px;
+    font-family: Gotham Bold,Arial,Georgia,serif;
+    font-weight: 700;
+    line-height: normal;
+    color: hsla(0,0%,100%,.9);
+    
+    text-shadow: #000 0 0 20px;
+}
+@media only screen and (max-width: 768px)
+{
+.addNewTemplate .tempLeft h3 {
+    font-size: 20px;
+    margin: 0 0 10px;
+    font-weight: 600;
+}}
+.addNewTemplate .tempLeft p {
+    font-size: 15px;
+    padding-right: 30px;
+    color: hsla(0,0%,100%,.9);
+    
+    text-shadow: #000 0 0 20px;
+}
+@media only screen and (max-width: 768px)
+{
+.addNewTemplate .tempLeft p {
+    margin: 0;
+}}
+.addNewTemplate .tempRight {
+    box-sizing: border-box;
+    width: 380px;
+    float: right;
+    padding: 40px 40px 25px 0;
+}
+@media only screen and (max-width: 768px)
+{
+.addNewTemplate .tempRight {
+    box-sizing: border-box;
+    width: 100%;
+    clear: both;
+    padding: 10px 15px;
+}}
+.addNewTemplate .tempRight .tempDisclaimer {
+    font-size: 12px;
+    color: #192441;
+    opacity: .7;
+}
+.addNewTemplate .tempRight ul {
+    margin: 0;
+    padding: 0;
+}
+@media only screen and (max-width: 768px)
+{
+.addNewTemplate .tempRight ul {
+    padding: 20px 0 0;
+}}
+.addNewTemplate .tempRight ul li {
+    display: block;
+    width: 100%;
+    float: left;
+    clear: both;
+    margin: 10px 0;
+    list-style-type: none;
+}
+@media only screen and (max-width: 768px)
+{
+.addNewTemplate .tempRight ul li {
+    margin: 0 0 20px;
+}}
+.mat-form-field {
+    font-size: inherit;
+    font-weight: 400;
+    line-height: 1.125;
+    font-family: Roboto,Helvetica Neue,sans-serif;
+    width: 100%!important;
+    border: none!important;
+    display: inline-block;
+    position: relative;
+    text-align: left;
+}
+.mat-form-field-appearance-legacy .mat-form-field-wrapper {
+    padding: 0!important;
+    position: relative;
+}
+.mat-form-field-flex {
+    display: inline-flex;
+    align-items: baseline;
+    box-sizing: border-box;
+    width: 100%!important;
+    border: none!important;
+}
+.mat-form-field-infix {
+    display: block;
+    position: relative;
+    flex: auto;
+    min-width: 0;
+    width: 180px;
+    padding: .4375em 0;
+    border-top: .84375em solid transparent;
+}
+.mat-input-element {
+    font: inherit;
+    background: 0 0;
+    color: currentColor;
+    border: none;
+    outline: 0;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+    vertical-align: bottom;
+    text-align: inherit;
+    caret-color: #3f51b5;
+    -webkit-appearance: none;
+}
+input.mat-input-element {
+    margin-top: -.0625em;
+}
+.addNewTemplate .tempRight ul li input {
+    box-sizing: border-box;
+    width: 100%;
+    height: 30px;
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0,.2);
+    box-shadow: inset 200px 200px 0 0 #fff;
+    font-size: 14px;
+}
+.cdk-text-field-autofill-monitored:not(:-webkit-autofill) {
+   
+    animation-name: cdk-text-field-autofill-end;
+}
+.mat-form-field-label-wrapper {
+    top: -.84375em;
+    padding-top: .84375em;
+    position: absolute;
+    left: 0;
+    box-sizing: content-box;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+}
+.mat-form-field-label {
+    position: absolute;
+    left: 0;
+    font: inherit;
+    pointer-events: none;
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    transform-origin: 0 0;
+    transition: transform .4s cubic-bezier(.25,.8,.25,1),color .4s cubic-bezier(.25,.8,.25,1),width .4s cubic-bezier(.25,.8,.25,1);
+    
+}
+.addNewTemplate .tempRight ul li label {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(0,0,0,.87);
+    display: block;
+    margin: 0 0 10px;
+}
+.mat-form-field-appearance-legacy .mat-form-field-label {
+    transform: perspective(100px);
+    top: 1.28125em;
+}
+.mat-form-field-underline {
+    position: absolute;
+    width: 100%;
+    pointer-events: none;
+    transform: scaleY(1.0001);
+}
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+    bottom: 1.25em;
+    background-color: rgba(0,0,0,.42);
+    display: none!important;
+    
+        height: 1px;
+    
+}
+.mat-form-field-appearance-legacy.mat-form-field-invalid:not(.mat-focused) .mat-form-field-ripple {
+    height: 1px;
+}
+.mat-form-field.mat-form-field-invalid .mat-form-field-ripple {
+    opacity: 1;
+    transform: scaleX(1);
+    transition: transform .3s cubic-bezier(.25,.8,.25,1),opacity .1s cubic-bezier(.25,.8,.25,1),background-color .3s cubic-bezier(.25,.8,.25,1);
+}
+.mat-form-field.mat-form-field-invalid .mat-form-field-ripple, .mat-form-field.mat-form-field-invalid .mat-form-field-ripple.mat-accent {
+    background-color: #f44336;
+}
+.mat-form-field-appearance-legacy .mat-form-field-ripple {
+    top: 0;
+    height: 2px;
+    overflow: hidden;
+}
+.mat-form-field-ripple {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    transform-origin: 50%;
+   
+}

@@ -3,7 +3,7 @@ import './appPage.css'
 import AppHeader from '../appHeader/appHeader';
 import axios from 'axios'
 import {Link} from 'react-router-dom'
-import { CarouselCaption } from 'reactstrap';
+
 
 class Apppage extends React.Component{
     constructor(props){
@@ -240,7 +240,9 @@ class Apppage extends React.Component{
                                     
                                 </div>
                     </div>
-                    
+                    <div>
+
+                    </div>
                 </div>
             </div>
             
