@@ -3,8 +3,10 @@ const express = require('express'),
 http = require('http');
 const morgan = require('morgan');
 const cors=require('cors')
-const hostname = 'localhost';
-const port = 4000;
+const hostname = process.env.HOST || 'locahost';
+const port = process.env.PORT || 4000;
+const dbUrl = process.env.DB_URL || "mongodb+srv://arpita_W3dev:7985714375@ar@cluster0-ond1z.mongodb.net/builderDb?retryWrites=true&w=majority";
+
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
@@ -20,7 +22,8 @@ app.use(bodyParser.json());
 
 app.use(express.static(__dirname + '/public'));
 //const MongoClient = require('mongodb').MongoClient;
-const uri="mongodb+srv://arpita_W3dev:7985714375@ar@cluster0-ond1z.mongodb.net/builderDb?retryWrites=true&w=majority"
+const uri=dbUrl;
+
  // mongoose.connect(uri, {
  // useNewUrlParser: true
 //});
