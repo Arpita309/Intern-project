@@ -137,7 +137,7 @@
 .icon-magnifying:before {
     font-family: "Font Awesome\ 5 Free ";
     font-weight: 900;
-    content:'';
+    content:"\f00c";
 }
 [class^=icon-]:before {
     font-family: engineer,Georgia,serif!important;

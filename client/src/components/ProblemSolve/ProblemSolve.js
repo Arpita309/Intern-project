@@ -47,7 +47,7 @@ class ProblemSolve extends React.Component{
                              <div className='rightSide'>
                                  <div className='problemSearch'>
                                     <input  type="text" placeholder="Search..." onChange={this.handleChange}></input>
-                                    <em className='icon-magnifying'><i class="fas fa-search"></i></em>
+                                    <em className='icon-magnifying'></em>
                                     
 
                                  </div>
