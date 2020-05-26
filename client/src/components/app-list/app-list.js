@@ -37,7 +37,7 @@ const AppList=()=>{
                                 <span >Price</span>
                                 <strong >₹548 K</strong>
                             </div>
-                            <a  target="_blank" class="btn apps-detailbtn" href="#"> View Details </a>
+                            <a  target="_blank" class="btn apps-detailbtn" href="http://localhost:3000/apps/Uber"> View Details </a>
                        </div>
                    </div>
                 </div>
@@ -53,7 +53,7 @@ const AppList=()=>{
                                 <span >Price</span>
                                 <strong >₹696 K</strong>
                             </div>
-                            <a  target="_blank" class="btn apps-detailbtn" href="#"> View Details </a>
+                            <a  target="_blank" class="btn apps-detailbtn" href="http://localhost:3000/apps/Snapchat"> View Details </a>
                        </div>
                    </div>
                 </div>
@@ -69,7 +69,7 @@ const AppList=()=>{
                                 <span >Price</span>
                                 <strong >₹394 K</strong>
                             </div>
-                            <a  target="_blank" class="btn apps-detailbtn" href="#"> View Details </a>
+                            <a  target="_blank" class="btn apps-detailbtn" href="http://localhost:3000/apps/Quora"> View Details </a>
                        </div>
                    </div>
                 </div>
@@ -85,7 +85,7 @@ const AppList=()=>{
                                 <span >Price</span>
                                 <strong >₹491 K</strong>
                             </div>
-                            <a  target="_blank" class="btn apps-detailbtn" href="#"> View Details </a>
+                            <a  target="_blank" class="btn apps-detailbtn" href="http://localhost:3000/apps/WeChat"> View Details </a>
                        </div>
                    </div>
                 </div>
@@ -101,7 +101,7 @@ const AppList=()=>{
                                 <span >Price</span>
                                 <strong >₹907 K</strong>
                             </div>
-                            <a  target="_blank" class="btn apps-detailbtn" href="#"> View Details </a>
+                            <a  target="_blank" class="btn apps-detailbtn" href="http://localhost:3000/apps/Facebook"> View Details </a>
                        </div>
                    </div>
                 </div>
@@ -117,7 +117,7 @@ const AppList=()=>{
                                 <span >Price</span>
                                 <strong >₹374 K</strong>
                             </div>
-                            <a  target="_blank" class="btn apps-detailbtn" href="#"> View Details </a>
+                            <a  target="_blank" class="btn apps-detailbtn" href="http://localhost:3000/apps/Tinder"> View Details </a>
                        </div>
                    </div>
                 </div>

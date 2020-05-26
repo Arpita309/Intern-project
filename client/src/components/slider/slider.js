@@ -1,6 +1,6 @@
 import React from 'react'
 import './slider.css'
-class Slider extends React.Component {
+class SliderComponent extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -54,4 +54,4 @@ class Slider extends React.Component {
 		);
 	}
 }
-export default Slider;
+export default SliderComponent;

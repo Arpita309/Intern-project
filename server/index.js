@@ -4,7 +4,7 @@ http = require('http');
 const morgan = require('morgan');
 const cors=require('cors')
 const hostname = 'localhost';
-const port = 4000;
+const PORT =  process.env.PORT || 4000;
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
@@ -54,6 +54,6 @@ app.get('*', (req, res) => {
 
 const server = http.createServer(app);
 
-server.listen(port, hostname, () => {
-console.log(`Server running at http://${hostname}:${port}/`);
+server.listen(PORT, () => {
+console.log(`Server running at ${PORT}`);
 });

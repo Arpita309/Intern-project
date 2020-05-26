@@ -5,6 +5,7 @@ import SignIn from './components/SignIn/SignIn'
 import SignUp from './components/signup/signup'
 import ProblemSolve from './components/ProblemSolve/ProblemSolve'
 import AppPage from './components/appPage/appPage'
+import AppDetail from './components/appDetail/appDetail'
 import './App.css'
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
          <Route exact path='/signup' component={SignUp}/>
          <Route exact path='/problemsolve' component={ProblemSolve}/>
          <Route exact path='/apps' component={AppPage}/>
+         <Route path='/apps/:name' component={AppDetail} />
        </Switch>
        
     </BrowserRouter>   

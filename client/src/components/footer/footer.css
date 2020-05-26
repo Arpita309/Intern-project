@@ -1,0 +1,125 @@
+#footerArea {
+    box-sizing: border-box;
+    width: 100%;
+    position: relative;
+    z-index: 11;
+    float: left;
+    clear: both;
+    height: 40px;
+    padding: 10px 0 0;
+}
+@media only screen and (max-width: 768px)
+{
+#footerArea {
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px 0;
+    text-align: center;
+}}
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.container::before{
+    display: table;
+    content: " ";
+
+}
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.row:before {
+    display: table;
+    content: " ";
+}
+.col-xs-12 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    width: 100%;
+    float: left
+    
+}
+@media (min-width: 768px)
+{.col-sm-5 {
+    width: 41.66666667%;
+}}
+@media (min-width: 768px)
+{.col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
+    text-align: left;
+}}
+@media (min-width: 768px)
+{.col-sm-3 {
+    width: 25%;
+}}
+@media (min-width: 768px)
+{.col-sm-4 {
+    width: 33.33333333%;
+}}
+#footerArea p {
+    font-size: 13px;
+    margin: 0;
+    color: rgba(25,36,65,.5);
+}
+#footerArea p strong {
+    display: inline-block;
+    width: 72px;
+    height: 18px;
+    background: url("https://studio.builder.ai/sprite.0f9ea927f8d92a2964e9.png") -5px -376px no-repeat;
+    vertical-align: middle;
+}
+#footerArea h6 {
+    margin: 0;
+    font-size: 12px;
+    color: rgba(25,36,65,.6);
+    display: block;
+    text-align: center;
+    padding: 4px 0 0;
+}
+.pull-right {
+    float: right!important;
+}
+#footerArea .footerLinks {
+    text-align: right;
+}
+@media only screen and (max-width: 768px)
+{
+#footerArea .footerLinks {
+    text-align: center;
+}}
+#footerArea .footerLinks ul {
+    margin: 0;
+    padding: 0;
+}
+#footerArea .footerLinks ul li {
+    display: inline-block;
+    list-style-type: none;
+    vertical-align: middle;
+    margin: 0 0 0 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+@media (max-width: 992px)
+{
+#footerArea .footerLinks ul li {
+    font-size: 13px;
+}}
+#footerArea .footerLinks ul li a {
+    color: rgba(25,36,65,.7);
+    text-decoration: none;
+}
+.row:after {
+    clear: both;
+    display: table;
+    content: " ";
+}
+.container:after{
+    display: table;
+    content: " ";
+    clear: both;
+
+}

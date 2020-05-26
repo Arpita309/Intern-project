@@ -282,6 +282,9 @@
     overflow: hidden;
     transition: all .8s ease-in-out;
 }
+.templateSection .templateTop .templateToolbar .templateFilter .filterItemBox .filterItemHolder .filterSection .filterRow ul.categoryList.active {
+    max-height: 3000px;
+}
 .templateSection .templateTop .templateToolbar .templateFilter .filterItemBox .filterItemHolder .filterSection .filterRow ul li {
     margin: 0 0 4px;
     font-size: 13px;
@@ -492,8 +495,9 @@ button{
     font-size: 11px;
 }
 .templateSection .templateTop .templateToolbar .templateSorting .sortItems ul li.active:after {
-    font-family: engineer,Georgia,serif!important;
-    content: "h";
+    font-family: "Font Awesome\ 5 Free";
+    font-weight: 900;
+    content: "\f00c";
     background: #00c853;
     border: none;
 }

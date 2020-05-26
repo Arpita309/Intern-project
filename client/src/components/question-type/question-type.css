@@ -248,12 +248,13 @@
     padding: 10px 10px 10px 45px;
 }}
 .questionSection .questionRow .questionbox.completed h3:before {
-    font-family: engineer,Georgia,serif;
-    content: "f00c";
+    font-family: "Font Awesome\ 5 Free";
+    content: "\f00c";
     background: #00c853;
     border: none;
     font-size: 16px;
     color: #fff;
+    font-weight: 900;
 }
 @media only screen and (max-width: 768px)
 {
@@ -394,7 +395,9 @@
     font-size: 14px;
 }}
 .questionSection .questionRow .questionbox.completed .answearSet ul li input[type=checkbox]:checked + label:after {
-    content: "h";
+    font-weight: 900;
+    font-family: "Font Awesome\ 5 Free";
+    content: "\f00c";
     background: #00c853;
     border: none;
     font-size: 16px;

@@ -3,30 +3,113 @@ import './appPage.css'
 import AppHeader from '../appHeader/appHeader';
 import axios from 'axios'
 import {Link} from 'react-router-dom'
+import Footer from '../footer/footer';
+import Slider from '@material-ui/core/Slider';
+import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 
-
-class Apppage extends React.Component{
+const useStyles = theme => ({
+    root: {
+      width: 250,
+      
+    },
+    rail:{
+        color:'#00c853'
+    }
+  });
+class AppPage extends React.Component{
     constructor(props){
         super(props);
         this.state={
            isOpen:false,
            data:[],
-           search:''
+           search:'',
+           filterData:[
+               {"inputId":"cat6","label":"Art & Design (2)"},
+               {"inputId":"cat8","label":"Auto & Vehicles (2)"},
+               {"inputId":"cat9","label":"Beauty (3)"},
+               {"inputId":"cat10","label":"Books & Reference (6)"},
+               {"inputId":"cat11","label":"Business (3)"},
+               {"inputId":"cat1","label":"Business Process Management (4)"},
+               {"inputId":"cat12","label":"Client/Customer Projects (3)"},
+               {"inputId":"cat13","label":"Comics (1)"},
+               {"inputId":"cat14","label":"Communication (10)"},
+               {"inputId":"cat2","label":"Content Management (6)"},
+               {"inputId":"cat15","label":"Dating (3)"},
+               {"inputId":"cat16","label":"Education (3)"},
+               {"inputId":"cat17","label":"Entertainment (12)"},
+               {"inputId":"cat18","label":"Events (4)"},
+               {"inputId":"cat19","label":"Finance (2)"},
+               {"inputId":"cat20","label":"Food & Drinks (4)"},
+               {"inputId":"cat22","label":"Health & Fitness (8)"},
+               {"inputId":"cat23","label":"House & Home (6)"},
+               {"inputId":"cat24","label":"Lifestyle (16)"},
+               {"inputId":"cat25","label":"Maps & Navigation (7)"},
+               {"inputId":"cat26","label":"Marketing (7)"},
+               {"inputId":"cat27","label":"Medical (4)"},
+               {"inputId":"cat28","label":"Music & Audio (15)"},
+               {"inputId":"cat34","label":"News & Magazines (12)"},
+               {"inputId":"cat35","label":"Operations (6)"},
+               {"inputId":"cat36","label":"Parenting (1)"},
+               {"inputId":"cat39","label":"Photography (5)"},
+               {"inputId":"cat41","label":"Productivity  (2)"},
+               {"inputId":"cat42","label":"Shopping (25)"},
+               {"inputId":"cat43","label":"Social (22)"},
+               {"inputId":"cat44","label":"Sports (3)"},
+               {"inputId":"cat50","label":"Tools (8)"},
+               {"inputId":"cat51","label":"Travel & Local (10)"},
+               {"inputId":"cat52","label":"Utilities (1)"},
+               {"inputId":"cat53","label":"Video Players & Editors (10)"},
+               {"inputId":"cat54","label":"Weather (4)"}
+
+           ],
+           itemsToShow: 5,
+           expanded: false,
+           filterActive:false,
+            sorth3:false,
+            sortpriceA:false,
+            sortpriceD:false,
+            sortdurA:false,
+            sortdurD:false,
+            value:''
 
         }
+        this.showMore = this.showMore.bind(this);
         this.toggleFilter=this.toggleFilter.bind(this)
         this.handleChange=this.handleChange.bind(this);
         this.Clear=this.Clear.bind(this);
+        this.handleClickOutside=this.handleClickOutside.bind(this);
+        this.setWrapperRef = this.setWrapperRef.bind(this);
     }
     componentDidMount() {
+        document.addEventListener('mousedown', this.handleClickOutside);
         axios.get(`http://localhost:4000/app-row`)
           .then(res => {
             const data = res.data;
             this.setState({ data });
           })
       }
+        
+      
+      
+    
+      componentWillUnmount() {
+        document.removeEventListener('mousedown', this.handleClickOutside);
+      }
+    
+      
+      setWrapperRef(node) {
+        this.wrapperRef = node;
+      }
+    
+      handleClickOutside(event) {
+        if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
+          this.setState({isOpen:false})
+        }
+      }
+    
     toggleFilter=()=>{
-        this.setState({isOpen:!this.state.isOpen})
+        this.setState({isOpen:true})
     }
     handleChange(e){
         this.setState({search:e.target.value})
@@ -34,16 +117,72 @@ class Apppage extends React.Component{
     Clear(){
         this.setState({search:''})
     }
+    showMore() {
+        this.state.itemsToShow === 5 ? (
+          this.setState({ itemsToShow: this.state.filterData.length, expanded: true })
+        ) : (
+          this.setState({ itemsToShow: 5, expanded: false })
+        )
+        this.setState({filterActive:!this.state.filterActive})
+      }
+      
     render(){
-        let filtered=this.state.data.filter((value)=>{
+        var filtered=this.state.data.filter((value)=>{
             
             return value.h3.toLowerCase().indexOf(this.state.search.toLowerCase())!==-1;
         })
         const length=filtered.length
-        console.log(length)
+        
     const Result=()=>{if(this.state.search)  {return(<div><div class="resultFound">{filtered.length} apps found for a</div><button type="button" class="backButton" onClick={this.Clear}><em class="icon-prev"><i class="fas fa-angle-left" style={{marginLeft:'0px'}}></i></em>Back</button></div>)} else return(null)}
     const NotFound=()=>{if(length==0) {return(<div className="searchNotFound"><img src="https://studio.builder.ai/assets/images/searchNotFound.png" alt=""></img><h3>NO RESULTS FOUND</h3><h4>We searched far and wide and couldn’t find<br/> any template matching your search.</h4><button type="button" className="button1"><em className="icon-plus"></em> Custom Template </button></div>)} else return(null)}
-        return (
+    function sortAsc(arr, field) {
+        
+        return arr.sort(function (a, b) {
+           
+            if (a[field] > b[field]) {
+                return 1;
+            }
+            if (b[field]> a[field]) {
+                return -1;
+            }
+            return 0;
+            
+        })
+       
+     }
+     function sortDesc(arr, field) {
+        
+        return arr.sort(function (a, b) {
+            if (a[field] > b[field]) {
+                return -1;
+            }
+            if (b[field]> a[field]) {
+                return 1;
+            }
+            return 0;
+        })
+     }
+     
+     const ascending=(field)=>{
+       
+        this.setState({data:sortAsc(this.state.data,field)})
+        
+        filtered=this.state.data
+         }
+    const descending=(field)=>{
+        this.setState({data:sortDesc(this.state.data,field)})
+        
+        filtered=this.state.data
+        }     
+    const classes = useStyles();     
+    const markC=[{value:0,label:"0.00"},{value:63480,label:"63480.00"}]
+    const markD=[{value:0,label:"0 Week"},{value:74,label:"74 Week"}]
+function valuetext(value) {
+    return `${value}`;
+  }
+       
+     
+             return (
             <div>
                 <AppHeader/>
                 <div className='middlePart'>
@@ -84,34 +223,23 @@ class Apppage extends React.Component{
                                         <em className="icon-funnel"><i class="fas fa-filter"></i></em>
                                     </div>
                                     <div  className= {`filterClose ${this.state.isOpen ? 'active': '' }`}></div>
-                                    <div  className= {`filterItemBox ${this.state.isOpen ? 'active': '' }`}>
+                                    <div  className= {`filterItemBox ${this.state.isOpen ? 'active': '' }`} ref={this.setWrapperRef}>
                                         <div className='filterItemHolder'>
                                             <div className="filterSection">
                                                 <div className='filterRow'>
                                                     <h4>Categories</h4>
-                                                    <ul className='categoryList'>
-                                                    <li>
-                                                        <input type="checkbox" id="cat6" class="ng-untouched ng-pristine ng-valid"></input>
-                                                        <label for="cat6">Art &amp; Design (2)</label>
-                                                    </li>
-                                                    <li>
-                                                        <input type="checkbox" id="cat8" class="ng-untouched ng-pristine ng-valid"></input>
-                                                        <label for="cat8">Auto &amp; Vehicles (2)</label>
-                                                    </li>
-                                                    <li>
-                                                        <input type="checkbox" id="cat9" class="ng-untouched ng-pristine ng-valid"></input>
-                                                        <label for="cat9">Beauty (3)</label>
-                                                    </li>
-                                                    <li>
-                                                        <input type="checkbox" id="cat10" class="ng-untouched ng-pristine ng-valid"></input>
-                                                        <label for="cat10">Books &amp; Reference (6)</label>
-                                                    </li>
-                                                    <li>
-                                                        <input type="checkbox" id="cat11" class="ng-valid ng-dirty ng-touched"></input>
-                                                        <label for="cat11">Business (3)</label>
-                                                    </li>
+                                                    <ul className={`categoryList ${this.state.filterActive?'active':''}`}>
+                                                    {this.state.filterData.slice(0,this.state.itemsToShow).map((value) => 
+                                                             <li key={value.inputId}>
+                                                                 <input type="checkbox" id={value.inputId} class="ng-untouched ng-pristine ng-valid"></input>
+                                                                <label for={value.inputId}>{value.label}</label>
+                                                             </li>
+                                                    )}
+                                                    
                                                     </ul>
-                                                    <button type="button" className="moreButton">+31 more </button>
+                                                    <button type="button" className="moreButton" onClick={this.showMore}>
+                                                        {this.state.expanded ? ( <span>View less</span>) : (<span>+31 more</span>)} 
+                                                    </button>
                                                     
                                                         
                                                     </div>
@@ -119,27 +247,40 @@ class Apppage extends React.Component{
                                                 <div className='filterRow'>
                                                 <h4>Template Cost</h4>
                                                     <div className='rangeSlider'>
-                                                        <div class="ng5-slider animate" _nghost-serverapp-c126="">
-                                                            <span _ngcontent-serverapp-c126="" ng5sliderelement="" class="ng5-slider-span ng5-slider-bar-wrapper ng5-slider-left-out-selection" style={{opacity: '1', visibility: 'hidden'}}>
-                                                                <span _ngcontent-serverapp-c126="" class="ng5-slider-span ng5-slider-bar"></span>
-                                                            </span>
-                                                            <span _ngcontent-serverapp-c126="" ng5sliderelement="" class="ng5-slider-span ng5-slider-bar-wrapper ng5-slider-right-out-selection" style={{opacity: '1', visibility: 'hidden'}}>
-                                                                <span _ngcontent-serverapp-c126="" class="ng5-slider-span ng5-slider-bar"></span>
-                                                            </span>
-                                                            <span _ngcontent-serverapp-c126="" ng5sliderelement="" class="ng5-slider-span ng5-slider-bar-wrapper ng5-slider-full-bar" style={{opacity: '1', visibility: 'visible'}}>
-                                                                <span _ngcontent-serverapp-c126="" class="ng5-slider-span ng5-slider-bar"></span>
-                                                            </span>
-                                                            <span _ngcontent-serverapp-c126="" ng5sliderelement="" class="ng5-slider-span ng5-slider-bar-wrapper ng5-slider-selection-bar" style={{opacity: '1', visibility: 'visible', left: '7px;', width: '183px'}}>
-                                                                <span _ngcontent-serverapp-c126="" class="ng5-slider-span ng5-slider-bar ng5-slider-selection"></span>
-                                                            </span>
-                                                            <span _ngcontent-serverapp-c126="" ng5sliderhandle="" class="ng5-slider-span ng5-slider-pointer ng5-slider-pointer-min" role="slider" tabindex="0" aria-orientation="" aria-label="" aria-labelledby="" aria-valuenow="0" aria-valuetext="0" aria-valuemin="0" aria-valuemax="1447251" style={{opacity: '1', visibility: 'visible', left: '0px'}}></span>
-                                                            <span _ngcontent-serverapp-c126="" ng5sliderhandle="" class="ng5-slider-span ng5-slider-pointer ng5-slider-pointer-max" role="slider" tabindex="0" aria-orientation="horizontal" aria-label="" aria-labelledby="" aria-valuenow="1447251" aria-valuetext="1447251" aria-valuemin="0" aria-valuemax="1447251" style={{display: 'inherit', opacity: '1', visibility: 'visible', left: '183px'}}></span>
-                                                            <span _ngcontent-serverapp-c126="" ng5sliderlabel="" class="ng5-slider-span ng5-slider-bubble ng5-slider-limit ng5-slider-floor" style={{opacity: '1', visibility: 'visible', left: '0px'}}>0</span><span _ngcontent-serverapp-c126="" ng5sliderlabel="" class="ng5-slider-span ng5-slider-bubble ng5-slider-limit ng5-slider-ceil" style={{opacity: '1', visibility: 'visible', left: '197px'}}>1447251</span>
-                                                            <span _ngcontent-serverapp-c126="" ng5sliderlabel="" class="ng5-slider-span ng5-slider-bubble ng5-slider-model-value" style={{opacity: '1', visibility: 'visible', left: '7px'}}>0</span>
-                                                            <span _ngcontent-serverapp-c126="" ng5sliderlabel="" class="ng5-slider-span ng5-slider-bubble ng5-slider-model-high" style={{opacity: '1', visibility: 'visible', left: '190px'}}>1447251</span><span _ngcontent-serverapp-c126="" ng5sliderlabel="" class="ng5-slider-span ng5-slider-bubble ng5-slider-combined" style={{opacity: '0', visibility: 'visible', left: '0px'}}>0 - 1447251</span>
-                                                            <span _ngcontent-serverapp-c126="" ng5sliderelement="" class="ng5-slider-ticks" hidden="" style={{opacity: '1', visibility: 'visible'}}></span>
+                                                    <div className={classes.root}>
+                                                    
+                                                        <Typography id="track-range-slider" gutterBottom>
+                                                             track range
+                                                        </Typography>
+                                                        <Slider
+                                                            color={"secondary"}
+                                                            max={63480}
+                                                            aria-labelledby="track-range-slider"
+                                                            getAriaValueText={valuetext}
+                                                            defaultValue={[0, 63480]}
+                                                            marks={markC}
+                                                        />
                                                         </div>
                                                     </div>
+                                                    <div className='filterRow'>
+                                                <h4>Duration</h4>
+                                                    <div className='rangeSlider'>
+                                                    <div className={classes.root}>
+                                                    
+                                                        <Typography id="track-range-duration-slider" gutterBottom>
+                                                             track range
+                                                        </Typography>
+                                                        <Slider
+                                                            color={"secondary"}
+                                                            max={74}
+                                                            aria-labelledby="track-range-duration-slider"
+                                                            getAriaValueText={valuetext}
+                                                            defaultValue={[0, 74]}
+                                                            marks={markD}
+                                                        />
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 </div>
                                                 <div className="filterRow">
                                                     <h4>Supported platforms</h4>
@@ -193,11 +334,11 @@ class Apppage extends React.Component{
                                     <div className="sortItems">
                                         <h4>SORT BY</h4>
                                         <ul>
-                                            <li >Name</li>
-                                            <li>Price: Low to High</li>
-                                            <li>Price: High to Low</li>
-                                            <li>Duration: Low to High</li>
-                                            <li>Duration: High to Low</li>
+                                            <li onClick={(e)=>ascending('h3',)}  className={`${this.state.sort?'active':''}`}>Name</li>
+                                            <li onClick={(e)=>ascending('price')}>Price: Low to High</li>
+                                            <li onClick={(e)=>descending('price')}>Price: High to Low</li>
+                                            <li onClick={(e)=>ascending('price')}>Duration: Low to High</li>
+                                            <li onClick={(e)=>descending('price')}>Duration: High to Low</li>
                                         </ul>
                                     </div>
                                  </div>
@@ -244,9 +385,22 @@ class Apppage extends React.Component{
 
                     </div>
                 </div>
+                <Footer/>
             </div>
             
         )
     }
 } 
-export default Apppage;
+export default withStyles(useStyles)(AppPage);
+
+
+
+
+
+
+
+
+
+
+
+
