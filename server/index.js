@@ -3,7 +3,7 @@ const express = require('express'),
 http = require('http');
 const morgan = require('morgan');
 const cors=require('cors')
-const hostname = process.env.HOST || 'locahost';
+const hostname = process.env.HOST || 'localhost';
 const port = process.env.PORT || 4000;
 const dbUrl = process.env.DB_URL || "mongodb+srv://arpita_W3dev:7985714375@ar@cluster0-ond1z.mongodb.net/builderDb?retryWrites=true&w=majority";
 
@@ -34,7 +34,7 @@ const connect = mongoose.connect(uri, {
 
 connect.then((db) => {
     console.log("Connected correctly to server");
-}, (err) => { console.log(err); });
+}, (err) => { console.error(err); });
 
 
 app.use('/question-row',questionRouter);
@@ -58,5 +58,5 @@ app.get('*', (req, res) => {
 const server = http.createServer(app);
 
 server.listen(port, hostname, () => {
-console.log(`Server running at http://${hostname}:${port}/`);
+  console.log(`Server running at http://${hostname}:${port}/`);
 });
