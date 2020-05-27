@@ -19,7 +19,7 @@ appRouter.route('/')
       console.log(req.query)
     AppRows.find(req.query)
    .then((AppRows) => {
-       console.log(AppRows)
+       
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
         res.json(AppRows);
