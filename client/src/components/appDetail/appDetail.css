@@ -1,0 +1,21 @@
+.appdetailSection {
+    width: 100%;
+    float: left;
+    clear: both;
+    padding: 40px;
+    background: #fff;
+    box-shadow: 0 0 8px 0 rgba(0,0,0,.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+@media only screen and (max-width: 768px)
+{
+.appdetailSection {
+    padding: 15px;
+}}
+@media only screen and (max-width: 991px)
+{
+.appdetailSection {
+    flex-wrap: wrap;
+}}

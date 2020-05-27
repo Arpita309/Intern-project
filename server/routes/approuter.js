@@ -15,9 +15,11 @@ appRouter.use(bodyParser.json());
 appRouter.route('/')
 
 .get((req,res) => {
-    console.log(req.query)
+     
+      console.log(req.query)
     AppRows.find(req.query)
    .then((AppRows) => {
+       console.log(AppRows)
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
         res.json(AppRows);
@@ -32,6 +34,7 @@ appRouter.route('/')
         res.json(AppRow);
     })
 });
+
 
 
 module.exports = appRouter;

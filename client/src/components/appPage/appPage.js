@@ -133,7 +133,7 @@ class AppPage extends React.Component{
         })
         const length=filtered.length
         
-    const Result=()=>{if(this.state.search)  {return(<div><div class="resultFound">{filtered.length} apps found for a</div><button type="button" class="backButton" onClick={this.Clear}><em class="icon-prev"><i class="fas fa-angle-left" style={{marginLeft:'0px'}}></i></em>Back</button></div>)} else return(null)}
+    const Result=()=>{if(this.state.search)  {return(<div><div class="resultFound">{filtered.length} apps found for a</div><button type="button" class="backButton" onClick={this.Clear}><em class="icon-prev"></em>Back</button></div>)} else return(null)}
     const NotFound=()=>{if(length==0) {return(<div className="searchNotFound"><img src="https://studio.builder.ai/assets/images/searchNotFound.png" alt=""></img><h3>NO RESULTS FOUND</h3><h4>We searched far and wide and couldn’t find<br/> any template matching your search.</h4><button type="button" className="button1"><em className="icon-plus"></em> Custom Template </button></div>)} else return(null)}
     function sortAsc(arr, field) {
         
@@ -212,7 +212,7 @@ function valuetext(value) {
                                     <li className="hidden-xs">
                                         <label></label>
                                         <button type="button" className="searchButton">
-                                            <em className="icon-magnifying"><i class="fas fa-search"></i></em>
+                                            <em className="icon-magnifying"></em>
                                         </button>
                                     </li>
                                 </ul>

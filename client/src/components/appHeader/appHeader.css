@@ -219,17 +219,7 @@ a {
 .mobileClick, .mobuserLogin {
     display: block;
 }}
-[class^=icon-]:before {
-    font-family: engineer,Georgia,serif!important;
-    font-style: normal!important;
-    font-weight: 400!important;
-    font-variant: normal!important;
-    text-transform: none!important;
-    
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
+
 .icon-hamicon:before {
     content: "";
 }
