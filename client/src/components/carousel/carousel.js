@@ -71,24 +71,6 @@ class Carousel extends React.Component {
 }
 export default Carousel;
 
-const Arrow = ({ direction, clickFunction, glyph }) => (
-	<div 
-		className={ `slide-arrow ${direction}` } 
-		onClick={ clickFunction }>
-		{ glyph } 
-	</div>
-);
 
-const ImageSlide = ({ url }) => {
-	const styles = {
-		backgroundImage: `url(${url})`,
-		backgroundSize: 'cover',
-		
-	};
-	
-	return (
-		<div className="image-slide" style={styles}></div>
-	);
-}
 
-{/*<ImageSlide url={ imgUrls[this.state.currentImageIndex] } />*/}
+
