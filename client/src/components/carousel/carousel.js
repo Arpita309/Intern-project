@@ -46,19 +46,19 @@ class Carousel extends React.Component {
 			<div className='appdetailImg'>
                 <div className='appdetailSlider'>
                 
-                <drag-scroll _ngcontent-serverapp-c130="" class="sliderHeight" _nghost-serverapp-c112="" style={{pointerEvents: "auto"}}>
-                    <div _ngcontent-serverapp-c112="" class="drag-scroll-content" drag-scroll="true" style={{display: "block", whiteSpace: "nowrap", width: "100%", height: "calc(100% + 20px)"}}>
-                        <div _ngcontent-serverapp-c130="" drag-scroll-item="" class="appdetailSlide" style={{display: "inline-block"}}>
-                            <img _ngcontent-serverapp-c130="" alt="" src={imgUrls[this.state.currentImageIndex]}></img>
+                <div  className="sliderHeight"  style={{pointerEvents: "auto"}}>
+                    <div  className="drag-scroll-content" drag-scroll="true" style={{display: "block", whiteSpace: "nowrap", width: "100%", height: "calc(100% + 20px)"}}>
+                        <div   className="appdetailSlide" style={{display: "inline-block"}}>
+                            <img  alt="" src={imgUrls[this.state.currentImageIndex]}></img>
                         </div>
                         
                     </div>
-                </drag-scroll>
-                <button  type="button" class="dragbutton leftArrow" direction='left' onClick={this.previousSlide}>
-                    <em _ngcontent-serverapp-c130="" class="icon-prev"></em>
+                </div>
+                <button  type="button" className="dragbutton leftArrow" direction='left' onClick={this.previousSlide}>
+                    <em className="icon-prev"></em>
                 </button>
-                <button _ngcontent-serverapp-c130="" type="button" class="dragbutton rightArrow" direction='right' onClick={this.nextSlide}>
-                    <em _ngcontent-serverapp-c130="" class="icon-next"></em>
+                <button  type="button" className="dragbutton rightArrow" direction='right' onClick={this.nextSlide}>
+                    <em  className="icon-next"></em>
                 </button>
 				
                 
