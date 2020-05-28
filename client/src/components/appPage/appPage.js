@@ -373,7 +373,7 @@ function valuetext(value) {
                                                             <span>Price</span>
                                                             <strong>₹ {value.price}K</strong>
                                                         </div>
-                                                        <a target="_blank" class="btn apps-detailbtn" href="#/apps/9gag-funny-gifs-pics-memes-videos-for-igtv?exp=global&amp;currency_id=1"> View Details </a>
+                                                        <a target="_blank" class="btn apps-detailbtn" href="http://localhost:3000/apps/9GAG"> View Details </a>
                                                     </div>
                                                 </div>
                                                 </React.Fragment>)})}
