@@ -15,9 +15,7 @@ appRouter.use(bodyParser.json());
 appRouter.route('/')
 
 .get((req,res) => {
-     
-      console.log(req.query)
-    AppRows.find(req.query)
+     AppRows.find(req.query)
    .then((AppRows) => {
        
         res.statusCode = 200;

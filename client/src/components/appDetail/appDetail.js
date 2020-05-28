@@ -17,7 +17,7 @@ class AppDetail extends React.Component{
           .then(res => {
             const data = res.data;
             this.setState({ data });
-            console.log(this.state.data)
+           
           })
       }
     render(){
