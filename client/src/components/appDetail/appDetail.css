@@ -19,3 +19,298 @@
 .appdetailSection {
     flex-wrap: wrap;
 }}
+.appdetailSection .appdetailBox {
+    float: right;
+    width: calc(45% - 10px);
+    position: relative;
+}
+@media only screen and (max-width: 991px)
+{
+.appdetailSection .appdetailBox {
+    width: 100%;
+}}
+.appdetailSection .appdetailBox h2 {
+    font-size: 28px;
+    margin: 0 0 15px;
+    
+    color: #1d2c41;
+}
+@media only screen and (max-width: 1280px)
+{
+.appdetailSection .appdetailBox h2 {
+    font-size: 22px;
+}}
+.appdetailSection .appdetailBox h2 strong {
+    float: right;
+    font-size: 16px;
+    margin: 7px 0 0;
+}
+@media only screen and (max-width: 1280px)
+{
+.appdetailSection .appdetailBox h2 strong {
+    font-size: 14px;
+    float: none;
+    display: block;
+}}
+.appdetailSection .appdetailBox .chipsrow {
+    width: 100%;
+    float: left;
+    clear: both;
+    margin: 0 0 15px;
+}
+.appdetailSection .appdetailBox .chipsrow span {
+    display: block;
+    float: left;
+    border: 1px solid #c7cfdd;
+    color: #8291a4;
+    padding: 5px 10px;
+    margin: 0 10px 0 0;
+    border-radius: 50px;
+    font-size: 14px;
+}
+@media only screen and (max-width: 1280px)
+{
+.appdetailSection .appdetailBox .chipsrow span {
+    font-size: 13px;
+    padding: 2px 8px;
+}}
+.appdetailSection .appdetailBox p {
+    font-size: 18px;
+    margin: 0 0 20px;
+    color: #8291a4;
+    display: block;
+    padding: 0 0 20px;
+    border-bottom: 1px solid rgba(0,0,0,.2);
+    width: 100%;
+    float: left;
+    font-weight: normal;
+}
+@media only screen and (max-width: 1280px)
+{
+.appdetailSection .appdetailBox p {
+    font-size: 12px;
+    
+}}
+.nonrental-price {
+    width: 100%;
+    float: left;
+    padding-bottom: 20px;
+}
+.nonrental-price .listing .custom-checkbox, .nonrental-price .listing h4 {
+    display: none;
+}
+.nonrental-price .listing strong {
+    float: left;
+    font-size: 22px;
+    color: #1d2c41;
+    display: block;
+    padding-right: 8px;
+}
+.nonrental-price .listing span {
+    color: #1d2c41;
+    font-size: 16px;
+    margin: 6px 0 0;
+    display: inline-block;
+}
+.pull-right {
+    float: right!important;
+}
+.appdetailSection .appdetailBox .promocodeArea {
+    width: 100%;
+    float: left;
+    clear: both;
+    border-radius: 4px;
+    padding: 10px 0;
+    margin: 0 0 15px;
+}
+.appdetailSection .appdetailBox .promocodeArea img {
+    float: left;
+    margin: 0 10px 0 0;
+    height: 25px;
+    width: auto;
+}
+.appdetailSection .appdetailBox .promocodeArea button {
+    background: none;
+    border: none;
+    padding: 0;
+    color: #0071e4;
+    font-size: 16px;
+    cursor: pointer;
+    float: left;
+    font-weight: bold;
+    margin: 2px 0 0;
+}
+.appdetailSection .appdetailBox .builderCare {
+    width: 100%;
+    float: left;
+    clear: both;
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin: 0 0 20px;
+    color: #000;
+    border-top: 1px solid rgba(0,0,0,.2);
+    border-bottom: 1px solid rgba(0,0,0,.2);
+    font-size: 14px;
+    padding: 10px 0;
+    overflow: hidden;
+}
+
+.appdetailSection .appdetailBox .builderCare input {
+    position: absolute;
+    top: -100px;
+    left: -100px;
+    opacity: 0;
+    z-index: -99;
+}
+.appdetailSection .appdetailBox .builderCare input:checked + label {
+    background: #0071e4;
+    border: 1px solid #0071e4;
+}
+.appdetailSection .appdetailBox .builderCare label {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    margin: 0 8px 0 0;
+    background: #fff;
+    border-radius: 50px;
+    border: 1px solid rgba(0,0,0,.1);
+    transform: rotate(-45deg);
+    cursor: pointer;
+}
+.appdetailSection .appdetailBox .builderCare label:before {
+    content: "";
+    display: block;
+    top: calc(50% - 1px);
+    left: calc(50% + 1px);
+    position: absolute;
+    transform: translate(-50%,-50%);
+    width: 9px;
+    height: 5px;
+    border-left: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+}
+.appdetailSection .appdetailBox .selectPlatform {
+    width: 100%;
+    float: left;
+    clear: both;
+    position: relative;
+    margin: 0 0 30px;
+}
+.appdetailSection .appdetailBox .selectPlatform h3 {
+    display: block;
+    font-size: 16px;
+    color: #1d2c41;
+    margin: 0 0 15px;
+    font-family: Gotham Bold,Arial,Georgia,serif;
+}
+.appdetailSection .appdetailBox .selectPlatform .selectPlatformSlider {
+    width: 100%;
+    float: left;
+    clear: both;
+    position: relative;
+}
+.appdetailSection .appdetailBox .selectPlatform .selectPlatformSlider .drag-scroll-content {
+    overflow: hidden;
+    padding: 10px 0 0;
+}
+.appdetailSection .appdetailBox .selectPlatform .selectPlatformSlider .selectPlatformbox {
+    width: 122px;
+    height: 88px;
+    padding: 10px 0;
+    margin: 0 15px 0 0;
+    position: relative;
+    border-radius: 4px;
+    border: 1px solid #c7cfdd;
+    text-align: center;
+    vertical-align: top;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+}
+.appdetailSection .appdetailBox .selectPlatform .selectPlatformSlider .selectPlatformbox img {
+    height: 42px;
+    margin: 0 0 5px;
+}
+.appdetailSection .appdetailBox .selectPlatform .selectPlatformSlider .selectPlatformbox span {
+    font-size: 14px;
+    color: #1d2c41;
+    display: block;
+}
+.appdetailSection .appdetailBox .selectPlatform .selectPlatformSlider .selectPlatformbox em {
+    position: absolute;
+    z-index: 9;
+    font-size: 20px;
+    line-height: 0;
+    top: -10px;
+    right: -10px;
+    background: #fff;
+    color: #201aff;
+    opacity: 0;
+    transition: all .3s ease-in-out;
+}
+.icon-tick:before {
+    content: "a";
+}
+.view-brak-bx {
+    display: flex;
+    flex-direction: row;
+}
+.appdetailSection .appdetailBox .createBuild {
+    width: 100%;
+    float: left;
+    clear: both;
+    position: relative;
+    margin-top: 20px;
+}
+@media only screen and (max-width: 768px)
+{
+.appdetailSection .appdetailBox .createBuild {
+    position: fixed;
+    z-index: 99;
+    bottom: 0;
+    left: 0;
+    background: #fff;
+    padding: 10px;
+    border-radius: 15px 15px 0 0;
+    box-shadow: 0 -10px 40px rgba(0,0,0,.1);
+}}
+.view-proto-btn {
+    border: 1px solid #f02397!important;
+    background: #fff!important;
+    color: #f02397!important;
+    overflow: hidden;
+    position: relative;
+}
+@media (max-width: 992px)
+{
+.feature-viewProto-bx, .view-proto-btn {
+    display: none;
+}}
+@media only screen and (max-width: 991px)
+{
+.view-proto-btn {
+    display: block!important;
+}}
+.view-brak-bx button {
+    margin-right: 10px;
+}
+.appdetailSection .appdetailBox .createBuild button {
+   
+    font-size: 16px;
+    color: #fff;
+    width: 100%;
+    height: 48px;
+    border-radius: 4px;
+    background: #f02397;
+    border: none;
+    cursor: pointer;
+}
+.appdetailSection .appdetailBox .createBuild button .desktop {
+    display: block;
+}
+.appdetailSection .appdetailBox .createBuild button .mobile{
+    display: none;
+}
+.view-brak-bx button:nth-child(2n+2) {
+    margin-right: 0;
+}

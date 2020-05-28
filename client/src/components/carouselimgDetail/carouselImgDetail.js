@@ -1,5 +1,5 @@
 import React from 'react'
-import './carousel.css'
+import './carouselImgDetail.css'
 const imgUrls = [
 	"https://duj87royd3ze0.cloudfront.net/uploads/application/mobile_cover_image/5c5013941f0c643d17336ed1/vlc_mobile.png", 
 	"https://duj87royd3ze0.cloudfront.net/uploads/application/web_cover_image/5c5013941f0c643d17336ed1/vlc_desktop.png"

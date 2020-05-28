@@ -1,0 +1,269 @@
+.appfeatureSection {
+    width: 100%;
+    float: left;
+    clear: both;
+    padding: 40px;
+}
+@media only screen and (max-width: 768px)
+{
+.appfeatureSection {
+    padding: 20px 15px;
+}}
+.appfeatureSection .sectionHeading {
+    float: left;
+    margin: 0 0 25px;
+}
+@media only screen and (max-width: 768px)
+{
+.appfeatureSection .sectionHeading {
+    width: 100%;
+    margin: 0 0 20px;
+}}
+.appfeatureSection .sectionHeading h3 {
+    font-size: 24px;
+    color: #1d2c41;
+    
+    margin: 0 0 8px;
+}
+@media only screen and (max-width: 768px)
+{
+.appfeatureSection .sectionHeading h3 {
+    font-size: 16px;
+    margin: 0 0 5px;
+}}
+.appfeatureSection .sectionHeading p {
+    font-size: 14px;
+    color: #000;
+    margin: 0;
+}
+@media only screen and (max-width: 768px)
+{
+.appfeatureSection .sectionHeading p {
+    font-size: 13px;
+}}
+.appfeatureSection .switchView {
+    float: right;
+    margin: 0 0 25px;
+}
+@media only screen and (max-width: 768px)
+{
+.appfeatureSection .switchView {
+    width: 100%;
+}}
+.appfeatureSection .switchView ul {
+    margin: 0;
+    padding: 0;
+    border: 1px solid #e4e8f1;
+    box-shadow: 0 8px 34px rgba(0,0,0,.05);
+    border-radius: 4px;
+    overflow: hidden;
+}
+.appfeatureSection .switchView ul li {
+    list-style-type: none;
+    cursor: pointer;
+    width: 110px;
+    background: #fff;
+    color: #1d2c41;
+    display: block;
+    height: 45px;
+    float: left;
+    padding: 11px 16px;
+}
+@media only screen and (max-width: 768px)
+{
+.appfeatureSection .switchView ul li {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}}
+.appfeatureSection .switchView ul li:first-child {
+    border-right: 1px solid #e4e8f1;
+}
+.appfeatureSection .switchView ul li.active, .appfeatureSection .switchView ul li:hover {
+    background: #f9fafc;
+    color: #201aff;
+}
+.appfeatureSection .switchView ul li em {
+    font-size: 21px;
+    float: left;
+}
+.appfeatureSection .switchView ul li:first-child em {
+    font-size: 20px;
+}
+.icon-phonescreen:before {
+    font-weight: 900;
+    font-family: "Font Awesome\ 5 Free";
+    content: "\f3cd";
+    font-style: normal;
+    
+}
+.appfeatureSection .switchView ul li strong {
+    font-size: 14px;
+    float: left;
+    display: block;
+    margin: 2px 0 0 8px;
+}
+.icon-webscreen:before {
+    font-weight: 900;
+    font-family: "Font Awesome\ 5 Free";
+    content: "\f108";
+    font-style: normal;
+}
+
+ .appfeatureSlider {
+    width: 100%;
+    float: left;
+    clear: both;
+    position: relative;
+}
+ .appfeatureSlider .drag-scroll-content {
+    overflow: hidden;
+}
+ .appfeatureSlider .appfeatureBox {
+    border: 1px solid #e4e8f1;
+    position: relative;
+    margin: 0 20px 0 0;
+    background: #fff;
+    vertical-align: top;
+}
+ .appfeatureSlider.mobileview .appfeatureBox {
+    width: 325px;
+}
+@media only screen and (max-width: 1280px)
+{
+ .appfeatureSlider.mobileview .appfeatureBox {
+    width: 290px;
+}}
+ .appfeatureSlider .appfeatureBox .frameBox {
+    width: 100%;
+    height: 325px;
+    position: relative;
+    border-bottom: 1px solid #e4e8f1;
+    background: #f9fafc;
+}
+@media only screen and (max-width: 768px)
+{
+ .appfeatureSlider.mobileview .appfeatureBox .frameBox {
+    height: 250px;
+}}
+ .appfeatureSlider.mobileview .appfeatureBox .frameBox .imageFrame {
+    background: url("https://studio.builder.ai/phoneframe.167e9146d93f95a080f4.png") no-repeat;
+    width: 172px;
+    height: 301px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 28px 9px 0;
+}
+@media only screen and (max-width: 768px)
+{
+ .appfeatureSlider.mobileview .appfeatureBox .frameBox .imageFrame {
+    width: 132px;
+    height: 232px;
+    background-size: cover;
+    padding: 22px 7px 0;
+}}
+img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+}
+ .appfeatureSlider .appfeatureBox .appfeatureInfo {
+    width: 100%;
+    height: 75px;
+    padding: 18px 15px;
+}
+@media only screen and (max-width: 768px)
+{
+ .appfeatureSlider .appfeatureBox .appfeatureInfo {
+    padding: 10px;
+    height: 70px;
+}}
+ .appfeatureSlider .appfeatureBox .appfeatureInfo h3 {
+    float: left;
+    margin: 0;
+    line-height: 15px;
+}
+@media only screen and (max-width: 768px)
+{
+ .appfeatureSlider .appfeatureBox .appfeatureInfo h3 {
+    width: 100%;
+    line-height: 12px;
+    margin: 0 0 8px;
+}}
+ .appfeatureSlider .appfeatureBox .appfeatureInfo h3 strong {
+    display: block;
+    color: #1d2c41;
+    font-size: 18px;
+    margin: 0 0 5px;
+}
+@media only screen and (max-width: 768px)
+{
+ .appfeatureSlider .appfeatureBox .appfeatureInfo h3 strong {
+    font-size: 13px;
+    margin: 0;
+}}
+ .appfeatureSlider .appfeatureBox .appfeatureInfo h3 span {
+    color: #1d2c41;
+    font-size: 14px;
+}
+@media only screen and (max-width: 768px)
+{
+ .appfeatureSlider .appfeatureBox .appfeatureInfo h3 span {
+    font-size: 13px;
+}}
+ .appfeatureSlider .appfeatureBox .appfeatureInfo h4 {
+    color: #3c3e49;
+    float: right;
+    font-size: 16px;
+    margin: 0;
+    
+}
+@media only screen and (max-width: 768px)
+{
+ .appfeatureSlider .appfeatureBox .appfeatureInfo h4 {
+    float: left;
+    font-size: 13px;
+}}
+
+ .appfeatureSlider .flexView {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+ .appfeatureSlider .flexView .appfeatureBox {
+    width: calc(50% - 5px)!important;
+    margin: 0 0 10px;
+}
+.appfeatureSection .appfeatureSlider.webview .appfeatureBox {
+    width: 670px;
+}
+@media only screen and (max-width: 1280px)
+{
+.appfeatureSection .appfeatureSlider.webview .appfeatureBox {
+    width: 550px;
+}}
+.appfeatureSection .appfeatureSlider.webview .appfeatureBox .frameBox {
+    padding: 15px;
+}
+.appfeatureSection .appfeatureSlider.webview .appfeatureBox .frameBox .imageFrame {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.appfeatureSection .appfeatureSlider.webview .appfeatureBox .frameBox .imageFrame img {
+    width: auto;
+    height: 100%;
+    
+    vertical-align: middle;
+}
+@media only screen and (max-width: 768px)
+{
+.appfeatureSection .appfeatureSlider.webview .appfeatureBox .frameBox {
+    padding: 10px;
+    height: 150px;
+}}
