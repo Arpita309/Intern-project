@@ -1,0 +1,10 @@
+.wrapper {
+    float: left;
+    width: 100%;
+}
+.middlePart {
+    min-height: calc(100vh - 100px);
+    float: left;
+    width: 100%;
+    clear: both;
+}

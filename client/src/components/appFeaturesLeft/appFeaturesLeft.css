@@ -1,0 +1,1143 @@
+.featureStudio {
+    width: 100%;
+    height: calc(100vh - 60px);
+    z-index: 20;
+    position: fixed;
+    left: 0;
+    top: 60px;
+    background: url("https://studio.builder.ai/body.66bb8cae803785f018ec.png") top no-repeat #f1f5fc;
+    background-attachment: fixed;
+    background-position: 0 0;
+    transition: all .6s ease-in-out;
+}
+.featureStudio .studioLeft {
+    width: 40%;
+    height: 100%;
+    float: left;
+    background: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    transition: all .4s ease-in-out;
+}
+@media only screen and (max-width: 1199px)
+{
+.featureStudio .studioLeft {
+    width: 100%;
+}}
+.featureStudio .studioLeft .studioSearch {
+    width: 100%;
+    float: left;
+    clear: both;
+    height: 51px;
+    padding: 10px 10px 8px;
+    position: relative;
+    border-bottom: 1px solid #f0f0f0;
+}
+.featureStudio .studioLeft .studioSearch .searchBack {
+    display: none;
+    float: left;
+    width: 30px;
+    height: 32px;
+    font-size: 15px;
+    line-height: 40px;
+    cursor: pointer;
+}
+@media only screen and (max-width: 1199px)
+{
+.featureStudio .studioLeft .studioSearch .searchBack {
+    display: block;
+}}
+.icon-prev:before {
+    font-weight: 900;
+    font-family: "Font Awesome\ 5 Free";
+    content: "\f104";
+}
+.featureStudio .studioLeft .studioSearch form {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    float: left;
+    width: calc(100% - 170px);
+}
+@media only screen and (max-width: 1199px)
+{
+.featureStudio .studioLeft .studioSearch form {
+    width: calc(100% - 30px);
+}}
+.featureStudio .studioLeft .studioSearch input {
+    width: 100%;
+    background: #f3f3f4;
+    border-radius: 3px;
+    border: none;
+    height: 32px;
+    font-size: 13px;
+    color: #333;
+    padding: 3px 40px 3px 5px;
+}
+.featureStudio .studioLeft .studioSearch .searchButton {
+    border: none;
+    background: none;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 35px;
+    height: 32px;
+    cursor: pointer;
+    line-height: 37px;
+}
+.icon-magnifying:before {
+    font-weight: 900;
+    font-family: "Font Awesome\ 5 Free";
+    content: "\f002";
+}
+.featureStudio .studioLeft .studioSearch .addFeature {
+    width: 160px;
+    float: right;
+    height: 32px;
+}
+@media only screen and (max-width: 1199px)
+{
+.featureStudio .studioLeft .studioSearch .addFeature {
+    display: none;
+}}
+.featureStudio .studioLeft .studioSearch .addFeature button {
+    background: #333;
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+    height: 32px;
+    text-align: center;
+    padding: 0 5px;
+    line-height: 33px;
+    width: 100%;
+    font-size: 10px;
+}
+.featureStudio .studioLeft .studioSearch .addFeature button em {
+    float: left;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 31px;
+}
+.featureStudio .studioLeft .studioToolbar {
+    width: 100%;
+    display: none;
+    transition: all .3s ease-in-out;
+    height: 51px;
+    background: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+    border-bottom: 1px solid #f0f0f0;
+}
+@media only screen and (max-width: 1199px)
+{
+.featureStudio .studioLeft .studioToolbar {
+    display: block;
+}}
+.featureStudio .studioLeft .studioToolbar .searchTab {
+    width: 50px;
+    float: left;
+    height: 51px;
+    border-right: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+}
+.featureStudio .studioLeft .studioToolbar .searchTab em {
+    line-height: 10px;
+}
+.icon-magnifying:before {
+    font-weight: 900;
+    font-family: "Font Awesome\ 5 Free";
+    content: "\f002";
+}
+.featureStudio .studioLeft .studioToolbar .filterTab {
+    width: 50px;
+    float: left;
+    height: 51px;
+    border-right: 1px solid #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.featureStudio .studioLeft .studioToolbar .filterTab .mobilefilter {
+    width: 18px;
+    height: 18px;
+    position: relative;
+    z-index: 9;
+    margin: 8px 5px 0 0;
+}
+.featureStudio .studioLeft .studioToolbar .filterTab .mobilefilter .mobilefilterIcon {
+    width: 18px;
+    height: 18px;
+    border-top: 2px solid #b5b5b5;
+    position: relative;
+    z-index: 9;
+    cursor: pointer;
+}
+.studioToolbar .filterTab .mobilefilter .mobilefilterIcon:before {
+    content: "";
+    position: absolute;
+    border-top: 2px solid #b5b5b5;
+    top: 3px;
+    left: 3px;
+    width: 12px;
+}
+.studioToolbar .filterTab .mobilefilter .mobilefilterIcon:after {
+    content: "";
+    position: absolute;
+    border-top: 2px solid #b5b5b5;
+    top: 8px;
+    left: 6px;
+    width: 6px;
+}
+.featureStudio .studioLeft .studioToolbar .filterTab .mobilefilter .mobilefilterNotify {
+    background: #ff0f3a;
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+    color: #fff;
+    line-height: 20px;
+    position: absolute;
+    right: -12px;
+    top: -12px;
+    font-size: 9px;
+    z-index: 9;
+    
+    cursor: pointer;
+}
+.featureStudio .studioLeft .studioToolbar .filterTab .mobilefilter .mobilecloseFilter {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2;
+    display: none;
+}
+:active, :focus {
+    outline: none!important;
+}
+.featureStudio .studioLeft .studioToolbar .filterTab .mobilefilter .mobilefilterItems {
+    position: absolute;
+    top: 20px;
+    left: -8px;
+    text-align: left;
+    background: #fff;
+    width: 270px;
+    z-index: -1;
+    border: 1px solid rgba(0,0,0,.15);
+    display: none;
+    border-radius: 0 6px 6px 6px;
+}
+.featureStudio .studioLeft .studioToolbar .filterTab .mobilefilter.active .mobilefilterItems {
+    display: block;
+}
+.featureStudio .studioLeft .studioToolbar .filterTab .mobilefilter .mobilefilterItems .mobilefilterRow {
+    width: 100%;
+    float: left;
+    clear: both;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    padding: 10px;
+    position: relative;
+}
+.featureStudio .studioLeft .studioToolbar .filterTab .mobilefilter .mobilefilterItems .mobilefilterRow h4 {
+    font-size: 13px;
+    font-weight: bold;
+    color: rgba(0,0,0,.7);
+    margin: 0 0 8px;
+}
+.featureStudio .studioLeft .studioToolbar .filterTab .mobilefilter .mobilefilterItems .mobilefilterRow .rangeSlider {
+    width: 100%;
+    float: left;
+    padding: 0 7px;
+}
+.featureStudio .studioLeft .studioToolbar .filterTab .mobilefilter .mobilefilterItems .mobilefilterRow .rangeSlider .minValue {
+    float: left;
+    font-size: 11px;
+    color: rgba(20,26,50,.7);
+    margin-left: -9px;
+    font-weight: bold;
+    
+}
+.featureStudio .studioLeft .studioToolbar .filterTab .mobilefilter .mobilefilterItems .mobilefilterRow .rangeSlider .maxValue {
+    float: right;
+    font-size: 11px;
+    color: rgba(20,26,50,.7);
+    margin-right: -9px;
+    font-weight: bold;
+    
+}
+.featureStudio .studioLeft .studioToolbar .filterTab .mobilefilter .mobilefilterItems .mobilefilterRow .customScroll {
+    height: 120px;
+    position: relative;
+}
+perfect-scrollbars {
+    position: relative;
+    display: block;
+    overflow-y:scroll;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+}
+/*.ps {
+    overflow: hidden !important;
+    overflow-anchor: none;
+    
+    touch-action: auto;
+    
+}
+perfect-scrollbar > .ps {
+   
+    display: block;
+    width: inherit;
+    height: inherit;
+    max-width: inherit;
+    max-height: inherit;
+}*/
+.featureStudio .studioLeft .studioToolbar .filterTab .mobilefilter .mobilefilterItems .mobilefilterRow .customScroll .ps-content {
+    padding: 0 15px 0 0;
+}
+.featureStudio .studioLeft .studioToolbar .filterTab .mobilefilter .mobilefilterItems .mobilefilterRow .customCheckbox {
+    width: 100%;
+    float: left;
+    clear: both;
+    position: relative;
+    overflow: hidden;
+}
+.featureStudio .studioLeft .studioToolbar .filterTab .mobilefilter .mobilefilterItems .mobilefilterRow .customCheckbox input {
+    position: absolute;
+    left: -50px;
+}
+
+input[type=checkbox] {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 4px 0 0;
+    margin-top: 1px\9;
+    line-height: normal;
+}
+.featureStudio .studioLeft .studioToolbar .filterTab .mobilefilter .mobilefilterItems .mobilefilterRow .customCheckbox label {
+    display: block;
+    width: 100%;
+    float: left;
+    clear: both;
+    position: relative;
+    font-size: 13px;
+    color: #000;
+    background: #fff;
+    margin: 0 0 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 18px 0 0;
+    cursor: pointer;
+}
+.featureStudio .studioLeft .studioToolbar .filterTab .mobilefilter .mobilefilterItems .mobilefilterRow .customCheckbox label:after {
+    
+    content: "h";
+    width: 16px;
+    height: 16px;
+    border: 1px solid rgba(0,0,0,.1);
+    color: #fff;
+    border-radius: 2px;
+    font-size: 9px;
+    display: block;
+    text-align: center;
+    line-height: 16px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.featureStudio .studioLeft .studioToolbar .cartTab {
+    width: 50px;
+    float: left;
+    height: 51px;
+    border-right: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.featureStudio .studioLeft .studioToolbar .cartTab .cartIcon {
+    position: relative;
+    padding: 5px 0 0;
+    margin: 0 7px 0 0;
+}
+.featureStudio .studioLeft .studioToolbar .cartTab .cartIcon em {
+    line-height: 14px;
+    font-size: 22px;
+    color: rgba(0,0,0,.4);
+}
+.icon-shopping-cart:before {
+    font-weight: 900;
+    font-family: "Font Awesome\ 5 Free";
+    content: "";
+}
+.featureStudio .studioLeft .studioToolbar .cartTab .cartIcon span {
+    background: #ff0f3a;
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+    color: #fff;
+    line-height: 20px;
+    position: absolute;
+    right: -10px;
+    top: -2px;
+    font-size: 9px;
+    z-index: 9;
+    
+    cursor: pointer;
+}
+.featureStudio .studioLeft .studioToolbar .addFeature {
+    width: calc(100% - 150px);
+    float: right;
+    height: 51px;
+    padding: 8px;
+}
+.featureStudio .studioLeft .studioToolbar .addFeature button {
+    background: #333;
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+    height: 32px;
+    text-align: center;
+    padding: 0 10px;
+    line-height: 33px;
+    width: 100%;
+    font-size: 10px;
+    
+}
+.featureStudio .studioLeft .studioToolbar .addFeature button em {
+    float: left;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 31px;
+}
+.featureStudio .studioLeft .bundleFeature {
+    width: 100%;
+    height: calc(100% - 130px);
+    float: left;
+    position: relative;
+}
+@media only screen and (max-width: 991px)
+{
+.featureStudio .studioLeft .bundleFeature {
+    height: calc(100% - 128px);
+    overflow: hidden;
+}}
+@media only screen and (max-width: 1199px)
+{
+.featureStudio .studioLeft .bundleFeature {
+    height: calc(100% - 117px);
+}}
+.featureStudio .studioLeft .bundleFeature .filter {
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    z-index: 999;
+    top: 20px;
+    left: calc(40% + 12px);
+}
+@media only screen and (max-width: 1199px)
+{
+.featureStudio .studioLeft .bundleFeature .filter {
+    display: none;
+}}
+.featureStudio .studioLeft .bundleFeature .filter.active .filterItems {
+    display: block;
+}
+.featureStudio .studioLeft .bundleFeature .filter .filterIcon {
+    width: 18px;
+    height: 18px;
+    border-top: 2px solid #b5b5b5;
+    position: relative;
+    z-index: 9;
+    cursor: pointer;
+}
+.featureStudio .studioLeft .bundleFeature .filter .filterNotify {
+    background: #ff0f3a;
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+    color: #fff;
+    line-height: 20px;
+    position: absolute;
+    right: -12px;
+    top: -12px;
+    font-size: 10px;
+    z-index: 9;
+    cursor: pointer;
+}
+.featureStudio .studioLeft .bundleFeature .filter .closeFilter {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2;
+    display: none;
+}
+.featureStudio .studioLeft .bundleFeature .filter .filterItems {
+    position: absolute;
+    top: 20px;
+    left: -8px;
+    text-align: left;
+    background: #fff;
+    width: 270px;
+    z-index: -1;
+    border: 1px solid rgba(0,0,0,.15);
+    display: none;
+    border-radius: 0 6px 6px 6px;
+}
+.featureStudio .studioLeft .bundleFeature .filter .filterItems .filterRow {
+    width: 100%;
+    float: left;
+    clear: both;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    padding: 10px;
+    position: relative;
+}
+.featureStudio .studioLeft .bundleFeature .filter .filterItems .filterRow h4 {
+    font-size: 13px;
+   
+    color: rgba(0,0,0,.7);
+    margin: 0 0 10px;
+}
+.featureStudio .studioLeft .bundleFeature .filter .filterItems .filterRow .rangeSlider {
+    width: 100%;
+    float: left;
+    padding: 0 7px;
+}
+.featureStudio .studioLeft .bundleFeature .filter .filterItems .filterRow .rangeSlider .minValue {
+    float: left;
+    font-size: 12px;
+    color: rgba(20,26,50,.7);
+    margin-left: -9px;
+}
+.featureStudio .studioLeft .bundleFeature .filter .filterItems .filterRow .rangeSlider .maxValue {
+    float: right;
+    font-size: 12px;
+    color: rgba(20,26,50,.7);
+    margin-right: -9px;
+}
+.featureStudio .studioLeft .bundleFeature .filter .filterItems .filterRow.filter-edit-pd {
+    padding: 15px 0 10px 15px;
+}
+.featureStudio .studioLeft .bundleFeature .filter .filterItems .filterRow {
+    width: 100%;
+    float: left;
+    clear: both;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    padding: 10px;
+    position: relative;
+}
+.featureStudio .studioLeft .bundleFeature .filter .filterItems .filterRow .customScroll {
+    height: 110px;
+    position: relative;
+}
+.featureStudio .studioLeft .bundleFeature .filter .filterItems .filterRow .customScroll .ps-content {
+    padding: 0 15px 0 0;
+}
+.featureStudio .studioLeft .bundleFeature .filter .filterItems .filterRow .customCheckbox {
+    width: 100%;
+    float: left;
+    clear: both;
+    position: relative;
+    overflow: hidden;
+}
+.featureStudio .studioLeft .bundleFeature .filter .filterItems .filterRow .customCheckbox input {
+    position: absolute;
+    left: -50px;
+}
+.featureStudio .studioLeft .bundleFeature .filter .filterItems .filterRow .customCheckbox label {
+    display: block;
+    width: 100%;
+    float: left;
+    clear: both;
+    position: relative;
+    font-size: 13px;
+    color: #000;
+    background: #fff;
+    font-weight: 400;
+    margin: 0 0 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 18px 0 0;
+    cursor: pointer;
+}
+.featureStudio .studioLeft .bundleFeature .filter .filterIcon:before {
+    content: "";
+    position: absolute;
+    border-top: 2px solid #b5b5b5;
+    top: 3px;
+    left: 3px;
+    width: 12px;
+}
+.featureStudio .studioLeft .bundleFeature .filter .filterIcon:after {
+    content: "";
+    position: absolute;
+    border-top: 2px solid #b5b5b5;
+    top: 8px;
+    left: 6px;
+    width: 6px;
+}
+.featureStudio .studioLeft .bundleFeature .buldleBox {
+    width: 40%;
+    height: 100%;
+    border-right: 1px solid #f0f0f0;
+}
+@media only screen and (max-width: 1199px)
+{
+.featureStudio .studioLeft .bundleFeature .buldleBox {
+    width: 100%;
+}}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleHead {
+    width: 100%;
+    float: left;
+    clear: both;
+    display: flex;
+    align-items: center;
+    padding: 6px 12px;
+    height: 48px;
+    border-bottom: 1px solid #f0f0f0;
+    text-align: center;
+}
+@media only screen and (max-width: 1199px)
+{
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleHead {
+    display: none;
+}}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleHead h3 {
+    text-align: center;
+    width: 100%;
+    display: block;
+    margin: 0;
+    font-size: 13px;
+    line-height: normal;
+    font-family: Gotham Bold,Arial,Georgia,serif;
+    color: #000;
+}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList {
+    width: 100%;
+    float: left;
+    clear: both;
+    height: calc(100% - 48px);
+}
+@media only screen and (max-width: 1199px)
+{
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList {
+    height: 70px;
+}}
+perfect-scrollbars {
+    position: relative;
+    display: block;
+    overflow: scroll;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList>.perfect-scrollbars {
+    position: static;
+}
+perfect-scrollbars > .ps {
+    position: static;
+    display: block;
+    width: inherit;
+    height: inherit;
+    max-width: inherit;
+    max-height: inherit;
+}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul {
+    margin: 0;
+    padding: 0;
+}
+@media only screen and (max-width: 1199px)
+{
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul {
+    display: flex;
+}}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li {
+    width: 100%;
+    float: left;
+    clear: both;
+    list-style-type: none;
+    border-top: 1px solid #f0f0f0;
+    display: flex;
+}
+@media only screen and (max-width: 1199px)
+{
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li {
+    -webkit-animation-name: unset;
+    animation-name: unset;
+    width: 160px;
+    min-width: 160px;
+    background: rgba(0,0,0,.1);
+}}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li.active, .featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li:hover {
+    background: rgba(67,206,1,.1);
+}
+@media only screen and (max-width: 1199px)
+{
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li.active {
+    background: rgba(0,0,0,.1);
+}}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .mainTab {
+    width: 100%;
+    float: left;
+    clear: both;
+    cursor: pointer;
+    display: flex;
+    padding: 12px;
+    justify-content: space-between;
+}
+@media only screen and (max-width: 1199px)
+{
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li .mainTab {
+    padding: 8px 0 8px 8px;
+}}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .mainTab .bundleDetail {
+    width: 100%;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    flex-wrap: wrap;
+}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li.current .mainTab .bundleDetail .bundleImg {
+    border: 2px solid #1f1aff;
+}
+@media only screen and (max-width: 1199px)
+{
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li .mainTab .bundleDetail .bundleImg {
+    height: 50px;
+}}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .mainTab .bundleDetail .bundleImg {
+    display: block;
+    width: 100%;
+    height: 108px;
+    clear: both;
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+    border: 2px solid transparent;
+}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .mainTab .bundleDetail .bundleImg img {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    height: auto;
+    filter: gray;
+    
+    transition: all .3s ease-in-out;
+}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .mainTab .bundleDetail .bundleImg .bundleName {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 99;
+    padding: 5px;
+    background: rgba(0,0,0,.5);
+}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li.active .mainTab .bundleDetail .bundleImg .bundleName, .featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li:hover .mainTab .bundleDetail .bundleImg .bundleName {
+    background: rgba(31,26,255,.4);
+}
+@media only screen and (max-width: 1199px)
+{
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li .mainTab .bundleDetail .bundleImg .bundleName {
+    padding: 8px;
+}}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .mainTab .bundleDetail .bundleImg .bundleName h3 {
+    font-size: 14px;
+    color: #fff;
+    margin: 0 0 2px;
+    font-family: Gotham Bold,Arial,Georgia,serif;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+@media only screen and (max-width: 1199px)
+{
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li .mainTab .bundleDetail .bundleImg .bundleName h3 {
+    font-size: 13px;
+}}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .mainTab .bundleDetail .bundleImg .bundleName p {
+    font-size: 12px;
+    color: hsla(0,0%,100%,.9);
+    margin: 0 0 25px;
+}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .mainTab .bundleDetail .bundleImg .bundleName p span {
+    display: none;
+}
+@media only screen and (max-width: 1199px)
+{
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li .mainTab .bundleDetail .bundleImg .bundleName p span {
+    display: inline-block;
+}}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .mainTab .bundleDetail .bundleImg .bundleName .bundleCount {
+    min-width: 30px;
+    float: left;
+    padding: 0 10px;
+    border-radius: 40px;
+    height: 18px;
+    margin: 0 15px 0 0;
+    line-height: 19px;
+    background: #fff;
+    font-size: 10px;
+    font-family: Gotham Bold,Arial,Georgia,serif;
+    color: #000;
+    text-align: center;
+    z-index: 99;
+    position: relative;
+}
+@media only screen and (max-width: 1199px)
+{
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li .mainTab .bundleDetail .bundleImg .bundleName .bundleCount {
+    display: none;
+}}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li.current .mainTab .bundleDetail .bundleImg .bundleName .bundleCount {
+    padding: 0 20px 0 10px;
+}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li.active .mainTab .bundleDetail .bundleImg .bundleName .bundleCount {
+    padding: 0 20px 0 10px;
+}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .mainTab .bundleDetail .bundleImg:after {
+    
+    content: "I";
+    position: absolute;
+    bottom: 6px;
+    transform: translateY(-50%);
+    right: 15px;
+    font-size: 11px;
+    z-index: 99;
+    color: #fff;
+    display: none;
+}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li.current .mainTab .bundleDetail .bundleImg:after {
+    display: block;
+}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel {
+    width: 60%;
+    height: calc(100vh - 140px);
+    position: absolute;
+    top: 0;
+    right: 100%;
+    transition: all .4s ease-in-out;
+    z-index: -99;
+    opacity: 0;
+}
+@media only screen and (max-width: 1199px)
+{
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li .rightsidePanel {
+    background: #fff;
+    width: 100%;
+    height: calc(100% - 70px);
+    top: 70px;
+}}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li.active .rightsidePanel {
+    right: 0;
+    z-index: 1;
+    opacity: 1;
+}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureHead {
+    width: 100%;
+    float: right;
+    clear: both;
+    display: flex;
+    align-items: center;
+    padding: 6px 12px;
+    height: 48px;
+    margin: 0 0 15px;
+    border-bottom: 1px solid #f0f0f0;
+    text-align: center;
+}
+@media only screen and (max-width: 1199px)
+{
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li .rightsidePanel .featureHead {
+    display: none;
+}}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureHead h3 {
+    text-align: center;
+    width: calc(100% - 82px);
+    padding: 0 0 0 82px;
+    margin: 0;
+    display: block;
+    font-size: 13px;
+    line-height: normal;
+    color: #000;
+}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureHead .checkBox {
+    width: 82px;
+    overflow: hidden;
+    position: relative;
+}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureHead .checkBox input {
+    position: absolute;
+    left: -20px;
+    z-index: -2;
+}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureHead .checkBox label {
+    display: block;
+    float: right;
+    cursor: pointer;
+    position: relative;
+    margin: 0;
+    font-size: 12px;
+    color: #008ef7;
+}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureText {
+    width: 100%;
+    float: left;
+    clear: both;
+    padding: 15px 12px;
+    height: 100px;
+}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureText h3 {
+    font-size: 15px;
+    font-family: Gotham Bold,Arial,Georgia,serif;
+    color: #000;
+    margin: 0 0 6px;
+    float: left;
+    display: block;
+}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureText .checkBox {
+    width: 82px;
+    overflow: hidden;
+    position: relative;
+    float: right;
+    margin: 0 0 8px;
+    display: none;
+}
+@media only screen and (max-width: 1199px)
+{
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li .rightsidePanel .featureText .checkBox {
+    display: block;
+}}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureText .checkBox input {
+    position: absolute;
+    left: -20px;
+    z-index: -2;
+}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureText .checkBox label {
+    display: block;
+    float: right;
+    cursor: pointer;
+    position: relative;
+    margin: 0;
+    font-size: 12px;
+    color: #008ef7;
+}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureText p {
+    font-size: 13px;
+    margin: 0;
+    color: rgba(0,0,0,.6);
+    display: block;
+    clear: both;
+}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList {
+    width: 100%;
+    float: left;
+    clear: both;
+    height: calc(100% - 215px);
+}
+@media only screen and (max-width: 1199px)
+{
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li .rightsidePanel .featureList {
+    height: calc(100% - 100px);
+}}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList ul {
+    margin: 0;
+    padding: 0;
+}
+@media only screen and (max-width: 1199px)
+{
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li .rightsidePanel .featureList ul {
+    display: block;
+}}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList ul li.active, .featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList ul li:hover {
+    background: rgba(67,206,1,.1);
+}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList ul li:first-child {
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList ul li {
+    width: 100%;
+    float: left;
+    clear: both;
+    list-style-type: none;
+    border-top: 1px solid #f0f0f0;
+    display: flex;
+    position: relative;
+    -webkit-animation-duration: .3s;
+    animation-duration: .3s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-name: bounceUp;
+    animation-name: bounceUp;
+    -webkit-animation-timing-function: cubic-bezier(0,0,.12,.95);
+    animation-timing-function: cubic-bezier(0,0,.12,.95);
+}
+@media only screen and (max-width: 1199px)
+{
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li .rightsidePanel .featureList ul li {
+    -webkit-animation-name: bounceUp;
+    animation-name: bounceUp;
+    background: rgba(0,0,0,.05);
+    border-top: 1px solid #eae8e8;
+}}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList ul .featureTab {
+    width: 100%;
+    float: left;
+    clear: both;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    justify-content: space-between;
+}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList ul .featureTab .featureDetail {
+    width: calc(100% - 30px);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+@media only screen and (max-width: 1199px)
+{
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li .rightsidePanel .featureList ul .featureTab .featureDetail {
+    width: calc(100% - 60px);
+}}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList ul .featureTab .featureDetail .featureImg {
+    width: 64px;
+}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList ul .featureTab .featureDetail .featureImg object {
+    max-width: 40px;
+    height: 40px;
+    border-radius: 4px;
+}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList ul .featureTab .featureDetail .featureName {
+    width: calc(100% - 64px);
+}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList ul .featureTab .featureDetail .featureName h3 {
+    font-size: 13px;
+    color: #000;
+    margin: 0 0 2px;
+    
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList ul .featureTab .featureDetail .featureName p {
+    font-size: 12px;
+    color: rgba(0,0,0,.9);
+    margin: 0 0 10px;
+}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList ul .featureTab .featureDetail .featureName h4 {
+    font-size: 13px;
+    color: #208a20;
+    margin: 0;
+    
+}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList ul .featureTab .featureDetailRight {
+    width: 50px;
+    position: relative;
+}
+@media only screen and (max-width: 1199px)
+{
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li .rightsidePanel .featureList ul .featureTab .featureDetailRight {
+    width: 50px;
+}}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList ul .featureTab .featureDetailRight .main-checkbox {
+    position: relative;
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList ul .featureTab .featureDetailRight .checkBox {
+    width: 17px;
+    overflow: hidden;
+    position: relative;
+    margin: 0 0 25px;
+}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList ul .featureTab .featureDetailRight .checkBox input {
+    position: absolute;
+    left: -20px;
+    z-index: -2;
+}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList ul .featureTab .featureDetailRight .checkBox label {
+    display: block;
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+    background: #fff;
+    border: 1px solid #d8d7d7;
+    border-radius: 3px;
+    position: relative;
+    margin: 0;
+}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList ul .featureTab .featureDetailRight .checkBox input:checked+label {
+    background: #208a20;
+    border: 1px solid #208a20;
+}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList ul .featureTab .featureDetailRight .checkBox input:checked+label:before {
+    display: block;
+}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList ul .featureTab .featureDetailRight .checkBox label:before {
+   
+    display: none;
+    content: "h";
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 2px;
+    font-size: 10px;
+    color: #fff;
+}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList ul .featureTab .featureDetailRight .featureView {
+    line-height: 5px;
+    font-size: 20px;
+    color: rgba(0,0,0,.4);
+    text-align: right;
+    cursor: pointer;
+}
+@media only screen and (max-width: 1199px)
+{
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li .rightsidePanel .featureList ul .featureTab .featureDetailRight .featureView {
+    height: 30px;
+    line-height: 40px;
+}}
+@media only screen and (max-width: 1199px)
+{
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li .rightsidePanel .featureList ul .featureTab .featureDetailRight .featureView.webView {
+    display: none;
+}}
+.icon-view:before {
+    font-weight: 900;
+    font-family: 'Font Awesome\5 Free';
+    content: "n";
+}
+.featureStudio .studioLeft.hidePanel {
+    left: -40%;
+}
+@media only screen and (max-width: 1199px)
+{
+.featureStudio .studioLeft.hidePanel {
+    left: -100%;
+}}

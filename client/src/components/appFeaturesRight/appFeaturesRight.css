@@ -1,0 +1,674 @@
+.featureStudio .studioRight {
+    width: 60%;
+    height: 100%;
+    float: right;
+    position: absolute;
+    transition: all .4s ease-in-out;
+    top: 0;
+    right: 0;
+}
+@media only screen and (max-width: 1199px)
+{
+.featureStudio .studioRight {
+    right: -100%;
+    width: 100%;
+}}
+.featureStudio .studioRight.active {
+    background: #f1f5fc;
+    width: 100%;
+    z-index: 99;
+}
+@media only screen and (max-width: 1199px)
+{
+.featureStudio .studioRight.active {
+    right: 0;
+}}
+.featureStudio .studioRight .iphoneToolbar {
+    position: relative;
+    z-index: 99;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 15px;
+    background: #fff;
+    border-bottom: 1px solid #f0f0f0;
+    height: 51px;
+    border-left: 1px solid #f0f0f0;
+}
+.featureStudio .studioRight .iphoneToolbar .backButton {
+    float: left;
+    display: none;
+    font-size: 14px;
+    padding: 6px 0 0;
+    cursor: pointer;
+    height: 25px;
+    overflow: hidden;
+    position: relative;
+    z-index: 9;
+}
+@media only screen and (max-width: 1199px)
+{
+.featureStudio .studioRight .iphoneToolbar .backButton {
+    display: block;
+    padding: 2px 0 0;
+    font-size: 12px;
+    line-height: 21px;
+}}
+.featureStudio .studioRight .iphoneToolbar .backButton em {
+    line-height: 25px;
+    float: left;
+    display: block;
+    margin: 0 5px 0 0;
+}
+.icon-prev:before {
+    font-weight: 900;
+    font-family: 'Font Awesome\5 Free';
+    content: "J";
+}
+.featureStudio .studioRight .iphoneToolbar h3 {
+    float: left;
+    font-size: 13px;
+    color: #212121;
+    padding: 10px;
+    margin: 3px 0 0;
+    position: relative;
+    z-index: 9;
+}
+@media only screen and (max-width: 1199px)
+{
+.featureStudio .studioRight .iphoneToolbar h3 {
+    font-size: 0;
+    margin: 6px 0 0;
+}}
+.featureStudio .studioRight .iphoneToolbar h3 .countAnimationBox {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+}
+@media only screen and (max-width: 1199px)
+{
+.featureStudio .studioRight .iphoneToolbar h3 .countAnimationBox {
+    display: none;
+}}
+.featureStudio .studioRight .iphoneToolbar h3 .countAnimationBox .countHold {
+    display: inline-block;
+    vertical-align: middle;
+    background: #333;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    color: #fff;
+    line-height: 9px;
+    height: 17px;
+}
+.featureStudio .studioRight .iphoneToolbar h3 .countAnimationBox.animation2 .countHold {
+    -webkit-animation: shakeanimate1 .3s 2 alternate;
+    animation: shakeanimate1 .3s 2 alternate;
+}
+.featureStudio .studioRight .iphoneToolbar h3 .countAnimationBox .countIcon {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 20px;
+    height: 17px;
+    overflow: hidden;
+}
+.featureStudio .studioRight .iphoneToolbar h3 .countAnimationBox.animation2 .countIcon {
+    -webkit-animation: cartrunanimate1 .4s;
+    animation: cartrunanimate1 .4s;
+}
+.featureStudio .studioRight .iphoneToolbar h3 span {
+    display: inline-block;
+    margin: 0 0 0 10px;
+    font-size: 12px;
+    color: rgba(0,0,0,.7);
+    position: relative;
+    cursor: pointer;
+    
+}
+@media only screen and (max-width: 1199px)
+{
+.featureStudio .studioRight .iphoneToolbar h3 span {
+    font-size: 12px;
+}}
+.featureStudio .studioRight .iphoneToolbar h4 {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    color: #212121;
+    line-height: 8px;
+    margin: 2px 0 0;
+}
+.featureStudio .studioRight .iphoneToolbar h4 span {
+    display: inline-block;
+    margin: 0;
+    font-size: 12px;
+    color: #1f1aff;
+    position: relative;
+    padding: 0 20px 0 10px;
+    cursor: pointer;
+}
+.featureStudio .studioRight .iphoneToolbar h4 span em {
+    transform: rotate(-90deg);
+    position: absolute;
+    right: 0;
+    top: 1px;
+    line-height: 0;
+}
+.icon-next:before {
+    font-weight: 900;
+    font-family: 'Font Awesome\ 5 Free';
+    content: "\f104";
+}
+.featureStudio .studioRight .iphoneToolbar h4 span {
+    display: inline-block;
+    margin: 0;
+    font-size: 12px;
+    color: #1f1aff;
+    position: relative;
+    padding: 0 20px 0 10px;
+    cursor: pointer;
+}
+.featureStudio .studioRight .iphoneToolbar h4 span.showAll {
+    display: none;
+}
+.featureStudio .studioRight .iphoneToolbar .viewSelect {
+    float: right;
+    margin: 0 0 0 15px;
+    font-size: 13px;
+    color: #333;
+    position: relative;
+    line-height: 26px;
+    padding: 0 6px;
+    z-index: 9;
+}
+@media only screen and (max-width: 1199px)
+{
+.featureStudio .studioRight .iphoneToolbar .viewSelect {
+    margin: 0;
+    padding: 0;
+}}
+.featureStudio .studioRight .iphoneToolbar .viewSelect ul {
+    margin: 0;
+    padding: 0;
+}
+.featureStudio .studioRight .iphoneToolbar .viewSelect ul li {
+    display: block;
+    float: left;
+    list-style-type: none;
+    position: relative;
+    cursor: pointer;
+    margin: 0 0 0 15px;
+    font-size: 12px;
+    line-height: 19px;
+    
+    color: #333;
+}
+.featureStudio .studioRight .iphoneToolbar .viewSelect ul li.active {
+    color: #1f1aff;
+}
+@media only screen and (max-width: 1199px)
+{
+.featureStudio .studioRight .iphoneToolbar .viewSelect ul li {
+    margin: 0 0 0 13px;
+    font-size: 12px;
+}}
+.featureStudio .studioRight .iphoneToolbar .viewSelect em {
+    float: left;
+    margin: 1px 3px 0 0;
+    font-size: 16px;
+    line-height: 12px;
+    display: block;
+}
+.icon-phonescreen:before {
+    font-weight: 900;
+    font-family: 'Font Awesome\ 5 Free';
+    content: "\f3cd";
+}
+.icon-webscreen:before {
+    font-weight: 900;
+    font-family: 'Font Awesome\ 5 Free';
+    content: "\f108";
+}
+.featureStudio .studioRight .previewTop {
+    width: 100%;
+    height: 218px;
+    float: left;
+    clear: both;
+    position: relative;
+    transition: all .3s ease-in-out;
+}
+.featureStudio .studioRight .previewTop .previewSlider {
+    background: #fcfcfc;
+    width: 100%;
+    height: 145px;
+    text-align: center;
+    padding: 0 20px;
+    border-top: 1px solid rgba(0,0,0,.1);
+    position: relative;
+    box-shadow: 0 6px 10px rgba(0,0,0,.04);
+    transition: all .3s ease-in-out;
+}
+.featureStudio .studioRight .previewTop .previewSlider .ps-content {
+    display: block;
+    text-align: center;
+    white-space: nowrap;
+    padding: 0 20px;
+}
+perfect-scrollbar {
+    position: relative;
+    display: block;
+    overflow-x:scroll;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+}
+.featureStudio .studioRight .previewTop .previewSlider .slideItem {
+    display: inline-block;
+    -webkit-animation: addfeature 1s ease-in-out;
+    animation: addfeature 1s ease-in-out;
+    vertical-align: top;
+    width: 50px;
+    height: 125px;
+    margin: 5px 5px;
+    position: relative;
+    z-index: 9;
+    cursor: pointer;
+}
+.featureStudio .studioRight .previewTop .previewSlider .slideItem.active .slideImg {
+    border: 2px solid #ff1972;
+}
+.featureStudio .studioRight .previewTop .previewSlider .slideItem .slideImg {
+    width: 100%;
+    height: 86px;
+    border: 2px solid rgba(0,0,0,.1);
+    border-radius: 4px;
+    overflow:hidden;
+    margin: 0 0 8px;
+}
+.featureStudio .studioRight .previewTop .previewSlider .slideItem .slideImg img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.featureStudio .studioRight .previewTop .previewSlider .slideItem .deleteItem {
+    position: absolute;
+    opacity: 0;
+    top: -5px;
+    right: -5px;
+    width: 17px;
+    height: 17px;
+    border-radius: 30px;
+    background: red;
+    color: #fff;
+    transition: all .4s ease-in-out;
+    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+    line-height: 18px;
+    
+    transform: rotate(45deg);
+}
+.featureStudio .studioRight .previewTop .previewSlider .slideItem.active h4 {
+    color: #000;
+}
+.featureStudio .studioRight .previewTop .previewSlider .slideItem h4 {
+    margin: 0;
+    font-size: 11px;
+    font-weight: 400;
+    color: rgba(0,0,0,.6);
+    display: block;
+    overflow: hidden;
+    white-space: normal;
+    line-height: 15px;
+    height: 30px;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+.featureStudio .studioRight .previewTop .previewSlider .slideItem:hover .deleteItem, .featureStudio .studioRight .previewTop .previewSlider .slideItem:hover .editItem, .featureStudio .studioRight .previewTop .previewSlider .slideItem:hover .tooltipText {
+    opacity: 1;
+}
+.show{
+    display: block;
+}
+.hide{
+    display: none;
+}
+.featureStudio .studioRight .previewTop .previewSlider.webView .slideItem {
+    width: 135px;
+    min-width: 110px;
+}
+.featureStudio .studioRight .iphoneToolbar h4 span.showLess {
+    display: none;
+   
+}
+.featureStudio .studioRight .previewTop .featureDescription {
+    width: 100%;
+    min-height: 73px;
+    max-height: 73px;
+    position: absolute;
+    z-index: 99;
+    top: 145px;
+    float: left;
+    background: #fff;
+    clear: both;
+    padding: 20px;
+    transition: all .3s ease-in-out;
+    box-shadow: 0 0 20px rgba(0,0,0,.05);
+}
+@media only screen and (max-width: 1199px)
+{
+.featureStudio .studioRight .previewTop .featureDescription {
+    padding: 6px 15px;
+    display: flex;
+    align-items: center;
+}}
+.featureStudio .studioRight .previewTop .featureDescription .descriptionIcon {
+    width: 45px;
+    float: left;
+}
+.featureStudio .studioRight .previewTop .featureDescription .descriptionIcon object {
+    max-width: 45px;
+    height: 40px;
+    overflow: hidden;
+}
+.featureStudio .studioRight .previewTop .featureDescription .descriptionText {
+    float: left;
+    padding: 0 0 0 15px;
+    width: calc(100% - 45px);
+}
+.featureStudio .studioRight .previewTop .featureDescription .descriptionText h4 {
+    margin: 0;
+    font-size: 13px;
+    line-height: normal;
+    font-family: Gotham Bold,Arial,Georgia,serif;
+    color: #000;
+}
+@media only screen and (max-width: 1199px)
+{
+.featureStudio .studioRight .previewTop .featureDescription .descriptionText h4 {
+    font-size: 13px;
+}}
+.featureStudio .studioRight .previewTop .featureDescription .descriptionText .webView {
+    display: block;
+}
+@media only screen and (max-width: 1199px)
+{
+.featureStudio .studioRight .previewTop .featureDescription .descriptionText .webView {
+    display: none;
+}}
+.featureStudio .studioRight .previewTop .featureDescription .descriptionText p {
+    font-size: 12px;
+    color: rgba(0,0,0,.5);
+    margin: 0;
+    display: block;
+    position: relative;
+    line-height: 15px;
+}
+.featureStudio .studioRight .previewTop .featureDescription .descriptionText p span {
+    color: #3a82da;
+    cursor: pointer;
+}
+.featureStudio .studioRight .previewTop .featureDescription .descriptionText .mobileView {
+    display: none;
+}
+@media only screen and (max-width: 1199px)
+{
+.featureStudio .studioRight .previewTop .featureDescription .descriptionText .mobileView {
+    display: block;
+}}
+.featureStudio .studioRight .previewSection {
+    width: 100%;
+    height: calc(100% - 269px);
+    position: relative;
+    float: left;
+    clear: both;
+    transition: all .3s ease-in-out;
+}
+.featureStudio .studioRight .previewSection .fullScreen {
+    font-size: 13px;
+    line-height: 28px;
+    position: absolute;
+    z-index: 99;
+    top: 20px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    border: 1px solid rgba(0,0,0,.1);
+    cursor: pointer;
+    background: #fff;
+    border-radius: 3px;
+    padding: 0;
+    margin: 0 0 0 15px;
+    color: #333;
+}
+@media only screen and (max-width: 1199px)
+{
+.featureStudio .studioRight .previewSection button.fullScreen {
+    display: none;
+}}
+.featureStudio .studioRight .previewSection .fullScreen span:before {
+    font-family: engineer,Georgia,serif;
+    content: "[";
+}
+.featureStudio .studioRight .previewSection .fullScreen.active span:before {
+    font-family: engineer,Georgia,serif;
+    content: "]";
+}
+.featureStudio .studioRight .previewSection .iphonePrev {
+    height: calc(100% + 70px);
+    display: inline-block;
+    background: #fff;
+    border-radius: 20px;
+    position: relative;
+    transform: translateX(-50%);
+    padding: 40px 5px;
+    top: -35px;
+    left: 50%;
+    box-shadow: 0 0 20px 2px rgba(0,0,0,.1);
+    transition: all .3s ease-in-out;
+}
+.featureStudio .studioRight .previewSection .iphonePrev:before {
+    content: "";
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 100px;
+    background: rgba(0,0,0,.1);
+    position: absolute;
+    top: 16px;
+    left: calc(50% - 50px);
+    transform: translateX(-50%);
+}
+.featureStudio .studioRight .previewSection .iphonePrev .phoneScreen {
+    position: relative;
+    height: 100%;
+    border: 1px solid rgba(0,0,0,.1);
+    margin: 0 auto;
+    display: block;
+}
+.featureStudio .studioRight .previewSection .iphonePrev .phoneScreen:before {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: rgba(0,0,0,.1);
+    position: absolute;
+    border-radius: 30px;
+    top: -22px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.featureStudio .studioRight .previewSection .iphonePrev .phoneScreen img {
+    height: 100%;
+    width: auto;
+    opacity: 1;
+}
+.featureStudio .studioRight .previewSection .iphonePrev .phoneScreen img.animation2 {
+    -webkit-animation: imageload2 2s linear;
+    animation: imageload2 2s linear;
+}
+.featureStudio .studioRight .previewSection .iphonePrev:after {
+    content: "";
+    display: block;
+    width: 32px;
+    height: 32px;
+    border-radius: 100px;
+    border: 3px solid rgba(0,0,0,.1);
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.featureStudio .studioRight .previewSection .iphoneNav {
+    height: 30px;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    margin: 0;
+    padding: 0 20px;
+    z-index: 99;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.featureStudio .studioRight .previewSection .iphoneNav button.prevButton {
+    float: left;
+}
+.featureStudio .studioRight .previewSection .iphoneNav button {
+    background: #fff;
+    cursor: pointer;
+    border: 1px solid rgba(0,0,0,.1);
+    font-size: 13px;
+    color: rgba(0,0,0,.5);
+    width: 35px;
+    line-height: 33px;
+    height: 30px;
+    border-radius: 3px;
+    padding: 0;
+}
+.icon-leftarrow:before {
+    content: "=";
+}
+.featureStudio .studioRight .previewSection .iphoneNav button.nextButton {
+    float: right;
+}
+.icon-rightarrow:before {
+    content: ">";
+}
+.featureStudio .studioRight .previewSection .currentBundle {
+    position: absolute;
+    opacity: 0;
+    z-index: -99;
+    top: 20px;
+    left: 20px;
+    width: 270px;
+    border: 1px solid rgba(0,0,0,.1);
+    padding: 12px;
+    background: #fff;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all .4s ease-in-out;
+}
+.featureStudio .studioRight.active .currentBundle {
+    opacity: 1;
+    z-index: 9;
+}
+.featureStudio .studioRight .previewSection .currentBundle .bundleImg {
+    width: 64px;
+}
+.featureStudio .studioRight .previewSection .currentBundle .bundleImg img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+.featureStudio .studioRight .previewSection .currentBundle .bundleName {
+    width: calc(100% - 85px);
+}
+.featureStudio .studioRight .previewSection .currentBundle .bundleName h3 {
+    font-size: 13px;
+    color: #000;
+    margin: 0 0 2px;
+    font-family: Gotham Bold,Arial,Georgia,serif;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.featureStudio .studioRight .previewSection .currentBundle .bundleName p {
+    font-size: 12px;
+    color: rgba(0,0,0,.6);
+    margin: 0 0 10px;
+}
+.featureStudio .studioRight .previewSection .currentBundle .bundleName h4 {
+    font-size: 14px;
+    color: #02c541;
+    margin: 0;
+}
+.featureStudio .studioRight .previewSection .webPrev {
+    display: inline-block;
+    background: #fff;
+    border-radius: 5px;
+    position: relative;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    box-shadow: 0 0 20px 2px rgba(0,0,0,.1);
+    padding: 40px 5px 5px;
+}
+.featureStudio .studioRight .previewSection .webPrev:after, .featureStudio .studioRight .previewSection .webPrev:before {
+    content: "";
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 100px;
+    background: rgba(0,0,0,.1);
+    position: absolute;
+    top: 15px;
+}
+.featureStudio .studioRight .previewSection .webPrev:before {
+    left: 20px;
+}
+.featureStudio .studioRight .previewSection .webPrev .webScreen {
+    border: 1px solid rgba(0,0,0,.1);
+    background: #fff;
+    border-radius: 3px;
+    display: block;
+    position: relative;
+}
+.featureStudio .studioRight .previewSection .webPrev .webScreen:before {
+    content: "";
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 100px;
+    background: rgba(0,0,0,.1);
+    position: absolute;
+    top: -26px;
+    left: 45px;
+}
+.featureStudio .studioRight .previewSection .webPrev .webScreen img {
+    max-width: calc(50vw - 50px);
+    max-height: calc(100vh - 435px);
+    width: auto;
+    height: auto;
+    opacity: 1;
+    transition: all .3s ease-in-out;
+}
+.featureStudio .studioRight .previewSection .webPrev .webScreen img.animation2 {
+    -webkit-animation: imageload2 2s linear;
+    animation: imageload2 2s linear;
+}
+.featureStudio .studioRight .previewSection .webPrev:after {
+    left: 35px;
+}

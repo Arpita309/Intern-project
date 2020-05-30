@@ -7,6 +7,7 @@ import ProblemSolve from './components/ProblemSolve/ProblemSolve'
 import AppPage from './components/appPage/appPage'
 import AppDetail from './components/appDetail/appDetail'
 import './App.css'
+import Features from './components/FeaturesPage/FeaturesPage';
 function App() {
   return (
     <BrowserRouter>
@@ -18,6 +19,7 @@ function App() {
          <Route exact path='/problemsolve' component={ProblemSolve}/>
          <Route exact path='/apps' component={AppPage}/>
          <Route path='/apps/:name' component={AppDetail} />
+         <Route exact='/features' component={Features}/>
        </Switch>
        
     </BrowserRouter>   
