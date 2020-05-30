@@ -19,7 +19,7 @@ function App() {
          <Route exact path='/problemsolve' component={ProblemSolve}/>
          <Route exact path='/apps' component={AppPage}/>
          <Route path='/apps/:name' component={AppDetail} />
-         <Route exact='/features' component={Features}/>
+         <Route exact path='/features' component={Features}/>
        </Switch>
        
     </BrowserRouter>   
