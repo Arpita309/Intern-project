@@ -446,7 +446,7 @@ input[type=checkbox] {
     position: absolute;
     z-index: 999;
     top: 20px;
-    left: calc(40% + 12px);
+    left: calc(40% + 50px);
 }
 @media only screen and (max-width: 1199px)
 {
@@ -594,7 +594,7 @@ input[type=checkbox] {
     width: 6px;
 }
 .featureStudio .studioLeft .bundleFeature .buldleBox {
-    width: 40%;
+    width: 100%;
     height: 100%;
     border-right: 1px solid #f0f0f0;
 }
@@ -604,7 +604,7 @@ input[type=checkbox] {
     width: 100%;
 }}
 .featureStudio .studioLeft .bundleFeature .buldleBox .bundleHead {
-    width: 100%;
+    width: 40%;
     float: left;
     clear: both;
     display: flex;
@@ -626,11 +626,11 @@ input[type=checkbox] {
     margin: 0;
     font-size: 13px;
     line-height: normal;
-    font-family: Gotham Bold,Arial,Georgia,serif;
+    
     color: #000;
 }
 .featureStudio .studioLeft .bundleFeature .buldleBox .bundleList {
-    width: 100%;
+    width: 40%;
     float: left;
     clear: both;
     height: calc(100% - 48px);
@@ -639,6 +639,7 @@ input[type=checkbox] {
 {
 .featureStudio .studioLeft .bundleFeature .buldleBox .bundleList {
     height: 70px;
+    width: 100%;
 }}
 perfect-scrollbars {
     position: relative;
@@ -649,7 +650,7 @@ perfect-scrollbars {
     max-width: 100%;
     max-height: 100%;
 }
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList>.perfect-scrollbars {
+.featureStudio .studioLeft .bundleFeature .buldleBox>.perfect-scrollbars {
     position: static;
 }
 perfect-scrollbars > .ps {
@@ -660,16 +661,16 @@ perfect-scrollbars > .ps {
     max-width: inherit;
     max-height: inherit;
 }
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul {
+.featureStudio .studioLeft .bundleFeature .buldleBox  ul {
     margin: 0;
     padding: 0;
 }
 @media only screen and (max-width: 1199px)
 {
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul {
+.featureStudio .studioLeft .bundleFeature .buldleBox  ul {
     display: flex;
 }}
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li {
+.featureStudio .studioLeft .bundleFeature .buldleBox  ul li {
     width: 100%;
     float: left;
     clear: both;
@@ -679,36 +680,36 @@ perfect-scrollbars > .ps {
 }
 @media only screen and (max-width: 1199px)
 {
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li {
+.featureStudio .studioLeft .bundleFeature .buldleBox  ul li {
     -webkit-animation-name: unset;
     animation-name: unset;
     width: 160px;
     min-width: 160px;
     background: rgba(0,0,0,.1);
 }}
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li.active, .featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li:hover {
-    background: rgba(67,206,1,.1);
+.featureStudio .studioLeft .bundleFeature .buldleBox  ul li.active , .featureStudio .studioLeft .bundleFeature .buldleBox  ul li:hover {
+   
 }
 @media only screen and (max-width: 1199px)
 {
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li.active {
+.featureStudio .studioLeft .bundleFeature .buldleBox  ul li.active {
     background: rgba(0,0,0,.1);
 }}
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .mainTab {
+.featureStudio .studioLeft .bundleFeature .buldleBox  ul   .mainTab {
     width: 100%;
     float: left;
     clear: both;
     cursor: pointer;
     display: flex;
-    padding: 12px;
+    padding: 2px;
     justify-content: space-between;
 }
 @media only screen and (max-width: 1199px)
 {
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li .mainTab {
+.featureStudio .studioLeft .bundleFeature .buldleBox  ul li  .mainTab {
     padding: 8px 0 8px 8px;
 }}
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .mainTab .bundleDetail {
+.featureStudio .studioLeft .bundleFeature .buldleBox  ul  .mainTab .bundleDetail {
     width: 100%;
     cursor: pointer;
     padding: 0;
@@ -718,15 +719,15 @@ perfect-scrollbars > .ps {
     position: relative;
     flex-wrap: wrap;
 }
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li.current .mainTab .bundleDetail .bundleImg {
+.featureStudio .studioLeft .bundleFeature .buldleBox  ul li.current  .mainTab .bundleDetail .bundleImg {
     border: 2px solid #1f1aff;
 }
 @media only screen and (max-width: 1199px)
 {
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li .mainTab .bundleDetail .bundleImg {
+.featureStudio .studioLeft .bundleFeature .buldleBox  ul li  .mainTab .bundleDetail .bundleImg {
     height: 50px;
 }}
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .mainTab .bundleDetail .bundleImg {
+.featureStudio .studioLeft .bundleFeature .buldleBox  ul .mainTab .bundleDetail .bundleImg {
     display: block;
     width: 100%;
     height: 108px;
@@ -736,7 +737,7 @@ perfect-scrollbars > .ps {
     overflow: hidden;
     border: 2px solid transparent;
 }
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .mainTab .bundleDetail .bundleImg img {
+.featureStudio .studioLeft .bundleFeature .buldleBox  ul  .mainTab .bundleDetail .bundleImg img {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -746,7 +747,7 @@ perfect-scrollbars > .ps {
     
     transition: all .3s ease-in-out;
 }
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .mainTab .bundleDetail .bundleImg .bundleName {
+.featureStudio .studioLeft .bundleFeature .buldleBox  ul  .mainTab .bundleDetail .bundleImg .bundleName {
     width: 100%;
     height: 100%;
     position: relative;
@@ -754,42 +755,42 @@ perfect-scrollbars > .ps {
     padding: 5px;
     background: rgba(0,0,0,.5);
 }
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li.active .mainTab .bundleDetail .bundleImg .bundleName, .featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li:hover .mainTab .bundleDetail .bundleImg .bundleName {
+.featureStudio .studioLeft .bundleFeature .buldleBox  ul li.active .mainTab .bundleDetail .bundleImg .bundleName, .featureStudio .studioLeft .bundleFeature .buldleBox  ul li:hover .mainTab .bundleDetail .bundleImg .bundleName {
     background: rgba(31,26,255,.4);
 }
 @media only screen and (max-width: 1199px)
 {
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li .mainTab .bundleDetail .bundleImg .bundleName {
-    padding: 8px;
+.featureStudio .studioLeft .bundleFeature .buldleBox  ul li .mainTab .bundleDetail .bundleImg .bundleName {
+    padding: 0px;
 }}
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .mainTab .bundleDetail .bundleImg .bundleName h3 {
+.featureStudio .studioLeft .bundleFeature .buldleBox  ul .mainTab .bundleDetail .bundleImg .bundleName h3 {
     font-size: 14px;
     color: #fff;
     margin: 0 0 2px;
-    font-family: Gotham Bold,Arial,Georgia,serif;
+    
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 @media only screen and (max-width: 1199px)
 {
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li .mainTab .bundleDetail .bundleImg .bundleName h3 {
+.featureStudio .studioLeft .bundleFeature .buldleBox  ul li .mainTab .bundleDetail .bundleImg .bundleName h3 {
     font-size: 13px;
 }}
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .mainTab .bundleDetail .bundleImg .bundleName p {
+.featureStudio .studioLeft .bundleFeature .buldleBox  ul .mainTab .bundleDetail .bundleImg .bundleName p {
     font-size: 12px;
     color: hsla(0,0%,100%,.9);
     margin: 0 0 25px;
 }
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .mainTab .bundleDetail .bundleImg .bundleName p span {
+.featureStudio .studioLeft .bundleFeature .buldleBox  ul .mainTab .bundleDetail .bundleImg .bundleName p span {
     display: none;
 }
 @media only screen and (max-width: 1199px)
 {
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li .mainTab .bundleDetail .bundleImg .bundleName p span {
+.featureStudio .studioLeft .bundleFeature .buldleBox  ul li .mainTab .bundleDetail .bundleImg .bundleName p span {
     display: inline-block;
 }}
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .mainTab .bundleDetail .bundleImg .bundleName .bundleCount {
+.featureStudio .studioLeft .bundleFeature .buldleBox  ul .mainTab .bundleDetail .bundleImg .bundleName .bundleCount {
     min-width: 30px;
     float: left;
     padding: 0 10px;
@@ -807,16 +808,16 @@ perfect-scrollbars > .ps {
 }
 @media only screen and (max-width: 1199px)
 {
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li .mainTab .bundleDetail .bundleImg .bundleName .bundleCount {
+.featureStudio .studioLeft .bundleFeature .buldleBox  ul li .mainTab .bundleDetail .bundleImg .bundleName .bundleCount {
     display: none;
 }}
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li.current .mainTab .bundleDetail .bundleImg .bundleName .bundleCount {
+.featureStudio .studioLeft .bundleFeature .buldleBox  ul li.current .mainTab .bundleDetail .bundleImg .bundleName .bundleCount {
     padding: 0 20px 0 10px;
 }
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li.active .mainTab .bundleDetail .bundleImg .bundleName .bundleCount {
+.featureStudio .studioLeft .bundleFeature .buldleBox  ul li.active .mainTab .bundleDetail .bundleImg .bundleName .bundleCount {
     padding: 0 20px 0 10px;
 }
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .mainTab .bundleDetail .bundleImg:after {
+.featureStudio .studioLeft .bundleFeature .buldleBox  ul .mainTab .bundleDetail .bundleImg:after {
     
     content: "I";
     position: absolute;
@@ -828,10 +829,74 @@ perfect-scrollbars > .ps {
     color: #fff;
     display: none;
 }
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li.current .mainTab .bundleDetail .bundleImg:after {
+.featureStudio .studioLeft .bundleFeature .buldleBox  ul li.current .mainTab .bundleDetail .bundleImg:after {
     display: block;
 }
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel {
+
+.icon-view:before {
+    font-weight: 900;
+    font-family: 'Font Awesome\5 Free';
+    content: "n";
+}
+.featureStudio .studioLeft.hidePanel {
+    left: -40%;
+}
+@media only screen and (max-width: 1199px)
+{
+.featureStudio .studioLeft.hidePanel {
+    left: -100%;
+}}
+ .featureHead {
+    width: 50%;
+    float: right;
+    clear: both;
+    display: flex;
+    align-items: center;
+    padding: 6px 12px;
+    height: 48px;
+    margin: 0 0 15px;
+    border-bottom: 1px solid #f0f0f0;
+    text-align: center;
+}
+
+@media only screen and (max-width: 1199px)
+{
+  .featureHead {
+    display: none;
+}}
+  .featureHead h3 {
+    text-align: center;
+    width: calc(100% - 82px);
+    padding: 0 0 0 82px;
+    margin: 0;
+    display: block;
+    font-size: 13px;
+    line-height: normal;
+    color: #000;
+}
+  .featureHead .checkBox {
+    width: 82px;
+    overflow: hidden;
+    position: relative;
+}
+  .featureHead .checkBox input {
+    position: absolute;
+    left: -20px;
+    z-index: -2;
+}
+ .featureHead .checkBox label {
+    display: block;
+    float: right;
+    cursor: pointer;
+    position: relative;
+    margin: 0;
+    font-size: 12px;
+    color: #008ef7;
+}
+.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureHead .checkBox label.deselect {
+    color: rgba(0,0,0,.5);
+}
+.rightsidePanel {
     width: 60%;
     height: calc(100vh - 140px);
     position: absolute;
@@ -843,18 +908,18 @@ perfect-scrollbars > .ps {
 }
 @media only screen and (max-width: 1199px)
 {
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li .rightsidePanel {
+  .rightsidePanel {
     background: #fff;
     width: 100%;
     height: calc(100% - 70px);
     top: 70px;
 }}
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li.active .rightsidePanel {
+ li.active .rightsidePanel {
     right: 0;
     z-index: 1;
     opacity: 1;
 }
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureHead {
+ .rightsidePanel .featureHead {
     width: 100%;
     float: right;
     clear: both;
@@ -871,7 +936,7 @@ perfect-scrollbars > .ps {
 .featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li .rightsidePanel .featureHead {
     display: none;
 }}
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureHead h3 {
+ .rightsidePanel .featureHead h3 {
     text-align: center;
     width: calc(100% - 82px);
     padding: 0 0 0 82px;
@@ -881,17 +946,18 @@ perfect-scrollbars > .ps {
     line-height: normal;
     color: #000;
 }
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureHead .checkBox {
+
+ .rightsidePanel .featureHead .checkBox {
     width: 82px;
     overflow: hidden;
     position: relative;
 }
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureHead .checkBox input {
+ .rightsidePanel .featureHead .checkBox input {
     position: absolute;
     left: -20px;
     z-index: -2;
 }
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureHead .checkBox label {
+ .rightsidePanel .featureHead .checkBox label {
     display: block;
     float: right;
     cursor: pointer;
@@ -900,22 +966,24 @@ perfect-scrollbars > .ps {
     font-size: 12px;
     color: #008ef7;
 }
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureText {
+ .rightsidePanel .featureText {
     width: 100%;
     float: left;
     clear: both;
     padding: 15px 12px;
     height: 100px;
 }
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureText h3 {
+
+ .rightsidePanel .featureText h3 {
     font-size: 15px;
-    font-family: Gotham Bold,Arial,Georgia,serif;
+   
     color: #000;
     margin: 0 0 6px;
     float: left;
     display: block;
 }
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureText .checkBox {
+
+ .rightsidePanel .featureText .checkBox {
     width: 82px;
     overflow: hidden;
     position: relative;
@@ -925,15 +993,15 @@ perfect-scrollbars > .ps {
 }
 @media only screen and (max-width: 1199px)
 {
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li .rightsidePanel .featureText .checkBox {
+ .bundleList .rightsidePanel .featureText .checkBox {
     display: block;
 }}
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureText .checkBox input {
+ .rightsidePanel .featureText .checkBox input {
     position: absolute;
     left: -20px;
     z-index: -2;
 }
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureText .checkBox label {
+ .rightsidePanel .featureText .checkBox label {
     display: block;
     float: right;
     cursor: pointer;
@@ -942,14 +1010,14 @@ perfect-scrollbars > .ps {
     font-size: 12px;
     color: #008ef7;
 }
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureText p {
+ .rightsidePanel .featureText p {
     font-size: 13px;
     margin: 0;
     color: rgba(0,0,0,.6);
     display: block;
     clear: both;
 }
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList {
+ .rightsidePanel .featureList {
     width: 100%;
     float: left;
     clear: both;
@@ -957,26 +1025,26 @@ perfect-scrollbars > .ps {
 }
 @media only screen and (max-width: 1199px)
 {
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li .rightsidePanel .featureList {
+ li  .rightsidePanel .featureList {
     height: calc(100% - 100px);
 }}
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList ul {
+ .rightsidePanel .featureList ul {
     margin: 0;
     padding: 0;
 }
 @media only screen and (max-width: 1199px)
 {
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li .rightsidePanel .featureList ul {
+  .rightsidePanel .featureList ul {
     display: block;
 }}
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList ul li.active, .featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList ul li:hover {
+ .rightsidePanel .featureList ul li.active, .featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList ul li:hover {
     background: rgba(67,206,1,.1);
 }
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList ul li:first-child {
+ .rightsidePanel .featureList ul li:first-child {
     -webkit-animation-delay: 0s;
     animation-delay: 0s;
 }
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList ul li {
+ .rightsidePanel .featureList ul li {
     width: 100%;
     float: left;
     clear: both;
@@ -995,13 +1063,13 @@ perfect-scrollbars > .ps {
 }
 @media only screen and (max-width: 1199px)
 {
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li .rightsidePanel .featureList ul li {
+ .bundleList .rightsidePanel .featureList ul li {
     -webkit-animation-name: bounceUp;
     animation-name: bounceUp;
     background: rgba(0,0,0,.05);
     border-top: 1px solid #eae8e8;
 }}
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList ul .featureTab {
+ .rightsidePanel .featureList ul .featureTab {
     width: 100%;
     float: left;
     clear: both;
@@ -1011,7 +1079,7 @@ perfect-scrollbars > .ps {
     padding: 12px;
     justify-content: space-between;
 }
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList ul .featureTab .featureDetail {
+ .rightsidePanel .featureList ul .featureTab .featureDetail {
     width: calc(100% - 30px);
     cursor: pointer;
     display: flex;
@@ -1021,21 +1089,21 @@ perfect-scrollbars > .ps {
 }
 @media only screen and (max-width: 1199px)
 {
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li .rightsidePanel .featureList ul .featureTab .featureDetail {
+   .rightsidePanel .featureList ul .featureTab .featureDetail {
     width: calc(100% - 60px);
 }}
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList ul .featureTab .featureDetail .featureImg {
+ .rightsidePanel .featureList ul .featureTab .featureDetail .featureImg {
     width: 64px;
 }
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList ul .featureTab .featureDetail .featureImg object {
+ .rightsidePanel .featureList ul .featureTab .featureDetail .featureImg object {
     max-width: 40px;
     height: 40px;
     border-radius: 4px;
 }
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList ul .featureTab .featureDetail .featureName {
+ .rightsidePanel .featureList ul .featureTab .featureDetail .featureName {
     width: calc(100% - 64px);
 }
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList ul .featureTab .featureDetail .featureName h3 {
+ .rightsidePanel .featureList ul .featureTab .featureDetail .featureName h3 {
     font-size: 13px;
     color: #000;
     margin: 0 0 2px;
@@ -1044,44 +1112,44 @@ perfect-scrollbars > .ps {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList ul .featureTab .featureDetail .featureName p {
+ .rightsidePanel .featureList ul .featureTab .featureDetail .featureName p {
     font-size: 12px;
     color: rgba(0,0,0,.9);
     margin: 0 0 10px;
 }
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList ul .featureTab .featureDetail .featureName h4 {
+ .rightsidePanel .featureList ul .featureTab .featureDetail .featureName h4 {
     font-size: 13px;
     color: #208a20;
     margin: 0;
     
 }
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList ul .featureTab .featureDetailRight {
+ .rightsidePanel .featureList ul .featureTab .featureDetailRight {
     width: 50px;
     position: relative;
 }
 @media only screen and (max-width: 1199px)
 {
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li .rightsidePanel .featureList ul .featureTab .featureDetailRight {
+ .rightsidePanel .featureList ul .featureTab .featureDetailRight {
     width: 50px;
 }}
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList ul .featureTab .featureDetailRight .main-checkbox {
+ .rightsidePanel .featureList ul .featureTab .featureDetailRight .main-checkbox {
     position: relative;
     display: flex;
     align-items: start;
     justify-content: space-between;
 }
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList ul .featureTab .featureDetailRight .checkBox {
+ .rightsidePanel .featureList ul .featureTab .featureDetailRight .checkBox {
     width: 17px;
     overflow: hidden;
     position: relative;
     margin: 0 0 25px;
 }
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList ul .featureTab .featureDetailRight .checkBox input {
+ .rightsidePanel .featureList ul .featureTab .featureDetailRight .checkBox input {
     position: absolute;
     left: -20px;
     z-index: -2;
 }
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList ul .featureTab .featureDetailRight .checkBox label {
+ .rightsidePanel .featureList ul .featureTab .featureDetailRight .checkBox label {
     display: block;
     cursor: pointer;
     width: 16px;
@@ -1092,14 +1160,14 @@ perfect-scrollbars > .ps {
     position: relative;
     margin: 0;
 }
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList ul .featureTab .featureDetailRight .checkBox input:checked+label {
+ .rightsidePanel .featureList ul .featureTab .featureDetailRight .checkBox input:checked+label {
     background: #208a20;
     border: 1px solid #208a20;
 }
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList ul .featureTab .featureDetailRight .checkBox input:checked+label:before {
+ .rightsidePanel .featureList ul .featureTab .featureDetailRight .checkBox input:checked+label:before {
     display: block;
 }
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList ul .featureTab .featureDetailRight .checkBox label:before {
+ .rightsidePanel .featureList ul .featureTab .featureDetailRight .checkBox label:before {
    
     display: none;
     content: "h";
@@ -1110,7 +1178,7 @@ perfect-scrollbars > .ps {
     font-size: 10px;
     color: #fff;
 }
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul .rightsidePanel .featureList ul .featureTab .featureDetailRight .featureView {
+ .rightsidePanel .featureList ul .featureTab .featureDetailRight .featureView {
     line-height: 5px;
     font-size: 20px;
     color: rgba(0,0,0,.4);
@@ -1119,25 +1187,21 @@ perfect-scrollbars > .ps {
 }
 @media only screen and (max-width: 1199px)
 {
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li .rightsidePanel .featureList ul .featureTab .featureDetailRight .featureView {
+ .rightsidePanel .featureList ul .featureTab .featureDetailRight .featureView {
     height: 30px;
     line-height: 40px;
 }}
 @media only screen and (max-width: 1199px)
 {
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li .rightsidePanel .featureList ul .featureTab .featureDetailRight .featureView.webView {
+  .rightsidePanel .featureList ul .featureTab .featureDetailRight .featureView.webView {
     display: none;
 }}
-.icon-view:before {
-    font-weight: 900;
-    font-family: 'Font Awesome\5 Free';
-    content: "n";
-}
-.featureStudio .studioLeft.hidePanel {
-    left: -40%;
-}
-@media only screen and (max-width: 1199px)
+@media only screen and (max-width:1199px)
 {
-.featureStudio .studioLeft.hidePanel {
-    left: -100%;
-}}
+    .bundleList ul .li{
+        width:160px
+    }
+    .width{
+        width: 160px;
+    }
+}

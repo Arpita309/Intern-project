@@ -5,6 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import {featureList} from '../featuresdb/featuresdb'
 
+
 const useStyles = theme => ({
     root: {
       width: 250,
@@ -21,16 +22,34 @@ class AppFeaturesLeft extends React.Component{
         this.state={
             filterOpen:false,
             data:featureList,
+            selected:'left_0',
+            selectAll:false,
+            width:0,
+            checked:''
+
+          
             
         }
-    
+        window.addEventListener("resize", this.update);
         this.handleClickOutside=this.handleClickOutside.bind(this);
         this.setWrapperRef = this.setWrapperRef.bind(this);
     }
     componentDidMount() {
         document.addEventListener('mousedown', this.handleClickOutside);
+        this.update();
         
         }
+       
+      
+    
+      
+    
+      update = () => {
+        this.setState({
+         
+          width: window.innerWidth
+        });
+      };
         
       
       
@@ -53,7 +72,15 @@ class AppFeaturesLeft extends React.Component{
     toggleFilter=()=>{
         this.setState({filterOpen:true})
     }
-    
+    setSelected(id){
+        this.setState({selected:id})
+    }
+    selectAll(){
+        this.setState({selectAll:true})
+    }
+    deselectAll(){
+        this.setState({selectAll:false})
+    }
     
     render(){
         const classes = useStyles();     
@@ -1382,15 +1409,16 @@ class AppFeaturesLeft extends React.Component{
                         <div className='bundleHead'>
                             <h3>Feature Sets (11/21)</h3>
                         </div>
-                        <div className='bundleList'>
+                        <div className={`${this.state.width>1200?'':'bundleList'}`}>
                             <perfect-scrollbars>
                                 <div style={{position:'static'}}>
                                     <div className='ps-content'>
                                         <ul>
                                             {this.state.data.map((value)=>{
                                                 return(
-                                                    <li className='active current'>
-                                                     <div className='mainTab'>
+                                                    <li className={`${this.state.selected===value.id?'active current':''}`} >
+                                                        <div className={`${this.state.width>1200?'bundleList':'width'}`}>
+                                                     <div className='mainTab' onClick={(e)=>this.setSelected(value.id)}>
                                                          <div className='bundleDetail'>
                                                              <div className='bundleImg'>
                                                                  <img src={value.img}></img>
@@ -1404,59 +1432,62 @@ class AppFeaturesLeft extends React.Component{
                                                              </div>
                                                             
                                                          </div>
-                                                     </div>
+                                                     </div></div>
                                                      <div className='rightsidePanel'>
-                                                         <div className='featureHead'>
-                                                            <h3>{value.featureHeadH3}</h3>
-                                                            <div className="checkBox">
-                                                                <input type="checkbox" id="checkfeature_0"></input>
-                                                                <label for="checkfeature_0">Select All</label>
-                                                            </div>
-                                                            <div className='featureText'>
-                                                                <h3>{value.featureText}</h3>
-                                                                <div class="checkBox"><input type="checkbox" id="mcheckfeature_0"></input><label for="mcheckfeature_0">Select All</label></div>
-                                                                <p>{value.featureTextP}</p>
-                                                            </div>
-                                                            <div className='featureList'>
-                                                                <perfect-scrollbars>
-                                                                    <div style={{position:'static'}}>
-                                                                        <div className='ps-content'>
-                                                                            <ul>
-                                                                            {value.featureList.map((li)=>{
-                                                                               
-                                                                                return(
-                                                                                    <li className='active'>
-                                                                                        <div className='featureTab'>
-                                                                                            <div className='featureDetail'>
-                                                                                                <div className='featureImg'>
-                                                                                                    <object data={li.img}></object>
-                                                                                                </div>
-                                                                                                <div className="featureName"><h3>{li.featureNameH3}</h3><p>{li.featureNameP}</p><h4>{li.featureNameH4}</h4></div>
+                                                        <div className='featureHead'>
+                                                        <h3>{value.featureHeadH3}</h3>
+                                                        <div className="checkBox">
+                                                            <input type="checkbox" id={value.checkId}></input>
+                                                            <label for={value.checkId} onClick={(e)=>this.selectAll(e)}>{this.state.selectAll?'':'Select All'}</label>
+                                                            <label for={value.checkId} onClick={(e)=>this.deselectAll(e)}>{this.state.selectAll?'Deselect All':''}</label>
+                                                        </div>
+                                                        </div>
+                                                        <div className='featureText'>
+                                                            <h3>{value.featureTextH3}</h3>
+                                                            <div class="checkBox"><input type="checkbox" id={`m+${value.checkId}`}></input><label for={`m+${value.checkId}`}>Select All</label></div>
+                                                            <p>{value.featureTextP}</p>
+                                                        </div>
+                                                        <div className='featureList'>
+                                                            <perfect-scrollbars>
+                                                                <div style={{position:'static'}}>
+                                                                    <div className='ps-content'>
+                                                                        <ul>
+                                                                        {value.featureList.map((li)=>{
+                                                                            
+                                                                            return(
+                                                                                <li className='active'>
+                                                                                    <div className='featureTab'>
+                                                                                        <div className='featureDetail'>
+                                                                                            <div className='featureImg'>
+                                                                                                <object data={li.img}></object>
                                                                                             </div>
-                                                                                            <div className='featureDetailRight'>
-                                                                                                 <div className="main-checkbox">
-                                                                                                     <div className="checkBox">
-                                                                                                         <input type="checkbox" id="fcheck_0"></input>
-                                                                                                         <label for="fcheck_0"></label>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                                <div className="featureView webView"><em className="icon-view"></em></div>
-                                                                                                <div className="featureView mobileView"><em className="icon-view"></em></div>
-                                                                                            </div>
+                                                                                            <div className="featureName"><h3>{li.featureNameH3}</h3><p>{li.featureNameP}</p><h4>{li.featureNameH4}</h4></div>
                                                                                         </div>
-                                                                                    </li>
-                                                                                )
-                                                                    
-                                                                              })}
-
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                </perfect-scrollbars>
+                                                                                        <div className='featureDetailRight'>
+                                                                                                <div className="main-checkbox">
+                                                                                                    <div className="checkBox">
+                                                                                                        <input type="checkbox" id={li.id} checked={this.state.selectAll?'true':''}></input>
+                                                                                                        <label for={li.id}></label>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div className="featureView webView"><em className="icon-view"></em></div>
+                                                                                            <div className="featureView mobileView"><em className="icon-view"></em></div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </li>
+                                                                            )
                                                                 
-                                                            </div>
-                                                         </div>
-                                                     </div>
+                                                                            })}
+
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                             </perfect-scrollbars>
+                                            
+                    
+                </div>
+            
+        </div>
                                                     </li>
                                                 )
                                                 
@@ -1465,11 +1496,12 @@ class AppFeaturesLeft extends React.Component{
                                         </ul>
                                     </div>
                                 </div>
-                            </perfect-scrollbars>
+                            </perfect-scrollbars></div>
                         </div>
+                        
                     </div>
                 </div>
-            </div>
+            
 
         
         )
