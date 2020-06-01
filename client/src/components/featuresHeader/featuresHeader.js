@@ -3,6 +3,7 @@ import './featuresHeader.css'
 import  Drawer  from '../drawer/drawer'
 import CurrencyBox from '../currencyBox/currencyBox'
 import LoginIcon from '../loginIcon/loginIcon'
+import ProtoTypeButton from '../viewProtoType/viewProtoType'
 class FeaturesHeader extends React.Component{
     render(){
         return (
@@ -38,8 +39,11 @@ class FeaturesHeader extends React.Component{
 
                                 </div>
                             </div>
-                            
-                            <div className="requestDemo hidden-xs expOnlineBx" style={{marginLeft:'400px'}}>
+                            <div style={{marginLeft:'300px'}}>
+                            <ProtoTypeButton />
+                            </div>
+                           
+                            <div className="requestDemo hidden-xs expOnlineBx" style={{marginLeft:'30px'}}>
                                 <div className="text text-uppercase expertavail">
                                     <span className="expert-icons"><img src="https://studio.builder.ai/assets/images/expert_btn.png" alt="experts" className="one"></img></span> 
                                     Experts online 

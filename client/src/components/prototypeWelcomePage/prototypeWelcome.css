@@ -1,0 +1,124 @@
+.prototype-welcome-screen[_ngcontent-tiw-c18] {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #f2f2f2;
+    z-index: 12;
+}
+.prototype-welcome-screen .pwc-left-sec {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 40%;
+    background-color: #fff;
+    z-index: 3;
+}
+.prototype-welcome-screen .pwc-left-sec .icon {
+    width: auto;
+    height: auto;
+    display: inline-block;
+    position: absolute;
+    top: 30px;
+    left: 30px;
+}
+.prototype-welcome-screen .pwc-left-sec .icon img {
+    width: 100%;
+    height: 100%;
+}
+.prototype-welcome-screen .pwc-left-sec .content {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    width: 400px;
+}
+.prototype-welcome-screen .pwc-left-sec .content h3 {
+    color: #000;
+    
+    font-size: 45px;
+    line-height: 47px;
+    letter-spacing: -1.98px;
+    position: relative;
+    margin-bottom: 20px;
+}
+.prototype-welcome-screen .pwc-left-sec .content h3 .color-txt {
+    position: absolute;
+    right: 12px;
+    bottom: -1px;
+    color: #9f4dff;
+    display: inline-block;
+    text-transform: uppercase;
+}
+.prototype-welcome-screen .pwc-left-sec .content h3 .color-txt .left-border, .prototype-welcome-screen .pwc-left-sec .content h3 .color-txt .right-border {
+    width: 1px;
+    background-color: silver;
+    position: absolute;
+}
+.prototype-welcome-screen .pwc-left-sec .content h3 .color-txt .left-border {
+    height: 74px;
+    left: 3px;
+    top: -14px;
+}
+.prototype-welcome-screen .pwc-left-sec .content h3 .color-txt .right-border {
+    height: 81px;
+    right: 2px;
+    bottom: 0;
+}
+.prototype-welcome-screen .pwc-left-sec .content h3 .color-txt .bottom-border, .prototype-welcome-screen .pwc-left-sec .content h3 .color-txt .top-border {
+    height: 1px;
+    background-color: silver;
+    position: absolute;
+}
+.prototype-welcome-screen .pwc-left-sec .content h3 .color-txt .top-border {
+    width: 160px;
+    top: 5px;
+    left: -15px;
+}
+.prototype-welcome-screen .pwc-left-sec .content h3 .color-txt .bottom-border {
+    width: 170px;
+    bottom: 4px;
+    left: -9px;
+}
+.prototype-welcome-screen .pwc-left-sec .content p {
+    opacity: .7;
+    color: #000;
+    font-family: "Gotham Book",Arial,Georgia,serif;
+    font-size: 20px;
+    line-height: 25px;
+    margin: 0;
+}
+.prototype-welcome-screen .pwc-left-sec .content button {
+    width: 265px;
+    height: 50px;
+    border-radius: 4px;
+    background: #1db954;
+    border: none;
+    margin-top: 37px;
+    color: #fff !important;
+    
+    font-size: 14px;
+    line-height: 16px;
+    text-transform: uppercase;
+    outline: 0;
+    transition: all ease-in-out .3s;
+}
+.prototype-welcome-screen .pwc-animation {
+    width: 60%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+}
+.prototype-welcome-screen .pwc-animation img {
+    max-width: 800px;
+    width: 100%;
+}

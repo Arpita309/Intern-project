@@ -8,6 +8,8 @@ import AppPage from './components/appPage/appPage'
 import AppDetail from './components/appDetail/appDetail'
 import './App.css'
 import Features from './components/FeaturesPage/FeaturesPage';
+import Welcome from './components/prototypeWelcomePage/prototypeWelcome';
+import Prototype from './components/prototype/prototype';
 function App() {
   return (
     <BrowserRouter>
@@ -20,6 +22,9 @@ function App() {
          <Route exact path='/apps' component={AppPage}/>
          <Route path='/apps/:name' component={AppDetail} />
          <Route exact path='/features' component={Features}/>
+         <Route exact path='/welcome' component={Welcome}/>
+         <Route exact path='/prototype' component={Prototype}/>
+
        </Switch>
        
     </BrowserRouter>   

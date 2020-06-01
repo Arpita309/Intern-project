@@ -3,6 +3,7 @@ import React from 'react'
 import  Drawer  from '../drawer/drawer'
 import CurrencyBox from '../currencyBox/currencyBox'
 import LoginIcon from '../loginIcon/loginIcon'
+import ProtoTypeButton from '../viewProtoType/viewProtoType';
 class AppDetailHeader extends React.Component{
     render(){
         return (
@@ -24,9 +25,11 @@ class AppDetailHeader extends React.Component{
                                 <a href='http://localhost:3000/'><img width="26" height="35" alt="" class="smallLogo" src="https://studio.builder.ai/assets/images/logoSmall.png"></img></a>
                             </div>
                             
+                            <div style={{marginLeft:'870px'}}>
+                            <ProtoTypeButton/>
+                            </div>
                             
-                            
-                            <div style={{marginLeft:'1080px',verticalAlign:'center'}}>
+                            <div style={{marginLeft:'30px',verticalAlign:'center'}}>
                                <CurrencyBox/>
                             </div>
                             <LoginIcon/>

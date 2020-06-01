@@ -1,0 +1,271 @@
+.prototype-container {
+    width: 100%;
+    position: fixed;
+    top: 60px;
+    bottom: 0;
+    overflow: hidden;
+    background: url("https://now.builder.ai/grid1.16bb40b4cf5390a044cb.svg") #ecedf0;
+}
+.prototype-wrap.branding-option {
+    top: 99px;
+    bottom: 100px;
+}
+.prototype-wrap {
+    width: 100%;
+    position: absolute;
+    top: 99px;
+    bottom: 100px;
+    right: 0;
+    z-index: 1;
+    transition: all ease 1s;
+}
+.preview-flowchart-route-wrap {
+    position: fixed;
+    top: 88px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    display: flex;
+    background: #fff;
+    height: 32px;
+    z-index: 1;
+    box-shadow: 0 7px 12px rgba(0,0,0,.1);
+    border-radius: 4px;
+}
+.preview-flowchart-route-wrap .btn-style.active {
+    color: #6c00ea;
+    border-color: #9f4dff;
+}
+.preview-flowchart-route-wrap .btn-style.left-btn {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+.preview-flowchart-route-wrap .btn-style {
+    width: 110px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    line-height: 14px;
+    border: 1px solid #d0d2da;
+    cursor: pointer;
+    outline: 0;
+    text-decoration: none;
+    color: #676b7e;
+}
+.preview-flowchart-route-wrap .btn-style .btn-icon {
+    line-height: 0;
+    margin-left: 5px;
+}
+.preview-flowchart-route-wrap .btn-style.left-btn .btn-icon {
+    font-size: 11px;
+}
+.icon-play-1:before {
+    font-weight: 900;
+    font-family: "Font Awesome\ 5 Free";
+    content: "3";
+}
+.preview-flowchart-route-wrap .btn-style.right-btn {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+.preview-flowchart-route-wrap .btn-style.right-btn .btn-icon {
+    font-size: 15px;
+}
+.icon-user-flow:before {
+    font-weight: 900;
+    font-family: "Font Awesome\ 5 Free";
+    content: "9";
+}
+.wrapper-prototype {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    z-index: 999;
+    -webkit-animation: 1.5s ease-in forwards smoothvisible;
+    animation: 1.5s ease-in forwards smoothvisible;
+}
+.wrapper-prototype .device-preview {
+    position: relative;
+}
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+.prototype-preview {
+    position: absolute;
+    top: 75px;
+    left: 21px;
+    width: 272px;
+    height: 484px;
+    background: #fff;
+    overflow: hidden;
+}
+.prototype-wrap .hotkeys-options {
+    display: inline-block;
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    width: 140px;
+    height: 48px;
+    box-shadow: 0 2px 3px rgba(0,0,0,.12);
+    border-radius: 4px;
+    background-color: #fff;
+    text-align: center;
+    z-index: 999;
+}
+.prototype-wrap.branding-option .hotkeys-options {
+    bottom: -65px;
+}
+.prototype-wrap .hotkeys-options:hover .options {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+.prototype-wrap .hotkeys-options:hover > .option {
+    color: #0070e0;
+    background: #f6f4f8;
+}
+.prototype-wrap .hotkeys-options .option {
+    color: #8291a4;
+   
+    font-size: 14px;
+    line-height: 16px;
+    display: block;
+    cursor: pointer;
+}
+.prototype-wrap .hotkeys-options > .option {
+    text-align: center;
+    padding: 18px 0 14px;
+}
+.prototype-wrap .hotkeys-options .options {
+    position: absolute;
+    left: 0;
+    bottom: 47px;
+    width: 198px;
+    box-shadow: 0 2px 3px rgba(0,0,0,.12);
+    border-radius: 4px;
+    background-color: #fff;
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    -webkit-transform-origin: bottom left;
+    transform-origin: bottom left;
+    transition: opacity ease-in-out .3s;
+}
+.prototype-wrap .hotkeys-options .option {
+    color: #8291a4;
+   
+    font-size: 14px;
+    line-height: 16px;
+    display: block;
+    cursor: pointer;
+}
+.prototype-wrap .hotkeys-options .options > .option {
+    cursor: pointer;
+    text-align: left;
+    padding: 16px 12px;
+    border-bottom: 1px solid #e4e8f1;
+    transition: all ease-in-out .3s;
+}
+.prototype-wrap .hotkeys-options .options > .option:last-of-type {
+    border: none;
+}
+.tailor-desc-popup {
+    width: 264px;
+    height: 273px;
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    background: #fff;
+    padding: 22px 10px 18px 19px;
+    border-radius: 4px;
+}
+.tailor-desc-popup .title {
+    font-size: 14px;
+    line-height: 22px;
+    color: #3c3e49;
+    
+}
+.tailor-desc-popup .desc {
+    margin: 18px 0 26px;
+}
+.tailor-desc-popup .desc ul{
+    list-style-type: none;
+    padding: 0;
+}
+.tailor-desc-popup .desc li {
+    font-size: 12px;
+    line-height: 20px;
+    color: #83889e;
+    padding-left: 30px;
+    position: relative;
+    list-style-type: none;
+}
+.tailor-desc-popup .desc li:before {
+    content: "!";
+    font-family: "Font Awesome\ 5 Free";
+    font-weight: 900;
+    font-size: 11px;
+    color: #1db954;
+    position: absolute;
+    padding-left: 0;
+    left: 3px;
+    line-height: 9px;
+    top: 6px;
+}
+.tailor-desc-popup button {
+    background: #1db954;
+    font-size: 14px;
+    height: 44px;
+    width: 226px;
+    color: #fff;
+    border: none;
+    outline: 0;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+.wrapper-prototype .device-preview .screen-control {
+    display: inline-block;
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    box-shadow: 0 2px 3px rgba(0,0,0,.16);
+    border: 1px solid #e4e8f1;
+    background-color: #fff;
+    border-radius: 50%;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+.wrapper-prototype .device-preview .screen-control.preview {
+    left: -120px;
+}
+.wrapper-prototype .device-preview .screen-control .screen-control-sign {
+    font-size: 50px;
+    line-height: 1px;
+    color: #000;
+    position: absolute;
+    top: 55%;
+}
+.wrapper-prototype .device-preview .screen-control.preview .screen-control-sign {
+    left: 45%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+.wrapper-prototype .device-preview .screen-control .screen-control-sign:before {
+    line-height: 0;
+}
+.icon-angle-left:before {
+    content: "<";
+}
+.wrapper-prototype .device-preview .screen-control.next {
+    right: -120px;
+}
+.icon-angle-right:before {
+    content: ">";
+}
