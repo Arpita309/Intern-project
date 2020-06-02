@@ -1,0 +1,273 @@
+.commonPopUp {
+    opacity: 0;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: none;
+    overflow-y: auto;
+}
+.commonPopUp.active {
+    opacity: 1;
+    z-index: 999;
+    display: block;
+}
+.commonPopUp .popOverlay {
+    background: rgba(0,0,0,0);
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+.commonPopUp.active .popOverlay {
+    background: rgba(0,0,0,.5);
+    -webkit-animation: .2s ease-in-out popupfade;
+    animation: .2s ease-in-out popupfade;
+}
+.commonPopUp.active .popHolder {
+    -webkit-animation: .1s ease-in-out popupanimation;
+    animation: .1s ease-in-out popupanimation;
+}
+.newsignUppoup {
+    width: 100%;
+    max-width: 1024px;
+    height: 690px;
+    background: #fff;
+    border-radius: 0;
+    display: flex;
+}
+.commonPopUp .popHolder {
+    background: #fff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    z-index: 3;
+    border-radius: 8px;
+}
+.commonPopUp .popHolder .closePopUp {
+    position: absolute;
+    cursor: pointer;
+    z-index: 9;
+    top: 5px;
+    right: 5px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 16px;
+    color: rgba(0,0,0,.6);
+}
+.topIcon {
+    text-align: center;
+    margin: 0 0 20px;
+}
+.newsignUppoup .closePopUp {
+    width: 48px;
+    height: 48px;
+    line-height: 50px;
+    top: 12px;
+    right: 12px;
+    border-radius: 100px;
+    color: #000;
+    border: 1px solid #dfe0e6;
+}
+.icon-cancel:before {
+    font-weight: 900;
+    font-family: "Font Awesome\ 5 Free";
+    content: "\f00d";
+}
+.newsignUppoup .leftside {
+    width: 50%;
+    padding: 80px 75px;
+    background: #f8f9fa;
+    position: relative;
+}
+h2 {
+    text-align: center;
+    font-family: "Gotham Bold",Arial,Georgia,serif;
+    margin: 0;
+    font-size: 28px;
+    color: #3c3e49;
+}
+.leftBottom {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 9;
+}
+.newsignUppoup .rightside {
+    width: 50%;
+    position: relative;
+}
+.signupRight {
+    width: 100%;
+    height: 100%;
+    padding: 30px 50px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    align-items: center;
+}
+.overviewSection {
+    width: 100%;
+    position: relative;
+}
+.overviewSection h3 {
+    font-size: 30px;
+    font-family: "Gotham Bold",Arial,Georgia,serif;
+    margin: 0 0 20px;
+    color: #3c3e49;
+}
+.overviewSection p {
+    margin: 0 0 20px;
+    font-size: 14px;
+    color: #83889e;
+}
+.overviewSection ul {
+    margin: 0 0 30px;
+    padding: 0;
+}
+.overviewSection ul li {
+    color: #3c3e49;
+    display: block;
+    font-size: 14px;
+    margin: 0 0 12px;
+    
+}
+.overviewSection ul li em {
+    color: #6c00ea;
+    display: block;
+    font-size: 20px;
+    float: left;
+    line-height: 0;
+    margin: 0 10px 0 0;
+}
+.icon-ticknew:before {
+    content: "\f00c";
+    font-family: "Font Awesome\ 5 Free";
+    font-weight: 900;
+}
+.overviewSection .detailRow {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 20px;
+}
+.overviewSection .detailRow .detailBox {
+    max-width: calc(50% - 10px);
+    padding: 0 30px 0 0;
+}
+.overviewSection .detailRow .detailBox strong {
+    
+    font-size: 24px;
+    display: block;
+}
+.overviewSection .detailRow .detailBox .infoBox {
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+    position: relative;
+    width: 15px;
+    height: 15px;
+}
+.overviewSection .detailRow .detailBox .infoBox .infoIcon {
+    width: 15px;
+    height: 15px;
+    border-radius: 50px;
+    background: #83889e;
+    color: #fff;
+    font-size: 10px;
+    text-align: center;
+}
+.overviewSection .detailRow .detailBox .infoBox span {
+    position: absolute;
+    display: none;
+    background: #272833;
+    padding: 12px;
+    color: #fff;
+    font-size: 11px;
+    box-shadow: 0 2px 4px rgba(39,40,51,.2);
+    border-radius: 3px;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    width: 220px;
+}
+.overviewSection .detailRow .detailBox strong {
+  
+    font-size: 24px;
+    display: block;
+}
+.overviewSection .buttonStyle {
+    width: 100%;
+    height: 50px;
+    background: #1db954;
+    border-radius: 3px;
+    font-size: 14px;
+    color: #fff;
+    border: none;
+}
+
+
+
+/*dropdown phone code*/
+.dropdown-content {
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+.list-group {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+.scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    width: 350px;
+    overflow-x: hidden;
+}
+.list-group {
+    margin-bottom: 0;
+}
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: .75rem 1.25rem;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,.125);
+}
+.list-group-item:first-child {
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+}
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.flag {
+    display: inline-block;
+    width: 16px;
+    height: 11px;
+    background: url(https://res.cloudinary.com/dvbuhh0bl/image/upload/v1495279723/flags_boi3c5.png) no-repeat;
+}
+.flag.flag-ax {
+    background-position: -224px 0;
+}
+.country-name {
+    margin-left: 6px;
+}
+.dial-code {
+    color: #999;
+}
+
+

@@ -764,7 +764,7 @@ perfect-scrollbars {
 .nav li {
     position: relative;
 }
-.nav li.active .tabname {
+.nav  .tabname.active {
     border-bottom: 3px solid #6c00ea;
     color: #6c00ea;
     font-family: "Gotham Bold",Arial,Georgia,serif;
@@ -844,7 +844,9 @@ perfect-scrollbars {
     transform: translate(-50%,-50%);
 }
 .icon-mail:before {
-    content: "F";
+    font-weight: 900;
+    font-family: "Font Awesome\ 5 Free";
+    content: "\f0e0";
 }
 .email-msg-tabs .email-msg-tab.msg-tab {
     right: 0;
@@ -867,7 +869,9 @@ perfect-scrollbars {
     transform: translate(-50%,-50%);
 }
 .icon-phonescreen:before {
-    content: "k";
+    font-weight: 900;
+    font-family: "Font Awesome\ 5 Free";
+    content: "\f3cd";
 }
 .email-wrap {
     display: inline-block;
@@ -1016,14 +1020,15 @@ perfect-scrollbars {
 .content-wrap .sb-default .sb-wrapper {
     width: 155px;
 }
-.sb-default .sb-wrapper.sb-facebook {
-    background-color: #4267b2;
-}
+
 .sb-default .sb-wrapper {
     color: #fff;
     border-radius: 4px;
     overflow: hidden;
     background-color: var(--button-color)!important;
+}
+.sb-default .sb-wrapper.sb-facebook {
+    background-color: #4267b2 !important;
 }
 .sb-wrapper {
     font-size: inherit;
@@ -1099,4 +1104,226 @@ svg:not(:root).svg-inline--fa {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+.sb-default .sb-wrapper.sb-twitter {
+    background-color: #00acee ;
+}
+.sb-default .sb-wrapper.sb-linkedin {
+    background-color: #006fa6 ;
+}
+.sb-default .sb-wrapper.sb-whatsapp {
+    background-color: #25d366 ;
+}
+.sb-default .sb-wrapper.sb-telegram {
+    background-color: #08c ;
+}
+.embed {
+    width: 500px;
+    height: 42px;
+    position: relative;
+}
+.embed .embed-txt {
+    width: 358px;
+    height: 42px;
+    border-radius: 4px;
+    border: 1px solid #e4e8f1;
+    background-color: #fff;
+    color: #8291a4;
+    font-size: 12px;
+    font-weight: 400;
+    position: absolute;
+    top: 1px;
+    bottom: 1px;
+    left: 1px;
+    padding: 13px 26px 12px 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.embed .embed-btn {
+    width: 134px;
+    border: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    border-radius: 4px;
+    background: #1db954;
+    line-height: 20px;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    padding: 11px 0;
+    transition: all ease-in-out .3s;
+}
+.embed .embed-btn .btn-txt-normal {
+    display: inline-block;
+}
+.embed .embed-btn .btn-txt-success, .embed .embed-btn.success .btn-txt-normal {
+    display: none;
+}
+.email-wrap .email-btn {
+    width: 134px;
+    border: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 42px;
+    border-radius: 4px;
+    background: #1db954;
+    line-height: 20px;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    padding: 11px 0;
+    transition: all ease-in-out .3s;
+}
+.email-wrap .email-btn[disabled] {
+    background: #e8e8e8!important;
+    color: #fff;
+    cursor: not-allowed;
+}
+.email-wrap .email-btn .btn-txt-normal {
+    display: inline-block;
+}
+.ng2-tag-input {
+    display: block;
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: relative;
+    transition: .25s;
+    padding: .25rem 0;
+    min-height: 32px;
+    cursor: text;
+    border-bottom: 2px solid #efefef;
+}
+tag-input .ng2-tag-input.prototype-theme {
+    display: block;
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: relative;
+    cursor: text;
+    border-bottom: none;
+}
+.email-wrap .multi-emails .ng2-tag-input {
+    border: none;
+    background: #fff;
+    padding-top: 8px;
+    padding-bottom: 0;
+}
+tag-input .ng2-tag-input.prototype-theme .ng2-tags-container {
+    flex-wrap: wrap;
+    display: flex;
+}
+.ng2-tag-input .ng2-tags-container {
+    flex-wrap: wrap;
+    display: flex;
+}
+.ng2-tag-input__text-input {
+    display: inline;
+    vertical-align: middle;
+    border: none;
+    padding: 0.5rem;
+    height: 38px;
+    font-size: 1em;
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+}
+.input-group {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 100%;
+}
+.email-wrap .input-group {
+    width: 262px;
+    height: 42px;
+    border-radius: 4px;
+    border: 1px solid #e4e8f1;
+    background-color: #fff;
+}
+.input-group-addon {
+    text-align: left;
+}
+.flagInput {
+    padding: 0 !important;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown, .dropleft, .dropright, .dropup {
+    position: relative;
+}
+.dropbtn {
+    background-color: white;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.email-wrap .input-group .dropbtn {
+    padding: 0;
+    width: 56px;
+    height: 40px;
+    box-shadow: none;
+    position: relative;
+}
+.flag {
+    display: inline-block;
+    width: 16px;
+    height: 11px;
+    background: url(https://res.cloudinary.com/dvbuhh0bl/image/upload/v1495279723/flags_boi3c5.png) no-repeat;
+}
+.flag.flag-in {
+    background-position: -64px -66px;
+}
+.email-wrap .input-group .dropbtn .flag {
+    outline: 0;
+}
+.arrow-down, .arrow-up {
+    border-bottom: 15px solid #fff;
+    visibility: hidden!important;
+}
+.arrow-down {
+    display: inline-block;
+    vertical-align: text-top;
+    margin-top: 5px;
+    margin-left: 2px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #444;
+}
+.email-wrap .input-group .dropbtn .arrow-down {
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    border-top: 3px solid #444;
+    margin: 7px 0 0 8px;
+}
+.input-group>.custom-select:not(:first-child), .input-group>.form-control:not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.email-wrap .input-group .form-control {
+    border: none;
+    padding: 8px 12px;
+    height: 40px;
+    font-size: 12px;
+    box-shadow: none;
+}
+.email-wrap .input-group .dropbtn::before {
+    content: "";
+    width: 1px;
+    height: 41px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: #e4e8f1;
+}
+.hidden{
+    display: none !important;
+}
+[hidden]{
+    display: none !important;
 }
