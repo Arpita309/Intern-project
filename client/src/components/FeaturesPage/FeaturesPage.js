@@ -3,6 +3,7 @@ import './FeaturePage.css'
 import Left from '../appFeaturesLeft/appFeaturesLeft'
 import Right from '../appFeaturesRight/appFeaturesRight'
 import FeaturesHeader from '../featuresHeader/featuresHeader'
+import { Link } from 'react-router-dom'
 class Features extends React.Component{
     render(){
         return(
@@ -47,7 +48,7 @@ class Features extends React.Component{
                     </div>
                     <div  className="previewBottom">
                         <div >
-                            <button type="button" className="nextButton"> Plan Delivery </button>
+                            <button type="button" className="nextButton"><Link to='/delivery'> Plan Delivery </Link></button>
                         </div>
                         <share-url-button  >
                             <button  type="button" className="shareUrl">

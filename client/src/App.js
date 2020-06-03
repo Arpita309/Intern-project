@@ -10,6 +10,7 @@ import './App.css'
 import Features from './components/FeaturesPage/FeaturesPage';
 import Welcome from './components/prototypeWelcomePage/prototypeWelcome';
 import Prototype from './components/prototype/prototype';
+import Delivery from './components/deliverables/deliverables';
 function App() {
   return (
     <BrowserRouter>
@@ -24,6 +25,7 @@ function App() {
          <Route exact path='/features' component={Features}/>
          <Route exact path='/welcome' component={Welcome}/>
          <Route exact path='/prototype' component={Prototype}/>
+         <Route exact path='/delivery' component={Delivery}/>
 
        </Switch>
        

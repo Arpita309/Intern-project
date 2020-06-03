@@ -106,7 +106,7 @@ class AppDetail extends React.Component{
                             </div>
                             <div className="createBuild view-brak-bx">
                                 <button  type="button" className="view-proto-btn">
-                                    <span className="desktop">Customize with an Expert </span>
+                                    <span className="desktop"><a href="http://localhost:3000/features" style={{textDecoration:'none'}}>Customize with an Expert</a> </span>
                                     <span className="mobile"> Customize with Expert</span>
                                 </button>
                                 <button  type="button " >Customize Your Idea </button>

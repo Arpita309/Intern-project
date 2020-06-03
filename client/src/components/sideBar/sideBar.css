@@ -1,0 +1,161 @@
+.platformSidebarOverlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 9999999;
+    display: none;
+    background: rgba(0,0,0,.5);
+    top: 0;
+    left: 0;
+}
+.platformSidebarOverlay.active {
+    display: block;
+}
+.platformSidebar {
+    position: fixed;
+    width: 340px;
+    height: 100%;
+    top: 0;
+    left: -400px;
+    background: #fff;
+    border-right: 1px solid #e1e6ec;
+    box-shadow: 0 0 30px rgba(0,0,0,.1);
+    border-radius: 0 20px 20px 0;
+    overflow: hidden;
+    z-index: 9999999;
+    transition: all .3s ease-in-out;
+}
+.platformSidebar.active {
+    -webkit-animation: platformsidebar .3s ease-in-out forwards;
+    animation: platformsidebar .3s ease-in-out forwards;
+}
+.platformSidebar .topHead {
+    position: relative;
+    width: 100%;
+    float: left;
+    clear: both;
+    background: #fff;
+    height: 60px;
+    padding: 20px 15px;
+}
+.platformSidebar .topHead h3 {
+    
+    font-size: 22px;
+    color: #000;
+    margin: 0;
+    float: left;
+}
+.platformSidebar .topHead .closeBar {
+    float: right;
+    font-size: 12px;
+    color: #333;
+    cursor: pointer;
+}
+.icon-cancel:before {
+    font-weight: 900;
+    font-family: "Font Awesome\ 5 Free";
+    content: "c";
+}
+.platformSidebar .platformListing {
+    position: relative;
+    width: 100%;
+    height: calc(100% - 60px);
+    background: #fff;
+    float: left;
+    clear: both;
+}
+perfect-scrollbars {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+}
+perfect-scrollbars > .ps {
+    position: static;
+    display: block;
+    width: inherit;
+    height: inherit;
+    max-width: inherit;
+    max-height: inherit;
+}
+.platformSidebar .platformListing ul {
+    margin: 0;
+    padding: 0;
+}
+.platformSidebar .platformListing ul li {
+    list-style-type: none;
+    display: flex;
+    border-top: 1px solid #f0f0f0;
+    padding: 20px 15px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+.platformSidebar .platformListing ul li.active {
+    background: #f9fbfd;
+}
+.platformSidebar .platformListing ul li .platformImg {
+    width: 55px;
+}
+.platformSidebar .platformListing ul li .platformImg img {
+    max-width: 40px;
+    height: auto;
+}
+.platformSidebar .platformListing ul li .platformName {
+    width: calc(100% - 90px);
+    margin: 0 10px 0 0;
+    font-size: 16px;
+    color: #000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.platformSidebar .platformListing ul li .platformCheck {
+    width: 24px;
+}
+.platformSidebar .platformListing ul li .platformCheck input {
+    position: absolute;
+    top: -200px;
+    left: -200px;
+    z-index: -9;
+}
+.platformSidebar .platformListing ul li .platformCheck label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    background: #fff;
+    border: 1px solid #d8d7d7;
+    border-radius: 50px;
+    margin: 0;
+}
+.platformSidebar .platformListing ul li .platformCheck input:checked + label {
+    background: #0070e0;
+    border: 1px solid #0070e0;
+}
+.platformSidebar .platformListing ul li .platformCheck label:before {
+    
+    display: none;
+    content: "h";
+    z-index: 2;
+    font-size: 10px;
+    color: #fff;
+}
+.platformSidebar .platformListing ul li .platformCheck input:checked + label:before {
+    display: block;
+}
+.platformSidebar .platformListing ul li .platformCheck label:after {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: 9;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
