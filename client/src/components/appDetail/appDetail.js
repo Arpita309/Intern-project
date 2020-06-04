@@ -17,14 +17,7 @@ class AppDetail extends React.Component{
     }
      name=this.props.match.params.name;
     
-    componentDidMount() {
-        axios.get(`http://localhost:4000/app-row/?h3=Amazon`)
-          .then(res => {
-            const data = res.data;
-            this.setState({ data });
-           
-          })
-      }
+    
     render(){
         const platform=[
             {"img":"https://duj87royd3ze0.cloudfront.net/uploads/image/file/591a9b0014c49f7f46746441/Android_blue.png","span":"Android"},
