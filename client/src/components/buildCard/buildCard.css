@@ -1,0 +1,1078 @@
+.wrapper {
+    float: left;
+    width: 100%;
+}
+.middlePart {
+    min-height: calc(100vh - 100px);
+    float: left;
+    width: 100%;
+    clear: both;
+}
+
+.main-buildcard-bx {
+    background: #fff;
+    position: relative;
+    width: 100%;
+    z-index: 1;
+}
+@media (max-width: 768px)
+{
+.main-buildcard-bx {
+    z-index: 999;
+}}
+.main-buildcard-bx:before {
+    content: "";
+    background: #fff;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    position: fixed;
+    left: 0;
+    top: 60px;
+}
+.container:before,.row::before{
+    display: table;
+    content: " ";
+}
+.buildCardmain {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+@media (max-width: 768px)
+{
+.buildCardmain {
+    margin-top: 30px;
+}}
+.buildCardmain .buildCardTop {
+    
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    margin: 37px 0 27px;
+    position: relative;
+}
+.buildCardmain .buildCardTop .buildCardLeft {
+    text-align: left;
+    width: 80%;
+}
+.buildCardmain .buildCardTop .buildCardLeft h1 {
+    color: #000;
+    font-size: 30px;
+    font-weight: 700;
+    margin: 0;
+}
+@media (max-width: 768px)
+{
+.buildCardmain .buildCardTop .buildCardLeft h1 {
+    font-size: 20px;
+}}
+.buildCardmain .buildCardTop .buildCardLeft h1 .userspace {
+    font-size: 14px;
+    display: block;
+    padding: 8px 0;
+    color: #989898;
+}
+.buildCardmain .buildCardTop .buildCardLeft h1 .cardHover {
+    color: #000;
+}
+@media (max-width: 768px)
+{
+.buildCardmain .buildCardTop .buildCardLeft h1 .cardHover {
+    color: #f31597;
+}}
+.buildCardmain .buildCardTop .buildCardLeft h1 .cardHover .card-default {
+    display: inline-block;
+}
+.buildCardmain .buildCardTop .buildCardLeft h1 .cardHover img {
+    margin-left: 5px;
+    width: 100%;
+    max-width: 21px;
+}
+.buildCardmain .buildCardTop .buildCardLeft h1 .cardHover .card-hover {
+    display: none;
+}
+.buildCardmain .buildCardTop .buildCardLeft h1 .icon-block {
+    position: relative;
+    display: inline-block;
+}
+@media (max-width: 768px){
+.buildCardmain .buildCardTop .buildCardLeft h1 .icon-block {
+    display: none;
+}}
+.buildCardmain .buildCardTop .buildCardLeft h1 .info {
+    display: inline-block;
+    cursor: pointer;
+}
+.buildCardmain .buildCardTop .buildCardright {
+    width: 20%;
+    text-align: right;
+    right: 0;
+}
+.buildCardmain .buildCardTop .buildCardright .icon-block {
+    display: inline-block;
+    cursor: pointer;
+    color: #0070e0;
+    font-size: 24px;
+    position: relative;
+    top: 10px;
+    left: -5px;
+}
+.icon-iconoptions:before {
+    font-weight: 900;
+    font-family: "Font Awesome\ 5 Free";
+    content: "\f141";
+    font-style: normal;
+}
+.buildCardmain .buildCardTop .last-update {
+    position: absolute;
+    right: 0;
+    top: 8px;
+    color: #989898;
+    font-size: 12px;
+}
+@media (max-width: 768px)
+{
+.buildCardmain .buildCardTop .last-update {
+    top: 6px;
+}}
+.buildCardmain .tabing-block {
+    margin-bottom: 30px;
+    text-align: center;
+    width: 100%;
+    overflow-y: hidden;
+    display: flex;
+    padding-bottom: 5px;
+}
+.buildCardmain .tabing-block .tabList {
+    padding: 15px 23px;
+    width: 122px;
+    overflow: hidden;
+    background: #f4f7fc;
+    height: 70px;
+    color: #000;
+    display: flex;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    font-size: 15px;
+    cursor: pointer;
+    font-weight: bold;
+}
+@media (max-width: 768px)
+{
+.buildCardmain .tabing-block .tabList {
+    font-size: 17px;
+    min-width: 130px;
+}}
+.buildCardmain .tabing-block .tabList.active {
+    background: #00c852;
+    color: #fff;
+}
+@media (min-width: 992px)
+{.col-md-7 {
+    width: 58.33333333%;
+}}
+@media (min-width: 768px){
+.col-sm-12 {
+    width: 100%;
+}}
+.billingheight, .fixHeight {
+    max-height: 450px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: all .3s ease-in-out;
+    padding-right: 10px;
+}
+@media (max-width: 768px)
+{
+.billingheight, .fixHeight {
+    max-height: 100%;
+}}
+.buildCardmain .buildcard-detail {
+    margin-bottom: 15px;
+    color: #000 !important;
+    padding-right: 10px;
+}
+@media (max-width: 768px)
+{
+.buildCardmain .buildcard-detail {
+    padding-right: 0;
+}}
+.buildCardmain .buildcard-detail .detail-heading {
+    font-size: 20px;
+    line-height: 20px;
+    margin: 0 0 20px;
+    position: relative;
+}
+@media (max-width: 768px)
+{
+.buildCardmain .buildcard-detail .detail-heading {
+    font-size: 15px;
+}}
+.buildCardmain .buildcard-detail .detail-list-block {
+    padding: 3px 0;
+}
+.buildCardmain .buildcard-detail .detail-list-block .list {
+    padding: 20px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    border-bottom: 1px solid #e2e7ed;
+}
+.buildCardmain .buildcard-detail .detail-list-block .list .project-detail {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.buildCardmain .buildcard-detail .detail-list-block .list .project-detail .pro-icon {
+    width: 100%;
+    max-width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #f4f7fc;
+    border: 1px solid #f4f7fc;
+    display: inline-block;
+    margin-right: 15px;
+    position: relative;
+}
+.buildCardmain .buildcard-detail .detail-list-block .list .project-detail .pro-icon em {
+    max-width: 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 15px;
+    display: inline-flex;
+}
+.icon-iconprojectname:before {
+    font-weight: 900;
+    font-family: "Font Awesome\ 5 Free";
+    content: "\f02e";
+font-style: normal;    
+
+}
+.buildCardmain .buildcard-detail .detail-list-block .list .project-detail .pro-text-block {
+    position: relative;
+    display: block;
+    width: 100%;
+    
+}
+.buildCardmain .buildcard-detail .detail-list-block .list .project-detail .pro-text-block .pro-head {
+    font-size: 12px;
+    padding-bottom: 5px;
+    margin: 0;
+    color:gray !important;
+}
+@media (max-width: 768px)
+{
+.buildCardmain .buildcard-detail .detail-list-block .list .project-detail .pro-text-block .pro-head {
+    font-size: 14px;
+}}
+.buildCardmain .buildcard-detail .detail-list-block .list .project-detail .pro-text-block .pro-name-block .pro-name-strip {
+    
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+}
+.buildCardmain .buildcard-detail .detail-list-block .list .project-detail .pro-text-block .pro-name-block .edit .strip-head {
+    display: inline-block;
+    width: auto;
+    padding-right: 10px;
+    text-transform: capitalize;
+    color: black !important;
+}
+.buildCardmain .buildcard-detail .detail-list-block .list .project-detail .pro-text-block .pro-name-block .pro-name-strip .project-action2 {
+    position: relative;
+    right: 0;
+    width: auto;
+    top: 2px;
+    
+}
+.icon-iconedit:before {
+    font-weight: 900;
+    font-family: "Font Awesome\ 5 Free";
+    content: "\f304";
+    color:#0070e0 ;
+    font-style: normal;
+}
+.buildCardmain .buildcard-detail .detail-list-block .list .project-detail .pro-text-block .pro-name-block .pro-name-strip .project-action, .buildCardmain .buildcard-detail .detail-list-block .list .project-detail .pro-text-block .pro-name-block .pro-name-strip .project-action2 {
+    width: 20%;
+    text-align: right;
+    color: #0070e0;
+    position: absolute;
+    right: 15px;
+}
+.btnStyle1 {
+    color: #0070e0;
+   
+    font-size: 16px;
+    line-height: 20px;
+    cursor: pointer;
+    text-transform: capitalize;
+}
+.buildCardmain .buildcard-detail .detail-list-block .list .project-detail p{
+    color: black !important;
+}
+h3{
+    color: black !important;
+}
+.icon-iconproducttype:before {
+    font-weight: 900;
+    font-family: "Font Awesome\ 5 Free";
+    content: "\f009";
+   
+    font-style: normal;
+}
+.icon-iconlocation:before {
+    font-weight: 900;
+    font-family: "Font Awesome\ 5 Free";
+    content: "\f3c5";
+    font-style: normal;
+}
+.buildCardmain .buildcard-detail .list-block2 {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 10px;
+}
+@media (max-width: 768px)
+{
+.buildCardmain .buildcard-detail .list-block2 {
+    border-bottom: none;
+    padding-bottom: 0;
+}}
+.buildCardmain .buildcard-detail .detail-list-block .app-box {
+    width: calc(50% - 10px);
+    border: 1px solid #e2e7ed;
+    border-radius: 10px;
+    background: #fff;
+    margin-bottom: 20px;
+    padding: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+@media (max-width: 768px)
+{
+.buildCardmain .buildcard-detail .detail-list-block .app-box {
+    width: 100%;
+    border-radius: 0;
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+    padding: 20px 0;
+    margin: 0!important;
+}}
+@media (max-width: 768px)
+{
+.buildCardmain .buildcard-detail .detail-list-block .app-box:last-child {
+    border-bottom: 0;
+}}
+@media (max-width: 768px)
+{
+.buildCardmain .buildcard-detail .detail-list-block .app-box:first-child {
+    padding-top: 10px;
+}}
+.buildCardmain .buildcard-detail .detail-list-block .app-box:nth-child(odd) {
+    margin-right: 20px;
+}
+.buildCardmain .buildcard-detail .detail-list-block .app-box .app-left {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.buildCardmain .buildcard-detail .detail-list-block .app-box .app-left span {
+    display: inline-block;
+    font-size: 16px;
+}
+@media (max-width: 768px)
+{
+.buildCardmain .buildcard-detail .detail-list-block .app-box .app-left span {
+    font-size: 18px;
+}}
+.buildCardmain .buildcard-detail .detail-list-block .app-box .app-left span:first-child {
+    margin-right: 15px;
+}
+.buildCardmain .buildcard-detail .detail-list-block .app-box .app-left span.simiapp-ico-img img {
+    width: 100%;
+    max-width: 37px;
+    min-width: 37px;
+}
+.buildCardmain .buildcard-detail .detail-list-block .app-box .app-left span {
+    display: inline-block;
+    font-size: 16px;
+}
+@media (max-width: 768px)
+{
+.buildCardmain .buildcard-detail .detail-list-block .app-box .app-left span {
+    font-size: 18px;
+}}
+.app-sep {
+    margin-top: 0;
+}
+.buildCardmain .buildcard-detail .detail-heading .feature-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.buildCardmain .buildcard-detail .feature-box {
+    width: 100%;
+    margin: 30px 0;
+}
+@media (max-width: 768px)
+{
+.buildCardmain .buildcard-detail .feature-box {
+    flex-direction: column;
+    max-height: 100%;
+    overflow-y: inherit;
+    margin: 0;
+}}
+.buildCardmain .buildcard-detail .feature-box div {
+    width: 100%;
+}
+.buildCardmain .buildcard-detail .feature-box div .list-block{
+    list-style-position: inside;
+    padding: 0;
+    margin: 0;
+}
+.buildCardmain .buildcard-detail .feature-box div .list-block li {
+    padding-bottom: 20px;
+    font-size: 16px;
+    font-weight: 400;
+    width: calc(50% - 15px);
+    display: inline-block;
+    position: relative;
+    padding-left: 20px;
+}
+@media (max-width: 768px)
+{
+.buildCardmain .buildcard-detail .feature-box div .list-block li {
+    width: 100%;
+    display: block;
+    font-size: 12px;
+}}
+.buildCardmain .buildcard-detail .feature-box div .list-block li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 10px;
+    width: 10px;
+}
+.buildCardmain .buildcard-detail .phases-box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.buildCardmain .buildcard-detail .phases-box .list-box {
+    border-radius: 10px;
+    border: 1px solid #e2e7ed;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    width: calc(50% - 10px);
+}
+@media (max-width: 768px)
+{
+.buildCardmain .buildcard-detail .phases-box .list-box {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 30px;
+}}
+.buildCardmain .buildcard-detail .phases-box .list-box .pro-head {
+    padding: 15px;
+    border-radius: 8px 8px 0 0;
+    background: #fff;
+    border-bottom: 1px solid #e2e7ed;
+}
+.design-theme {
+    border: 1px solid #61d035!important;
+}
+.design-theme .pro-head {
+    background: #61d035!important;
+    color: #fff!important;
+}
+.buildCardmain .buildcard-detail .phases-box .list-box .pro-head h3 {
+    font-size: 20px;
+    padding: 0;
+    margin: 0;
+}
+.buildCardmain .buildcard-detail .phases-box .list-box .pro-mid {
+    padding: 20px 15px;
+    border-bottom: 1px solid #e2e7ed;
+    min-height: 136px;
+}
+.buildCardmain .buildcard-detail .phases-box .list-box .pro-mid > .head {
+    font-size: 16px;
+    margin-bottom: 18px;
+}
+@media (max-width: 768px)
+{
+.buildCardmain .buildcard-detail .phases-box .list-box .pro-mid > .head {
+    font-size: 18px;
+}}
+.buildCardmain .buildcard-detail .phases-box .list-box .pro-mid .plateform-list-block {
+    width: 100%;
+    position: relative;
+}
+.buildCardmain .buildcard-detail .phases-box .list-box .pro-mid .plateform-list-block .Platform-list {
+    width: 80%;
+    overflow: hidden;
+}
+.buildCardmain .buildcard-detail .phases-box .list-box .pro-mid .plateform-list-block .Platform-list ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+}
+.buildCardmain .buildcard-detail .phases-box .list-box .pro-mid .plateform-list-block .Platform-list ul li {
+    margin-right: 32px;
+    text-align: center;
+    display: inline-block;
+    margin-bottom: 5px;
+    display: none;
+}
+.buildCardmain .buildcard-detail .phases-box .list-box .pro-mid .plateform-list-block .Platform-list ul li:first-child, .buildCardmain .buildcard-detail .phases-box .list-box .pro-mid .plateform-list-block .Platform-list ul li:nth-child(2), .buildCardmain .buildcard-detail .phases-box .list-box .pro-mid .plateform-list-block .Platform-list ul li:nth-child(3) {
+    display: inline-block!important;
+}
+.buildCardmain .buildcard-detail .phases-box .list-box .pro-mid .plateform-list-block .Platform-list ul li span {
+    display: block;
+}
+.buildCardmain .buildcard-detail .phases-box .list-box .pro-mid .plateform-list-block .Platform-list ul li span.icons {
+    padding-bottom: 8px;
+}
+@media (max-width: 768px)
+{
+    .buildCardmain .buildcard-detail .phases-box .list-box .pro-mid .plateform-list-block .Platform-list ul li span.icons{
+    padding: 0;
+}}
+.buildCardmain .buildcard-detail .phases-box .list-box .pro-mid .plateform-list-block .Platform-list ul li span.icons img {
+    width: auto;
+    max-height: 33px;
+}
+.mobile-hide {
+    display: block;
+}
+@media (max-width: 768px)
+{
+.mobile-hide {
+    display: none!important;
+}}
+.buildCardmain .buildcard-detail .phases-box .list-box .pro-ftr {
+    padding: 20px 15px;
+}
+.buildCardmain .buildcard-detail .phases-box .list-box .pro-ftr > .head {
+    font-size: 16px;
+    margin-bottom: 18px;
+}
+.buildCardmain .buildcard-detail .phases-box .list-box .pro-ftr .progress-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.buildCardmain .buildcard-detail .phases-box .list-box .pro-ftr .progress-box .progress {
+    width: 80%;
+    height: 4px;
+    border-radius: 2px;
+    margin: 0 0 0 10px;
+}
+.progress-bar {
+    float: left;
+    width: 0;
+    height: 100%;
+    font-size: 12px;
+    line-height: 20px;
+    color: #fff;
+    text-align: center;
+    background-color: #428bca;
+    box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+    transition: width .6s ease;
+}
+.buildCardmain .buildcard-detail .phases-box .list-box .pro-ftr .progress-box .progress .bg-green {
+    background: #00c853;
+}
+.buildCardmain .buildcard-detail .phases-box .list-box .pro-ftr .progress-box .progress .relaxed {
+    width: 0;
+}
+.mvp-theme {
+    border: 1px solid #f5ac42!important;
+}
+.buildCardmain .buildcard-detail .phases-box .list-box:nth-child(2n+2) {
+    margin-right: 0;
+}
+.mvp-theme .pro-head {
+    background: #f5ac42!important;
+    color: #fff!important;
+}
+.full-theme {
+    border: 1px solid #4db9c6!important;
+}
+.full-theme .pro-head {
+    background: #4db9c6!important;
+    color: #fff!important;
+}
+.buildCardmain .buildcard-detail .phases-box .list-box .pro-mid {
+    padding: 20px 15px;
+    border-bottom: 1px solid #e2e7ed;
+    min-height: 136px;
+}
+.buildCardmain .buildcard-detail .phases-box .list-box .pro-mid.btm-bdr-none {
+    border-bottom: 0;
+}
+.buildCardmain .buildcard-detail .phases-box .list-box .pro-mid .mid-txt-block p {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 20px;
+    margin-bottom: 20px;
+}
+.paymentSummary {
+    border-radius: 10px;
+    border: 1px solid #e2e7ed;
+    background-color: rgba(244,247,252,.5);
+    margin-top: 40px;
+    padding: 20px 0;
+    width: 100%;
+    float: left;
+    clear: both;
+}
+@media only screen and (max-width: 767px)
+{
+.paymentSummary {
+    margin-top: 20px;
+    display: none;
+}}
+.paymentSummary h1, .paymentSummary h3 {
+    color: #000;
+}
+.paymentSummary h3 {
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding: 0 20px;
+}
+@media only screen and (max-width: 767px)
+{
+.paymentSummary h3 {
+    font-size: 18px;
+}}
+.paymentSummary h3 .expandicon {
+    float: right;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    text-align: right;
+    justify-content: flex-end;
+    cursor: pointer;
+    display: none;
+}
+@media only screen and (max-width: 767px)
+{
+.paymentSummary h3 .expandicon {
+    display: flex;
+}}
+.paymentSummary h3 .expandicon strong {
+    width: 1px;
+    height: 1px;
+    border-top: 6px solid #0070e0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+}
+.custom-only-xs {
+    display: none;
+    height: 30px;
+    width: 50px;
+    background: #fff;
+    text-align: right;
+}
+.paymentSummary .detailRow {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    margin-bottom: 20px;
+}
+.paymentSummary .detailRow label, .paymentSummary .detailRow p {
+    color: #000;
+    font-size: 16px;
+    line-height: 20px;
+    margin: 0;
+}
+@media only screen and (max-width: 767px)
+{
+.paymentSummary .detailRow label, .paymentSummary .detailRow p {
+    font-size: 14px;
+}}
+.paymentSummary .detailRow p {
+    text-align: right;
+}
+.paymentSummary .applyPromo {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px 20px 0;
+    border-top: 1px solid #e2e7ed;
+}
+.paymentSummary .applyPromo img {
+    position: relative;
+    top: 0;
+    margin-right: 5px;
+    width: 100%;
+    max-width: 22px;
+}
+.paymentSummary .applyPromo button {
+    color: #0070e0;
+    font-size: 14px;
+    outline: none;
+    background: none;
+    border: none;
+}
+@media (max-width: 1200px)
+{
+.paymentSummary .applyPromo button {
+    font-size: 12px;
+}}
+@media (max-width: 992px)
+{
+.paymentSummary .applyPromo button {
+    font-size: 14px;
+}}
+.paymentSummary .additionalService {
+    padding: 20px 20px 0;
+    border-top: 1px solid #e2e7ed;
+    margin-top: 20px;
+}
+@media only screen and (max-width: 767px)
+{
+.paymentSummary .additionalService {
+    display: none;
+}}
+.paymentSummary .additionalService h4 {
+    color: #000;
+    font-size: 16px;
+    margin: 0 0 15px;
+}
+.paymentSummary .additionalService .builderCare {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+}
+.builderCareCheck {
+    display: inline-block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 0;
+    cursor: pointer;
+    font-size: 16px;
+    color: #000;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+@media only screen and (max-width: 767px)
+{
+.builderCareCheck {
+    font-size: 14px;
+    padding-top: 2px;
+}}
+.builderCareCheck input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    border-radius: 50px;
+    background-color: #dedddd;
+}
+.builderCareCheck input:checked ~ .checkmark {
+    background-color: #0070e0;
+}
+.paymentSummary .additionalService .builderCare .builderSelect .info {
+    display: inline-block;
+    margin-left: 5px;
+    position: relative;
+    cursor: pointer;
+}
+.payment-summery {
+    width: 100%;
+    float: left;
+}
+@media (max-width: 768px)
+{
+.payment-summery {
+    background: #fff;
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    padding: 0;
+    box-shadow: none;
+    border-radius: 0;
+}}
+@media (max-width: 768px)
+{
+.payment-summery .mobile-view-bx {
+    width: 100%;
+    float: left;
+    background: #fff;
+    border-radius: 10px 10px 0 0;
+    padding: 15px;
+    box-shadow: 0 0 20px rgba(0,0,0,.2);
+    position: relative;
+    z-index: 9;
+}}
+.payment-summery .total-ammount-block {
+    display: none;
+}
+@media (max-width: 768px)
+{
+.payment-summery .total-ammount-block {
+    display: block;
+}}
+.mobileClickSpace {
+    display: none;
+}
+@media (max-width: 768px)
+{
+.mobileClickSpace {
+    position: absolute;
+    bottom: 11px;
+    z-index: 99999;
+    width: 156px;
+    left: 15px;
+    cursor: pointer;
+    display: block;
+    height: 63px;
+}}
+@media (max-width: 768px)
+{
+.payment-summery .total-ammount-block h3 {
+    color: #000;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 30px;
+    margin: 0;
+}}
+@media (max-width: 768px)
+{
+.payment-summery .total-ammount-block h3 span {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-left: 10px;
+}}
+@media (max-width: 768px)
+{
+.payment-summery .total-ammount-block h3 span img {
+    width: 100%;
+    max-width: 18px;
+}}
+@media (max-width: 768px)
+{
+.payment-summery .total-ammount-block p {
+    color: #000;
+    font-size: 14px;
+    font-weight: 300;
+    margin: 0;
+}}
+.payment-summery .continue-btn {
+    margin-top: 20px;
+}
+@media (max-width: 768px)
+{
+.payment-summery .continue-btn {
+    position: absolute;
+    top: 19px;
+    right: 30px;
+    height: 42px;
+    margin: 0;
+}}
+.start-pro-btn {
+    color: #fff;
+    font-size: 14px;
+    outline: 0;
+    background: #f31597;
+    border: none;
+    border-radius: 5px;
+    display: block;
+    height: 50px;
+    width: 100%;
+    position: relative;
+    padding: 10px 15px;
+    text-transform: uppercase;
+}
+.row:after {
+    clear: both;
+}
+.container::after{
+    clear: both;
+}
+.buildCardmain .buildCardTop .userDropdownMenu {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    box-shadow: 0 5px 10px rgba(0,0,0,.05);
+    background: #fff;
+    width: 180px;
+    border-radius: 10px;
+    border: 1px solid #e2e7ed;
+    z-index: 9;
+}
+.buildCardmain .buildCardTop .userDropdownMenu ul {
+    margin: 0;
+    padding: 0;
+    display: block;
+    width: 100%;
+    overflow: hidden;
+}
+.buildCardmain .buildCardTop .userDropdownMenu ul .dropDownList {
+    list-style: none;
+    padding: 12px 11px;
+    border-bottom: 1px solid #e2e7ed;
+    position: relative;
+    cursor: pointer;
+}
+.buildCardmain .buildCardTop .userDropdownMenu ul .dropDownList em {
+    position: absolute;
+    top: 14px;
+    left: 15px;
+}
+.icon-icondownload:before {
+    font-weight: 900;
+    font-family: "Font Awesome\ 5 Free";
+    font-style: normal;
+    content: "\f019";
+}
+.icon-iconinvite:before {
+    font-weight: 900;
+    font-family: "Font Awesome\ 5 Free";
+    font-style: normal;
+    content: "";
+}
+.icon-icontransfer:before {
+    font-weight: 900;
+    font-family: "Font Awesome\ 5 Free";
+    font-style: normal;
+    content: "";
+}
+.icon-iconshare:before {
+    font-weight: 900;
+    font-family: "Font Awesome\ 5 Free";
+    font-style: normal;
+    content: "";
+}
+.icon-prototype:before {
+    font-weight: 900;
+    font-family: "Font Awesome\ 5 Free";
+    font-style: normal;
+    content: "";
+}
+.buildCardmain .buildCardTop .userDropdownMenu ul .dropDownList span {
+    padding-left: 28px;
+    display: inline-block;
+    font-size: 14px;
+}
+.builderNow p {
+    font-size: 16px;
+    color: rgba(0,0,0,.6) !important;
+    margin: 0 0 15px;
+}
+.builderNow h3 {
+    font-size: 18px;
+    color: #000;
+    margin: 0 0 10px;
+    line-height: 26px;
+    display: block;
+    text-align: center;
+}
+.builderNow .footerButton {
+    width: 100%;
+    float: left;
+    clear: both;
+    display: flex;
+    justify-content: space-between;
+}
+.builderNow .footerButton button {
+    display: block;
+    cursor: pointer;
+    height: 40px;
+    width: calc(50% - 5px);
+    border-radius: 4px;
+}
+.builderNow .footerButton button.cancelButton {
+    background: #e2e3fc;
+    border: 1px solid #8988fd;
+    color: #201aff;
+    text-align: center;
+}
+.builderNow .footerButton button.doneButton {
+    background: #201aff;
+    border: 1px solid #201aff;
+    color: #fff;
+    text-align: center;
+}
+.builderNow {
+    box-sizing: border-box;
+    background: #f9fafc;
+    padding: 30px;
+    width: calc(100% - 30px);
+    max-width: 400px;
+    text-align: center;
+    border-radius: 5px;
+}
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+@media (min-width: 768px){
+.container {
+    width: 750px;
+}}
+@media (min-width: 992px){
+.container {
+    width: 970px;
+}}
+@media (min-width: 1200px){
+.container {
+    width: 1170px;
+}}
+@media only screen and (min-width: 1500px)
+{
+.container {
+    width: 1470px !important;
+}}
+@media (min-width: 992px){
+.col-md-7 {
+    width: 58.33333333%;
+}}
+@media (min-width: 768px){
+.col-sm-12 {
+    width: 100%;
+}}
+.col-xs-12 {
+    width: 100%;
+}
+@media (min-width: 992px){
+.col-md-4 {
+    width: 33.33333333%;
+}}
+.additionalService p{
+    color: black;
+}
+* {
+    box-sizing: border-box;
+}

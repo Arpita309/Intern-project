@@ -126,7 +126,7 @@ class Delivery extends React.Component{
                     </div>
                     <div  className="previewBottom">
                         <div >
-                            <button type="button" className="nextButton"><Link to='#' style={{color:'white'}}> Done </Link></button>
+                            <button type="button" className="nextButton"><Link to='/build-card' style={{color:'white'}}> Done </Link></button>
                         </div>
                         <share-url-button  >
                             <button  type="button" className="shareUrl">

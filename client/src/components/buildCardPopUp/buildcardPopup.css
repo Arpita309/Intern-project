@@ -1,0 +1,75 @@
+.sharingPopup {
+    background: #fff;
+    padding: 0;
+    width: calc(100% - 30px);
+    max-width: 760px;
+}
+.icon-cancel:before {
+    content: "c";
+}
+.sharingPopup .sharingHead {
+    background: url(https://studio.builder.ai/inviteShare.0227c6b2dda6b348ca35.png) no-repeat 50%;
+    font-size: 20px;
+    padding: 40px 30px;
+    color: #fff;
+    text-align: left;
+}
+.sharingPopup .sharingmid {
+    box-sizing: border-box;
+    padding: 30px 60px;
+    width: 100%;
+    float: left;
+    clear: both;
+}
+.sharingPopup .sharingmid .emailCollect {
+    width: 100%;
+    float: left;
+    clear: both;
+}
+.sharingPopup .sharingmid ul {
+    margin: 0;
+    padding: 0;
+}
+.sharingPopup .sharingmid ul li {
+    float: left;
+    width: 100%;
+    clear: both;
+    list-style-type: none;
+}
+.sharingPopup .sharingmid ul li input {
+    box-sizing: border-box;
+    width: 100%;
+    border: 1px solid rgba(19,24,87,.25);
+    background: rgba(38,44,120,.05);
+    border-radius: 3px;
+    height: 35px;
+    font-size: 16px;
+    padding: 3px 10px;
+}
+.sharingPopup .footerButton {
+    box-sizing: border-box;
+    text-align: right;
+    padding: 25px 60px;
+    background: #ecf3f5;
+    width: 100%;
+    float: left;
+    clear: both;
+}
+.sharingPopup .footerButton .cancleButton, .sharingPopup .footerButton .doneButton {
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: middle;
+    height: 36px;
+    line-height: 36px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    font-size: 13px;
+    padding: 0 20px;
+    width: 120px;
+}
+.sharingPopup .footerButton .doneButton {
+    background: #208a20;
+    color: #fff;
+    border-radius: 3px;
+}
