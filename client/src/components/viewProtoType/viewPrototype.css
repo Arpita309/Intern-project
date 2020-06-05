@@ -45,3 +45,8 @@
     font-size: 11px;
     margin: 0 5px 0 0;
 }
+@media (max-width: 768px)
+{
+.hidden-xs {
+    display: none!important;
+}}

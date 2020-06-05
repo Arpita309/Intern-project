@@ -1,0 +1,139 @@
+.requestDemo2 {
+    float: right;
+    position: relative;
+    color: #0070e0;
+    background: none;
+    border: none;
+    padding: 5px 0;
+}
+@media only screen and (max-width: 991px)
+{
+.requestDemo {
+    margin: 13px 10px 0 0;
+    font-size: 12px;
+}}
+@media only screen and (max-width: 768px)
+{
+.requestDemo {
+    background: #0070e0;
+    border-radius: 5px;
+    margin-right: 0;
+    padding: 0;
+    margin-top: 15px;
+}}
+.requestDemo .text {
+    font-size: 12px;
+    display: block;
+    cursor: pointer;
+    font-weight: 700;
+    float: left;
+    position: relative;
+    padding: 7px 12px;
+}
+.requestDemo2 .need-help {
+    padding: 7px 12px;
+    cursor: pointer;
+    background: #0070e0;
+    font-size: 12px;
+    color: #fff;
+    border: 1px solid #0070e0;
+    border-radius: 5px;
+    text-transform: uppercase;
+    margin: -4px 0;
+}
+@media only screen and (max-width: 768px)
+{
+.requestDemo .text {
+    font-size: 11px;
+    padding: 8px 16px;
+    margin: 0;
+    color: #fff;
+}}
+.requestDemo2 .need-help .showDesktopOnly {
+    display: block;
+}
+@media (max-width: 800px)
+{
+.requestDemo2 .need-help .showDesktopOnly {
+    display: none;
+}}
+.requestDemo2 .need-help .showMobileOnly {
+    display: none;
+}
+@media (max-width: 800px)
+{
+.requestDemo2 .need-help .showMobileOnly {
+    display: block;
+    
+}}
+.requestDemo .needhelpdroupdown {
+    position: absolute;
+    right: -20px;
+    z-index: 9;
+    display: none;
+    top: 38px;
+    box-shadow: 0 5px 10px rgba(0,0,0,.05);
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #e6e6e8;
+}
+.requestDemo .needhelpdroupdown ol {
+    padding: 0;
+    margin: 0;
+    float: left;
+    display: block;
+    z-index: 9;
+    width: 260px;
+}
+.requestDemo .needhelpdroupdown ol li {
+    padding: 15px;
+    width: 100%;
+    clear: both;
+    margin: 0;
+    text-align: left;
+    font-size: 13px;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    color: #333;
+    text-transform: none;
+    display: flex;
+    align-items: center;
+}
+.requestDemo .needhelpdroupdown ol li .user-icon-box {
+    height: 40px;
+    width: 40px;
+    background: #f4f7fc;
+    position: relative;
+    border-radius: 50%;
+    line-height: 40px;
+    text-align: center;
+    margin-right: 10px;
+}
+.requestDemo .needhelpdroupdown ol li .user-icon-box em {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    color: #0572e0;
+    font-size: 17px;
+    position: relative;
+    left: 2px;
+    top: 1px;
+}
+.requestDemo .needhelpdroupdown ol li .user-txt {
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 12px;
+}
+.requestDemo .needhelpdroupdown ol li .user-txt .bold-detail {
+    color: #0070e0;
+    display: block;
+    margin-top: 4px;
+}
+.icon-newsales:before {
+    content: "";
+}
+.icon-newexpert:before {
+    content: "";
+}
+.requestDemo .text:hover .needhelpdroupdown {
+    display: block;
+}

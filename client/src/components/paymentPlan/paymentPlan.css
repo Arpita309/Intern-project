@@ -1,0 +1,716 @@
+.paymentSummary {
+    border-radius: 10px;
+    border: 1px solid #e2e7ed;
+    background-color: rgba(244,247,252,.5);
+    margin-top: 40px;
+    padding: 20px 0;
+    width: 100%;
+    float: left;
+    clear: both;
+}
+@media only screen and (max-width: 767px)
+{
+.paymentSummary  {
+    display: block;
+    text-align: left;
+}}
+.paymentContainer:before {
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    position: fixed;
+    z-index: -1;
+    background: #fff;
+}
+.pull-right {
+    float: right!important;
+}
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.paymentSummary h3 {
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding: 0 20px;
+    color: #000;
+}
+@media only screen and (max-width: 767px)
+{
+.paymentSummary h3 {
+    font-size: 18px;
+}}
+.paymentSummary h3 .expandicon {
+    float: right;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    text-align: right;
+    justify-content: flex-end;
+    cursor: pointer;
+    display: none;
+}
+@media only screen and (max-width: 767px)
+{
+.paymentSummary h3 .expandicon {
+    display: flex;
+}}
+.paymentSummary .detailRow p .expand {
+    float: right;
+    width: 15px;
+    height: 20px;
+    margin: 0 0 0 6px;
+    position: relative;
+    cursor: pointer;
+}
+.paymentSummary .detailRow p .expand:before {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 1px;
+    border-top: 7px solid #0070e0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.paymentSummry.dueNow {
+    background: transparent;
+    padding: 20px;
+    margin-top: 20px;
+    
+}
+ 
+@media only screen and (max-width: 767px)
+{
+.paymentSummry.dueNow {
+    background: #fff;
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    padding: 0;
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+}}
+@media only screen and (max-width: 767px)
+{
+.paymentSummry.dueNow .mobilehandling {
+    width: 100%;
+    float: left;
+    background: #fff;
+    border-radius: 10px 10px 0 0;
+    padding: 15px;
+    box-shadow: 0 0 20px rgba(0,0,0,.2);
+    position: relative;
+    z-index: 9;
+}}
+.paymentSummry.dueNow .mobileClick {
+    position: absolute;
+    z-index: 99;
+    width: 100px;
+    height: 70px;
+    left: 0;
+    bottom: 0;
+    cursor: pointer;
+    display: none;
+}
+@media only screen and (max-width: 767px)
+{
+.paymentSummry.dueNow .mobileClick {
+    display: block;
+}}
+.paymentSummry.dueNow .closeButton {
+    position: absolute;
+    z-index: 99;
+    width: 30px;
+    height: 30px;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    display: none;
+}
+@media (max-width: 768px)
+{
+.paymentSummry.dueNow.active .mobilehandling {
+    padding-bottom: 60px;
+}}
+@media only screen and (max-width: 767px)
+{
+.paymentSummry.dueNow.active .mobileClick {
+    display: none;
+}}
+.paymentSummry.dueNow .closeButton {
+    position: absolute;
+    z-index: 99;
+    width: 30px;
+    height: 30px;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    display: none;
+}
+@media only screen and (max-width: 767px)
+{
+.paymentSummry.dueNow.active .closeButton {
+    display: block;
+}}
+.paymentSummry.dueNow .closeButton:before {
+    transform: rotate(45deg);
+}
+.paymentSummry.dueNow .closeButton:after, .paymentSummry.dueNow .closeButton:before {
+    content: "";
+    position: absolute;
+    height: 15px;
+    width: 2px;
+    background: #000;
+    display: block;
+    top: 7px;
+    left: calc(50% - 1px);
+}
+@media only screen and (max-width: 767px)
+{
+.paymentSummry.dueNow .totalContinue .detailRow {
+    margin: 0;
+}}
+.paymentSummry.dueNow .closeButton:after {
+    transform: rotate(-45deg);
+}
+@media only screen and (max-width: 767px)
+{
+.paymentSummry.dueNow.active h3 {
+    margin: 0 0 12px;
+}}
+@media only screen and (max-width: 767px)
+{
+.paymentSummry.dueNow.active .downPayment {
+    display: block;
+    margin: 0 0 15px;
+}}
+@media only screen and (max-width: 767px)
+{
+.paymentSummry.dueNow.active .downPayment .detailRow {
+    margin: 0 0 15px;
+}}
+@media only screen and (max-width: 767px)
+{
+.paymentSummry.dueNow.active .totalContinue .detailRow h3:first-child {
+    display: block;
+}}
+@media only screen and (max-width: 767px)
+{
+.paymentSummry.dueNow .totalContinue .detailRow h3:first-child {
+    display: none;
+}}
+@media only screen and (max-width: 767px)
+{
+.paymentSummry.dueNow.active .totalContinue .detailRow:nth-child(2) {
+    min-height: 60px;
+}}
+@media only screen and (max-width: 767px)
+{
+.paymentSummry.dueNow.active .totalContinue .detailRow .continueBtn {
+    height: 42px;
+    width: 100%;
+    position: relative;
+    right: auto;
+    bottom: auto;
+}}
+.paymentSummry.dueNow h3 {
+    padding: 0;
+}
+.paymentSummry.dueNow .totalContinue .detailRow .continueBtn {
+    color: #fff;
+    font-size: 13px;
+    outline: none;
+    background: #f31597;
+    border: none;
+    border-radius: 5px;
+    display: block;
+    height: 50px;
+    width: 100%;
+    position: relative;
+    
+}
+@media only screen and (max-width: 767px)
+{
+.paymentSummry.dueNow .totalContinue .detailRow .continueBtn {
+    height: 42px;
+    width: 130px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    vertical-align: middle;
+}}
+.paymentSummry.dueNow h3 {
+    padding: 0;
+}
+@media (max-width: 768px)
+{
+.paymentSummry h3.xs-small-head {
+    font-size: 14px;
+    color: #000;
+    padding-bottom: 5px!important;
+}}
+.paymentSummry.dueNow h3 .info {
+    display: inline-block;
+    margin-left: 5px;
+    position: relative;
+    cursor: pointer;
+}
+.paymentSummry.dueNow .downPayment {
+    border-bottom: 1px solid #e2e7ed;
+    margin-bottom: 20px;
+}
+@media only screen and (max-width: 767px)
+{
+.paymentSummry.dueNow .downPayment {
+    display: none;
+}}
+.paymentSummry.dueNow .downPayment .detailRow {
+    padding: 0;
+    position: relative;
+}
+.paymentSummry.dueNow .totalContinue .detailRow {
+    padding: 0;
+}
+@media only screen and (max-width: 767px)
+{
+.paymentSummry.dueNow .totalContinue .detailRow {
+    margin: 0;
+}}
+.paymentSummry {
+    border-radius: 10px;
+    border: 1px solid #e2e7ed;
+    background-color: rgba(244,247,252,.5);
+    margin-top: 40px;
+    padding: 20px 0;
+    width: 100%;
+    float: left;
+    clear: both;
+}
+@media only screen and (max-width: 767px)
+{
+.paymentSummry {
+    margin-top: 20px;
+}}
+.paymentSummry.dueNow h3 {
+    padding: 0;
+    color: black;
+    
+}
+@media (max-width: 768px)
+{
+.paymentSummry h3.xs-small-head {
+ 
+    font-size: 14px;
+    color: #000;
+    padding-bottom: 5px!important;
+}}
+.paymentSummry .detailRow p {
+    color: #000;
+    font-size: 16px;
+    line-height: 20px;
+    margin: 0;
+    text-align: right;
+}
+.paymentContainer .paymentPlan {
+    margin-top: 35px;
+    display: block;
+}
+@media only screen and (max-width: 767px)
+{
+.paymentContainer .paymentPlan {
+    margin-top: 25px;
+}}
+.paymentContainer h1, .paymentContainer h3 {
+    color: #000;
+}
+.paymentContainer h3 {
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+@media only screen and (max-width: 767px)
+{
+.paymentContainer h3 {
+    font-size: 16px;
+}}
+.paymentContainer .paymentPlan .billingCycle .billingCycleMainTab ul.billingCycleMainTabs {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.paymentContainer .paymentPlan .billingCycle .billingCycleMainTab ul.billingCycleMainTabs li {
+    border-radius: 5px;
+    background-color: #f4f7fc;
+    font-size: 16px;
+    min-height: 70px;
+    align-items: center;
+    padding: 0 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    color: #000;
+    width: 145px;
+    text-align: center;
+    margin-right: 15px;
+}
+@media only screen and (max-width: 767px)
+{
+.paymentContainer .paymentPlan .billingCycle .billingCycleMainTab ul.billingCycleMainTabs li {
+    width: 125px;
+    min-height: 50px;
+}}
+.paymentContainer .paymentPlan .billingCycle .billingCycleMainTab ul.billingCycleMainTabs li.active, .paymentContainer .paymentPlan .billingCycle .billingCycleMainTab ul.billingCycleMainTabs li:hover {
+    background-color: #00c852;
+    color: #fff;
+}
+.paymentContainer .paymentPlan .billingCycle .billingCycleMainTab ul.billingCycleMainTabs li:last-child {
+    margin-right: 0;
+}
+.billingheight, .fixHeight {
+    max-height: 450px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: all .3s ease-in-out;
+    padding-right: 10px;
+}
+@media (max-width: 768px)
+{
+.billingheight, .fixHeight {
+    max-height: 100%;
+}}
+.paymentContainer .paymentPlan .billingCycle .billingCycleMainTab .billingCycleContent {
+    padding-right: 10px;
+    margin: 20px 0;
+}
+.paymentContainer .paymentPlan .billingCycle .billingCycleMainTab .billingCycleContent ul.weeklyMonthlyWise {
+    padding: 0;
+    list-style: none;
+}
+.paymentContainer .paymentPlan .billingCycle .billingCycleMainTab .billingCycleContent ul.weeklyMonthlyWise li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #000 !important;
+    font-size: 16px;
+    border-bottom: 1px solid #e2e7ed;
+    padding: 17px 0;
+}
+@media only screen and (max-width: 767px)
+{
+.paymentContainer .paymentPlan .billingCycle .billingCycleMainTab .billingCycleContent ul.weeklyMonthlyWise li {
+    font-size: 13px;
+    padding: 12px 0;
+    display: block;
+}}
+.paymentContainer .paymentPlan .billingCycle .billingCycleMainTab .billingCycleContent ul.weeklyMonthlyWise li label, .paymentContainer .paymentPlan .billingCycle .billingCycleMainTab .billingCycleContent ul.weeklyMonthlyWise li p {
+   color: black;
+    margin: 0;
+}
+.txt-inline p {
+    display: inline-block;
+}
+.txt-inline p:first-child {
+    margin-right: 10px!important;
+}
+.paymentContainer .paymentPlan .billingCycle .billingCycleMainTab .billingCycleContent .hideDetail, .paymentContainer .paymentPlan .billingCycle .billingCycleMainTab .billingCycleContent .viewDetail {
+    color: #0070e0;
+    border: none;
+    background: none;
+    outline: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+@media only screen and (max-width: 767px)
+{
+.paymentContainer .paymentPlan .billingCycleContent ul.weeklyMonthlyWise li p {
+    color: #000;
+}}
+.text-right {
+    text-align: right;
+}
+.paymentContainer .paymentPlan .billingCycle .billingCycleMainTab .billingCycleContent .installmentDetail ul.installmentDetailList {
+    padding: 0;
+    list-style: none;
+}
+.paymentContainer .paymentPlan .billingCycle .billingCycleMainTab .billingCycleContent .installmentDetail ul.installmentDetailList li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #000;
+    font-size: 16px;
+    border-bottom: 1px solid #e2e7ed;
+    padding: 17px 0;
+}
+@media only screen and (max-width: 767px)
+{
+.paymentContainer .paymentPlan .billingCycle .billingCycleMainTab .billingCycleContent .installmentDetail ul.installmentDetailList li{
+    font-size: 13px;
+    padding: 12px 0;
+}}
+.paymentContainer .paymentPlan .billingCycle .billingCycleMainTab .billingCycleContent .installmentDetail ul.installmentDetailList li:last-child {
+    border-bottom: none;
+}
+.paymentContainer .paymentPlan .billingCycle .billingCycleMainTab .billingCycleContent .installmentDetail ul.installmentDetailList li:first-child {
+    border-bottom: 1px solid #e2e7ed;
+}
+.paymentContainer .paymentPlan .billingCycle .billingCycleMainTab .billingCycleContent .installmentDetail ul.installmentDetailList li label, .paymentContainer .paymentPlan .billingCycle .billingCycleMainTab .billingCycleContent .installmentDetail ul.installmentDetailList li p {
+    margin: 0;
+    color:gray;
+}
+.paymentSummry.dueNow .totalContinue p {
+    color: #040404;
+    font-size: 12px;
+    line-height: 18px;
+    opacity: .5;
+    margin: 10px 0 0;
+}
+@media only screen and (max-width: 767px)
+{
+.paymentSummry.dueNow .totalContinue p {
+    display: none;
+}}
+@media only screen and (max-width: 767px)
+{
+.paymentSummary .additionalService.showthis {
+    display: block;
+}}
+.paymentSummary h3 .expandicon.active strong {
+    border-top: none;
+    border-bottom: 6px solid #0070e0;
+}
+.paymentSummary .detailRow p .expand.active:before {
+    border-top: none;
+    border-bottom: 7px solid #00f;
+}
+.secure {
+    color: #000;
+    font-size: 14px;
+    align-items: center;
+    justify-content: flex-start;
+    display: flex;
+    margin: 0 0 0 20px;
+    float: right;
+}
+.secure img {
+    margin-right: 10px;
+    
+}
+.show-xs{
+    margin-left: 450px;
+}
+    @media only screen and (max-width: 768px)
+    {
+    .show-xs{
+       margin-left:230px;
+    }}
+    
+/*price sidebar apply promo*/
+
+.priceSideBar {
+    position: fixed;
+    top: 0;
+    right: -450px;
+    width: 390px;
+    height: 100vh;
+    z-index: 97;
+    transition: all .4s ease-in-out;
+}
+.priceSideBar.active {
+    width: 100vw;
+    right: 0;
+}
+.priceSideBar .priceOverflow {
+    position: absolute;
+    z-index: 1;
+    background: none;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transition: all 0s ease-in-out;
+}
+.priceSideBar.active .priceOverflow {
+    background: rgba(0,0,0,.3);
+    transition: all .3s ease-in-out .4s;
+}
+.priceSideBar .priceBoxHold {
+    width: 390px;
+    height: 100%;
+    background: #fff;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 3;
+    border-radius: 20px 0 0 20px;
+}
+@media only screen and (max-width: 768px)
+{
+.priceSideBar .priceBoxHold {
+    width: 100%;
+}}
+.priceSideBar .priceBoxHold .priceListing {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.priceSideBar .priceBoxHold .priceListing .close-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #0070e0;
+    font-size: 11px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    z-index: 99999;
+    cursor: pointer;
+}
+.icon-cancel:before {
+    content: "c";
+}
+.priceSideBar .priceBoxHold .priceListing .applyPromoBox {
+    padding: 23px 30px 30px;
+    width: 100%;
+    float: left;
+    border-bottom: 1px solid #e2e7ed;
+    box-shadow: 0 10px 20px rgba(0,0,0,.02);
+}
+.priceSideBar .priceBoxHold .priceListing .applyPromoBox h4 {
+    color: #000;
+    display: block;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 34px;
+    margin-top: 0;
+}
+.priceSideBar .priceBoxHold .priceListing .applyPromoBox .pro-box {
+    float: left;
+    width: 100%;
+}
+.priceSideBar .priceBoxHold .priceListing .applyPromoBox .pro-box input {
+    width: calc(100% - 100px);
+    height: 50px;
+    font-size: 16px;
+    color: #333;
+    border-radius: 5px 0 0 5px;
+    border: 1px solid #e2e7ed;
+    float: left;
+    text-align: left;
+    padding: 16px 20px;
+    border-right: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.priceSideBar .priceBoxHold .priceListing .applyPromoBox .pro-box button {
+    width: 100px;
+    height: 50px;
+    float: left;
+    border-radius: 0 5px 5px 0;
+    border: 1px solid #e2e7ed;
+    background: #fff;
+    border-left: 0;
+    cursor: pointer;
+    text-align: center;
+    font-size: 14px;
+    padding: 0;
+    color: #f31597;
+}
+.priceSideBar .priceBoxHold .priceListing .promotionListing {
+    width: 100%;
+    height: calc(100% - 160px);
+    overflow-y: auto;
+    float: left;
+    clear: both;
+    padding: 25px 30px;
+}
+.priceSideBar .priceBoxHold .priceListing .promotionListing h3 {
+    text-align: left;
+    font-size: 16px;
+    color: rgb(66, 66, 66);
+    margin: 0 0 15px;
+}
+.priceSideBar .priceBoxHold .priceListing .promotionListing ul {
+    margin: 0;
+    padding: 0;
+}
+.priceSideBar .priceBoxHold .priceListing .promotionListing ul li {
+    list-style-type: none;
+    display: block;
+    width: 100%;
+    float: left;
+    clear: both;
+    border-bottom: 1px solid #e2e7ed;
+    margin: 0 0 15px;
+    padding: 0 0 15px;
+}
+.priceSideBar .priceBoxHold .priceListing .promotionListing ul li:last-child {
+    margin: 0;
+    border: none;
+}
+.priceSideBar .priceBoxHold .priceListing .promotionListing ul li .promoTag {
+    float: left;
+    height: 40px;
+    margin: 0 0 15px;
+}
+.priceSideBar .priceBoxHold .priceListing .promotionListing ul li .promoTag .promoIcon {
+    height: 40px;
+    float: left;
+    padding: 8px 10px;
+    background: rgba(243,21,151,.05);
+    border: 1px dashed #f31597;
+    border-right: none;
+    border-radius: 6px;
+}
+.priceSideBar .priceBoxHold .priceListing .promotionListing ul li .promoTag .promoIcon img {
+    height: 100%;
+    width: auto;
+}
+.priceSideBar .priceBoxHold .priceListing .promotionListing ul li .promoTag .promoName {
+    height: 40px;
+    min-width: 110px;
+    padding: 9px 10px;
+    float: left;
+    background: rgba(243,21,151,.05);
+    font-size: 14px;
+    color: #000;
+    border: 1px dashed #f31597;
+    border-left: none;
+    border-radius: 6px;
+}
+.priceSideBar .priceBoxHold .priceListing .promotionListing ul li button {
+    float: right;
+    background: #f31597;
+    border-radius: 5px;
+    border: none;
+    width: 100px;
+    height: 40px;
+    margin: 0 0 15px;
+    color: #fff;
+    font-size: 14px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.priceSideBar .priceBoxHold .priceListing .promotionListing ul li p {
+    float: left;
+    width: 100%;
+    clear: both;
+    font-size: 14px;
+    color: #000;
+    text-align: left;
+}

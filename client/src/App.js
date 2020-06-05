@@ -12,6 +12,7 @@ import Welcome from './components/prototypeWelcomePage/prototypeWelcome';
 import Prototype from './components/prototype/prototype';
 import Delivery from './components/deliverables/deliverables';
 import BuildCard from './components/buildCard/buildCard';
+import PaymentPlan from './components/paymentPlan/paymentPlan';
 function App() {
   return (
     <BrowserRouter>
@@ -28,6 +29,7 @@ function App() {
          <Route exact path='/prototype' component={Prototype}/>
          <Route exact path='/delivery' component={Delivery}/>
          <Route exact path='/build-card' component={BuildCard}/>
+         <Route exact path='/payment-plan' component={PaymentPlan}/>
 
        </Switch>
        

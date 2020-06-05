@@ -1076,3 +1076,8 @@ h3{
 * {
     box-sizing: border-box;
 }
+@media (max-width: 768px)
+{
+.only-buildcard .paymentSummary {
+    display: none;
+}}
