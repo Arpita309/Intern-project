@@ -1081,3 +1081,141 @@ h3{
 .only-buildcard .paymentSummary {
     display: none;
 }}
+
+/*buildcard summary*/
+
+.buildcard_summery{
+    position: absolute!important;
+    top: 0;
+    left: 34px;
+    width: 260px;
+    padding: 30px 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,.2);
+    border: 1px solid #e2e7ed;
+    background: #fff;
+    position: relative;
+    border-radius: 10px;
+    z-index: 11;
+}
+.buildcard_summery .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #0070e0;
+    font-size: 10px;
+    cursor: pointer;
+}
+.icon-cancel:before {
+    content: "c";
+}
+.buildcard_summery p {
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: 300;
+    color: #000;
+    margin: 0;
+}
+/* buildcard payment*/
+@media (max-width: 768px)
+{
+.buildcard-payment-bx {
+    position: relative;
+}}
+.buildcard-payment {
+    position: relative;
+}
+@media (max-width: 768px)
+{
+.buildcard-payment {
+    position: fixed;
+    z-index: 99;
+    bottom: 45px;
+    width: 100%;
+    left: 0;
+    display: block !important;
+    background: #fff !important;
+    border-radius: 10px 10px 0 0;
+    border-bottom: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: calc(100vh - 200px);
+}}
+.buildcard-payment .expand, .buildcard-payment .expandicon {
+    display: none!important;
+}
+@media (max-width: 768px)
+{
+.buildcard-payment .icon-cancel, .buildcard-payment .only-buildcard {
+    display: block !important;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}}
+@media (max-width: 768px)
+{
+.buildcard-payment .icon-cancel {
+    font-size: 12px;
+    font-weight: 700;
+    color: #000;
+    cursor: pointer;
+}}
+@media (max-width: 768px)
+{
+.buildcard-payment .costDuration {
+    padding: 0 20px;
+}}
+@media (max-width: 768px)
+{
+.buildcard-payment .costDuration .detailRow {
+    padding: 0 0 20px;
+    border-bottom: 1px solid #e2e7ed;
+}}
+@media (max-width: 768px)
+{
+.buildcard-payment .additionalService, .buildcard-payment .applyPromo {
+    margin: 0 20px;
+    padding: 20px 0;
+}}
+@media (max-width: 768px)
+{
+.buildcard-payment .applyPromo {
+    border-top: none;
+    padding-top: 0;
+}}
+@media (max-width: 768px)
+{
+.buildcard-payment .additionalService {
+    display: block!important;
+}}
+@media (max-width: 768px)
+{
+.buildcard-payment-bx:before {
+    content: " ";
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(0,0,0,.4);
+    z-index: 99;
+}}
+@media (max-width: 768px)
+{
+.buildcard-payment-bx .mobile-view-bx {
+    box-shadow: none;
+    border-radius: 0;
+    border-top-color: #fff;
+}}
+@media (max-width: 768px)
+{
+.buildcard-payment-bx .total-ammount-block {
+    display: none;
+}}
+@media (max-width: 768px)
+{
+.buildcard-payment-bx .continue-btn {
+    position: relative;
+    top: -10px;
+    left: 0;
+    width: 100%;
+}}

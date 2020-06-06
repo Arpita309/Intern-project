@@ -1,0 +1,748 @@
+/*billing details*/
+@media only screen and (max-width: 1200px)
+{
+.paymentContainer {
+    padding: 0 15px;
+}}
+.paymentContainer:before {
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    position: fixed;
+    z-index: -1;
+    background: #fff;
+}
+.paymentContainer .billingDetails {
+    border-bottom: 1px solid #e2e7ed;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+@media only screen and (max-width: 768px)
+{
+.paymentContainer .billingDetails {
+    margin-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}}
+.paymentContainer h1 {
+    color: #000;
+    font-size: 30px;
+    margin: 0 0 20px;
+    align-items: center;
+    justify-content: space-between;
+}
+@media only screen and (max-width: 768px)
+{
+.paymentContainer h1 {
+    font-size: 18px;
+    margin-bottom: 20px;
+}}
+@media only screen and (max-width: 768px)
+{
+.paymentContainer .billingDetails h1 {
+    font-size: 18px;
+    margin-bottom: 20px;
+}}
+.paymentContainer h1 em {
+    color: #0773e0;
+    cursor: pointer;
+    font-size: 22px;
+    float: right;
+    margin: 10px 0 0;
+}
+@media only screen and (max-width: 768px)
+{
+.paymentContainer h1 em {
+    margin: 0;
+}}
+.icon-minus:before {
+    font-weight: 900;
+    font-family: "Font Awesome\ 5 Free";
+    font-style: normal;
+    content: "\f068";
+}
+.icon-plus:before{
+    font-weight: 900;
+    font-family: "Font Awesome\ 5 Free";
+    font-style: normal;
+  content: '\f067';
+}
+.billingheight, .fixHeight {
+    max-height: 450px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: all .3s ease-in-out;
+    padding-right: 10px;
+}
+@media (max-width: 768px)
+{
+.billingheight, .fixHeight {
+    max-height: 100%;
+}}
+.paymentContainer .billingDetails label {
+    color: #000;
+    font-size: 12px;
+    opacity: .5;
+}
+.paymentContainer .billingDetails .inputfield {
+    width: 100%;
+    position: relative;
+    float: left;
+    clear: both;
+    margin-bottom: 20px;
+}
+.paymentContainer .billingDetails .inputfield input {
+    border-radius: 5px;
+    border: 1px solid #e2e7ed;
+    height: 50px;
+    width: 100%;
+    font-size: 16px;
+    color: #000;
+    padding: 0 10px;
+}
+.paymentContainer .billingDetails .usegstin {
+    width: 100%;
+    float: left;
+    clear: both;
+    overflow: hidden;
+    
+}
+.paymentContainer .billingDetails .usegstin input {
+    width: auto;
+    height: auto;
+    position: absolute;
+    z-index: -99;
+    opacity: 0;
+    top: -200px;
+    left: -200px;
+}
+.paymentContainer .billingDetails .usegstin label {
+    color: #000;
+    font-size: 15px;
+    position: relative;
+    line-height: 28px;
+    opacity: 1;
+    cursor: pointer;
+}
+.paymentContainer .billingDetails .usegstin label:before {
+    content: "";
+    width: 25px;
+    height: 25px;
+    float: left;
+    background: rgba(244,247,252,.5);
+    border-radius: 50px;
+    margin: 0 5px 0 0;
+    border: 1px solid #e2e7ed;
+}
+.paymentContainer .billingDetails .usegstin label span {
+    color: rgba(0,0,0,.5);
+}
+.paymentContainer .billingDetails button {
+    background: #0070e0;
+    border-radius: 5px;
+    border: none;
+    height: 50px;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #fff;
+    min-width: 200px;
+    outline: none;
+    margin-top: 10px;
+    position: relative;
+    float: left;
+}
+@media only screen and (max-width: 768px)
+{
+.paymentContainer .billingDetails button {
+    width: 100%;
+}}
+.tooltip-left-arrow {
+    position: absolute;
+    right: -20px;
+    bottom: 0;
+    transform: translateX(100%);
+    color: #f31597;
+    border: 1px solid #f437a6;
+    padding: 16px 17px 15px 13px;
+    max-height: 50px;
+    border-radius: 4px;
+    background-color: #fef3fa;
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: 300;
+    text-transform: none;
+    min-width: 228px;
+    display: none;
+}
+.paymentContainer .billingDetails .input-group {
+    display: flex;
+    justify-content: center;
+    
+}
+.input-group {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+}
+.paymentContainer .billingDetails .input-group .input-group-addon {
+    border: 1px solid #e2e7ed;
+    height: 50px;
+    background: transparent;
+    padding: 0!important;
+    margin: 0 10px 0 0;
+    width: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+.input-group-addon{
+    text-align: left;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    color: #555;
+    text-align: center;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.input-group-addon, .input-group-btn {
+    width: 1%;
+    white-space: nowrap;
+    vertical-align: middle;
+    
+}
+.paymentContainer .billingDetails .input-group .input-group-addon .dropdown {
+    width: 100%;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.paymentContainer .billingDetails .input-group .input-group-addon .dropdown button {
+    width: 100%;
+    padding: 6px;
+    box-shadow: none;
+}
+.dropbtn {
+    background-color: white;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.flag.flag-in {
+    background-position: -64px -66px;
+}
+.paymentContainer .billingDetails .input-group .input-group-addon .dropdown button .arrow-down {
+    margin-left: 10px;
+    border-top: 5px solid #0070e0;
+}
+.arrow-down {
+    display: inline-block;
+    vertical-align: text-top;
+    margin-top: 5px;
+    margin-left: 2px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #444;
+}
+.paymentContainer .billingDetails .input-group input.form-control {
+    border-radius: 5px;
+    border: 1px solid #e2e7ed;
+    height: 50px;
+    width: 100%;
+    font-size: 16px;
+    color: #000;
+    padding: 0 10px;
+    position: relative;
+    box-shadow: none;
+    left: -1px;
+}
+.paymentContainer .contracts {
+    margin-bottom: 30px;
+    position: relative;
+    width: 100%;
+    float: left;
+}
+@media only screen and (max-width: 768px)
+{
+.paymentContainer .contracts {
+    margin: 0;
+}}
+.paymentContainer .contracts .contractListBox {
+    width: 100%;
+    border: 1px solid #e2e7ed;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 0 0 30px;
+    float: left;
+    clear: both;
+}
+.paymentContainer .contracts .contractListBox p {
+    font-size: 12px;
+    line-height: 18px;
+    margin: 0 0 12px;
+    padding: 2px 0 2px 30px;
+    color: #000;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+.paymentContainer .contracts .contractListBox p input {
+    position: absolute;
+    top: -100px;
+    left: -100px;
+    z-index: -9;
+    opacity: 0;
+}
+.paymentContainer .contracts .contractListBox p label {
+    display: flex;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border: 1px solid #cbced1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    border-radius: 40px;
+    cursor: pointer;
+    align-items: center;
+    color: #fff;
+    font-size: 9px;
+    justify-content: center;
+}
+.paymentContainer .contracts .contractListBox p label:before {
+    content: "h";
+}
+.paymentContainer .contracts .contractListBox p span {
+    cursor: pointer;
+    color: #0070e0;
+}
+
+/*payment summary*/
+.paymentSummary {
+    border-radius: 10px;
+    border: 1px solid #e2e7ed;
+    background-color: rgba(244,247,252,.5);
+    margin-top: 40px;
+    padding: 20px 0;
+    width: 100%;
+    float: left;
+    clear: both;
+}
+@media only screen and (max-width: 767px)
+{
+.paymentSummary {
+    margin-top: 20px;
+}}
+.paymentSummary.dueNow {
+    background: transparent;
+    padding: 20px;
+    margin-top: 20px;
+}
+@media only screen and (max-width: 767px)
+{
+.paymentSummary.dueNow {
+    background: #fff;
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    padding: 0;
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+}}
+@media only screen and (max-width: 767px)
+{
+.paymentSummary.dueNow .mobilehandling {
+    width: 100%;
+    float: left;
+    background: #fff;
+    border-radius: 10px 10px 0 0;
+    padding: 15px;
+    box-shadow: 0 0 20px rgba(0,0,0,.2);
+    position: relative;
+    z-index: 9;
+}}
+@media only screen and (max-width: 767px)
+{
+.paymentSummary.dueNow.active:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.4);
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+}}
+.paymentSummary.dueNow .mobileClick {
+    position: absolute;
+    z-index: 99;
+    width: 100px;
+    height: 70px;
+    left: 0;
+    bottom: 0;
+    cursor: pointer;
+    display: none;
+}
+@media only screen and (max-width: 767px)
+{
+.paymentSummary.dueNow .mobileClick {
+    display: block;
+}}
+.mobileClick {
+    float: right;
+    display: none;
+    width: 35px;
+    height: 60px;
+    text-align: center;
+    line-height: 72px;
+    color: #0070e0;
+    font-size: 22px;
+    cursor: pointer;
+    margin: 0 0 0 10px;
+    position: relative;
+}
+@media only screen and (max-width: 768px)
+{
+.mobileClick, .mobuserLogin {
+    display: block;
+}}
+@media (max-width: 768px)
+{
+.paymentSummary.dueNow.active .mobilehandling {
+    padding-bottom: 60px;
+}}
+@media only screen and (max-width: 767px)
+{
+.paymentSummary.dueNow.active .mobilehandling {
+    padding: 15px 15px 0;
+}}
+@media only screen and (max-width: 767px)
+{
+.paymentSummary.dueNow.active .mobileClick {
+    display: none;
+}}
+.paymentSummary.dueNow .closeButton {
+    position: absolute;
+    z-index: 99;
+    width: 30px;
+    height: 30px;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    display: none;
+}
+@media only screen and (max-width: 767px)
+{
+.paymentSummary.dueNow.active .closeButton {
+    display: block;
+}}
+.paymentSummary.dueNow .closeButton:before {
+    transform: rotate(45deg);
+}
+.paymentSummary.dueNow .closeButton:after, .paymentSummary.dueNow .closeButton:before {
+    content: "";
+    position: absolute;
+    height: 15px;
+    width: 2px;
+    background: #000;
+    display: block;
+    top: 7px;
+    left: calc(50% - 1px);
+}
+.paymentSummary.dueNow .closeButton:after {
+    transform: rotate(-45deg);
+}
+.paymentSummary h1, .paymentSummary h3 {
+    color: #000;
+}
+.paymentSummary h3 {
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding: 0 20px;
+}
+@media only screen and (max-width: 767px)
+{
+.paymentSummary h3 {
+    font-size: 18px;
+}}
+@media (max-width: 768px)
+{
+.paymentSummary h3.xs-small-head {
+    font-size: 14px;
+    color: #000;
+    padding-bottom: 5px!important;
+}}
+.paymentSummary.dueNow h3 {
+    padding: 0;
+}
+@media only screen and (max-width: 767px)
+{
+.paymentSummary.dueNow h3 {
+    margin: 0;
+}}
+@media only screen and (max-width: 767px)
+{
+.paymentSummary.dueNow.active h3 {
+    margin: 0 0 12px;
+}}
+.paymentSummary h3 span {
+    margin-right: 5px;
+}
+.paymentSummary.dueNow h3 .info {
+    display: inline-block;
+    margin-left: 5px;
+    position: relative;
+    cursor: pointer;
+}
+.paymentSummary.dueNow .downPayment{
+    border-bottom: 1px solid #e2e7ed;
+    margin-bottom: 20px;
+}
+@media only screen and (max-width: 767px)
+{
+.paymentSummary.dueNow .downPayment {
+    display: none;
+}}
+@media only screen and (max-width: 767px)
+{
+.paymentSummary.dueNow.active .downPayment {
+    display: block;
+    margin: 0 0 15px;
+}}
+.paymentSummary .detailRow {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    margin-bottom: 20px;
+}
+.paymentSummary.dueNow .downPayment .detailRow {
+    padding: 0;
+    position: relative;
+}
+@media only screen and (max-width: 767px)
+{
+.paymentSummary.dueNow.active .downPayment .detailRow {
+    margin: 0 0 15px;
+}}
+.paymentSummary .detailRow label, .paymentSummary .detailRow p {
+    color: #000;
+    font-size: 16px;
+    line-height: 20px;
+    margin: 0;
+}
+@media only screen and (max-width: 767px)
+{
+.paymentSummary .detailRow label, .paymentSummary .detailRow p {
+    font-size: 14px;
+}}
+.paymentSummary.dueNow .downPayment .detailRow .info {
+    display: inline-block;
+    margin-left: 5px;
+    position: relative;
+    cursor: pointer;
+}
+.paymentSummary .detailRow p {
+    text-align: right;
+}
+.paymentSummary.dueNow .totalContinue .detailRow {
+    padding: 0;
+}
+@media only screen and (max-width: 767px)
+{
+.paymentSummary.dueNow .totalContinue .detailRow {
+    margin: 0;
+}}
+@media only screen and (max-width: 767px)
+{
+.paymentSummary.dueNow.active .totalContinue .detailRow {
+    margin: 0 0 15px;
+}}
+.paymentSummary.dueNow .totalContinue .detailRow h3 {
+    margin: 0;
+}
+@media only screen and (max-width: 767px)
+{
+.paymentSummary.dueNow .totalContinue .detailRow h3:first-child {
+    display: none;
+}}
+@media only screen and (max-width: 767px)
+{
+.paymentSummary.dueNow.active .totalContinue .detailRow h3:first-child {
+    display: block;
+}}
+@media only screen and (max-width: 767px)
+{
+.paymentSummary.dueNow.active .totalContinue .detailRow:nth-child(2) {
+    min-height: 60px;
+}}
+.paymentSummary.dueNow .totalContinue p {
+    color: #040404;
+    font-size: 12px;
+    line-height: 18px;
+    opacity: .5;
+    margin: -10px 0 0;
+}
+@media only screen and (max-width: 767px)
+{
+.paymentSummary.dueNow .totalContinue p {
+    display: none;
+}}
+.payNowBtn {
+    font-size: 14px;
+    color: #fff;
+    text-transform: uppercase;
+    height: 50px;
+    border-radius: 5px;
+    background-color: #f31597;
+    outline: none;
+    max-width: 450px;
+    min-width: 450px;
+    border: none;
+}
+.onlyShowDesktop {
+    display: block;
+}
+@media (max-width: 768px)
+{
+.onlyShowDesktop {
+    display: none;
+}}
+.manage-btn .form-group .row .payNowBtn {
+    min-width: auto;
+    width: 100%;
+}
+.paymentSummary .detailRow .specingCompo .payNowBtn {
+    max-width: 100%;
+}
+.onlyShowMobile {
+    display: none;
+}
+@media (max-width: 768px)
+{
+.onlyShowMobile {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: auto!important;
+    padding: 0 20px;
+    display: block;
+}}
+.paymentSummary.dueNow h3 .info .infoBox {
+    width: 290px;
+    min-height: 100px;
+    box-shadow: 0 10px 20px rgba(0,0,0,.02);
+    border-radius: 10px;
+    border: 1px solid #e2e7ed;
+    background-color: #fff;
+    position: absolute;
+    top: 20px;
+    padding: 25px 15px;
+    right: -140px;
+    z-index: 99;
+}
+@media (max-width: 768px)
+{
+.paymentSummary.dueNow h3 .info .infoBox {
+    top: inherit !important;
+    bottom: 37px;
+    right: -173px !important;
+}}
+.paymentSummary.dueNow h3 .info .infoBox ul {
+    padding: 0 12px;
+    margin: 0;
+    list-style: none;
+}
+.paymentSummary.dueNow h3 .info .infoBox {
+    width: 290px;
+    min-height: 100px;
+    box-shadow: 0 10px 20px rgba(0,0,0,.02);
+    border-radius: 10px;
+    border: 1px solid #e2e7ed;
+    background-color: #fff;
+    position: absolute;
+    top: 20px;
+    padding: 25px 15px;
+    right: -140px;
+    z-index: 99;
+}
+.paymentSummary.dueNow h3 .info .infoBox ul {
+    padding: 0 12px;
+    margin: 0;
+    list-style: none;
+}
+.paymentSummary.dueNow h3 .info .infoBox ul li {
+    font-size: 12px;
+    color: #000;
+    line-height: 20px;
+    margin-bottom: 10px;
+}
+.paymentSummary.dueNow h3 .info .infoBox ul li:last-child {
+    margin-bottom: 0;
+}
+.paymentSummary.dueNow h3 .info .infoBox .closeInfo {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: #0070e0;
+    font-size: 11px;
+    cursor: pointer;
+}
+/*downpayment info*/
+.paymentSummary.dueNow .downPayment .detailRow .info .infoBox {
+    width: auto;
+    min-width: 320px;
+    min-height: 50px;
+    box-shadow: 0 10px 20px rgba(0,0,0,.02);
+    border-radius: 10px;
+    border: 1px solid #e2e7ed;
+    background-color: #fff;
+    position: absolute;
+    top: 20px;
+    padding: 10px;
+    right: -110px;
+    z-index: 99;
+}
+@media (max-width: 768px)
+{
+.paymentSummary.dueNow .downPayment .detailRow .info .infoBox {
+    right: inherit;
+    left: -115px;
+    top: -130px;
+}}
+.paymentSummary.dueNow .downPayment .detailRow .info .infoBox ul {
+    padding: 0 12px;
+    margin: 0;
+    list-style: none;
+}
+.paymentSummary.dueNow .downPayment .detailRow .info .infoBox ul li {
+    font-size: 12px;
+    color: #000;
+    line-height: 20px;
+    margin-bottom: 10px;
+}
+.paymentSummary.dueNow .downPayment .detailRow .info .infoBox ul li:last-child {
+    margin-bottom: 0;
+}
+.paymentSummary.dueNow .downPayment .detailRow .info .infoBox .closeInfo {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: #0070e0;
+    font-size: 11px;
+    cursor: pointer;
+}

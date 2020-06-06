@@ -2,11 +2,15 @@ import React from 'react'
 import './paymentPlan.css'
 import NeedHelp from '../needHelp/needHelp'
 
+import{Link} from 'react-router-dom'
+import Footer from '../footer/footer'
+
 class PaymentPlan extends React.Component{
     constructor(props){
         super(props)
         this.state={
-            showDue:false,weekly:false,showDetail:false,showThis:false,expand:false,showSidebar:false
+            showDue:false,weekly:false,showDetail:false,showThis:false,expand:false,showSidebar:false,
+            builderCareinfo:false,builderCloud:false,dueNow:false,downPayment:false
         }
     }
     showdue=()=>{
@@ -17,9 +21,34 @@ class PaymentPlan extends React.Component{
         {
             this.setState({weekly:true})
         }
+        
         else{
             this.setState({weekly:false})
         }
+    }
+    showInfobox=(e)=>{
+        if(e.target.id==1){
+            this.setState({builderCareinfo:true})
+            
+        }
+        else if(e.target.id==2){
+            this.setState({builderCloud:true})
+            
+        }
+        else if(e.target.id==3){
+            this.setState({dueNow:true})
+            
+        }
+        else if(e.target.id==4){
+            this.setState({downPayment:true})
+            
+        }
+        else{
+            this.setState({builderCareinfo:false,builderCloud:false,dueNow:false,downPayment:false})
+            
+            
+        }
+       
     }
     showDetail=()=>{
         this.setState({showDetail:!this.state.showDetail})
@@ -65,7 +94,7 @@ class PaymentPlan extends React.Component{
                                         <div className="priceListing">
                                             <div className="close-btn"><em class="icon-cancel" onClick={this.sidebar}></em></div>
                                             <div className="applyPromoBox"><h4>Apply Promotion</h4>
-                                            <div className="pro-box"><form novalidate="" ><input type="text" maxlength="15" placeholder="Enter coupon code" ></input>
+                                            <div className="pro-box"><form noValidate="" ><input type="text" maxLength="15" placeholder="Enter coupon code" ></input>
                                             <button type="submit"> Apply </button></form></div></div>
                                             <div className="promotionListing">
                                                 <h3>Best Coupons available for you</h3>
@@ -120,15 +149,35 @@ class PaymentPlan extends React.Component{
                                         <h4 >Additional Service</h4>
                                         <div  className="builderCare">
                                             <div  className="builderSelect">
-                                                <label  className="builderCareCheck">Builder Care <input  type="checkbox" name="checkbox" class="check " checked='true'></input><span  className="checkmark"></span></label>
-                                                <div  className="info"><img  src="https://studio.builder.ai/assets/images/info_blue.png" alt=""></img></div>
+                                                <label  className="builderCareCheck" >Builder Care <input  type="checkbox" name="checkbox" class="check " defaultChecked></input><span  className="checkmark"></span></label>
+                                                <div  className="info"  >
+                                                    <img  src="https://studio.builder.ai/assets/images/info_blue.png" alt="" id='1' onClick={(e) => this.showInfobox(e)}></img>
+                                                   {this.state.builderCareinfo? <React.Fragment><div  className="infoBox ">
+                                                        <ul>
+                                                            <li >24/7 support and maintenance for your project year round.</li>
+                                                            <li >On demand cloud support - setup, monitoring, scalability, and migrations.</li>
+                                                            <li>Upgrade your app to support the newer iOS/ Android updates.</li>
+                                                            <li >Technical support for SDK, third party integrations, and upgrades.</li>
+                                                            <li>Support for unexpected bugs, crashes, and security issues.</li>
+                                                        </ul>
+                                                        <em  className="icon-cancel closeInfo" onClick={this.showInfobox}></em></div></React.Fragment>:''}
+                                                    </div>
                                             </div>
                                             <p >₹8,237.37 /Mo</p>
                                         </div>
                                         <div  className="builderCare ">
                                             <div  className="builderSelect">
                                                 <label  className="builderCareCheck">Builder Cloud <input  type="checkbox" name="checkbox" class="check " checked='true'></input><span  className="checkmark"></span></label>
-                                                <div  className="info"><img  src="https://studio.builder.ai/assets/images/info_blue.png" alt=""></img></div>
+                                                <div  className="info">
+                                                    <img  src="https://studio.builder.ai/assets/images/info_blue.png" alt="" id='2' onClick={(e) => this.showInfobox(e)}></img>
+                                                   {this.state.builderCloud?<div  className="infoBox ">
+                                                       <ul >
+                                                           <li ><strong>Commitment-free savings:</strong> our customers saved over $4.5m, last year.</li>
+                                                           <li ><strong >World-class analytics:</strong> Optimise your software and infrastructure.</li>
+                                                           <li ><strong >Best-in-class multicloud:</strong> AWS, Digital Ocean, Azure and more. Just one bill (for a lot less).</li>
+                                                        </ul>
+                                                        <em  className="icon-cancel closeInfo" onClick={this.showInfobox}></em></div>:''}
+                                                    </div>
                                             </div>
                                             <p >₹2,263.93 /Mo</p>
                                         </div>
@@ -139,9 +188,23 @@ class PaymentPlan extends React.Component{
                                     <div  className="mobilehandling">
                                         <div  className="mobileClick" onClick={this.showdue}></div>
                                         <div  className="closeButton" onClick={this.showdue}></div>
-                                        <h3  className="xs-small-head">Due Now <span  className="info"><img  src="https://studio.builder.ai/assets/images/info_blue.png" alt=""></img></span></h3>
+                                        <h3  className="xs-small-head">Due Now <span  className="info">
+                                            <img  src="https://studio.builder.ai/assets/images/info_blue.png" alt="" id='3' onClick={(e) => this.showInfobox(e)}></img>
+                                           {this.state.dueNow? <div className="infoBox">
+                                            <ul >
+                                                <li >This is the amount of money you will pay at the end of checkout to begin your project. Later, you will be able to choose the date when your project begins development.</li>
+                                            </ul><em  className="icon-cancel closeInfo" onClick={this.showInfobox}></em></div>:''}
+                                            </span></h3>
                                         <div  className="downPayment">
-                                            <div className="detailRow"><label> Security Deposit <span  className="info"><img  src="https://studio.builder.ai/assets/images/info_blue.png" alt=""></img></span></label><p > ₹1,39,616.32 </p></div>
+                                            <div className="detailRow"><label> Security Deposit <span  className="info">
+                                                <img  src="https://studio.builder.ai/assets/images/info_blue.png" alt="" id='4' onClick={(e) => this.showInfobox(e)}></img>
+                                               {this.state.downPayment?<div  className="infoBox ">
+                                                    <ul >
+                                                        <li>This is payed up front and reserves your development team to ensure they are ready to start on time.</li>
+                                                        <li>This cost will be refunded at the end of the development process (we will deduct the cost from your final payment).</li>
+                                                    </ul>
+                                                    <em  className="icon-cancel closeInfo" onClick={this.showInfobox}></em></div>:''}
+                                                </span></label><p > ₹1,39,616.32 </p></div>
                                             <div  className="detailRow ">
                                                 <label>Tax (18% GST) </label>
                                                 <p >₹25,130.94</p>
@@ -153,7 +216,7 @@ class PaymentPlan extends React.Component{
                                                 <h3> ₹1,64,747.26</h3>
                                             </div>
                                             <div  className="detailRow">
-                                                <button  type="button" class="continueBtn ">CONTINUE </button>
+                                                <button  type="button" class="continueBtn "><Link to='/billing-details' style={{color:'white'}}>CONTINUE</Link> </button>
                                             </div>
                                             <p >By clicking continue button, you agree with our Terms and Conditions and the related documents will be sent to your registered email address</p>
                                         </div>
@@ -221,6 +284,7 @@ class PaymentPlan extends React.Component{
                         </div>
                     </div>
                 </div>
+                <Footer/>
             </div>
         )
     }

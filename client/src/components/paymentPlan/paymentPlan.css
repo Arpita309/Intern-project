@@ -714,3 +714,140 @@
     color: #000;
     text-align: left;
 }
+
+
+/*builder care infobox*/
+
+.paymentSummary .additionalService .builderCare .builderSelect .info .infoBox {
+    width: 400px;
+    min-height: 100px;
+    box-shadow: 0 10px 20px rgba(0,0,0,.02);
+    border-radius: 10px;
+    border: 1px solid #e2e7ed;
+    background-color: #fff;
+    position: absolute;
+    top: 20px;
+    padding: 25px 15px;
+    right: -50px;
+    z-index: 99;
+}
+@media only screen and (max-width: 767px)
+{
+.paymentSummary .additionalService .builderCare .builderSelect .info .infoBox {
+    position: fixed;
+    bottom: auto;
+    padding: 25px 15px;
+    right: auto;
+    z-index: 99;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    box-shadow: 0 0 150px rgba(0,0,0,.8);
+}}
+@media (max-width: 992px)
+{
+.paymentSummary .additionalService .builderCare .builderSelect .info .infoBox {
+    right: inherit;
+    left: 0;
+}}
+.paymentSummary .additionalService .builderCare .builderSelect .info .infoBox ul {
+    padding: 0 12px 0 20px;
+    margin: 0;
+}
+.paymentSummary .additionalService .builderCare .builderSelect .info .infoBox ul li {
+    font-size: 12px;
+    color: #000;
+    line-height: 20px;
+    margin-bottom: 10px;
+}
+.builderCare .builderSelect .info .infoBox ul li:last-child {
+    margin-bottom: 0;
+}
+.paymentSummary .additionalService .builderCare .builderSelect .info .infoBox .closeInfo {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: #0070e0;
+    font-size: 11px;
+    cursor: pointer;
+}
+
+/*due now infobox*/
+.paymentSummry.dueNow h3 .info .infoBox ul {
+    padding: 0 12px;
+    margin: 0;
+    list-style: none;
+}
+.paymentSummry.dueNow h3 .info .infoBox {
+    width: 290px;
+    min-height: 100px;
+    box-shadow: 0 10px 20px rgba(0,0,0,.02);
+    border-radius: 10px;
+    border: 1px solid #e2e7ed;
+    background-color: #fff;
+    position: absolute;
+    top: 20px;
+    padding: 25px 15px;
+    right: -140px;
+    z-index: 99;
+}
+.paymentSummry.dueNow h3 .info .infoBox ul {
+    padding: 0 12px;
+    margin: 0;
+    list-style: none;
+}
+.paymentSummry.dueNow h3 .info .infoBox ul li {
+    font-size: 12px;
+    color: #000;
+    line-height: 20px;
+    margin-bottom: 10px;
+}
+.paymentSummry.dueNow h3 .info .infoBox ul li:last-child {
+    margin-bottom: 0;
+}
+.paymentSummry.dueNow h3 .info .infoBox .closeInfo {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: #0070e0;
+    font-size: 11px;
+    cursor: pointer;
+}
+
+/*downpayment info*/
+.paymentSummry.dueNow .downPayment .detailRow .info .infoBox {
+    width: auto;
+    min-width: 320px;
+    min-height: 50px;
+    box-shadow: 0 10px 20px rgba(0,0,0,.02);
+    border-radius: 10px;
+    border: 1px solid #e2e7ed;
+    background-color: #fff;
+    position: absolute;
+    top: 20px;
+    padding: 10px;
+    right: -110px;
+    z-index: 99;
+}
+.paymentSummay.dueNow .downPayment .detailRow .info .infoBox ul {
+    padding: 0 12px;
+    margin: 0;
+    list-style: none;
+}
+.paymentSummry.dueNow .downPayment .detailRow .info .infoBox ul li {
+    font-size: 12px;
+    color: #000;
+    line-height: 20px;
+    margin-bottom: 10px;
+}
+.paymentSummry.dueNow .downPayment .detailRow .info .infoBox ul li:last-child {
+    margin-bottom: 0;
+}
+.paymentSummry.dueNow .downPayment .detailRow .info .infoBox .closeInfo {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: #0070e0;
+    font-size: 11px;
+    cursor: pointer;
+}

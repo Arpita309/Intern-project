@@ -37,6 +37,30 @@ class Header  extends React.Component{
                     </div>
                     <div class="mobuserLogin" style={{marginLeft:'5px'}}><em class="icon-usernew" id='1' onClick={(e)=>this.mobUserNav(e)}></em></div>
                     <div class="mobileClick" style={{marginLeft:'5px'}}><em class="icon-hamicon" onClick={(e)=>this.mobUserNav(e)}></em></div>
+                    <div className={`priceSideBar ${this.props.showSidebar?'active':''}`}>
+                                    <div className="priceOverflow"></div>
+                                    <div className="priceBoxHold">
+                                        <div className="priceListing">
+                                            <div className="close-btn"><em class="icon-cancel" onClick={this.props.sidebar}></em></div>
+                                            <div className="applyPromoBox"><h4>Apply Promotion</h4>
+                                            <div className="pro-box"><form noValidate="" ><input type="text" maxLength="15" placeholder="Enter coupon code" ></input>
+                                            <button type="submit"> Apply </button></form></div></div>
+                                            <div className="promotionListing">
+                                                <h3>Best Coupons available for you</h3>
+                                                <ul>
+                                                    <li>
+                                                        <div className="promoTag">
+                                                            <div className="promoIcon"><img src="https://studio.builder.ai/assets/images/logoSmall.png" width="26" height="35"></img></div>
+                                                            <div className="promoName">10percentoff</div>
+                                                        </div>
+                                                        <button type="button">Apply</button>
+                                                        <p>Use above code and get 10% off.<br/> Expires on <strong>December 31, 2020.</strong></p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
                     <div className={`mobNavigation ${this.state.mobUser?'active':''}`}>
                         <div className="mobOverlay"></div>
                         <div className="menuBox">

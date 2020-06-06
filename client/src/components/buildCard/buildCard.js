@@ -9,7 +9,9 @@ class BuildCard extends React.Component{
         super(props)
         this.state={
             dropdown:false,
-            invite:false,share:false,transfer:false,prototype:false
+            invite:false,share:false,transfer:false,prototype:false,
+            builderCloud:false,builderCareinfo:false,showSidebar:false,builderSummary:false,
+            buildcardPayment:false
         }
     }
     showDropdown=()=>{
@@ -29,13 +31,38 @@ class BuildCard extends React.Component{
             this.setState({transfer:!this.state.transfer})
         }
     }
+    showInfobox=(e)=>{
+        if(e.target.id==1){
+            this.setState({builderCareinfo:true})
+            
+        }
+        else if(e.target.id==2){
+            this.setState({builderCloud:true})
+            
+        }
+        else if(e.target.id==3){
+            this.setState({builderSummary:true})
+        }
+        else if(e.target.id==4){
+            this.setState({buildcardPayment:true})
+        }
+        else{
+            this.setState({builderCareinfo:false,builderCloud:false,builderSummary:false,buildcardPayment:false})
+            
+            
+        }
+       
+    }
+    sidebar=()=>{
+        this.setState({showSidebar:!this.state.showSidebar})
+    }
     closePopup=()=>{
         this.setState({invite:false,share:false,transfer:false,prototype:false})
     }
     render(){
         return(
             <div className='wrapper'>
-                <Header/>
+                <Header showSidebar={this.state.showSidebar} sidebar={this.sidebar}/>
                 <div className='middlePart'>
                     <div className='main-buildcard-bx' >
                         <div className='container' style={{width:'1470px'}}>
@@ -54,8 +81,14 @@ class BuildCard extends React.Component{
                                                     </strong>
                                                     <div  className="icon-block">
                                                         <span  className="info">
-                                                            <img  alt="" src="https://studio.builder.ai/assets/images/info_blue.png"></img>
+                                                            <img  alt="" src="https://studio.builder.ai/assets/images/info_blue.png" id='3' onClick={(e)=>this.showInfobox(e)}></img>
                                                         </span>
+                                                       {this.state.builderSummary?<div  className="buildcard_summery">
+                                                            <div  className="close-btn">
+                                                                <em  className="icon-cancel" onClick={this.showInfobox}></em>
+                                                            </div>
+                                                            <p> A buildcard is a summary of your requirements with cost and time estimates.</p>
+                                                        </div>:''}
                                                     </div>
                                                 </h1>
                                             </div>
@@ -378,14 +411,14 @@ class BuildCard extends React.Component{
                                     </div>
                                 </div>
                                 <div className='  col-xs-12 col-md-4 col-sm-12 pull-right'>
-                                    <div className='only-buildcard'>
+                                    <div className={`only-buildcard ${this.state.buildcardPayment?'buildcard-payment-bx':''}`}>
                                         <app-payment-summary>
-                                            <div className='paymentSummary modifypaymnt-summry'>
+                                            <div className={`paymentSummary modifypaymnt-summry ${this.state.buildcardPayment?'buildcard-payment':''}`}>
                                                 <h3>Payment Summary 
                                                     <div  className="expandicon ng-star-inserted">
                                                         <strong></strong>
                                                     </div>
-                                                    <div  className="icon-cancel custom-only-xs"></div>
+                                                    <div  className="icon-cancel custom-only-xs" onClick={this.showInfobox}></div>
                                                 </h3>
                                                 <div  className="costDuration">
                                                     <div  className="detailRow">
@@ -404,7 +437,7 @@ class BuildCard extends React.Component{
                                                     </div>
                                                     <div  className="applyPromo">
                                                         <img  src="https://studio.builder.ai/assets/images/promotion_icon.png" alt=""></img>
-                                                        <button type="button">Apply Promotion </button>
+                                                        <button type="button" onClick={this.sidebar}>Apply Promotion </button>
                                                     </div>
                                                     <div  className="additionalService">
                                                         <h4>Additional Service</h4>
@@ -415,7 +448,16 @@ class BuildCard extends React.Component{
                                                                     <span  className="checkmark"></span>
                                                                 </label>
                                                             <div  className="info">
-                                                                <img  src="https://studio.builder.ai/assets/images/info_blue.png" alt=""></img>
+                                                                <img  src="https://studio.builder.ai/assets/images/info_blue.png" alt="" id='1' onClick={(e) => this.showInfobox(e)}></img>
+                                                                {this.state.builderCareinfo? <React.Fragment><div  className="infoBox ">
+                                                                    <ul>
+                                                                        <li >24/7 support and maintenance for your project year round.</li>
+                                                                        <li >On demand cloud support - setup, monitoring, scalability, and migrations.</li>
+                                                                        <li>Upgrade your app to support the newer iOS/ Android updates.</li>
+                                                                        <li >Technical support for SDK, third party integrations, and upgrades.</li>
+                                                                        <li>Support for unexpected bugs, crashes, and security issues.</li>
+                                                                    </ul>
+                                                                    <em  className="icon-cancel closeInfo" onClick={this.showInfobox}></em></div></React.Fragment>:''}
                                                             </div>
                                                         </div>
                                                         <p>₹6,968.21 /Mo</p>
@@ -427,7 +469,14 @@ class BuildCard extends React.Component{
                                                                 <span  className="checkmark"></span>
                                                             </label>
                                                             <div  className="info">
-                                                                <img  src="https://studio.builder.ai/assets/images/info_blue.png" alt=""></img>
+                                                                <img  src="https://studio.builder.ai/assets/images/info_blue.png" alt="" id='2' onClick={(e) => this.showInfobox(e)}></img>
+                                                                {this.state.builderCloud?<div  className="infoBox ">
+                                                                <ul >
+                                                                    <li ><strong>Commitment-free savings:</strong> our customers saved over $4.5m, last year.</li>
+                                                                    <li ><strong >World-class analytics:</strong> Optimise your software and infrastructure.</li>
+                                                                    <li ><strong >Best-in-class multicloud:</strong> AWS, Digital Ocean, Azure and more. Just one bill (for a lot less).</li>
+                                                                    </ul>
+                                                                    <em  className="icon-cancel closeInfo" onClick={this.showInfobox}></em></div>:''}
                                                             </div>
                                                         </div>
                                                         <p >₹2,259.84 /Mo</p>
@@ -440,12 +489,12 @@ class BuildCard extends React.Component{
                                             <div  className="payment-summery">
                                                 <div  className="mobile-view-bx">
                                                     <div  className="total-ammount-block">
-                                                        <div  className="mobileClickSpace"></div>
-                                                        <h3><strong> ₹ 836,185.00</strong><span><img  alt="" src="https://studio.builder.ai/assets/images/info_blue.png"></img></span></h3>
+                                                        <div  className="mobileClickSpace" id='4' onClick={(e)=>{this.showInfobox(e)}}></div>
+                                                        <h3><strong> ₹ 836,185.00</strong><span><img  alt="" src="https://studio.builder.ai/assets/images/info_blue.png" ></img></span></h3>
                                                         <p><label>Duration</label> 24.0 weeks</p>
                                                     </div>
                                                     <div  className="continue-btn">
-                                                        <button  type="button" className="start-pro-btn">Start Project </button>
+                                                        <button  type="button" className="start-pro-btn"><Link to='/payment-plan' style={{color:'white'}}>Start Project </Link></button>
                                                     </div>
                                                 </div>
                                             </div>
