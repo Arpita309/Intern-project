@@ -8,15 +8,17 @@
     top: 0;
     left: 0;
 }
+
 .platformSidebarOverlay.active {
     display: block;
 }
+
 .platformSidebar {
     position: fixed;
     width: 340px;
     height: 100%;
     top: 0;
-    left: -400px;
+    left: -5px;
     background: #fff;
     border-right: 1px solid #e1e6ec;
     box-shadow: 0 0 30px rgba(0,0,0,.1);
@@ -25,10 +27,26 @@
     z-index: 9999999;
     transition: all .3s ease-in-out;
 }
+@media only screen and (max-width: 768px)
+{
+.platformSidebar {
+    width: 100%;
+    height: calc(100% - 80px);
+    top: auto;
+    left: 0;
+    bottom: -100%;
+    border-radius: 20px 20px 0 0;
+}}
+
 .platformSidebar.active {
     -webkit-animation: platformsidebar .3s ease-in-out forwards;
     animation: platformsidebar .3s ease-in-out forwards;
 }
+@media only screen and (max-width: 768px)
+{
+.platformSidebar.active {
+    bottom: 0;
+}}
 .platformSidebar .topHead {
     position: relative;
     width: 100%;
@@ -54,7 +72,8 @@
 .icon-cancel:before {
     font-weight: 900;
     font-family: "Font Awesome\ 5 Free";
-    content: "c";
+    content: "\f00d";
+    font-style: normal;
 }
 .platformSidebar .platformListing {
     position: relative;

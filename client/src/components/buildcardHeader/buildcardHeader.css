@@ -195,8 +195,8 @@ margin-left: 10px;
 .icon-close:before {
     font-weight: 900;
     font-family: "Font Awesome\ 5 Free";
+    content: "\f00d";
     font-style: normal;
-    content: "";
 }
 .mobileClick {
     float: right;
@@ -435,7 +435,10 @@ margin-left: 10px;
     cursor: pointer;
 }
 .icon-cancel:before {
-    content: "c";
+    font-weight: 900;
+    font-family: "Font Awesome\ 5 Free";
+    content: "\f00d";
+    font-style: normal;
 }
 .priceSideBar .priceBoxHold .priceListing .applyPromoBox {
     padding: 23px 30px 30px;

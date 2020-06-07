@@ -1,0 +1,38 @@
+
+ .slideButton {
+    position: absolute;
+    z-index: 99;
+    width: 30px;
+    height: 30px;
+    color: #333;
+    top: 25px;
+    display: flex;
+    padding: 0;
+    border: none;
+    background: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    cursor: pointer;
+}
+ .slideButton.prevButton {
+    left: -10px;
+}
+.slideButton em {
+    line-height: 11px;
+}
+.icon-prev:before {
+    font-weight: 900;
+    font-family: "Font Awesome\ 5 Free";
+    font-style: normal;
+    content: "\f053";
+}
+.slideButton.nextButton {
+    right: -10px;
+}
+.icon-next:before {
+    font-weight: 900;
+    font-family: "Font Awesome\ 5 Free";
+    font-style: normal;
+    content: "\f054";
+}

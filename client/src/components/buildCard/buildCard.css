@@ -1106,7 +1106,10 @@ h3{
     cursor: pointer;
 }
 .icon-cancel:before {
-    content: "c";
+    font-weight: 900;
+    font-family: "Font Awesome\ 5 Free";
+    content: "\f00d";
+    font-style: normal;
 }
 .buildcard_summery p {
     font-size: 12px;

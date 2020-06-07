@@ -1,6 +1,6 @@
 import React from 'react'
 import './sideBar.css'
-export const  SideBar =()=>{
+export const  SideBar =({close})=>{
     return(
         <React.Fragment>
         <platform-list  className="forMobileNew">
@@ -8,7 +8,7 @@ export const  SideBar =()=>{
         <div  className='platformSidebar active'>
             <div  className="topHead">
                 <h3>Platforms</h3>
-                <div className="closeBar"><em  className="icon-cancel" ></em></div>
+                <div className="closeBar"><em  className="icon-cancel"  onClick={close}></em></div>
             </div>
             <div  className="platformListing">
                 <perfect-scrollbars>

@@ -3,6 +3,7 @@
     float: left;
     width: 100%;
     clear: both;
+    text-align: left;
 }
 .deliveryHolder {
     width: 100%;
@@ -187,21 +188,23 @@
     vertical-align: top;
     transition: all .3s ease-in-out;
 }
-@media only screen and (max-width: 768px)
+
+
+@media only screen and (max-width: 1280px)
 {
 .deliveryHolder .phasesSection .phasesRow .phasesBox {
-    width: 100%;
-    margin: 0 0 15px;
+    width: calc(33.33% - 15px);
 }}
 @media only screen and (max-width: 991px)
 {
 .deliveryHolder .phasesSection .addButton, .deliveryHolder .phasesSection .phasesRow .phasesBox {
     width: calc(50% - 15px);
 }}
-@media only screen and (max-width: 1280px)
+@media only screen and (max-width: 768px)
 {
 .deliveryHolder .phasesSection .phasesRow .phasesBox {
-    width: calc(33.33% - 15px);
+    width: 100% !important;
+    margin: 0 0 15px;
 }}
 .deliveryHolder .phasesSection .phasesRow .phasesBox .phasesHead {
     width: 100%;
@@ -248,7 +251,7 @@
 }}
 .deliveryHolder .phasesSection .phasesRow .phasesBox .phasesHead h3 strong {
    
-    font-weight: 400;
+    font-weight: bold;
     vertical-align: middle;
     display: inline-block;
     padding: 0 5px 0 0;
@@ -262,6 +265,9 @@
     color: rgba(0,0,0,.35);
     margin: 0 5px 0 0;
     line-height: 10px;
+}
+.deliveryHolder .phasesSection .phasesRow .phasesBox.active .phasesHead .mobileDate {
+    display: block;
 }
 .deliveryHolder .phasesSection .phasesRow .phasesBox .phasesHead .mobileDate {
     font-size: 13px;
@@ -394,7 +400,10 @@
     align-items: center;
 }
 .icon-cancel:before {
-    content: "c";
+    font-weight: 900;
+    font-family: "Font Awesome\ 5 Free";
+    content: "\f00d";
+    font-style: normal;
 }
 .phaseInfo .phaseContent h4 {
     font-size: 12px;
@@ -549,8 +558,13 @@
     border-radius: 4px;
     cursor: pointer;
 }
+.deliveryHolder .phasesSection .phasesRowSlider .phaeseRowContent {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
 .deliveryHolder .phasesSection .addButton {
-    width: 80px;
+    width: 80px !important;
     height: 82px;
     float: right;
     background: #fff;
@@ -564,22 +578,41 @@
     cursor: pointer;
     transition: all .3s ease-in-out;
 }
-@media only screen and (max-width: 768px)
+.deliveryHolder .phasesSection .addButton span {
+    font-size: 18px;
+    line-height: 12px;
+    margin: 0 0 0 15px;
+    display: none;
+}
+@media only screen and (max-width: 1280px)
 {
-.deliveryHolder .phasesSection .addButton {
-    width: 100%;
-    margin: 0;
+.deliveryHolder .phasesSection .addButton span {
+    display: block;
+   
 }}
+
 @media only screen and (max-width: 1280px)
 {
 .deliveryHolder .phasesSection .addButton {
-    width: calc(33.33% - 15px);
+    width: calc(33.33% - 15px) !important;
     margin: 0 7px 15px;
     padding: 20px;
     font-size: 18px;
     float: left;
     justify-content: flex-start;
 }}
+@media only screen and (max-width: 991px)
+{
+.deliveryHolder .phasesSection .addButton{
+    width: calc(50% - 15px) !important;
+}}
+@media only screen and (max-width: 768px)
+{
+.deliveryHolder .phasesSection .addButton {
+    width: 100% !important;
+    margin: 0;
+}}
+/*plan delivery*/
 .deliveryHolder .planDelivery {
     width: 100%;
     float: left;
@@ -587,15 +620,15 @@
     padding: 40px;
     background: #f4f7fc;
 }
-@media only screen and (max-width: 768px)
-{
-.deliveryHolder .planDelivery {
-    background: #e8effa;
-}}
 @media only screen and (max-width: 991px)
 {
 .deliveryHolder .planDelivery {
     padding: 20px 15px;
+}}
+@media only screen and (max-width: 768px)
+{
+.deliveryHolder .planDelivery {
+    background: #e8effa;
 }}
 .deliveryHolder .planDelivery h3 {
     font-size: 32px;
@@ -619,7 +652,7 @@
     display: block;
     width: 100%;
 }}
-.hide {
+.rowBoxes .hide {
     display: none!important;
 }
 .teamBox {
@@ -627,16 +660,16 @@
     margin: 0 20px 0 0;
     width: 350px;
 }
+@media only screen and (max-width: 991px)
+{
+.teamBox {
+    width: calc(50vw - 30px);
+}}
 @media only screen and (max-width: 768px)
 {
 .teamBox {
     width: 100%;
     margin: 0 0 20px;
-}}
-@media only screen and (max-width: 991px)
-{
-.teamBox {
-    width: calc(50vw - 30px);
 }}
 .teamBox h4 {
     color: #000;
@@ -670,16 +703,16 @@
     background: #fff;
     padding: 20px;
 }
+@media only screen and (max-width: 991px)
+{
+.speedBox {
+    width: calc(50vw - 30px);
+}}
 @media only screen and (max-width: 768px)
 {
 .speedBox {
     width: 100%;
     margin: 0;
-}}
-@media only screen and (max-width: 991px)
-{
-.speedBox {
-    width: calc(50vw - 30px);
 }}
 .speedBox h4 {
     color: #000;
@@ -699,21 +732,23 @@
     z-index: 99;
 }
 .deliveryHolder .planDelivery .planDates {
-    float: right;
+    float: right !important;
     margin: 20px 0;
 }
 @media only screen and (max-width: 991px)
 {
 .deliveryHolder .planDelivery .planDates, .deliveryHolder .planDelivery .planDates p {
-    float: left;
+    float: left !important;
 }}
 .deliveryHolder .planDelivery .planDates p {
+    color:#333;
     margin: 2px 0;
     font-size: 16px;
-    float: right;
+    float: right !important;
     position: relative;
     clear: both;
 }
+
 .deliveryHolder .planDelivery .planDates p strong {
     color: #eb2f96;
 }
@@ -736,10 +771,16 @@
     justify-content: center;
     align-items: center;
 }
-.icon-infonew:before {
-    content: '"';
+.deliveryHolder .planDelivery .planDates p .infoIcon .infoOverlay {
+    position: fixed;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999991;
 }
-.deliveryHolder .planDelivery .planDates p .infoIcon .infoContent {
+.deliveryHolder .planDelivery .planDates p .infoIcon .infoContent{
     position: absolute;
     z-index: 99;
     bottom: calc(100% + 5px);
@@ -753,6 +794,10 @@
     padding: 20px;
     width: 300px;
     display: none;
+}
+.deliveryHolder .planDelivery .planDates p .infoIcon .infoContent.active {
+    display: block;
+    z-index: 99998;
 }
 .deliveryHolder .planDelivery .planDates p .infoIcon .infoContent .icon-cancel {
     position: absolute;
@@ -770,15 +815,14 @@
 .deliveryHolder .planDelivery .planDates p .infoIcon .infoContent u {
     color: #0070e0;
 }
-.deliveryHolder .planDelivery .planDates p:last-child strong {
-    color: #000;
-}
+/* additional services*/
 .deliveryHolder .additionalServices {
     width: 100%;
     float: left;
     clear: both;
     padding: 40px;
     background: #fff;
+    text-align: left;
 }
 @media only screen and (max-width: 991px)
 {
@@ -786,11 +830,18 @@
     padding: 20px 15px;
 }}
 .deliveryHolder .additionalServices h2 {
-
+    text-align: left;
+    font-weight: bold;
     font-size: 32px;
     margin: 0 0 15px;
     color: #000;
 }
+@media only screen and (max-width: 991px)
+{
+.deliveryHolder .additionalServices h2 {
+    font-size: 24px;
+    margin: 0 0 15px;
+}}
 .deliveryHolder .additionalServices .rowBoxes {
     display: flex;
     width: 100%;
@@ -806,6 +857,13 @@
     display: flex;
     flex-wrap: wrap;
 }
+@media only screen and (max-width: 768px)
+{
+.deliveryHolder .additionalServices .rowBoxes .serviceBox {
+    width: 100%;
+    padding: 20px;
+    margin: 0 0 20px;
+}}
 @media only screen and (max-width: 768px)
 {.deliveryHolder .additionalServices .rowBoxes {
     flex-wrap: wrap;
@@ -914,7 +972,10 @@
     border-radius: 50px;
     background: #0070e0;
     color: #fff;
-    content: "I";
+    font-weight: 900;
+    font-family: "Font Awesome\ 5 Free";
+    font-style: normal;
+    content: "\f054";
     font-size: 8px;
     display: flex;
     justify-content: center;
@@ -981,6 +1042,7 @@
 .deliveryBottomBar.active {
     bottom: 0;
 }
+/* bottombar*/
 .appBottomBar {
     float: left;
     position: fixed;
@@ -1206,3 +1268,5 @@ button.shareUrl {
 button.shareUrl {
     margin: 0 0 0 10px;
 }}
+
+

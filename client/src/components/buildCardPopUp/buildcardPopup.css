@@ -5,7 +5,10 @@
     max-width: 760px;
 }
 .icon-cancel:before {
-    content: "c";
+    font-weight: 900;
+    font-family: "Font Awesome\ 5 Free";
+    content: "\f00d";
+    font-style: normal;
 }
 .sharingPopup .sharingHead {
     background: url(https://studio.builder.ai/inviteShare.0227c6b2dda6b348ca35.png) no-repeat 50%;

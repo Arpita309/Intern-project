@@ -580,7 +580,10 @@
     cursor: pointer;
 }
 .icon-cancel:before {
-    content: "c";
+    font-weight: 900;
+    font-family: "Font Awesome\ 5 Free";
+    content: "\f00d";
+    font-style: normal;
 }
 .priceSideBar .priceBoxHold .priceListing .applyPromoBox {
     padding: 23px 30px 30px;
