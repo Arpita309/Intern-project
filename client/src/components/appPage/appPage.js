@@ -23,6 +23,7 @@ class AppPage extends React.Component{
         this.state={
            isOpen:false,
            data:[],
+           app:[],
            search:'',
            filterData:[
                {"inputId":"cat6","label":"Art & Design (2)"},
@@ -88,7 +89,10 @@ class AppPage extends React.Component{
             const data = res.data;
             this.setState({ data });
           })
+          
+          
       }
+      
         
       
       
@@ -180,7 +184,7 @@ class AppPage extends React.Component{
 function valuetext(value) {
     return `${value}`;
   }
-       
+      
      
              return (
             <div>

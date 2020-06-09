@@ -16,8 +16,8 @@ mongoose.Promise = require('bluebird');
 
 const question = require('./models/question');
 const questionRouter=require('./routes/questionRouter')
-const appRouter=require('./routes/approuter');
-
+const appPageRouter=require('./routes/approuter');
+const appsRouter =require('./routes/appsRouter')
 const app = express();
 app.use(cors())
 app.use(morgan('dev'));
@@ -41,7 +41,8 @@ connect.then((db) => {
 
 
 app.use('/question-row',questionRouter);
-app.use('/app-row',appRouter);
+app.use('/app-row',appPageRouter);
+app.use('/apps',appsRouter);
 /*app.use((req, res, next) => {
 
 

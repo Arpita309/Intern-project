@@ -4,6 +4,7 @@ import Popup from '../buildCardPopUp/buildcardPopup'
 import {Link} from'react-router-dom'
 import Header from '../buildcardHeader/buildcardHeader'
 import Footer from '../footer/footer'
+import axios from 'axios'
 class BuildCard extends React.Component{
     constructor(props){
         super(props)
@@ -11,8 +12,16 @@ class BuildCard extends React.Component{
             dropdown:false,
             invite:false,share:false,transfer:false,prototype:false,
             builderCloud:false,builderCareinfo:false,showSidebar:false,builderSummary:false,
-            buildcardPayment:false
+            buildcardPayment:false,app:[]
         }
+    }
+    componentDidMount(){
+        axios.get(`http://localhost:4000/apps/?slug=facebook`)
+          .then(res => {
+            const app = res.data;
+            this.setState({ app });
+          })
+          
     }
     showDropdown=()=>{
         this.setState({dropdown:!this.state.dropdown})
@@ -59,7 +68,9 @@ class BuildCard extends React.Component{
     closePopup=()=>{
         this.setState({invite:false,share:false,transfer:false,prototype:false})
     }
+    
     render(){
+       
         return(
             <div className='wrapper'>
                 <Header showSidebar={this.state.showSidebar} sidebar={this.sidebar}/>

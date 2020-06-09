@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 require('mongoose-currency').loadType(mongoose);
 const Currency = mongoose.Types.Currency;
 
-const AppSchema = new Schema({
+const AppsSchema = new Schema({
     h3: {
         type: String,
         required: true
@@ -33,6 +33,6 @@ const AppSchema = new Schema({
     
     
 });
-var AppRows = mongoose.model('AppRow', AppSchema);
+var AppRows = mongoose.model('AppRow', AppsSchema);
 
 module.exports = AppRows;
