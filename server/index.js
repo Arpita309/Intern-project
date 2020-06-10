@@ -14,14 +14,23 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 
-const question = require('./models/question');
+
 const questionRouter=require('./routes/questionRouter')
 const appPageRouter=require('./routes/approuter');
-const appsRouter =require('./routes/appsRouter')
+const appsRouter =require('./routes/appsRouter');
+const productTypeRouter=require('./routes/productTypeRouter')
+const ApplicationsRouter=require('./routes/applicationRouter')
+const TrendingAppsRouter=require('./routes/trendingRouter')
 const app = express();
 app.use(cors())
 app.use(morgan('dev'));
-app.use(bodyParser.json());
+//app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  limit: "5mb",
+  extended: false
+}));
+
+app.use(bodyParser.json({ limit: '5mb' }));
 
 app.use(express.static(__dirname + '/public'));
 //const MongoClient = require('mongodb').MongoClient;
@@ -43,6 +52,9 @@ connect.then((db) => {
 app.use('/question-row',questionRouter);
 app.use('/app-row',appPageRouter);
 app.use('/apps',appsRouter);
+app.use('/product-type',productTypeRouter);
+app.use('/applications',ApplicationsRouter);
+app.use('/trending',TrendingAppsRouter)
 /*app.use((req, res, next) => {
 
 

@@ -2,12 +2,34 @@ import React from 'react'
 import './app-list.css'
 import Divider from '@material-ui/core/Divider';
 import {Link} from 'react-router-dom'
-
-
-const AppList=()=>{
+import axios from 'axios'
+import Loader from '../questionSectionLoader/loaderbox'
+class AppList extends React.Component{
+    constructor(props){
+        super(props)
+        this.state={
+            data:[],
+            isLoading:true,
+            times:6
+        }
+    }
+    componentDidMount() {
+        
+        axios.get(`http://localhost:4000/applications`)
+          .then(res => {
+            const data = res.data;
+            this.setState({data,isLoading:false });
+          })
+          
+          
+      }
+    render(){
+        
     return(
+        this.state.isLoading?<Loader times={this.state.times}/>:
         <div className='app-list'>
             <div className='sectionContent'>
+                
                 <div className='leftside'>
                     <h3>Try selecting similar apps to your idea. <img _ngcontent-serverapp-c118="" src="https://studio.builder.ai/assets/images/smile1.png" width="37" height="38" alt=""></img></h3>
                     <p >This will allow us to understand your idea better.</p>
@@ -25,23 +47,32 @@ const AppList=()=>{
                 </div>
             </div>
             <div className='appListRow'>
-                <div className='appListBox'>
-                   <h3>Uber</h3>
-                   <p>A mobile application using GPS and location-based services to connect drivers and passengers who want to use taxi services. Offers in-app payment and tracking abilities.</p>
-                   <span> <input type='checkbox' className='tickBox'></input><img  width="96" height="96" alt="" src="https://duj87royd3ze0.cloudfront.net/uploads/application/app_builder_icon/57e0aff95cba2a27d6af2796/Icon_Uber1.svg"></img></span>
-                   
-                   <div className='appListFooter'>
-                  
-                       <div>
-                            <div className='appPrice'>
-                                <span >Price</span>
-                                <strong >₹548 K</strong>
-                            </div>
-                            <a  target="_blank" class="btn apps-detailbtn" href="http://localhost:3000/apps/Uber"> View Details </a>
-                       </div>
-                   </div>
+            {this.state.data.map(value=>{
+                   return(value.section_details.map(info=>{
+                                return(
+                                    <div  key={info._id} className='appListBox'>
+                                    <h3>{info.title}</h3>
+                                    <p>{info.description}</p>
+                                    <span> <input type='checkbox' className='tickBox'></input><img  width="96" height="96" alt="" src={info.icon}></img></span>
+                                    
+                                    <div className='appListFooter'>
+                                
+                                        <div>
+                                            <div className='appPrice'>
+                                                <span >Price</span>
+                                                <strong >₹548 K</strong>
+                                            </div>
+                                            <a  target="_blank" class="btn apps-detailbtn" href="http://localhost:3000/apps/Uber"> View Details </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                )
+                   })
+                    
+                   )
+                })}
                 </div>
-                <div className='appListBox'>
+                {/*<div className='appListBox'>
                    <h3>Snapchat</h3>
                    <p>Offer multimedia sharing and messaging between users. These interactions are only available for a short time, making it ideal for fast and instant communication.</p>
                    <span> <input type='checkbox' className='tickBox'></input><img  width="96" height="96" alt="" src="https://duj87royd3ze0.cloudfront.net/uploads/application/app_builder_icon/57e0aff95cba2a27d6af2798/snapchat_1.svg"></img></span>
@@ -121,10 +152,10 @@ const AppList=()=>{
                        </div>
                    </div>
                 </div>
-            </div>
+            </div>*/}
 
         </div>
-    )
+    )}
 }
 
 export default AppList;

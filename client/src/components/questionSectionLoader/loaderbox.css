@@ -1,0 +1,25 @@
+ .bLoader {
+    width: 100%;
+    float: left;
+    clear: both;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 25px;
+}
+ .bLoader .loaderBox {
+    width: calc(33.33% - 30px);
+    min-height: 250px;
+    margin: 15px;
+    background: #fff;
+    box-shadow: 0 0 10px 1px rgba(33,33,33,.1);
+    border-radius: 12px;
+    padding: 25px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+ .bLoader .loaderBox img {
+    width: 30px;
+    height: auto;
+}

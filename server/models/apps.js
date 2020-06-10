@@ -9,14 +9,14 @@ const Feature_screenshot=new Schema({
     ios:{type:String},
     web:{type:String},
     android:{type:String}
-})
+},{_id:false})
 const Screenshot=new Schema({
-    id:{type:String},
+    id:Number,
         file_url:{type:String},
         file_name:{type:String}
 })
 const Bundles=new Schema({
-    id:{type:String},
+    id:Number,
         title:{type:String},
         total_features_price:{type:Currency},
         total_features_week:{type:Number},
@@ -25,10 +25,7 @@ const Bundles=new Schema({
 })
 const FeatureSchema = new Schema({
    
-    id:{
-        type:String,
-        required:true
-    },
+    id:Number,
     title:{
         type:String,
         required:true
@@ -63,7 +60,7 @@ const FeatureSchema = new Schema({
 
 const AppInfoSchema = new Schema({
    
-    id:{type:String,required:true},
+    id:Number,
     title:{type:String,required:true},
     description:{type:String},
     precedence:{type:Number},
