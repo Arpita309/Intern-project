@@ -1,0 +1,149 @@
+/* bottombar homepage*/
+
+
+.newHomeFooterbar {
+    width: 100%;
+    float: left;
+    clear: both;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background: #fff;
+    z-index: 999;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 0 10px 1px rgba(33,33,33,.1);
+    transition: all .6s ease-in-out;
+}
+.newHomeFooterbar.hideBottomPipe {
+    bottom: -110px;
+    transition: all .6s ease-in-out;
+}
+@media only screen and (max-width: 768px)
+{
+.newHomeFooterbar {
+    padding: 15px;
+    display: block;
+    height: 80px;
+}}
+
+.bottomSelectFeature-toggle {
+    width: 50px;
+    height: 50px;
+    display: block;
+    text-align: center;
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%) rotate(90deg);
+    box-shadow: 0 5px 14px hsla(0,0%,66.7%,.25);
+    border-radius: 50%;
+    background-color: #fff;
+    cursor: pointer;
+    transition: all .6s ease-in-out;
+}
+.newHomeFooterbar.hideBottomPipe .bottomSelectFeature-toggle {
+    top: -70px;
+    transform: translateX(-50%) rotate(-90deg);
+    transition: all .6s ease-in-out;
+}
+.bottomSelectFeature-toggle:before {
+	font-family:"Font Awesome\ 5 Free";
+	font-weight: 900;
+    content: "\f054";
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    border-radius: 50%;
+    color: #0070df;
+    font-size: 18px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 24px;
+    z-index: 2;
+}
+@media only screen and (max-width: 991px)
+{
+.bottomSelectFeature, .bottomSelectFeature-toggle {
+    display: none;
+}}
+@media only screen and (max-width: 768px)
+{
+.newHomeFooterbar .leftSide {
+    width: 100%;
+    clear: both;
+    display: none;
+}}
+.newHomeFooterbar .leftSide {
+    float: left;
+}
+.newHomeFooterbar .leftSide h3 {
+    font-size: 28px;
+    margin: 0 0 5px;
+    color: #000;
+    line-height: normal;
+}
+@media only screen and (max-width: 768px)
+{
+.newHomeFooterbar .leftSide h3 {
+    font-size: 22px;
+    margin: 0 0 2px;
+}}
+.newHomeFooterbar .leftSide p {
+    font-size: 14px;
+    margin: 0;
+    color: #637282;
+}
+@media only screen and (max-width: 768px)
+{
+.newHomeFooterbar .leftSide p {
+    font-size: 12px;
+    margin: 0 0 8px;
+}}
+.newHomeFooterbar .leftSide p span {
+    color: #000;
+}
+.newHomeFooterbar.hideBottomPipe .rightSide {
+    top: -65px;
+    transition: all .6s ease-in-out;
+}
+.newHomeFooterbar .rightSide {
+    transition: all .6s ease-in-out;
+    position: absolute;
+    top: 35px;
+    right: 110px;
+}
+@media only screen and (max-width: 768px)
+{
+.newHomeFooterbar .rightSide {
+    width: 100%;
+    clear: both;
+    left: 15px;
+    top: 22px;
+}}
+.newHomeFooterbar .rightSide .viewAll {
+    position: relative;
+    float: right;
+    margin: 0;
+    background: #f31597;
+    color: #fff;
+    border-radius: 3px;
+    height: 40px;
+    padding: 10px 30px;
+    box-shadow: 0 3px 6px rgba(0,112,224,.1);
+    overflow: hidden;
+    font-size: 14px;
+    cursor: pointer;
+    white-space: nowrap;
+    text-transform: uppercase;
+}
+@media only screen and (max-width: 768px)
+{
+.newHomeFooterbar .rightSide .viewAll {
+    float: left;
+}}

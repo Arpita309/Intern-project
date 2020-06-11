@@ -327,6 +327,16 @@ input[type=checkbox] {
     border-radius: 2px;
     transition: all .3s ease-in-out;
 }
+.templateSection .templateTop .templateToolbar .templateFilter .filterItemBox .filterItemHolder .filterSection .filterRow ul li input:checked+label:before {
+    background: #208a20;
+    border: 1px solid #208a20;
+    font-family: "Font Awesome\ 5 free";
+    font-weight: 900;
+    content: "\f00c";
+    color: #fff;
+    font-size: 10px;
+    text-align: center;
+}
 .templateSection .templateTop .templateToolbar .templateFilter .filterItemBox .filterItemHolder .filterSection .filterRow .moreButton {
     background: none;
     border: none;

@@ -10,7 +10,7 @@ class AppTrending extends React.Component{
         this.state={
             info:[],
             isLoading:true,
-            times:4
+            times:3
         }
     }
     componentDidMount() {
@@ -25,7 +25,7 @@ class AppTrending extends React.Component{
       }
         render() {
             return (
-                this.state.isLoading?<Loader times={this.state.times}/>:
+                
                     <div className='displaySection' style={{order:'3'}}>
                         <div className='trendingSection'>
                             {this.state.info.map(value=>{
@@ -43,16 +43,18 @@ class AppTrending extends React.Component{
                                   
                                 
                             })}
-                            
+                                          {this.state.isLoading?<Loader times={this.state.times}/>:
                                             <div className='trendingItemrow' > 
                                             <div className='drag-scroll-content'style={{display: 'block', whiteSpace: 'nowrap', width: '100%', height: `calc(100% + 20px)`}}>
                                                 <Slider>
                                                 {this.state.info.map(value=>{
-                                                    return(
+                                                 return(
                                                         value.section_details.map(detail=>{
                                                            
                                                             return(
-                                                        
+                                                                
+                                                               
+                                                               
                                                             <div key={value} className='child'>
                                                                 <div className='trendingItembox' style={{display:'inline-block'}}>
                                                                     <div className='trendingItemImage'>
@@ -76,7 +78,7 @@ class AppTrending extends React.Component{
                                                     })}
                                                 </Slider>
                                             </div> 
-                                        </div>  
+                                                </div>  }
                                         
                         </div>
                      </div>

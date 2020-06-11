@@ -12,12 +12,12 @@
     width: 100%;
     float: left;
     clear: both;
-    padding: 30px 25px;
+    padding: 40px 25px;
 }
 @media only screen and (max-width: 1199px)
 {
 .problemSection {
-    padding: 20px 0;
+    padding: 50px 0;
 }}
 .problemSection .sectionContent {
     padding: 0 15px;

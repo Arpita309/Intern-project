@@ -29,7 +29,7 @@ class QuestionType extends React.Component{
       }
         render() {
             return (
-                this.state.isLoading?<Loader times={this.state.times}/>:
+               
                 
                     <div className='displaySection' style={{order:'4'}}>
                         <div className='questionSection'>
@@ -50,6 +50,7 @@ class QuestionType extends React.Component{
                                     </div>
                                 </div>
                             </div>
+                            {this.state.isLoading?<Loader times={this.state.times}/>:
                             <div className='questionRow'> 
                                 <div className='drag-scroll-content'style={{display: 'block', whiteSpace: 'nowrap', width: '100%', height: `calc(100% + 17px)`}}>
                                     <Slider>
@@ -58,6 +59,7 @@ class QuestionType extends React.Component{
                                             return (
                                                 value.section_details.map(info=>{
                                                     return(
+                                                      
                                                         <div key={info.id} className='child'>
                                                     
                                                         <div className= {`questionbox ${this.state.checked ? 'completed': '' }`} style={{display:'inline-block'}}  onClick={this.toggleClass}>
@@ -87,7 +89,7 @@ class QuestionType extends React.Component{
                                         })}
                                     </Slider>
                                 </div> 
-                            </div>  
+                                    </div>}  
                         </div>
                      </div>
             );

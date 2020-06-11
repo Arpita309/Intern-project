@@ -107,6 +107,8 @@
 }}
 .app-list .sectionContent .rightSide .searchApps input {
     
+    width: 280px;
+    height: 40px;
     background: #fff;
     border: none;
     box-shadow: 0 0 10px rgba(0,0,0,.1);
@@ -256,7 +258,8 @@
     font-size: 14px;
 }}
 
-.app-list .appListRow .appListBox .tickBox {
+
+ .appListRow .appListBox .tickBox {
     float: left;
     margin: 50px 0 20px;
     width: 30px;
@@ -266,8 +269,17 @@
     line-height: 30px;
     background: #fff;
     border-radius: 100px;
-    -webkit-appearance: none;
-    
+}
+ .appListRow .appListBox.active .tickBox:before {
+    font-family: "Font Awesome\ 5 Free";
+    font-weight: 900;
+    content: "\f00c";
+}
+ .appListRow .appListBox.active .tickBox {
+    background: #00c853;
+    border: none;
+    font-size: 16px;
+    color: #fff;
 }
 .app-list .appListRow .appListBox .tickBox:checked {
    

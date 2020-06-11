@@ -16,7 +16,7 @@ mongoose.Promise = require('bluebird');
 
 
 const questionRouter=require('./routes/questionRouter')
-const appPageRouter=require('./routes/approuter');
+const CategoryRouter=require('./routes/categoryRouter');
 const appsRouter =require('./routes/appsRouter');
 const productTypeRouter=require('./routes/productTypeRouter')
 const ApplicationsRouter=require('./routes/applicationRouter')
@@ -50,7 +50,7 @@ connect.then((db) => {
 
 
 app.use('/question-row',questionRouter);
-app.use('/app-row',appPageRouter);
+app.use('/categories',CategoryRouter);
 app.use('/apps',appsRouter);
 app.use('/product-type',productTypeRouter);
 app.use('/applications',ApplicationsRouter);

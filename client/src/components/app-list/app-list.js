@@ -10,7 +10,8 @@ class AppList extends React.Component{
         this.state={
             data:[],
             isLoading:true,
-            times:6
+            times:6,
+            checkId:''
         }
     }
     componentDidMount() {
@@ -23,10 +24,14 @@ class AppList extends React.Component{
           
           
       }
+      handleChange=(e,id)=>{
+          this.setState({checkId:id})
+          
+      }
     render(){
         
     return(
-        this.state.isLoading?<Loader times={this.state.times}/>:
+        
         <div className='app-list'>
             <div className='sectionContent'>
                 
@@ -37,7 +42,7 @@ class AppList extends React.Component{
                 </div>
                 <div className='rightSide'>
                     <div className='searchApps'>
-                    <input  type="text" placeholder="Search more apps..." class="ng-untouched ng-pristine ng-valid"></input>
+                    <input  type="text" placeholder="Search more apps..." ></input>
                     <em><i class="fa fa-search" aria-hidden="true"></i></em>
                     </div>
                     <div className='viewAllApps'>
@@ -46,14 +51,18 @@ class AppList extends React.Component{
                     </div>
                 </div>
             </div>
+            {this.state.isLoading?<Loader times={this.state.times}/>:
             <div className='appListRow'>
             {this.state.data.map(value=>{
+                
                    return(value.section_details.map(info=>{
+                       
                                 return(
-                                    <div  key={info._id} className='appListBox'>
+                                    <div  key={info.id} className={`appListBox ${this.state.checkId==info.id?'active':''}`}>
                                     <h3>{info.title}</h3>
                                     <p>{info.description}</p>
-                                    <span> <input type='checkbox' className='tickBox'></input><img  width="96" height="96" alt="" src={info.icon}></img></span>
+                                    <div  className="tickBox" id={info.id} onClick={e=>this.handleChange(e,info.id)}></div>
+                                    <img  width="96" height="96" alt="" src={info.icon}></img>
                                     
                                     <div className='appListFooter'>
                                 
@@ -62,7 +71,7 @@ class AppList extends React.Component{
                                                 <span >Price</span>
                                                 <strong >₹548 K</strong>
                                             </div>
-                                            <a  target="_blank" class="btn apps-detailbtn" href="http://localhost:3000/apps/Uber"> View Details </a>
+                                            <a  target="_blank" class="btn apps-detailbtn" href={`http://localhost:3000/apps/${info.slug}`}> View Details </a>
                                         </div>
                                     </div>
                                 </div>
@@ -71,7 +80,7 @@ class AppList extends React.Component{
                     
                    )
                 })}
-                </div>
+                </div>}
                 {/*<div className='appListBox'>
                    <h3>Snapchat</h3>
                    <p>Offer multimedia sharing and messaging between users. These interactions are only available for a short time, making it ideal for fast and instant communication.</p>

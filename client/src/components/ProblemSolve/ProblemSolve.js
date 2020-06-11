@@ -27,10 +27,16 @@ class ProblemSolve extends React.Component{
       }
        
     render(){
+        var filtered=this.state.data.filter((value)=>{
+            return (value.section_details.filter(info=>{
+                return(info.applications.filter(apps=>{
+                    return apps.title.toLowerCase().indexOf(this.state.search.toLowerCase())!==-1
+                    
+                }))})) 
+        })
+        
        
-           
-        
-        
+        console.log(filtered)
         
         return(
              <div className='wrapper'>
@@ -53,25 +59,34 @@ class ProblemSolve extends React.Component{
                                  </div>
                              </div>
                          </div>
+                         
                          <div className='problemListingArea'>
                              <div className='problemListing'>
                              {this.state.data.map(value => {
-                                 return(
-                                    <React.Fragment key={value._id} >
+                                            
+                                            return (
+                                                value.section_details.map(info=>{
+                                                    return(
+                             
+                                    <React.Fragment key={info.id}>
                                     <div className='problembox'>
-                                       <h3>{value.h3}</h3>
+                                       <h3>{info.problem_statement}}</h3>
                                     <div className='problemSet'>
                                         <ul>
-                                            <li>
-                                               <input  type="checkbox" id={value.li1[0].inputId}></input>
-                                               <label htmlFor={value.li1[0].inputId}>
-                                               <div className='problemIcon'>
-                                                   <img src={value.li1[0].img}></img>
-                                               </div>
-                                               {value .li1[0].liItem}
-                                               </label>
-                                            </li>
-                                            <li>
+                                            {info.applications.map(apps=>{
+                                                return(
+                                             <li>
+                                                <input  type="checkbox" id={apps.id}></input>
+                                                <label htmlFor={apps.id}>
+                                                <div className='problemIcon'>
+                                                    <img src={apps.icon}></img>
+                                                </div>
+                                                {apps.title}
+                                                </label>
+                                             </li>)
+                                            })}
+                                            
+                                            {/*<li>
                                                <input  type="checkbox" id={value.li2[0].inputId}></input>
                                                <label htmlFor={value.li2[0].inputId}>
                                                <div className='problemIcon'>
@@ -97,12 +112,12 @@ class ProblemSolve extends React.Component{
                                                </div>
                                                {value .li4[0].liItem}
                                                </label>
-                                            </li>
+                                            </li>*/}
                                         </ul>
                                     </div>   
 
                                 </div>
-                                </React.Fragment> )})}
+                                </React.Fragment>)}))})}
                                 
                              </div>
                          </div>

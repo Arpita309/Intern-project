@@ -26,9 +26,10 @@ class ProblemSolveHeader extends React.Component{
                             
                             
                             
-                            <div style={{marginLeft:'1080px',verticalAlign:'center'}}>
+                            <div style={{marginLeft:'100px',verticalAlign:'center'}}>
                                <CurrencyBox/>
-                            </div>
+                            </div >
+                            
                             <LoginIcon/>
                             <div className='mobileClick'>
                                 <em class="icon-hamicon" ><Drawer/></em>
