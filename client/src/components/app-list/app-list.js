@@ -71,7 +71,7 @@ class AppList extends React.Component{
                                                 <span >Price</span>
                                                 <strong >₹548 K</strong>
                                             </div>
-                                            <a  target="_blank" class="btn apps-detailbtn" href={`http://localhost:3000/apps/${info.slug}`}> View Details </a>
+                                            <a  target="_blank" class="btn apps-detailbtn" href={`http://localhost:3000/apps/${info.title}`}> View Details </a>
                                         </div>
                                     </div>
                                 </div>

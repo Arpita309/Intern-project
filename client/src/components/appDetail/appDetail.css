@@ -32,13 +32,14 @@
 .appdetailSection .appdetailBox h2 {
     font-size: 28px;
     margin: 0 0 15px;
-    
+    text-align: left;
     color: #1d2c41;
 }
 @media only screen and (max-width: 1280px)
 {
 .appdetailSection .appdetailBox h2 {
     font-size: 22px;
+    text-align: left;
 }}
 .appdetailSection .appdetailBox h2 strong {
     float: right;
@@ -215,7 +216,7 @@
     padding: 10px 0 0;
 }
 .appdetailSection .appdetailBox .selectPlatform .selectPlatformSlider .selectPlatformbox {
-    width: 122px;
+    width: 122px !important;
     height: 88px;
     padding: 10px 0;
     margin: 0 15px 0 0;
@@ -239,17 +240,30 @@
 .appdetailSection .appdetailBox .selectPlatform .selectPlatformSlider .selectPlatformbox em {
     position: absolute;
     z-index: 9;
-    font-size: 20px;
-    line-height: 0;
-    top: -10px;
+    font-size: 10px;
+    width:20px;
+    height:20px;
+    top: -3px;
     right: -10px;
-    background: #fff;
-    color: #201aff;
+    color: #fff;
+    background:#201aff ;
     opacity: 0;
     transition: all .3s ease-in-out;
+    border-radius: 50%;
+}
+.appdetailSection .appdetailBox .selectPlatform .selectPlatformSlider .selectPlatformbox.selected {
+    border: 1px solid #201aff;
+}
+.appdetailSection .appdetailBox .selectPlatform .selectPlatformSlider .selectPlatformbox.selected em {
+    opacity: 1;
 }
 .icon-tick:before {
-    content: "a";
+  
+    font-family:"Font Awesome\ 5 Free";
+    
+    font-weight: 900;
+    content: "\f00c";
+
 }
 .view-brak-bx {
     display: flex;

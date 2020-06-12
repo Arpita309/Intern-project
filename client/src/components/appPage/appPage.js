@@ -349,7 +349,7 @@ function valuetext(value) {
                                                             <span>Price</span>
                                                             <strong>₹ {value.price}K</strong>
                                                         </div>
-                                                        <a target="_blank" class="btn apps-detailbtn" href={`http://localhost:3000/apps/${value.slug}`}> View Details </a>
+                                                        <a target="_blank" class="btn apps-detailbtn" href={`http://localhost:3000/apps/${value.title}`}> View Details </a>
                                                     </div>
                                                 </div>
                                                 </React.Fragment>)})}

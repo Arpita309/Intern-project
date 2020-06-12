@@ -21,6 +21,8 @@ const appsRouter =require('./routes/appsRouter');
 const productTypeRouter=require('./routes/productTypeRouter')
 const ApplicationsRouter=require('./routes/applicationRouter')
 const TrendingAppsRouter=require('./routes/trendingRouter')
+const appDetailsRouter=require('./routes/appDetailRouter')
+const configurationsRouter=require('./routes/configurationRouter')
 const app = express();
 app.use(cors())
 app.use(morgan('dev'));
@@ -54,7 +56,9 @@ app.use('/categories',CategoryRouter);
 app.use('/apps',appsRouter);
 app.use('/product-type',productTypeRouter);
 app.use('/applications',ApplicationsRouter);
-app.use('/trending',TrendingAppsRouter)
+app.use('/trending',TrendingAppsRouter);
+app.use('/app',appDetailsRouter);
+app.use('/configurations',configurationsRouter)
 /*app.use((req, res, next) => {
 
 

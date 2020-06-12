@@ -1,26 +1,24 @@
 import React from 'react'
 import './carouselImgDetail.css'
-const imgUrls = [
-	"https://duj87royd3ze0.cloudfront.net/uploads/application/mobile_cover_image/5c5013941f0c643d17336ed1/vlc_mobile.png", 
-	"https://duj87royd3ze0.cloudfront.net/uploads/application/web_cover_image/5c5013941f0c643d17336ed1/vlc_desktop.png"
-	
-	
-];
+let imgUrls=[]
 
 class Carousel extends React.Component {
 	constructor (props) {
 		super(props);
 		
 		this.state = {
-			currentImageIndex: 0
+			currentImageIndex: 0,
+			imgUrls:[]
 		};
 		
 		this.nextSlide = this.nextSlide.bind(this);
 		this.previousSlide = this.previousSlide.bind(this);
 	}
-	
+	componentDidMount(){
+		this.setState({imgUrls:this.props.images})
+	}
 	previousSlide () {
-		const lastIndex = imgUrls.length - 1;
+		const lastIndex = this.state.imgUrls.length - 1;
 		const { currentImageIndex } = this.state;
 		const shouldResetIndex = currentImageIndex === 0;
 		const index =  shouldResetIndex ? lastIndex : currentImageIndex - 1;
@@ -31,7 +29,7 @@ class Carousel extends React.Component {
 	}
 	
 	nextSlide () {
-		const lastIndex = imgUrls.length - 1;
+		const lastIndex = this.state.imgUrls.length - 1;
 		const { currentImageIndex } = this.state;
 		const shouldResetIndex = currentImageIndex === lastIndex;
 		const index =  shouldResetIndex ? 0 : currentImageIndex + 1;
@@ -42,6 +40,8 @@ class Carousel extends React.Component {
 	}
 	
 	render () {
+		
+		
 		return (
 			<div className='appdetailImg'>
                 <div className='appdetailSlider'>
@@ -49,7 +49,7 @@ class Carousel extends React.Component {
                 <div  className="sliderHeight"  style={{pointerEvents: "auto"}}>
                     <div  className="drag-scroll-content" drag-scroll="true" style={{display: "block", whiteSpace: "nowrap", width: "100%", height: "calc(100% + 20px)"}}>
                         <div   className="appdetailSlide" style={{display: "inline-block"}}>
-                            <img  alt="" src={imgUrls[this.state.currentImageIndex]}></img>
+                            <img  alt="" src={this.state.imgUrls[this.state.currentImageIndex]}></img>
                         </div>
                         
                     </div>
