@@ -315,7 +315,7 @@ font-style: normal;
 .buildCardmain .buildcard-detail .detail-list-block .list .project-detail p{
     color: black !important;
 }
-h3{
+.buildCardmain .buildcard-detail .detail-list-block .list .project-detail h3{
     color: black !important;
 }
 .icon-iconproducttype:before {

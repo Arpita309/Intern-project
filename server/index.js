@@ -23,6 +23,8 @@ const ApplicationsRouter=require('./routes/applicationRouter')
 const TrendingAppsRouter=require('./routes/trendingRouter')
 const appDetailsRouter=require('./routes/appDetailRouter')
 const configurationsRouter=require('./routes/configurationRouter')
+const bundleDetailsRouter=require('./routes/bundleDetailRouter')
+const featureFilter=require('./routes/featureFilterRouter')
 const app = express();
 app.use(cors())
 app.use(morgan('dev'));
@@ -59,6 +61,8 @@ app.use('/applications',ApplicationsRouter);
 app.use('/trending',TrendingAppsRouter);
 app.use('/app',appDetailsRouter);
 app.use('/configurations',configurationsRouter)
+app.use('/bundle',bundleDetailsRouter);
+app.use('/filter',featureFilter);
 /*app.use((req, res, next) => {
 
 

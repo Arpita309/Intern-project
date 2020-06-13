@@ -23,6 +23,34 @@
 .featureStudio .studioRight.active {
     right: 0;
 }}
+.featureStudio .studioRight .previewBack {
+    float: left;
+    clear: both;
+    background: #fff;
+    padding: 4px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    display: none;
+    border-radius: 3px;
+    border: 1px solid rgba(0,0,0,.1);
+    line-height: 22px;
+    height: 30px;
+    margin: 20px 0 0 20px;
+}
+@media only screen and (max-width: 1199px)
+{
+.featureStudio .studioRight .previewBack {
+    display: block;
+}}
+.featureStudio .studioRight .previewBack em {
+    font-size: 12px;
+    float: left;
+    line-height: 0;
+    margin: 4px 4px 0 0;
+}
+.icon-prev:before {
+    
+}
 .featureStudio .studioRight .iphoneToolbar {
     position: relative;
     z-index: 99;
@@ -63,7 +91,7 @@
 .icon-prev:before {
     font-weight: 900;
     font-family: 'Font Awesome\5 Free';
-    content: "J";
+    content: "\f104";
 }
 .featureStudio .studioRight .iphoneToolbar h3 {
     float: left;
@@ -458,12 +486,14 @@ perfect-scrollbar {
     display: none;
 }}
 .featureStudio .studioRight .previewSection .fullScreen span:before {
-    font-family: engineer,Georgia,serif;
-    content: "[";
+    font-family:"Font Awesome\ 5 Free";
+    font-weight: 900;
+    content: "\f424";
 }
 .featureStudio .studioRight .previewSection .fullScreen.active span:before {
-    font-family: engineer,Georgia,serif;
-    content: "]";
+    font-family:"Font Awesome\ 5 Free";
+    font-weight: 900;
+    content: "\f422";
 }
 .featureStudio .studioRight .previewSection .iphonePrev {
     height: calc(100% + 70px);
@@ -557,7 +587,7 @@ perfect-scrollbar {
     padding: 0;
 }
 .icon-leftarrow:before {
-    content: "=";
+    content: "<";
 }
 .featureStudio .studioRight .previewSection .iphoneNav button.nextButton {
     float: right;

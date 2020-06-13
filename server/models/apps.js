@@ -14,7 +14,7 @@ const Screenshot=new Schema({
     id:Number,
         file_url:{type:String},
         file_name:{type:String}
-})
+},{_id:false})
 const Bundles=new Schema({
     id:Number,
         title:{type:String},
@@ -22,7 +22,7 @@ const Bundles=new Schema({
         total_features_week:{type:Number},
         icon:{type:String},
         background:{type:String}
-})
+},{_id:false})
 const FeatureSchema = new Schema({
    
     id:Number,
@@ -55,7 +55,7 @@ const FeatureSchema = new Schema({
         is_mvp_feature: {type:Boolean}
     
     
-});
+},{_id:false});
 
 
 const AppInfoSchema = new Schema({

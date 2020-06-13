@@ -1,7 +1,7 @@
 import React from 'react'
 import './appFeaturesRight.css'
 import {mobileData,webData,carouselDescription} from '../featuresdb/featuresdb'
-
+import axios from 'axios'
 let selectedDescription=[] 
 
 class FeatureRight extends React.Component{
@@ -17,7 +17,9 @@ class FeatureRight extends React.Component{
            Description:carouselDescription,
            test:carouselDescription,
            img:'',
-           currentImageIndex: 0,selectedItem:[]
+           currentImageIndex: 0,selectedItem:[],fullScreen:false,
+           app:[],
+           features:[]
          };
          this.handleClick=this.handleClick.bind(this);
          this.showmore=this.showmore.bind(this);
@@ -29,6 +31,16 @@ class FeatureRight extends React.Component{
     }
     componentDidMount(){
         this.setState({img:this.state.data[this.state.currentImageIndex].id,active:this.state.data[this.state.currentImageIndex].id})
+        axios.get(`http://localhost:4000/app/?attributes.title=${this.props.name}`)
+          .then(res => {
+            const data = res.data;
+            this.setState({ app:data });
+          })
+          axios.get(`http://localhost:4000/bundle`)
+          .then(res => {
+            const data = res.data;
+            this.setState({ features:data });
+          })  
     }
     
     
@@ -40,9 +52,13 @@ class FeatureRight extends React.Component{
         
 		this.setState({
             currentImageIndex: index,img:this.state.data[this.state.currentImageIndex].id,active:this.state.data[this.state.currentImageIndex].id,selectedItem:[],
-            test:this.state.Description.filter((value)=>{
-                return value.id.indexOf(this.state.data[this.state.currentImageIndex].id)!==-1
-            })
+            test:this.state.app.map((data)=>
+                data.attributes.map(info=>
+                    info.features.filter(
+                        value=>value.id==this.state.app[this.state.currentImageIndex].id
+                    ))
+                 
+            )
         });
        
     }
@@ -54,9 +70,13 @@ class FeatureRight extends React.Component{
     
     this.setState({
         currentImageIndex: index,img:this.state.data[this.state.currentImageIndex].id,active:this.state.data[this.state.currentImageIndex].id,selectedItem:[],
-        test:this.state.Description.filter((value)=>{
-            return value.id.indexOf(this.state.data[this.state.currentImageIndex].id)!==-1
-        })
+        test:this.state.app.map((data)=>
+                data.attributes.map(info=>
+                    info.features.filter(
+                        value=>value.id==this.state.app[this.state.currentImageIndex].id
+                    ))
+                 
+            )
     });
     
     
@@ -80,9 +100,14 @@ class FeatureRight extends React.Component{
         let item=this.state.data.filter((value)=>{
             return value.id.indexOf(id)!==-1})
         console.log(item)
-        this.setState({selectedItem:item,active:id,test:this.state.Description.filter((value)=>{
-            return value.id.indexOf(id)!==-1
-        })})
+        this.setState({selectedItem:item,active:id,
+            test:this.state.features.map((data)=>
+                data.features.filter(
+                        value=>value.id==id
+                    )
+                 
+            )
+        })
          
          
     }
@@ -93,21 +118,26 @@ class FeatureRight extends React.Component{
     showBundle=()=>{
         this.setState({img:this.state.data[this.state.currentImageIndex].id,active:this.state.data[this.state.currentImageIndex].id})
     }
-   
+    showFullScreen=()=>{
+        this.setState({fullScreen:!this.state.fullScreen})
+        this.props.hideLeft()
+    }
     
     render(){
         
          
-       
+       console.log(this.state.app)
+       console.log(this.state.test)
+      
         
        
         
         return(
             
-                <div className='studioRight'>
+                <div className={`studioRight ${this.props.hide?'active':''}`}>
                     <div class="iphoneToolbar">
                         <div class="backButton">
-                            <em class="icon-prev"></em>
+                            <em class="icon-prev" onClick={this.props.show}></em>
                             <span>7/26</span>
                         </div>
                         <h3>
@@ -135,19 +165,28 @@ class FeatureRight extends React.Component{
                             <perfect-scrollbars>
                                 <div style={{position:'static'}}>
                                     <div className='ps-content'>
-                                        {this.state.data.map((value)=>{
-                                           return(
-                                               <React.Fragment key={value.id}>
-                                                   <div className={`slideItem ${this.state.active==value.id?'active':''}`} id={value.id} onClick={(e)=>{this.handleClick(e,value.id)}}>
+                                        {this.state.app.map((value)=>
+                                              value.attributes.map(info=>
+                                                info.features.map(data=>
+                                                    <React.Fragment key={data.id}>
+                                                   
+                                                   <div className={`slideItem ${this.state.active==data.id?'active':''}`} id={data.id} onClick={(e)=>{this.handleClick(e,data.id)}}>
                                                        <div class="slideImg">
-                                                           <img src={value.img}></img>
+                                                       {data.feature_screenshots.map(img=>
+                                                            
+                                                            <img src={this.state.mobileView?img.android:img.web}></img>
+                                                       )}
                                                         </div>
                                                         <span className="deleteItem">+</span>
-                                                        <h4>{value.h4}</h4>
+                                                        <h4>{data.title}</h4>
                                                     </div>
                                                </React.Fragment>
-                                           )
-                                        })}
+                                                    
+                                                    )
+                                                )
+                                               
+                                           
+                                        )}
                                     </div>
                                 </div>
                             </perfect-scrollbars>
@@ -175,7 +214,7 @@ class FeatureRight extends React.Component{
                     </div>:''}
                     </div>
                     <div className="previewSection mobileView">
-                        <button type="button" className="fullScreen"><span></span></button>
+                        <button type="button" className={`fullScreen ${this.state.fullScreen?'active':''}`} onClick={this.showFullScreen}><span></span></button>
                         <React.Fragment>
                             <div className={`${this.state.mobileView?'iphonePrev':'webPrev'}`}>
                                 <div className={`${this.state.mobileView?'phoneScreen':'webScreen'}`}>

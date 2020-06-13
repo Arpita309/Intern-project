@@ -5,14 +5,30 @@ import Right from '../appFeaturesRight/appFeaturesRight'
 import FeaturesHeader from '../featuresHeader/featuresHeader'
 import { Link } from 'react-router-dom'
 class Features extends React.Component{
+    constructor(props){
+        super(props)
+        this.state={
+            hideLeft:false,name:''
+        }
+    }
+    
+    hideLeft=()=>{
+        this.setState({hideLeft:!this.state.hideLeft})
+    }
+    showLeft=()=>{
+        this.setState({hideLeft:false})
+    }
+    
     render(){
+        this.state.name=this.props.match.params.name;
+       
         return(
         <div className='wrapper'>
             <FeaturesHeader/>
             <div className='middlePart'>
             <div className='featureStudio'>
-                <Left/>
-                <Right/>
+                <Left hide={this.state.hideLeft} hideLeft={this.hideLeft}/>
+                <Right hideLeft={this.hideLeft} hide={this.state.hideLeft} show={this.showLeft} name={this.state.name}/>
             </div></div>
             <div class="bottomSelectFeature">
                 <div className='appBottomBar'>

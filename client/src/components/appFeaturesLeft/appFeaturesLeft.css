@@ -26,6 +26,14 @@
 .featureStudio .studioLeft {
     width: 100%;
 }}
+.featureStudio .studioLeft.hidePanel {
+    left: -40%;
+}
+@media only screen and (max-width: 1199px)
+{
+.featureStudio .studioLeft.hidePanel {
+    left: -100%;
+}}
 .featureStudio .studioLeft .studioSearch {
     width: 100%;
     float: left;
@@ -342,8 +350,9 @@ input[type=checkbox] {
     cursor: pointer;
 }
 .featureStudio .studioLeft .studioToolbar .filterTab .mobilefilter .mobilefilterItems .mobilefilterRow .customCheckbox label:after {
-    
-    content: "h";
+    font-weight: 900;
+    font-family: "Font Awesome\ 5 Free";
+    content: "\f00c";
     width: 16px;
     height: 16px;
     border: 1px solid rgba(0,0,0,.1);
@@ -379,7 +388,7 @@ input[type=checkbox] {
 .icon-shopping-cart:before {
     font-weight: 900;
     font-family: "Font Awesome\ 5 Free";
-    content: "";
+    content: "\f07a";
 }
 .featureStudio .studioLeft .studioToolbar .cartTab .cartIcon span {
     background: #ff0f3a;
@@ -644,7 +653,7 @@ input[type=checkbox] {
 perfect-scrollbars {
     position: relative;
     display: block;
-    overflow: scroll;
+    overflow-y: scroll;
     width: 100%;
     height: 100%;
     max-width: 100%;
@@ -800,7 +809,7 @@ perfect-scrollbars > .ps {
     line-height: 19px;
     background: #fff;
     font-size: 10px;
-    font-family: Gotham Bold,Arial,Georgia,serif;
+    
     color: #000;
     text-align: center;
     z-index: 99;
@@ -818,8 +827,9 @@ perfect-scrollbars > .ps {
     padding: 0 20px 0 10px;
 }
 .featureStudio .studioLeft .bundleFeature .buldleBox  ul .mainTab .bundleDetail .bundleImg:after {
-    
-    content: "I";
+    font-weight: 900;
+    font-family: "Font Awesome\ 5 Free";
+    content: "\f105";
     position: absolute;
     bottom: 6px;
     transform: translateY(-50%);
@@ -832,11 +842,29 @@ perfect-scrollbars > .ps {
 .featureStudio .studioLeft .bundleFeature .buldleBox  ul li.current .mainTab .bundleDetail .bundleImg:after {
     display: block;
 }
-
+ .rightsidePanel .featureList ul .featureTab .featureDetailRight .featureView.mobileView {
+    display: none;
+}
+@media only screen and (max-width: 1199px)
+{
+ .rightsidePanel .featureList ul .featureTab .featureDetailRight .featureView {
+    height: 30px;
+    line-height: 40px;
+}}
+@media only screen and (max-width: 1199px)
+{
+ .rightsidePanel .featureList ul .featureTab .featureDetailRight .featureView.mobileView {
+    display: block;
+}}
+@media only screen and (max-width: 1199px)
+{
+ .featureList ul .featureTab .featureDetailRight .featureView.webView {
+    display: none;
+}}
 .icon-view:before {
     font-weight: 900;
-    font-family: 'Font Awesome\5 Free';
-    content: "n";
+    font-family: 'Font Awesome\ 5 Free';
+    content: "\f06e";
 }
 .featureStudio .studioLeft.hidePanel {
     left: -40%;
@@ -914,7 +942,7 @@ perfect-scrollbars > .ps {
     height: calc(100% - 70px);
     top: 70px;
 }}
- li.active .rightsidePanel {
+ .rightsidePanel {
     right: 0;
     z-index: 1;
     opacity: 1;
@@ -933,7 +961,7 @@ perfect-scrollbars > .ps {
 }
 @media only screen and (max-width: 1199px)
 {
-.featureStudio .studioLeft .bundleFeature .buldleBox .bundleList ul li .rightsidePanel .featureHead {
+ .rightsidePanel .featureHead {
     display: none;
 }}
  .rightsidePanel .featureHead h3 {
@@ -993,7 +1021,7 @@ perfect-scrollbars > .ps {
 }
 @media only screen and (max-width: 1199px)
 {
- .bundleList .rightsidePanel .featureText .checkBox {
+ .rightsidePanel .featureText .checkBox {
     display: block;
 }}
  .rightsidePanel .featureText .checkBox input {
@@ -1022,10 +1050,11 @@ perfect-scrollbars > .ps {
     float: left;
     clear: both;
     height: calc(100% - 215px);
+   
 }
 @media only screen and (max-width: 1199px)
 {
- li  .rightsidePanel .featureList {
+   .rightsidePanel .featureList {
     height: calc(100% - 100px);
 }}
  .rightsidePanel .featureList ul {
@@ -1063,7 +1092,7 @@ perfect-scrollbars > .ps {
 }
 @media only screen and (max-width: 1199px)
 {
- .bundleList .rightsidePanel .featureList ul li {
+ .rightsidePanel .featureList ul li {
     -webkit-animation-name: bounceUp;
     animation-name: bounceUp;
     background: rgba(0,0,0,.05);
@@ -1168,9 +1197,10 @@ perfect-scrollbars > .ps {
     display: block;
 }
  .rightsidePanel .featureList ul .featureTab .featureDetailRight .checkBox label:before {
-   
+    font-weight: 900;
+    font-family: 'Font Awesome\5 Free';
     display: none;
-    content: "h";
+    content: "\f00c";
     position: absolute;
     z-index: 2;
     top: 0;
