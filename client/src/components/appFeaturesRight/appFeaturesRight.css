@@ -702,3 +702,108 @@ perfect-scrollbar {
 .featureStudio .studioRight .previewSection .webPrev:after {
     left: 35px;
 }
+
+/* no featureselected*/
+ .studioRight .previewBack {
+    float: left;
+    clear: both;
+    background: #fff;
+    padding: 4px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    display: none;
+    border-radius: 3px;
+    border: 1px solid rgba(0,0,0,.1);
+    line-height: 22px;
+    height: 30px;
+    margin: 20px 0 0 20px;
+}
+@media only screen and (max-width: 1199px){
+ .studioRight .previewBack {
+    display: block;
+}}
+ .studioRight .previewBack em {
+    font-size: 12px;
+    float: left;
+    line-height: 0;
+    margin: 4px 4px 0 0;
+}
+ .studioRight .previewSection {
+    width: 100%;
+    height: calc(100% - 269px);
+    position: relative;
+    float: left;
+    clear: both;
+    transition: all .3s ease-in-out;
+}
+ .studioRight.nofeatureSelect .previewSection {
+    height: 100%;
+}
+.studioRight .previewSection .iphonePrev {
+    height: calc(100% + 70px);
+    display: inline-block;
+    background: #fff;
+    border-radius: 20px;
+    position: relative;
+    transform: translateX(-50%);
+    padding: 40px 5px;
+    top: -35px;
+    left: 50%;
+    box-shadow: 0 0 20px 2px rgba(0,0,0,.1);
+    transition: all .3s ease-in-out;
+}
+ .studioRight.nofeatureSelect .previewSection .iphonePrev {
+    height: calc(100% - 30px);
+    top: 15px;
+}
+ .studioRight .previewSection .iphonePrev:before {
+    content: "";
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 100px;
+    background: rgba(0,0,0,.1);
+    position: absolute;
+    top: 16px;
+    left: calc(50% - 50px);
+    transform: translateX(-50%);
+}
+ .studioRight .previewSection .iphonePrev .phoneScreen {
+    position: relative;
+    height: 100%;
+    border: 1px solid rgba(0,0,0,.1);
+    margin: 0 auto;
+    display: block;
+}
+ .studioRight .previewSection .iphonePrev .phoneScreen:before {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: rgba(0,0,0,.1);
+    position: absolute;
+    border-radius: 30px;
+    top: -22px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+ .studioRight .previewSection .noPrev img {
+    width: 100%!important;
+    height: auto!important;
+}
+ .studioRight .previewSection .iphonePrev .phoneScreen img {
+    height: 100%;
+    width: auto;
+    opacity: 1;
+}
+ .studioRight .previewSection .noPrev {
+    position: absolute;
+    z-index: 99;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    width: 100%;
+    padding: 0;
+    transition: all .3s ease-in-out;
+}

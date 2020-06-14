@@ -61,7 +61,7 @@ const build_phases=new Schema({
     position:Number,
     icon:String,
     background:String
-})
+},{_id:false})
 const build_attributes=new Schema({
     id:Number,
     title:String,
@@ -71,14 +71,14 @@ const build_attributes=new Schema({
     position:Number,
     icon_url:String
 
-})
+},{_id:false})
 const build_products=new Schema({
     id:Number,
     type:String,
     attributes: [build_attributes],
     relationships:[]
 
-})
+},{_id:false})
         
           
 
@@ -89,7 +89,7 @@ const build_products=new Schema({
 
 const ConfigurationSchema = new Schema({
 
-   currency:[currencies],
+   currencies:[currencies],
    platforms:[PlatformSchema],
    prototype_platforms:[PlatformSchema],
    speed:[speed],

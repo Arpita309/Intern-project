@@ -21,13 +21,15 @@ class AppFeaturesLeft extends React.Component{
         super(props);
         this.state={
             filterOpen:false,
-            data:featureList,
+            data:[],
             selected:5,
             selectAll:false,
             width:0,
             checked:'',
             features:[],
-            filter:[]
+            filter:[],
+            featureId:'',
+            app:[]
 
           
             
@@ -48,6 +50,11 @@ class AppFeaturesLeft extends React.Component{
           .then(res => {
             const data = res.data;
             this.setState({ filter:data });
+          })
+          axios.get(`http://localhost:4000/app/?attributes.title=${this.props.name}`)
+          .then(res => {
+            const data = res.data;
+            this.setState({ app:data });
           })  
         
         }
@@ -93,9 +100,14 @@ class AppFeaturesLeft extends React.Component{
     deselectAll(){
         this.setState({selectAll:false})
     }
-    
+    selectFeature=(id)=>{
+        this.setState({featureId:id,data:this.state.features.map(value=>
+            value.features.filter(feature=>
+                feature.id==id))})
+        this.props.selectedFeature(this.state.data)        
+    }
     render(){
-        
+       console.log(this.state.app)
         const classes = useStyles();     
         
     function valuetext(value) {
@@ -381,7 +393,7 @@ class AppFeaturesLeft extends React.Component{
                                                 
                                                 return(
                                                     <li className='active'>
-                                                        <div className='featureTab'>
+                                                        <div className='featureTab' onClick={(e)=>this.selectFeature(li.id)}>
                                                             <div className='featureDetail'>
                                                                 <div className='featureImg'>
                                                                     <object data={li.icon}></object>

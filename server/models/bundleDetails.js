@@ -38,7 +38,7 @@ const FeatureSchema = new Schema({
         feature_weeks:{type:String},
         icon: {type:String},
         background:{type:String},
-        feature_screenshots: Feature_screenshot,
+        feature_screenshots: [Feature_screenshot],
         template_ids: [],
         selected:{type:Boolean},
         is_mvp_feature: {type:Boolean}

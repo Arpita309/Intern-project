@@ -10,7 +10,7 @@ class FeatureRight extends React.Component{
         this.state = {
             mobileView:true,
            showAll:true,
-           data:mobileData,
+           data:[],   
            selected:'',
            active:'',
            more:true,
@@ -26,11 +26,11 @@ class FeatureRight extends React.Component{
          this.nextSlide = this.nextSlide.bind(this);
         this.previousSlide = this.previousSlide.bind(this);
         this.showBundle=this.showBundle.bind(this)
-         
+        
      
     }
     componentDidMount(){
-        this.setState({img:this.state.data[this.state.currentImageIndex].id,active:this.state.data[this.state.currentImageIndex].id})
+        
         axios.get(`http://localhost:4000/app/?attributes.title=${this.props.name}`)
           .then(res => {
             const data = res.data;
@@ -40,9 +40,23 @@ class FeatureRight extends React.Component{
           .then(res => {
             const data = res.data;
             this.setState({ features:data });
-          })  
+          })
+                        
+          
     }
-    
+    componentDidUpdate(){
+        
+            let mobileImages=[]
+            {this.state.app.map((value)=>
+              value.attributes.map(info=>{
+                mobileImages.push(...info.features)
+                          
+                            this.state.data=[...mobileImages]}))}
+            console.log(this.state.data)    
+        this.setFeature()
+        
+              
+    }
     
     nextSlide () {
 		const lastIndex = this.state.data.length - 1;
@@ -51,14 +65,8 @@ class FeatureRight extends React.Component{
 		const index =  shouldResetIndex ? 0 : currentImageIndex + 1;
         
 		this.setState({
-            currentImageIndex: index,img:this.state.data[this.state.currentImageIndex].id,active:this.state.data[this.state.currentImageIndex].id,selectedItem:[],
-            test:this.state.app.map((data)=>
-                data.attributes.map(info=>
-                    info.features.filter(
-                        value=>value.id==this.state.app[this.state.currentImageIndex].id
-                    ))
-                 
-            )
+            currentImageIndex: index,img:this.state.data[this.state.currentImageIndex].id,active:this.state.data[index].id,selectedItem:[],
+           
         });
        
     }
@@ -69,14 +77,9 @@ class FeatureRight extends React.Component{
     const index =  shouldResetIndex ? lastIndex : currentImageIndex - 1;
     
     this.setState({
-        currentImageIndex: index,img:this.state.data[this.state.currentImageIndex].id,active:this.state.data[this.state.currentImageIndex].id,selectedItem:[],
-        test:this.state.app.map((data)=>
-                data.attributes.map(info=>
-                    info.features.filter(
-                        value=>value.id==this.state.app[this.state.currentImageIndex].id
-                    ))
-                 
-            )
+        currentImageIndex: index,img:this.state.data[this.state.currentImageIndex].id,active:this.state.data[index].id,selectedItem:[],
+    
+        
     });
     
     
@@ -84,11 +87,11 @@ class FeatureRight extends React.Component{
 
 }
     setMobileView=()=>{
-        this.setState({mobileView:true,data:mobileData})
+        this.setState({mobileView:true,data:this.state.mobileImages})
       
     }
     setWebView=()=>{
-        this.setState({mobileView:false,data:webData})
+        this.setState({mobileView:false,data:this.state.webImages})
     }
     show=()=>{
         this.setState({showAll:true})
@@ -97,21 +100,20 @@ class FeatureRight extends React.Component{
         this.setState({showAll:false})
     }
     handleClick=(e,id)=>{
-        let item=this.state.data.filter((value)=>{
-            return value.id.indexOf(id)!==-1})
+        let item=this.state.data.filter(value=>
+             value.id==id)
         console.log(item)
-        this.setState({selectedItem:item,active:id,
-            test:this.state.features.map((data)=>
-                data.features.filter(
-                        value=>value.id==id
-                    )
-                 
-            )
+        this.setState({selectedItem:item,active:id
         })
          
          
     }
-    
+    setFeature=()=>{
+        let filter=this.props.selectedFeature.filter(value=>value.length)
+    if(this.props.selectedFeature.length){this.state.app.map(value=>
+        value.attributes.map(info=>
+        info.features.push(...filter[0])))}
+    }
     showmore=()=>{
         this.setState({more:!this.state.more})
     }
@@ -123,18 +125,16 @@ class FeatureRight extends React.Component{
         this.props.hideLeft()
     }
     
+    
     render(){
         
-         
-       console.log(this.state.app)
-       console.log(this.state.test)
-      
-        
+        const removeAll=()=>{
+            this.setState({app:[],data:[]})
+        }
        
         
         return(
-            
-                <div className={`studioRight ${this.props.hide?'active':''}`}>
+            this.state.app.length?<div className={`studioRight ${this.props.hide?'active':''}`}>
                     <div class="iphoneToolbar">
                         <div class="backButton">
                             <em class="icon-prev" onClick={this.props.show}></em>
@@ -147,7 +147,7 @@ class FeatureRight extends React.Component{
                                     <em class="icon-shopping-cart"></em>
                                 </div>
                             </div> Selected Features 
-                            <span>Remove All</span>
+                            <span onClick={removeAll}>Remove All</span>
                         </h3>
                         <h4>
                             <span className={`${this.state.showAll?'':'showLess'}`} onClick={this.hide}>See Less <em class="icon-next"></em></span>
@@ -166,15 +166,18 @@ class FeatureRight extends React.Component{
                                 <div style={{position:'static'}}>
                                     <div className='ps-content'>
                                         {this.state.app.map((value)=>
-                                              value.attributes.map(info=>
-                                                info.features.map(data=>
+                                              value.attributes.map(info=>{
+                                                
+                                                return(info.features.map(data=>
                                                     <React.Fragment key={data.id}>
                                                    
                                                    <div className={`slideItem ${this.state.active==data.id?'active':''}`} id={data.id} onClick={(e)=>{this.handleClick(e,data.id)}}>
                                                        <div class="slideImg">
-                                                       {data.feature_screenshots.map(img=>
+                                                       {data.feature_screenshots.map(img=>{
                                                             
-                                                            <img src={this.state.mobileView?img.android:img.web}></img>
+                                                            
+                                                            
+                                                            return(<img src={this.state.mobileView?img.android:img.web}></img>)}
                                                        )}
                                                         </div>
                                                         <span className="deleteItem">+</span>
@@ -182,7 +185,7 @@ class FeatureRight extends React.Component{
                                                     </div>
                                                </React.Fragment>
                                                     
-                                                    )
+                                                    ))}
                                                 )
                                                
                                            
@@ -219,7 +222,7 @@ class FeatureRight extends React.Component{
                             <div className={`${this.state.mobileView?'iphonePrev':'webPrev'}`}>
                                 <div className={`${this.state.mobileView?'phoneScreen':'webScreen'}`}>
                                     
-                                {this.state.selectedItem.length==1?<img src={this.state.selectedItem[0].img}></img>:<img className="active animation1" src={this.state.data[this.state.currentImageIndex].img} onChange={this.showBundle}></img>}    
+                                {this.state.selectedItem.length==1?<img src={this.state.selectedItem[0].feature_screenshots.map(img=>this.state.mobileView?img.android:img.web)}></img>:<img className="active animation1" src={this.state.data.length?this.state.data[this.state.currentImageIndex].feature_screenshots.map(img=>this.state.mobileView?img.android:img.web):''} onChange={this.showBundle}></img>}    
                                 </div>
                             </div>
                             <div className="iphoneNav">
@@ -230,8 +233,22 @@ class FeatureRight extends React.Component{
                         
                         
                     </div>
-                   
+                    </div>:<div className={`studioRight nofeatureSelect ${this.props.hide?'active':''}`}>
+                <div className="previewBack" onClick={this.props.show}>
+                    <em className="icon-prev"></em>
+                    <span>Back</span>
                 </div>
+                <div className="previewSection mobileView">
+                    <div className="iphonePrev">
+                        <div className="phoneScreen">
+                            <img src="https://studio.builder.ai/assets/images/placeholder.png" alt=""></img>
+                            <div class="noPrev">
+                                <img src="https://studio.builder.ai/assets/images/zeroFeatures_mobile.png"></img>
+                            </div>
+                        </div>
+                    </div>
+                </div></div>
+              
            
         )
     }

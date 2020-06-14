@@ -8,7 +8,8 @@ class Features extends React.Component{
     constructor(props){
         super(props)
         this.state={
-            hideLeft:false,name:''
+            hideLeft:false,name:'',
+            selectedFeature:[]
         }
     }
     
@@ -18,17 +19,19 @@ class Features extends React.Component{
     showLeft=()=>{
         this.setState({hideLeft:false})
     }
-    
+    selectedFeature=(value)=>{
+          this.setState({selectedFeature:value})
+    }
     render(){
-        this.state.name=this.props.match.params.name;
+        this.state.name=this.props.match.params.name
        
         return(
         <div className='wrapper'>
             <FeaturesHeader/>
             <div className='middlePart'>
             <div className='featureStudio'>
-                <Left hide={this.state.hideLeft} hideLeft={this.hideLeft}/>
-                <Right hideLeft={this.hideLeft} hide={this.state.hideLeft} show={this.showLeft} name={this.state.name}/>
+                <Left hide={this.state.hideLeft} hideLeft={this.hideLeft} selectedFeature={this.selectedFeature} name={this.state.name}/>
+                <Right hideLeft={this.hideLeft} hide={this.state.hideLeft} show={this.showLeft} name={this.state.name} selectedFeature={this.state.selectedFeature.filter(value=>value.length)}/>
             </div></div>
             <div class="bottomSelectFeature">
                 <div className='appBottomBar'>

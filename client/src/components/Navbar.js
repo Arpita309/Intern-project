@@ -1,20 +1,17 @@
 import React from 'react'
 import Mobile from './mobileHeader/mobileHeader'
 import Header from './header/header'
+import CurrencyBox from './currencyBox/currencyBox'
 
 export default class Navbar extends React.Component {
 
     render() {
-       let width = window.innerWidth;
-       if (width > 768) {
          return (
-           <Header/>
-         );
-       } else {
-         return (
-           <Mobile/>
-         );
-       }
+           <div style={{marginRight:'100px'}}>
+               <CurrencyBox/>
+           </div>
+           
+         )
     }
   
   }
