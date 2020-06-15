@@ -335,3 +335,15 @@
 img {
     vertical-align: middle;
 }
+.problemSection .sectionContent .rightSide .problemSearch .cancelIcon {
+    position: absolute;
+    z-index: 9;
+    top: 12px;
+    right: 15px;
+    color: red;
+    font-size: 13px;
+    cursor: pointer;
+}
+.icon-cancel:before {
+    
+}

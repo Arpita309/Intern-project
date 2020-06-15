@@ -1,0 +1,123 @@
+.partnerWelcome {
+    position: relative;
+    z-index: 9;
+    width: 100%;
+    min-height: calc(100vh - 100px);
+    float: left;
+    clear: both;
+    display: flex;
+    align-items: center;
+    padding: 70px 50px 0;
+    background: url(https://studio.builder.ai/partnerBg.639ebeb9d76322a81d6a.jpg) no-repeat;
+    background-size: cover;
+}
+@media only screen and (max-width: 768px)
+{
+.partnerWelcome {
+    padding: 15px;
+    display: block;
+}}
+@media only screen and (max-width: 1199px)
+{
+.partnerWelcome {
+    padding: 20px;
+}}
+.partnerWelcome .partnerWelcomeText {
+    width: 50%;
+    padding: 0 50px 70px 0;
+}
+@media only screen and (max-width: 1199px)
+{
+.partnerWelcome .partnerWelcomeText {
+    padding: 0 50px;
+}}
+@media only screen and (max-width: 991px)
+{
+.partnerWelcome .partnerWelcomeText {
+    padding: 0 10px;
+}}
+@media only screen and (max-width: 768px)
+{
+.partnerWelcome .partnerWelcomeText {
+    padding: 20px 0;
+    width: 100%;
+    text-align: center;
+}}
+.partnerWelcome .partnerWelcomeText h2 {
+    display: inline-block;
+    background: #fff;
+    margin: 0 0 50px;
+    font-size: 30px;
+    color: #4289ef;
+    line-height: normal;
+    padding: 5px 10px 0;
+}
+@media only screen and (max-width: 991px)
+{
+.partnerWelcome .partnerWelcomeText h2 {
+    font-size: 25px;
+    margin: 0 0 20px;
+}}
+.partnerWelcome .partnerWelcomeText h3 {
+    color: #fff;
+    margin: 0 0 30px;
+    position: relative;
+    display: block;
+    font-size: 22px;
+    padding: 0 0 20px;
+}
+@media only screen and (max-width: 991px)
+{
+.partnerWelcome .partnerWelcomeText h3 {
+    font-size: 20px;
+    padding: 0 0 15px;
+}}
+.partnerWelcome .partnerWelcomeText h3:before {
+    content: "";
+    display: block;
+    height: 3px;
+    width: 80px;
+    background: #fff;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+@media only screen and (max-width: 768px)
+{
+.partnerWelcome .partnerWelcomeText h3:before {
+    left: 50%;
+    transform: translateX(-50%);
+}}
+.partnerWelcome .partnerWelcomeText p {
+    color: #fff;
+    margin: 0 0 30px;
+    font-size: 18px;
+}
+@media only screen and (max-width: 991px)
+{
+.partnerWelcome .partnerWelcomeText p {
+    font-size: 16px;
+}}
+.partnerWelcome .partnerWelcomeText button {
+    width: 200px;
+    height: 42px;
+    font-size: 14px;
+    color: #4289ef;
+    background: #fff;
+    cursor: pointer;
+    padding: 0;
+    line-height: 42px;
+    border-radius: 3px;
+    border: none;
+}
+.partnerWelcome .partnerWelcomeImg {
+    width: 50%;
+    height: 100%;
+    text-align: right;
+}
+@media only screen and (max-width: 768px)
+{
+.partnerWelcome .partnerWelcomeImg {
+    width: 100%;
+    padding: 20px 0 0;
+}}

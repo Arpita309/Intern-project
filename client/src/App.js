@@ -14,6 +14,7 @@ import Delivery from './components/deliverables/deliverables';
 import BuildCard from './components/buildCard/buildCard';
 import PaymentPlan from './components/paymentPlan/paymentPlan';
 import BillingDetails from './components/billingDetails/billingDetails';
+import BecomePartner from './components/becomePartner/becomePartner';
 function App() {
   return (
     <BrowserRouter>
@@ -32,6 +33,7 @@ function App() {
          <Route exact path='/build-card' component={BuildCard}/>
          <Route exact path='/payment-plan' component={PaymentPlan}/>
          <Route exact path='/billing-details' component={BillingDetails}/>
+         <Route exact path='/become-a-partner' component={BecomePartner}/>
 
        </Switch>
        

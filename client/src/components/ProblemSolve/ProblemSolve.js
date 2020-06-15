@@ -23,20 +23,20 @@ class ProblemSolve extends React.Component{
           })
       }
       handleChange = (e) => {
-          this.setState({serach:e.target.value})
-      }
-       
-    render(){
-        var filtered=this.state.data.filter((value)=>{
-            return (value.section_details.filter(info=>{
-                return(info.applications.filter(apps=>{
-                    return apps.title.toLowerCase().indexOf(this.state.search.toLowerCase())!==-1
-                    
-                }))})) 
-        })
+          this.setState({search:e.target.value})
         
-       
-        console.log(filtered)
+      }
+      clear=()=>{
+          this.setState({search:''})
+      } 
+    render(){
+        var apps=this.state.data.map((value)=>{
+            return (value.section_details.map(info=>{
+                return(info)}))})
+        var result=apps
+  var filtered=result.map(value=>value.filter(data=>{return(data.applications.some(info=>info.title.toLowerCase().indexOf(this.state.search.toLowerCase())!=-1))}))
+  const Resultfound=()=>{if(this.state.search)  {return(<div class="resultFound">{filtered.map(info=>info.length)[0]} results found for {this.state.search}</div>)}else return(null)}
+        
         
         return(
              <div className='wrapper'>
@@ -54,6 +54,7 @@ class ProblemSolve extends React.Component{
                                  <div className='problemSearch'>
                                     <input  type="text" placeholder="Search..." onChange={this.handleChange}></input>
                                     <em className='icon-magnifying'></em>
+                                   {this.state.search?<div  className="cancelIcon icon-cancel" onClick={this.clear}></div>:''} 
                                     
 
                                  </div>
@@ -61,19 +62,49 @@ class ProblemSolve extends React.Component{
                          </div>
                          
                          <div className='problemListingArea'>
+                             <Resultfound/>
                              <div className='problemListing'>
-                             {this.state.data.map(value => {
+                                
+                             {filtered.length?filtered.map(info=>info.map(value=>{
+                                
+                                    return(
+                             
+                                        <React.Fragment key={value.id}>
+                                        <div className='problembox'>
+                                           <h3>{value.problem_statement}</h3>
+                                        <div className='problemSet'>
+                                            <ul>
+                                           {value.applications.map(apps=>{
+                                                    return(
+                                                 <li>
+                                                    <input  type="checkbox" id={apps.id}></input>
+                                                    <label htmlFor={apps.id}>
+                                                    <div className='problemIcon'>
+                                                        <img src={apps.icon}></img>
+                                                    </div>
+                                                    {apps.title}
+                                                    </label>
+                                                    </li>)})
+                                                }
+                                                 </ul>
+                                    </div>   
+
+                                </div>
+                                </React.Fragment>)
+
+                                   }))
+                             :this.state.data.map(value => {
                                             
                                             return (
-                                                value.section_details.map(info=>{
+                                   value.section_details.map(info=>{
                                                     return(
                              
                                     <React.Fragment key={info.id}>
                                     <div className='problembox'>
-                                       <h3>{info.problem_statement}}</h3>
+                                       <h3>{info.problem_statement}</h3>
                                     <div className='problemSet'>
                                         <ul>
-                                            {info.applications.map(apps=>{
+                                       {info.applications.map(apps=>{
                                                 return(
                                              <li>
                                                 <input  type="checkbox" id={apps.id}></input>
@@ -83,8 +114,8 @@ class ProblemSolve extends React.Component{
                                                 </div>
                                                 {apps.title}
                                                 </label>
-                                             </li>)
-                                            })}
+                                                </li>)})
+                                            }
                                             
                                             {/*<li>
                                                <input  type="checkbox" id={value.li2[0].inputId}></input>
