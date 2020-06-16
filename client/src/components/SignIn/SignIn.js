@@ -2,8 +2,58 @@ import React from 'react'
 import'./SignIn.css'
 import {Link } from 'react-router-dom'
 import { Divider } from '@material-ui/core'
+import axios from 'axios'
+import jwt_decode from "jwt-decode";
+import setAuthToken from "../utils/setAuthToken";
+var userData={}
+class SignIn extends React.Component{
+    constructor(props){
+        super(props)
+        this.state={
+            
+                email: "",
+                password: "",
+                
+        }
+    }
+   
+    handleChange=(e)=>{
+        this.setState({[e.target.id]: e.target.value })
+    }
+    onSubmit = e => {
+        e.preventDefault();
+     userData = {
+          email: this.state.email,
+          password: this.state.password
+        };
+    console.log(userData);
+     
 
-const SignIn=()=>{
+        
+           
+            axios.post("http://localhost:4000/users/login", userData)
+            .then(res => {
+                console.log(res.data)
+              // Save to localStorage
+        // Set token to localStorage
+              const { token } = res.data;
+              localStorage.setItem("jwtToken", token);
+              // Set token to Auth header
+              setAuthToken(token);
+              // Decode token to get user data
+              const decoded = jwt_decode(token);
+              // Set current user
+              this.setCurrentUser(decoded);
+            })
+            .catch(err =>
+              console.log(err.response.data)
+              
+            ); };
+        
+    setCurrentUser=(data)=>{
+        console.log(data)
+    }    
+    render(){
     
     return (
       <div className='row'>
@@ -26,12 +76,12 @@ const SignIn=()=>{
                 </div>
                 <div>
                     <p style={{color:'gray',marginTop:'30px',marginLeft:'0px',textDecoration:'none',fontWeight: 'normal'}}>Enter Details</p>
-                    <input   type="email" placeholder="Email address" name="email" maxlength="100" pattern="^\w+(?:[\.-]\w+)*@\w+(?:[\.-]\w+)*(?:\.\w{2,3})+$" appautofocus="" required="" ></input><br/>
-                    <input className='in2'  placeholder="Password" name="password" maxlength="100" minlength="8" required="" type="password" ></input><br/>
+                    <input   type="email" placeholder="Email address" name="email" maxlength="100" pattern="^\w+(?:[\.-]\w+)*@\w+(?:[\.-]\w+)*(?:\.\w{2,3})+$" id='email' value={this.state.email} onChange={(e)=>this.handleChange(e)}></input><br/>
+                    <input className='in2'  placeholder="Password" name="password" maxlength="100" minlength="8" required="" type="password"  id='password' value={this.state.password} onChange={(e)=>this.handleChange(e)}></input><br/>
                     <span className="forgotPass">Forgot password?</span>
                 </div>
                 <div>
-                    <button className='log'>LOGIN</button>
+                    <button className='log' onClick={this.onSubmit}>LOGIN</button>
                     <span className='sign'>Don't have an account?<Link to='/' className='signup'>SignUp</Link></span>
                 </div>
                 <div>
@@ -46,5 +96,5 @@ const SignIn=()=>{
       </div>
     );
 
-}
+}}
 export default SignIn;

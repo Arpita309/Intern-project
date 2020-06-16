@@ -4,12 +4,12 @@ http = require('http');
 const morgan = require('morgan');
 const cors=require('cors')
 const path=require('path')
-
+const passport = require("passport");
 const hostname = process.env.HOST || 'localhost';
 const port = process.env.PORT || 4000;
 const dbUrl = process.env.DB_URL || "mongodb+srv://arpita_W3dev:7985714375@ar@cluster0-ond1z.mongodb.net/builderDb?retryWrites=true&w=majority";
 
-
+require("./config/passport")(passport);
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
@@ -25,6 +25,7 @@ const appDetailsRouter=require('./routes/appDetailRouter')
 const configurationsRouter=require('./routes/configurationRouter')
 const bundleDetailsRouter=require('./routes/bundleDetailRouter')
 const featureFilter=require('./routes/featureFilterRouter')
+const users = require("./routes/userRouter");
 const app = express();
 app.use(cors())
 app.use(morgan('dev'));
@@ -37,6 +38,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json({ limit: '5mb' }));
 
 app.use(express.static(__dirname + '/public'));
+app.use(passport.initialize());
 //const MongoClient = require('mongodb').MongoClient;
 const uri=dbUrl;
 
@@ -63,6 +65,7 @@ app.use('/app',appDetailsRouter);
 app.use('/configurations',configurationsRouter)
 app.use('/bundle',bundleDetailsRouter);
 app.use('/filter',featureFilter);
+app.use("/users", users);
 /*app.use((req, res, next) => {
 
 

@@ -3,8 +3,54 @@ import'./signup.css'
 import {Link } from 'react-router-dom'
 import { Divider } from '@material-ui/core'
 
-const SignUp=()=>{
-    
+class SignUp extends React.Component{
+    constructor(props){
+        super(props)
+        this.state={
+            
+                email: "",
+                password: "",
+                name:'',organisation:'',contactNumber:''
+                
+        }
+    }
+   
+    handleChange=(e)=>{
+        this.setState({[e.target.id]: e.target.value })
+    }
+    onSubmit = e => {
+        e.preventDefault();
+     userData = {
+          email: this.state.email,
+          password: this.state.password,
+          name:this.state.name,
+          organisation:this.state.organisation,
+          contactNumber:this.state.contactNumber
+        };
+    console.log(userData);
+     
+
+        
+           
+            axios.post("http://localhost:4000/users/login", userData)
+            .then(res => {
+                console.log(res.data)
+              // Save to localStorage
+        // Set token to localStorage
+              const { token } = res.data;
+              localStorage.setItem("jwtToken", token);
+              // Set token to Auth header
+              setAuthToken(token);
+              // Decode token to get user data
+              const decoded = jwt_decode(token);
+              // Set current user
+              this.setCurrentUser(decoded);
+            })
+            .catch(err =>
+              console.log(err.response.data)
+              
+            ); };
+    render(){
     return (
       <div className='row'>
          <div className='col-lg-6'>
@@ -26,7 +72,7 @@ const SignUp=()=>{
                 </div>
                 <div>
                     <p style={{color:'gray',marginTop:'30px',marginLeft:'0px',textDecoration:'none',fontWeight: 'normal'}}>Sign up to builder</p>
-                    <input   type="email" placeholder="Email address" name="email" maxlength="100" pattern="^\w+(?:[\.-]\w+)*@\w+(?:[\.-]\w+)*(?:\.\w{2,3})+$" appautofocus="" required="" ></input><br/>
+                    <input   type="email" placeholder="Email address" name="email" maxlength="100" pattern="^\w+(?:[\.-]\w+)*@\w+(?:[\.-]\w+)*(?:\.\w{2,3})+$" appautofocus="" required=""  id='email' onChange={(e)=>{this.handleChange(e)}}></input><br/>
                     
                     
                 </div>
@@ -45,7 +91,7 @@ const SignUp=()=>{
           
 
       </div>
-    );
+    );}
 
 }
 export default SignUp;
