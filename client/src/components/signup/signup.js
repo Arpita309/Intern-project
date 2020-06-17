@@ -1,8 +1,11 @@
 import React from 'react'
 import'./signup.css'
-import {Link } from 'react-router-dom'
+import {Link, Redirect } from 'react-router-dom'
 import { Divider } from '@material-ui/core'
-
+import axios from 'axios'
+import jwt_decode from "jwt-decode";
+import setAuthToken from "../utils/setAuthToken";
+var userData={}
 class SignUp extends React.Component{
     constructor(props){
         super(props)
@@ -10,7 +13,8 @@ class SignUp extends React.Component{
             
                 email: "",
                 password: "",
-                name:'',organisation:'',contactNumber:''
+                name:'',organisation:'',contactNumber:'',nextStep:false,
+                redirect:false
                 
         }
     }
@@ -32,65 +36,133 @@ class SignUp extends React.Component{
 
         
            
-            axios.post("http://localhost:4000/users/login", userData)
+            axios.post("http://localhost:4000/users/register", userData)
+            
             .then(res => {
-                console.log(res.data)
-              // Save to localStorage
-        // Set token to localStorage
-              const { token } = res.data;
-              localStorage.setItem("jwtToken", token);
-              // Set token to Auth header
-              setAuthToken(token);
-              // Decode token to get user data
-              const decoded = jwt_decode(token);
-              // Set current user
-              this.setCurrentUser(decoded);
+                console.log(res)
+              if(res.data){
+                  console.log('successful signup')
+                  this.setState({redirect:true})
+              }
+              else console.log('signup error')
             })
             .catch(err =>
               console.log(err.response.data)
               
-            ); };
-    render(){
-    return (
-      <div className='row'>
-         <div className='col-lg-6'>
+            ); 
+        
+            }
             
-             <img src='https://studio.builder.ai/login-bg1.4d0d1b65f3e2992486fb.png'style={{zIndex:'1',position:'absolute'}} className='bgimg'></img>
-             <div className='row'>
-            <div className='col-2' style={{backgroundColor:'white'}}> <img width="26" height="35" src='https://studio.builder.ai/assets/images/logoSmall.png' style={{zIndex:'2',position:'absolute',top:'10px',backgroundColor:'white'}}></img>
-             </div>
-             </div>
-         </div>
-         <div className='col-lg-6'>
-             <div>
-                <button className='cross' onClick={event =>  window.location.href='/'}>X</button>
-             </div>
-             <div className='container'>
-                <div>
-                    <h1 style={{textAlign:'left',fontWeight:'bolder',fontSize:'40px'}}>Get Started with builder</h1>
-                    <span className='subhead'>Price your idea,absolutely free</span>
-                </div>
-                <div>
-                    <p style={{color:'gray',marginTop:'30px',marginLeft:'0px',textDecoration:'none',fontWeight: 'normal'}}>Sign up to builder</p>
-                    <input   type="email" placeholder="Email address" name="email" maxlength="100" pattern="^\w+(?:[\.-]\w+)*@\w+(?:[\.-]\w+)*(?:\.\w{2,3})+$" appautofocus="" required=""  id='email' onChange={(e)=>{this.handleChange(e)}}></input><br/>
+            
+    showNext=()=>{
+        this.setState({nextStep:!this.state.nextStep})
+    }        
+    render(){
+        if(this.state.redirect){
+            return <Redirect to='/signin'/>
+        }
+    return (
+     <div className='loginRegister'>
+        
+        <div  className={`mobileSmall-logo ${this.state.nextStep?'hide':''}`}>
+            <img  src="https://studio.builder.ai/assets/images/logoSmall.png" width="26" height="35" alt="logo"></img>
+        </div>
+        {this.state.nextStep?<div  className="new-goBack signup" onClick={this.showNext}><em  className="icon-left-arrow"></em></div>:''}
+        {this.state.nextStep?<div  className="backtoSignin"> Already have an account? <span><Link to='/signin' style={{color:'#0071e4'}}>Sign in</Link></span></div>:<div  className="new-CloseButton" ><em  className="icon-cancel"></em></div>}
+        <div className='loginRegisterLeft'>
+            <div className="loginRegisterLeft-bg2 active"></div>
+            <span  className="topSmall-logo">
+                <img  src="https://studio.builder.ai/assets/images/logoSmall.png" width="26" height="35" alt="logo"></img>
+            </span>
+        </div>
+        <div className='loginRegisterRight'>
+            <div  className="heading-appdetail">
+                <p> one last step. </p>
+                <h2> Build your own version of <span></span></h2>
+            </div>
+            <div className='loginBox active'>
+                <div className='loginRegisterForm'>
+                   
+                   {this.state.nextStep?<div  className="authHeading">  <span className="authHeading-main">Instant quote</span><span className="authHeading-sub">for your product</span></div>:<div  className="authHeading"><span  className="authHeading-main" style={{fontWeight:'bolder'}}>Bring your idea to life</span>
+                        <span  className="authHeading-sub">It’s easy – no techie skills needed</span></div>}
                     
-                    
-                </div>
-                <div>
-                    <button className='log'>Next</button>
-                    <span style={{color:'gray',fontSize:'14px',marginLeft:'190px',marginTop:'30px'}}>No credit card needed</span>
-                    <span className='sign'>Already have an account?<Link to='/signin' className='signup'>Sign in</Link></span>
-                </div>
-                <div>
-                    <Divider width="500px" style={{marginTop:'20px'}}/>
-                    <p className='connect'>or connect using</p>
-                    <span><button className='connectfb'><i class="fa fa-facebook" aria-hidden="true"style={{color:'#3a5998'}}></i></button><button className='connectg'><i class="fa fa-google-plus" aria-hidden="true" style={{color:'#dc4e41'}}></i></button></span>
-                </div>
-             </div>
-         </div>    
-          
+                    <form name='registerForm'>
+                        <ul className={`signupSteps ${this.state.nextStep?'':'activeStep'}`}>
+                            <li>
+                                <span  className="field-labels">Sign up to builder</span>
+                                <div  className="errorMsgBox"></div>
+                                <div  className="input-container">
+                                    <input  type="text" placeholder="Email Address" maxLength="100" email="" autoComplete="off" name="email"  id='email' onChange={(e)=>this.handleChange(e)}></input>
+                                </div>
 
-      </div>
+                            </li>
+                            <li>
+                                <button  type="button" className="submitButton extraSpace signUpNextButtonClass errorAnimation" onClick={this.showNext}>Next </button>
+                                <p  className="extraText">No credit card needed</p>
+                                <p  className="orAction noMargin">Already have an account? <button  type="button" ><Link to='/signin' style={{color:'#0071e4'}}>Sign in</Link></button></p>
+                            </li>
+                        </ul>
+                        <ul className={`signupSteps ${this.state.nextStep?'activeStep':''}`}>
+                            <li>
+                                <div  className="onlyAppdetailPopup"> Edit </div>
+                                <div  className="errorMsgBox"></div>
+                                <div ><legend className="ex-label">Email Address</legend><span  className="enteredEmail">{this.state.email}</span></div>
+                            </li>
+                            <li >
+                                <input  name="name" type="text" pattern="[a-zA-Z ]*" maxLength="100" placeholder="Enter Name (ex. John Smith)" id='name' onChange={(e)=>this.handleChange(e)}></input>
+                            </li>
+                            <li>
+                                <international-phone-number  placeholder="Mobile Number" name="mobileNumber"  maxLength="20" >
+                                    <div  className="input-group">
+                                        <span  className="input-group-addon flagInput">
+                                            <div  className="dropdown">
+                                                <button  type="button" class="dropbtn btn">
+                                                    <span  className="flag flag-in"></span>
+                                                    <span className="arrow-down"></span>
+                                                </button>
+                                            </div>
+                                        </span>
+                                        <input  className="form-control" placeholder="Mobile Number" type="text" maxLength="20" id='contactNumber' onChange={(e)=>this.handleChange(e)}></input>
+                                    </div>
+                                </international-phone-number>
+                            </li>
+                            <li>
+                                <input  name="organisation" type="text" maxLength="100" placeholder="Organisation (Optional)"  id='organisation' onChange={(e)=>this.handleChange(e)}></input>
+                            </li>
+                            <li>
+                                <div  className="relativeRow"><input  placeholder="Password" name="password" maxLength="100" minLength="8"  type="password" onChange={(e)=>this.handleChange(e)} id='password'></input></div>
+                            </li>
+                            <li>
+                                <div  className="registerCheck">
+                                    <p><input type="checkbox" id="businesspurposes"></input>
+                                    <label  htmlFor="businesspurposes" ></label> Email me exclusive Builder promotions and updates. I can unsubscribe at any time as stated in the <a  href="https://www.engineer.ai/privacy-policy" target="_blank">Privacy Policy.</a>
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <button  type="submit" className="submitButton" onClick={this.onSubmit}><span  className="icon-right"></span> Register </button>
+                                <p  className="orAction">By clicking on Register, you are agree with our <a  href="https://www.engineer.ai/terms" target="_blank">Terms and Conditions.</a></p>
+                            </li>
+                            <div  className="backtoSigninMob"> Already have an account? <span><Link to='/signin' style={{color:'#0071e4'}}>Sign in</Link></span></div>
+                        </ul>
+
+                    </form>
+                    {this.state.nextStep?'':<div>
+                        <div  className="socialLogin">
+                            <h4><span>or connect using</span></h4>
+                            <span  className="socialIcon fbIcon">
+                                <em  className="icon-facebook"><i class="fab fa-facebook-f"></i></em>
+                            </span>
+                            <span  className="socialIcon googleIcon">
+                                <em  className="icon-google-plus"><i class="fab fa-google-plus-g"></i></em>
+                            </span>
+                        </div></div>} 
+                    
+                </div>
+            </div>
+        </div>
+        
+     </div>
     );}
 
 }

@@ -24,7 +24,7 @@ module.exports = function validateRegisterInput(data) {
 if (Validator.isEmpty(data.contactNumber)) {
     errors.contactNumber = "Contact number is required";
   }
-if (!Validator.isLength(data.password, { min: 6, max: 30 })) {
+if (!Validator.isLength(data.password, { min: 8, max: 100 })) {
     errors.password = "Password must be at least 6 characters";
   }
 

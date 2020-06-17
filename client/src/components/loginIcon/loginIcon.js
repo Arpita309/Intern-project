@@ -4,6 +4,7 @@ import {Modal,ModalBody,Form,FormGroup} from 'reactstrap'
 import ReactDOM from 'react-dom';
 import {Tooltip} from 'reactstrap'
 import {Link} from 'react-router-dom'
+import { auth } from '../authentication';
 const Tool= () => {
     const [tooltipOpen, setTooltipOpen] = useState(false);
   
@@ -35,7 +36,8 @@ class LoginIcon extends React.Component{
         
         this.state = {
         
-            isOpen: false
+            isOpen: false,
+            mobNavigation:false
 
         
         };
@@ -63,20 +65,32 @@ class LoginIcon extends React.Component{
         }
       }
       
-   
+      closeMobNavigation=()=>{
+        this.setState({mobNavigation:false})
+      }
 
      
       togglePopUp() {
         this.setState({
-          isOpen: !this.state.isOpen
+          isOpen: !this.state.isOpen,mobNavigation:true
         });
       }
     render(){
     return (
            <div>
-                <div className='mobuserLogin'>
-                <em onClick={this.togglePopUp} style={{backgroundColor:'white'}} ><i class="far fa-user " style={{color:'rgb(0, 112, 224)'}}></i></em>
-                <div className={`commonPopUp ${this.state.isOpen?'active':''}`} >
+                <div className='mobuserLogin' style={{marginLeft:'150px'}}>
+                <em onClick={this.togglePopUp} style={{backgroundColor:'white'}} ><i class="far fa-user " style={{color:'rgb(0, 112, 224)'}}></i></em></div>
+          {auth.name?<div className={`mobNavigation ${this.state.mobNavigation?'active':''}`}>
+                  <div className="mobOverlay"></div>
+                  <div className="menuBox">
+                    <div className="closeNav" onClick={this,this.closeMobNavigation}><em className="icon-close"></em></div>
+                    <div>
+                      <div className="welcomeUser"> Hello, <strong>{auth.name}</strong></div>
+                      <ul className="mobile-loginscreen">
+                        <li><span className="userSetting"><em className="icon-settings-streamline-1"></em> Settings</span></li>
+                        <li className="mydashBoard"><span>
+                          <em class="icon-dashboard-3"></em> Go to Dashboard</span></li>
+                          <li><span className="userLogout"><em className="icon-logout-1"></em> Logout</span></li></ul></div></div></div>:<div className={`commonPopUp ${this.state.isOpen?'active':''}`} >
                     <div class="popOverlay"></div>
                     <div class="popHolder loginoverlayPopup" ref={this.setWrapperRef}>
                         <div class="main">
@@ -90,15 +104,15 @@ class LoginIcon extends React.Component{
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>}
                 
                     
-                </div>
                 
-                <div class="loginPanel ul">
+                
+              {auth.name?'':<div class="loginPanel ul" >
                     <Tool/>
                     
-                </div>
+                </div>}  
                 
             </div>
 

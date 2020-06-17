@@ -1,10 +1,12 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import'./SignIn.css'
-import {Link } from 'react-router-dom'
+import {Link,Redirect } from 'react-router-dom'
 import { Divider } from '@material-ui/core'
 import axios from 'axios'
 import jwt_decode from "jwt-decode";
 import setAuthToken from "../utils/setAuthToken";
+import {Authentication} from '../authentication'
+
 var userData={}
 class SignIn extends React.Component{
     constructor(props){
@@ -13,10 +15,11 @@ class SignIn extends React.Component{
             
                 email: "",
                 password: "",
+                loggedin:false,username:''
                 
         }
     }
-   
+    
     handleChange=(e)=>{
         this.setState({[e.target.id]: e.target.value })
     }
@@ -38,12 +41,16 @@ class SignIn extends React.Component{
         // Set token to localStorage
               const { token } = res.data;
               localStorage.setItem("jwtToken", token);
+              console.log(localStorage.getItem('jwtToken'))
+              
               // Set token to Auth header
               setAuthToken(token);
               // Decode token to get user data
               const decoded = jwt_decode(token);
+              
               // Set current user
               this.setCurrentUser(decoded);
+              
             })
             .catch(err =>
               console.log(err.response.data)
@@ -51,10 +58,15 @@ class SignIn extends React.Component{
             ); };
         
     setCurrentUser=(data)=>{
-        console.log(data)
-    }    
+        localStorage.setItem("user",data.name);
+        Authentication(data)
+        this.setState({loggedin:data.length!=0,username:data.name})}
+        
+       
     render(){
-    
+    if(this.state.loggedin){
+        return(<Redirect to='/'/>)
+    }
     return (
       <div className='row'>
          <div className='col-lg-6'>
