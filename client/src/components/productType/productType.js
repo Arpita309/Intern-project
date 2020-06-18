@@ -41,7 +41,7 @@ class SliderParent extends React.Component {
 					})}
 				</Slider>
 			</div>
-			{this.state.checkId!=''?<BottomBar section='productType' active={this.state.checkId}/>:''}
+			{this.state.checkId?<BottomBar section='productType' activeProduct={this.state.checkId}/>:''}
 			</React.Fragment>
 		);
 	}

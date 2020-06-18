@@ -4,6 +4,7 @@ import Divider from '@material-ui/core/Divider';
 import {Link} from 'react-router-dom'
 import axios from 'axios'
 import Loader from '../questionSectionLoader/loaderbox'
+import BottomBar from '../homepageBottombar/homepageBottombar'
 class AppList extends React.Component{
     constructor(props){
         super(props)
@@ -11,7 +12,9 @@ class AppList extends React.Component{
             data:[],
             isLoading:true,
             times:6,
-            checkId:''
+            checkId:'',
+            
+			hideBottom:false
         }
     }
     componentDidMount() {
@@ -81,7 +84,19 @@ class AppList extends React.Component{
                    )
                 })}
                 </div>}
-                {/*<div className='appListBox'>
+                
+                {this.state.checkId?<BottomBar section='App' activeApp={this.state.checkId}/>:''}
+        </div>
+    )}
+}
+
+export default AppList;
+
+
+
+
+
+{/*<div className='appListBox'>
                    <h3>Snapchat</h3>
                    <p>Offer multimedia sharing and messaging between users. These interactions are only available for a short time, making it ideal for fast and instant communication.</p>
                    <span> <input type='checkbox' className='tickBox'></input><img  width="96" height="96" alt="" src="https://duj87royd3ze0.cloudfront.net/uploads/application/app_builder_icon/57e0aff95cba2a27d6af2798/snapchat_1.svg"></img></span>
@@ -162,9 +177,3 @@ class AppList extends React.Component{
                    </div>
                 </div>
             </div>*/}
-
-        </div>
-    )}
-}
-
-export default AppList;

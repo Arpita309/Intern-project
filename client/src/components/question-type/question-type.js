@@ -4,7 +4,7 @@ import './question-type.css'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Loader from '../questionSectionLoader/loaderbox'
-
+import BottomBar from '../homepageBottombar/homepageBottombar'
 class QuestionType extends React.Component{
     constructor(props) {
         super(props);
@@ -13,7 +13,8 @@ class QuestionType extends React.Component{
             checked: false,
             data:[],
             isLoading:true,
-            times:[3]
+            times:[3],
+            checkId:''
         };
     }
     toggleClass() {
@@ -27,6 +28,10 @@ class QuestionType extends React.Component{
             this.setState({ data ,isLoading:false});
           })
       }
+      handleChange=(e,id)=>{
+		this.setState({checkId:id})
+		
+	}
         render() {
             return (
                
@@ -62,7 +67,7 @@ class QuestionType extends React.Component{
                                                       
                                                         <div key={info.id} className='child'>
                                                     
-                                                        <div className= {`questionbox ${this.state.checked ? 'completed': '' }`} style={{display:'inline-block'}}  onClick={this.toggleClass}>
+                                                        <div className= {`questionbox ${this.state.checked ? 'completed': '' }`} style={{display:'inline-block'}}  onChange={(e)=>this.handleChange(info.id)}>
                                                             <h3>{info.problem_statement}</h3>
                                                             
                                                                     <div className='answearSet'>
@@ -70,7 +75,7 @@ class QuestionType extends React.Component{
                                                                     {info.applications.map(apps=>{
                                                                 return(
                                                                         <li>
-                                                                            <input  type="checkbox" id={apps.id} checked={this.state.checked} onClick={this.toggleClass}></input>
+                                                                            <input  type="checkbox" id={apps.id} checked={this.state.checkId==info.id||this.state.checkId==apps.id} onChange={(e)=>this.handleChange(apps.id)}></input>
                                                                             <label htmlFor={apps.id}>
                                                                                 <div  className="answearIcon">
                                                                                     <img  width="45" height="45" alt="" src={apps.icon}></img>
@@ -91,6 +96,7 @@ class QuestionType extends React.Component{
                                 </div> 
                                     </div>}  
                         </div>
+                        {this.state.checkId?<BottomBar section='question' activeQues={this.state.checkId}/>:''}
                      </div>
             );
         }

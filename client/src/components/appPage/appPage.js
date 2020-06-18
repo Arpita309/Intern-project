@@ -39,7 +39,8 @@ class AppPage extends React.Component{
             platformId:'',
             checkId:'',
             checkPlatformId:'',
-            sortId:''
+            sortId:'',
+            checkedApps:[]
 
         }
         this.showMore = this.showMore.bind(this);
@@ -48,6 +49,7 @@ class AppPage extends React.Component{
         this.Clear=this.Clear.bind(this);
         this.handleClickOutside=this.handleClickOutside.bind(this);
         this.setWrapperRef = this.setWrapperRef.bind(this);
+        this.handleCh=this.handleChange.bind(this);
     }
     componentDidMount() {
         document.addEventListener('mousedown', this.handleClickOutside);
@@ -66,7 +68,9 @@ class AppPage extends React.Component{
       
         
       
-      
+      handleCheck=(id)=>{
+          this.state.checkedApps.push(id)
+      }
     
       componentWillUnmount() {
         document.removeEventListener('mousedown', this.handleClickOutside);
@@ -179,7 +183,7 @@ function valuetext(value) {
     return `${value}`;
     
   }
-  console.log(this.state.checkId)
+  console.log(this.state.checkedApps.map(info=>info))
   
      
              return (
@@ -339,10 +343,11 @@ function valuetext(value) {
                                             
                                             return (
                                                 <React.Fragment key={value._id} >
-                                                 <div className='templateBox' >
+                                                 <div className={`templateBox ${this.state.checkedApps.filter(info=>info===value.id).length?'active':''}`} >
+                                                     {console.log(this.state.checkedApps.filter(info=>info===value.id))}
                                                     <h3>{value.title}</h3>
                                                     <p>{value.description}</p>
-                                                    <div className='tickBox'></div>
+                                                    <div className='tickBox' onClick={(e)=>this.handleCheck(value.id)}></div>
                                                     <img width="96" height="96" alt="" src={value.app_builder_icon_url}></img>
                                                     <div className="appListFooter">
                                                         <div className="appPrice">
@@ -361,7 +366,11 @@ function valuetext(value) {
 
                     </div>
                 </div>
-                <Footer/>
+                {this.state.checkedApps.length?<div className={`tempBottomBar ${this.state.checkedApps.length?'active':''}`}>
+                    <div  className="tempLeft"><h3 >{this.state.checkedApps.length}<span > Template selected</span></h3></div>
+                    <div className="tempRight"><button  type="button" class="next">Continue </button><share-url-button><button  type="button" class="shareUrl"><em  class="icon-share-outline"></em></button></share-url-button></div>
+                    </div>:<Footer/>}
+                
             </div>
             
         )

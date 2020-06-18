@@ -24,7 +24,7 @@ class CurrencyBox extends React.Component{
         this.setState({isOpen:!this.state.isOpen})
     }
     chooseCurrency=(id)=>{
-        this.setState({currencyId:id})
+        this.setState({currencyId:id}) 
     }
     render(){
         let code=this.state.currency.map(value=>
