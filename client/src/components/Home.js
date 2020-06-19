@@ -8,6 +8,7 @@ import QuestionType from './question-type/question-type';
 import Video from './video/video'
 import Footer from './footer/footer';
 import {auth} from './authentication'
+
 function Home() {
   
    

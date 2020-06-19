@@ -5,6 +5,13 @@ const morgan = require('morgan');
 const cors=require('cors')
 const path=require('path')
 const passport = require("passport");
+//confusion-server
+var session = require('express-session');
+var authenticate = require('./authenticate');
+var keys=require('./config/keys')
+const cookieSession = require('cookie-session');
+//var cookieParser = require('cookie-parser');
+
 const hostname = process.env.HOST || 'localhost';
 const port = process.env.PORT || 4000;
 const dbUrl = process.env.DB_URL || "mongodb+srv://arpita_W3dev:7985714375@ar@cluster0-ond1z.mongodb.net/builderDb?retryWrites=true&w=majority";
@@ -26,7 +33,9 @@ const configurationsRouter=require('./routes/configurationRouter')
 const bundleDetailsRouter=require('./routes/bundleDetailRouter')
 const featureFilter=require('./routes/featureFilterRouter')
 const users = require("./routes/userRouter");
+const auth=require("./routes/users")
 const app = express();
+
 app.use(cors())
 app.use(morgan('dev'));
 //app.use(bodyParser.json());
@@ -39,6 +48,19 @@ app.use(bodyParser.json({ limit: '5mb' }));
 
 app.use(express.static(__dirname + '/public'));
 app.use(passport.initialize());
+app.use(passport.session());
+app.use(cookieParser('12345-67890-09876-54321'));
+
+/*app.use(session({
+   name: 'session-id',
+   secret: '12345-67890-09876-54321',
+   saveUninitialized: false,
+   
+ }));*/
+app.use(cookieSession({
+  maxAge: 24 * 60 * 60 * 1000,
+  keys: [keys.session.cookieKey]
+}));
 //const MongoClient = require('mongodb').MongoClient;
 const uri=dbUrl;
 
@@ -66,6 +88,7 @@ app.use('/configurations',configurationsRouter)
 app.use('/bundle',bundleDetailsRouter);
 app.use('/filter',featureFilter);
 app.use("/users", users);
+app.use("/auth", auth);
 /*app.use((req, res, next) => {
 
 

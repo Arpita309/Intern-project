@@ -15,7 +15,7 @@ class SignIn extends React.Component{
             
                 email: "",
                 password: "",
-                loggedin:false,username:''
+                loggedin:false,username:{}
                 
         }
     }
@@ -26,7 +26,7 @@ class SignIn extends React.Component{
     onSubmit = e => {
         e.preventDefault();
      userData = {
-          email: this.state.email,
+          username: this.state.email,
           password: this.state.password
         };
     console.log(userData);
@@ -34,22 +34,22 @@ class SignIn extends React.Component{
 
         
            
-            axios.post("http://localhost:4000/users/login", userData)
+            axios.post("http://localhost:4000/auth/login", userData)
             .then(res => {
                 console.log(res.data)
               // Save to localStorage
         // Set token to localStorage
-              const { token } = res.data;
+              const token = res.data.token;
               localStorage.setItem("jwtToken", token);
               console.log(localStorage.getItem('jwtToken'))
               
               // Set token to Auth header
               setAuthToken(token);
               // Decode token to get user data
-              const decoded = jwt_decode(token);
+              
               
               // Set current user
-              this.setCurrentUser(decoded);
+              this.setCurrentUser(res.data.user);
               
             })
             .catch(err =>
@@ -58,12 +58,13 @@ class SignIn extends React.Component{
             ); };
         
     setCurrentUser=(data)=>{
-        localStorage.setItem("user",data.name);
+        
         Authentication(data)
-        this.setState({loggedin:data.length!=0,username:data.name})}
+        this.setState({loggedin:data.length!=0,username:data})}
         
        
     render(){
+        console.log(this.state.username)
     if(this.state.loggedin){
         return(<Redirect to='/'/>)
     }
@@ -99,7 +100,7 @@ class SignIn extends React.Component{
                 <div>
                     <Divider width="500px" style={{marginTop:'30px'}}/>
                     <p className='connect'>or connect using</p>
-                    <span><button className='connectfb'><i class="fa fa-facebook" aria-hidden="true"style={{color:'#3a5998'}}></i></button><button className='connectg'><i class="fa fa-google-plus" aria-hidden="true" style={{color:'#dc4e41'}}></i></button></span>
+                    <span><button className='connectfb'><a href='http://localhost:4000/auth/facebook'>  <i class="fa fa-facebook" aria-hidden="true"style={{color:'#3a5998'}}></i></a></button><button className='connectg'><a href='http://localhost:4000/auth/google'>  <i class="fa fa-google-plus" aria-hidden="true" style={{color:'#dc4e41'}}></i></a></button></span>
                 </div>
              </div>
          </div>    

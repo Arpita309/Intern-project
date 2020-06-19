@@ -14,7 +14,8 @@ class SignUp extends React.Component{
                 email: "",
                 password: "",
                 name:'',organisation:'',contactNumber:'',nextStep:false,
-                redirect:false
+                redirect:false,
+                fbData:{}
                 
         }
     }
@@ -25,7 +26,7 @@ class SignUp extends React.Component{
     onSubmit = e => {
         e.preventDefault();
      userData = {
-          email: this.state.email,
+          username: this.state.email,
           password: this.state.password,
           name:this.state.name,
           organisation:this.state.organisation,
@@ -36,10 +37,10 @@ class SignUp extends React.Component{
 
         
            
-            axios.post("http://localhost:4000/users/register", userData)
+            axios.post("http://localhost:4000/auth/signup", userData)
             
             .then(res => {
-                console.log(res)
+                console.log(res.config.data)
               if(res.data){
                   console.log('successful signup')
                   this.setState({redirect:true})
@@ -56,6 +57,24 @@ class SignUp extends React.Component{
             
     showNext=()=>{
         this.setState({nextStep:!this.state.nextStep})
+    }
+    loginFB=()=>{
+        axios.get("http://localhost:4000/auth/facebook/token")
+            
+            .then(res => {
+                console.log(res)
+              if(res.data){
+                  console.log('successful signup')
+                  this.setState({redirect:true})
+              }
+              else console.log('signup error')
+            })
+            .catch(err =>
+              console.log(err.response.data)
+              
+            ); 
+        
+            
     }        
     render(){
         if(this.state.redirect){
@@ -150,11 +169,11 @@ class SignUp extends React.Component{
                     {this.state.nextStep?'':<div>
                         <div  className="socialLogin">
                             <h4><span>or connect using</span></h4>
-                            <span  className="socialIcon fbIcon">
-                                <em  className="icon-facebook"><i class="fab fa-facebook-f"></i></em>
+                            <span  className="socialIcon fbIcon" onClick={this.loginFB}>
+                            <a href='http://localhost:4000/auth/facebook'>    <em  className="icon-facebook"><i class="fab fa-facebook-f"></i></em></a>
                             </span>
                             <span  className="socialIcon googleIcon">
-                                <em  className="icon-google-plus"><i class="fab fa-google-plus-g"></i></em>
+                            <a href='http://localhost:4000/auth/google'>   <em  className="icon-google-plus"><i class="fab fa-google-plus-g"></i></em></a>
                             </span>
                         </div></div>} 
                     
