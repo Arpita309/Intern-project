@@ -24,7 +24,7 @@ class AppList extends React.Component{
             const data = res.data;
             this.setState({data,isLoading:false });
           })
-          axios.get(`http://localhost:4000/auth/current_user`,{ withCredentials: true })
+          axios.get(`http://localhost:4000/auth/current_user`,{withCredentials:true})
           .then(res => {
             console.log(res)
           })  

@@ -84,11 +84,13 @@ router.get('/google', passport.authenticate('google', {
 // hand control to passport to use code to grab profile info
 router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
  
-  res.redirect('http://localhost:3000');
+ res.redirect('http://localhost:3000',)
 });
 router.get('/current_user', (req, res) => {
   console.log(req.user)
-  res.send(req.user);
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  res.setHeader('Access-Control-Allow-Origin', true);
+  res.json(req.user);
 });
 
 router.get('/facebook', passport.authenticate('facebook', {
@@ -98,7 +100,7 @@ router.get('/facebook', passport.authenticate('facebook', {
 
 router.get('/facebook/callback', passport.authenticate('facebook'),(req,res)=>{
   
-  res.redirect('http://localhost:3000');
+  res.send('heyy')
 });
 
 module.exports = router;

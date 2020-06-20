@@ -62,7 +62,7 @@ class SignIn extends React.Component{
         Authentication(data)
         this.setState({loggedin:data.length!=0,username:data})}
         
-       
+     
     render(){
         console.log(this.state.username)
     if(this.state.loggedin){
@@ -100,7 +100,7 @@ class SignIn extends React.Component{
                 <div>
                     <Divider width="500px" style={{marginTop:'30px'}}/>
                     <p className='connect'>or connect using</p>
-                    <span><button className='connectfb'><a href='http://localhost:4000/auth/facebook'>  <i class="fa fa-facebook" aria-hidden="true"style={{color:'#3a5998'}}></i></a></button><button className='connectg'><a href='http://localhost:4000/auth/google'>  <i class="fa fa-google-plus" aria-hidden="true" style={{color:'#dc4e41'}}></i></a></button></span>
+                    <span><button className='connectfb'><a href='http://localhost:4000/auth/facebook'>  <i class="fa fa-facebook" aria-hidden="true"style={{color:'#3a5998'}}></i></a></button><button className='connectg' ><a href='http://localhost:4000/auth/google'>  <i class="fa fa-google-plus" aria-hidden="true" style={{color:'#dc4e41'}} ></i></a></button></span>
                 </div>
              </div>
          </div>    

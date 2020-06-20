@@ -11,12 +11,12 @@ var config = require('./config/keys');
 
 exports.local = passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser((user, done) => {
-    
+    //console.log(user)
     done(null, user._id);
 });
 
-passport.deserializeUser((id, done) => {
-    User.findById(id).then((user) => {
+passport.deserializeUser((_id, done) => {
+    User.findById(_id).then((user) => {
         done(null, user);
     });
 });

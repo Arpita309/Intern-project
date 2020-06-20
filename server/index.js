@@ -7,7 +7,7 @@ const path=require('path')
 const passport = require("passport");
 //confusion-server
 var session = require('express-session');
-var authenticate = require('./authenticate');
+
 var keys=require('./config/keys')
 const cookieSession = require('cookie-session');
 //var cookieParser = require('cookie-parser');
@@ -35,21 +35,26 @@ const featureFilter=require('./routes/featureFilterRouter')
 const users = require("./routes/userRouter");
 const auth=require("./routes/users")
 const app = express();
+app.use(cors({credentials: true, origin: 'http://localhost:3000'}))
 
-app.use(cors())
 app.use(morgan('dev'));
 //app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   limit: "5mb",
   extended: false
 }));
-
+app.use(cookieSession({
+  maxAge: 24 * 60 * 60 * 1000,
+  keys: [keys.session.cookieKey]
+}));
 app.use(bodyParser.json({ limit: '5mb' }));
 
 app.use(express.static(__dirname + '/public'));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(cookieParser('12345-67890-09876-54321'));
+const authenticate = require('./authenticate');
+
+//app.use(cookieParser('12345-67890-09876-54321'));
 
 /*app.use(session({
    name: 'session-id',
@@ -57,10 +62,7 @@ app.use(cookieParser('12345-67890-09876-54321'));
    saveUninitialized: false,
    
  }));*/
-app.use(cookieSession({
-  maxAge: 24 * 60 * 60 * 1000,
-  keys: [keys.session.cookieKey]
-}));
+
 //const MongoClient = require('mongodb').MongoClient;
 const uri=dbUrl;
 
