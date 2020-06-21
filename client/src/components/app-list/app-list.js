@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom'
 import axios from 'axios'
 import Loader from '../questionSectionLoader/loaderbox'
 import BottomBar from '../homepageBottombar/homepageBottombar'
+
 class AppList extends React.Component{
     constructor(props){
         super(props)
@@ -24,10 +25,7 @@ class AppList extends React.Component{
             const data = res.data;
             this.setState({data,isLoading:false });
           })
-          axios.get(`http://localhost:4000/auth/current_user`,{withCredentials:true})
-          .then(res => {
-            console.log(res)
-          })  
+         
           
       }
       handleChange=(e,id)=>{

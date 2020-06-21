@@ -36,10 +36,10 @@ class SignIn extends React.Component{
            
             axios.post("http://localhost:4000/auth/login", userData)
             .then(res => {
-                console.log(res.data)
+                console.log(res.user)
               // Save to localStorage
         // Set token to localStorage
-              const token = res.data.token;
+              const token = res.token;
               localStorage.setItem("jwtToken", token);
               console.log(localStorage.getItem('jwtToken'))
               
@@ -47,20 +47,16 @@ class SignIn extends React.Component{
               setAuthToken(token);
               // Decode token to get user data
               
-              
+               
               // Set current user
-              this.setCurrentUser(res.data.user);
+              this.setCurrentUser(res.user);
               
             })
             .catch(err =>
-              console.log(err.response.data)
+              console.log(err.response)
               
-            ); };
-        
-    setCurrentUser=(data)=>{
-        
-        Authentication(data)
-        this.setState({loggedin:data.length!=0,username:data})}
+            );
+    }
         
      
     render(){

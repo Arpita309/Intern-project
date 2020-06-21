@@ -15,6 +15,7 @@ import BuildCard from './components/buildCard/buildCard';
 import PaymentPlan from './components/paymentPlan/paymentPlan';
 import BillingDetails from './components/billingDetails/billingDetails';
 import BecomePartner from './components/becomePartner/becomePartner';
+import Dashboard from './components/Dashboard/dashboard';
 function App() {
   return (
     <BrowserRouter>
@@ -34,6 +35,7 @@ function App() {
          <Route exact path='/payment-plan' component={PaymentPlan}/>
          <Route exact path='/billing-details' component={BillingDetails}/>
          <Route exact path='/become-a-partner' component={BecomePartner}/>
+         <Route exact path='/dashboard' component={Dashboard}/>
 
        </Switch>
        

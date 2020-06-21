@@ -6,7 +6,7 @@ var User = require('../models/user');
 
 var passport = require('passport');
 var authenticate = require('../authenticate');
-
+const cors=require('../cors')
 
 router.use(bodyParser.json());
 
@@ -88,9 +88,8 @@ router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
 });
 router.get('/current_user', (req, res) => {
   console.log(req.user)
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
-  res.setHeader('Access-Control-Allow-Origin', true);
-  res.json(req.user);
+  res.setHeader('Access-Control-Allow-Origin',req.header('origin'))
+  res.send(req.user);
 });
 
 router.get('/facebook', passport.authenticate('facebook', {
@@ -100,7 +99,7 @@ router.get('/facebook', passport.authenticate('facebook', {
 
 router.get('/facebook/callback', passport.authenticate('facebook'),(req,res)=>{
   
-  res.send('heyy')
+  res.redirect('http://localhost:3000')
 });
 
 module.exports = router;

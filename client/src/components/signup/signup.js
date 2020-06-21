@@ -58,24 +58,7 @@ class SignUp extends React.Component{
     showNext=()=>{
         this.setState({nextStep:!this.state.nextStep})
     }
-    loginFB=()=>{
-        axios.get("http://localhost:4000/auth/facebook/token")
-            
-            .then(res => {
-                console.log(res)
-              if(res.data){
-                  console.log('successful signup')
-                  this.setState({redirect:true})
-              }
-              else console.log('signup error')
-            })
-            .catch(err =>
-              console.log(err.response.data)
-              
-            ); 
-        
-            
-    }        
+           
     render(){
         if(this.state.redirect){
             return <Redirect to='/signin'/>

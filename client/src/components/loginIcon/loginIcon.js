@@ -4,7 +4,7 @@ import {Modal,ModalBody,Form,FormGroup} from 'reactstrap'
 import ReactDOM from 'react-dom';
 import {Tooltip} from 'reactstrap'
 import {Link} from 'react-router-dom'
-import { auth } from '../authentication';
+import {auth }from '../authentication';
 const Tool= () => {
     const [tooltipOpen, setTooltipOpen] = useState(false);
   
@@ -80,12 +80,12 @@ class LoginIcon extends React.Component{
            <div>
                 <div className='mobuserLogin' style={{marginLeft:'150px'}}>
                 <em onClick={this.togglePopUp} style={{backgroundColor:'white'}} ><i class="far fa-user " style={{color:'rgb(0, 112, 224)'}}></i></em></div>
-          {auth.name?<div className={`mobNavigation ${this.state.mobNavigation?'active':''}`}>
+          {this.props.auth?<div className={`mobNavigation ${this.state.mobNavigation?'active':''}`}>
                   <div className="mobOverlay"></div>
                   <div className="menuBox">
                     <div className="closeNav" onClick={this,this.closeMobNavigation}><em className="icon-close"></em></div>
                     <div>
-                      <div className="welcomeUser"> Hello, <strong>{auth.name}</strong></div>
+                      <div className="welcomeUser"> Hello, <strong>{auth.username}</strong></div>
                       <ul className="mobile-loginscreen">
                         <li><span className="userSetting"><em className="icon-settings-streamline-1"></em> Settings</span></li>
                         <li className="mydashBoard"><span>
@@ -109,7 +109,7 @@ class LoginIcon extends React.Component{
                     
                 
                 
-              {auth.name?'':<div class="loginPanel ul" >
+              {this.props.auth?'':<div class="loginPanel ul" >
                     <Tool/>
                     
                 </div>}  

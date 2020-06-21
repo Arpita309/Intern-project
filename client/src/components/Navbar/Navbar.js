@@ -2,19 +2,32 @@ import React from 'react'
 
 import CurrencyBox from '../currencyBox/currencyBox'
 import {Link} from 'react-router-dom'
-import {auth} from '../authentication'
+import {auth}  from '../authentication'
 import User from '../loggedInUser/loggedInUser'
 import LoginIcon from '../loginIcon/loginIcon'
 import './Navbar.css'
+import axios from 'axios'
 import NeedHelp from '../needHelp/needHelp'
+import Authentication from '../authentication'
 export default class Navbar extends React.Component {
   constructor(props) {
     super(props);
 this.state = {
-        mobNavigation:false
+        mobNavigation:false,auth:{}
 
     
     }}
+    componentDidMount(){
+      axios.get(`http://localhost:4000/auth/current_user`,{withCredentials:true})
+          .then(res => {
+            
+            this.setState({auth:res.data})
+          })
+         
+        
+    
+    }
+    
     closeNavigation=()=>{
       this.setState({mobNavigation:false})
     }
@@ -26,8 +39,10 @@ this.state = {
       });
     }
     render() {
+        
          return (
            <nav id='header'>
+             <Authentication data={this.state.auth}/>
              <div className='container-fluid'>
                <div className='row'>
                 <div className="logo">
@@ -53,10 +68,11 @@ this.state = {
                     </div>
                 </div>
             </div>
-                {auth.name?<div className='hidemobileScreen'><User/></div>:<div >
+              {this.state.auth?<div className='hidemobileScreen'><User auth={this.state.auth}/></div>:
+                <div >
                   <CurrencyBox/></div>}
                 
-                <LoginIcon/>
+                <LoginIcon auth={this.state.auth}/>
                 <div class="mobileClick" ><em class="icon-hamicon" onClick={this.mobNavigation}></em></div>
                 <div className={`mobNavigation ${this.state.mobNavigation?'active':''}`}>
                   <div className="mobOverlay"></div>
