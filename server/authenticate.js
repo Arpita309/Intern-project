@@ -16,7 +16,9 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((_id, done) => {
+    
     User.findById(_id).then((user) => {
+        console.log(user)
         done(null, user);
     });
 });
@@ -72,6 +74,7 @@ passport.use(
         callbackURL: '/auth/google/redirect'
     }, (accessToken, refreshToken, profile, done) => {
         // check if user already exists in our own db
+        console.log(profile)
         User.findOne({googleId: profile.id}).then((currentUser) => {
             if(currentUser){
                 // already have this user
@@ -81,7 +84,7 @@ passport.use(
                 // if not, create user in our db
                 new User({
                     googleId: profile.id,
-                    username: profile.displayName,
+                    name: profile.displayName,
                     
                 }).save().then((newUser) => {
                     console.log('created new user: ', newUser);
@@ -103,7 +106,7 @@ passport.use(new FacebookStrategy({
             if (existingUser) {
                 done(null, existingUser);
             } else {
-                new User({ facebookId: profile.id ,username:profile.displayName}).save()
+                new User({ facebookId: profile.id ,name:profile.displayName}).save()
                     .then((user) => done(null, user));
             }
         })

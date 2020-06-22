@@ -5,7 +5,8 @@ import { Divider } from '@material-ui/core'
 import axios from 'axios'
 import jwt_decode from "jwt-decode";
 import setAuthToken from "../utils/setAuthToken";
-import {Authentication} from '../authentication'
+import Authentication from '../authentication'
+
 
 var userData={}
 class SignIn extends React.Component{
@@ -15,7 +16,7 @@ class SignIn extends React.Component{
             
                 email: "",
                 password: "",
-                loggedin:false,username:{}
+                loggedin:false,user:{}
                 
         }
     }
@@ -34,14 +35,15 @@ class SignIn extends React.Component{
 
         
            
-            axios.post("http://localhost:4000/auth/login", userData)
+            axios.post("http://localhost:4000/auth/login", userData,{withCredentials:true})
             .then(res => {
-                console.log(res.user)
+                console.log(res)
               // Save to localStorage
         // Set token to localStorage
-              const token = res.token;
+              const token = res.data.token;
               localStorage.setItem("jwtToken", token);
-              console.log(localStorage.getItem('jwtToken'))
+              this.setState({loggedin:true})
+              //console.log(localStorage.getItem('jwtToken'))
               
               // Set token to Auth header
               setAuthToken(token);
@@ -49,22 +51,24 @@ class SignIn extends React.Component{
               
                
               // Set current user
-              this.setCurrentUser(res.user);
+             
               
             })
             .catch(err =>
               console.log(err.response)
               
             );
+           
     }
-        
+       
      
     render(){
-        console.log(this.state.username)
+        
     if(this.state.loggedin){
-        return(<Redirect to='/'/>)
+       
+        return(<Redirect to='/'/> )
     }
-    return (
+    else return (
       <div className='row'>
          <div className='col-lg-6'>
             

@@ -464,3 +464,230 @@
 .icon-speed:before {
     content: "\52";
 }
+.dashboardArea .dashboardRight .progressCard .cardMiddle .projectPhases {
+    box-sizing: border-box;
+    width: 100%;
+    float: left;
+    clear: both;
+    padding: 10px 0 0;
+}
+.dashboardArea .dashboardRight .progressCard .cardMiddle .projectPhases ul {
+    margin: 0;
+    padding: 0;
+}
+.dashboardArea .dashboardRight .progressCard .cardMiddle .projectPhases ul li {
+    float: left;
+    width: 100%;
+    clear: both;
+    border-bottom: 1px dashed rgba(0,0,0,.1);
+    color: rgba(20,26,50,.8);
+    padding: 6px 0;
+    list-style-type: none;
+}
+.dashboardArea .dashboardRight .progressCard .cardMiddle .projectPhases ul li .phaseTitle {
+    float: left;
+    font-size: 12px;
+}
+.dashboardArea .dashboardRight .progressCard .cardMiddle .projectPhases ul li .phaseDetail {
+    float: right;
+}
+.dashboardArea .dashboardRight .progressCard .cardMiddle .projectPhases ul li .phaseDetail img {
+    float: left;
+    height: 20px;
+    width: auto;
+}
+.dashboardArea .dashboardRight .progressCard .cardMiddle .projectPhases ul li .phaseDetail .morePhase {
+    font-size: 11px;
+    float: right;
+    margin: 0 0 0 8px;
+    border: 1px solid rgba(0,0,0,.6);
+    border-radius: 50px;
+    height: 20px;
+    padding: 2px 8px;
+    color: #333;
+    cursor: pointer;
+    position: relative;
+}
+.dashboardArea .dashboardRight .progressCard .cardMiddle .projectPhases ul li .phaseDetail .morePhase .platformTooltip {
+    position: absolute;
+    z-index: -9;
+    opacity: 0;
+    right: 0;
+    top: 22px;
+    background: #000;
+    padding: 15px;
+    transition: all .3s ease-in-out;
+}
+.dashboardArea .dashboardRight .progressCard .cardMiddle .projectPhases ul li .phaseDetail .morePhase .platformTooltip:before {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    top: -5px;
+    right: 10px;
+    border-bottom: 5px solid #000;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+}
+.dashboardArea .dashboardRight .progressCard .cardMiddle .projectPhases ul li .phaseDetail .morePhase .platformTooltip h5 {
+    font-size: 13px;
+    color: #fff;
+    margin: 0 0 5px;
+    width: 100%;
+    clear: both;
+    white-space: nowrap;
+}
+.dashboardArea .dashboardRight .progressCard .cardMiddle h5 {
+    color: rgba(20,26,50,.9);
+    margin: 0 0 10px;
+    float: left;
+    font-size: 11px;
+}
+.dashboardArea .dashboardRight .progressCard .cardMiddle h6 {
+    color: rgba(20,26,50,.9);
+    margin: 0 0 10px;
+    float: right;
+    font-size: 11px;
+}
+.dashboardArea .dashboardRight .progressCard .cardMiddle .projectPhases ul li .phaseDetail .morePhase .platformTooltip h6 {
+    font-size: 12px;
+    color: #fff;
+    margin: 0 0 3px;
+    width: 100%;
+    clear: both;
+    white-space: nowrap;
+}
+.dashboardArea .dashboardRight .progressCard .cardMiddle .projectPhases ul li .phaseDetail .morePhase .platformTooltip h6 em {
+    color: #00c853;
+    line-height: 0;
+    float: left;
+    margin: 0 4px 0 0;
+    font-size: 11px;
+}
+.dashboardArea .dashboardRight .progressCard .cardMiddle .projectPhases ul li .phaseDetail .morePhase:hover .platformTooltip {
+    z-index: 9;
+    opacity: 1;
+}
+.icon-right:before {
+    font-weight: 900;
+    font-family: "Font Awesome\ 5 Free";
+    content: "\f00c";
+}
+.dashboardArea .dashboardRight .progressCard .cardMiddle .builderCare {
+    position: relative;
+    width: 100%;
+    float: left;
+    clear: both;
+    padding: 10px 0 0;
+}
+.dashboardArea .dashboardRight .progressCard .cardMiddle .builderCare:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -30px;
+    width: calc(100% + 60px);
+    border-top: 1px solid #c6d1f2;
+    display: block;
+}
+.dashboardArea .dashboardRight .progressCard .cardMiddle .builderCare span {
+    display: block;
+    float: left;
+    padding: 5px 12px;
+    border-radius: 50px;
+    background: #ecf1f8;
+    font-size: 14px;
+    color: #000;
+}
+.dashboardArea .dashboardRight .progressCard .cardMiddle .builderCare span em {
+    float: left;
+    line-height: 0;
+    color: #35c30d;
+    margin: 10px 4px 0 0;
+}
+.dashboardArea .dashboardRight .progressCard .cardBottom {
+    text-align: left;
+    float: left;
+    width: calc(100% + 24px);
+    clear: both;
+    align-self: flex-end;
+    margin: 0 -12px -12px;
+    padding: 12px;
+    background: #f9fafd;
+    border-radius: 0 0 5px 5px;
+}
+.dashboardArea .dashboardRight .progressCard .cardBottom .priceTag {
+    float: left;
+    font-size: 20px;
+    color: #007608;
+    text-shadow: 0 7px 22px rgba(32,44,69,.1);
+    line-height: 30px;
+}
+.dashboardArea .dashboardRight .progressCard .cardBottom button {
+    box-sizing: border-box;
+    background: linear-gradient(180deg,#37c50e,#007608);
+    float: right;
+    text-align: left;
+    white-space: nowrap;
+    height: 30px;
+    color: #fff;
+    font-size: 12px;
+    line-height: 24px;
+    padding: 3px 22px 3px 12px;
+    position: relative;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 7px 22px rgba(32,44,69,.1);
+}
+.dashboardArea .dashboardRight .progressCard .cardBottom button:before {
+    box-sizing: border-box;
+    content: "";
+    position: absolute;
+    z-index: 6;
+    border-left: 4px solid #fff;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    width: 1px;
+    height: 1px;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.dashboardArea .dashboardRight .progressCard .info-card {
+    background: rgba(252,196,103,.2);
+    padding: 10px;
+    border-radius: 4px;
+    width: 100%;
+    margin-bottom: 15px;
+    
+}
+.dashboardArea .dashboardRight .progressCard .info-card .icon-cancel {
+    font-size: 10px;
+    float: right;
+    line-height: 10px;
+    margin-top: 2px;
+    cursor: pointer;
+}
+.dashboardArea .dashboardRight .progressCard .info-card p {
+    font-size: 12px;
+    color: #8e641f;
+    line-height: 16px;
+    margin: 0;
+    padding: 0;
+}
+.dashboardArea .dashboardRight .progressCard .cardMiddle .completeDetail .completeRow h4 span {
+    font-size: 13px;
+    display: block;
+    color: #000;
+    padding: 3px 0;
+    font-weight: bolder;
+}
+.dashboardArea .dashboardRight .progressCard .cardMiddle .completeDetail .completeRow .team-dash-country span {
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.icon-pricenewproject:before {
+    content: "\47";
+}

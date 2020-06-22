@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 import {Tooltip} from 'reactstrap'
 import {Link} from 'react-router-dom'
 import {auth }from '../authentication';
+import axios from 'axios';
 const Tool= () => {
     const [tooltipOpen, setTooltipOpen] = useState(false);
   
@@ -75,6 +76,7 @@ class LoginIcon extends React.Component{
           isOpen: !this.state.isOpen,mobNavigation:true
         });
       }
+      
     render(){
     return (
            <div>
@@ -85,12 +87,12 @@ class LoginIcon extends React.Component{
                   <div className="menuBox">
                     <div className="closeNav" onClick={this,this.closeMobNavigation}><em className="icon-close"></em></div>
                     <div>
-                      <div className="welcomeUser"> Hello, <strong>{auth.username}</strong></div>
+                      <div className="welcomeUser"> Hello, <strong>{auth.name}</strong></div>
                       <ul className="mobile-loginscreen">
                         <li><span className="userSetting"><em className="icon-settings-streamline-1"></em> Settings</span></li>
                         <li className="mydashBoard"><span>
                           <em class="icon-dashboard-3"></em> Go to Dashboard</span></li>
-                          <li><span className="userLogout"><em className="icon-logout-1"></em> Logout</span></li></ul></div></div></div>:<div className={`commonPopUp ${this.state.isOpen?'active':''}`} >
+                          <li><span className="userLogout" ><em className="icon-logout-1"></em><a href='http://localhost:4000/auth/logout'>  Log Out</a></span></li></ul></div></div></div>:<div className={`commonPopUp ${this.state.isOpen?'active':''}`} >
                     <div class="popOverlay"></div>
                     <div class="popHolder loginoverlayPopup" ref={this.setWrapperRef}>
                         <div class="main">

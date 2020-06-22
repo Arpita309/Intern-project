@@ -6,7 +6,7 @@ var User = require('../models/user');
 
 var passport = require('passport');
 var authenticate = require('../authenticate');
-const cors=require('../cors')
+
 
 router.use(bodyParser.json());
 
@@ -54,14 +54,18 @@ router.post('/signup',  (req, res, next) => {
 
 router.post('/login',  passport.authenticate('local'), (req, res) => {  
   var token = authenticate.getToken({_id: req.user._id});
-  
+  console.log(req.user)
   res.statusCode = 200;
   res.setHeader('Content-Type', 'application/json');
   res.json({success: true, token: token,user:req.user, status: 'You are successfully logged in!'});
 });
 router.get('/logout', (req, res) => {
+  //res.setHeader('Access-Control-Allow-Origin',req.header('origin'))
+  
   req.logout();
-  res.redirect('/');
+  console.log(res)
+  
+  res.redirect('http://localhost:3000')
 });
 /*router.get('/logout',  (req, res) => {
   if (req.session) {
@@ -84,7 +88,7 @@ router.get('/google', passport.authenticate('google', {
 // hand control to passport to use code to grab profile info
 router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
  
- res.redirect('http://localhost:3000',)
+ res.redirect('http://localhost:3000')
 });
 router.get('/current_user', (req, res) => {
   console.log(req.user)

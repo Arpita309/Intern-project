@@ -24,7 +24,7 @@ this.state = {
             this.setState({auth:res.data})
           })
          
-        
+       
     
     }
     
@@ -39,6 +39,7 @@ this.state = {
       });
     }
     render() {
+      
         
          return (
            <nav id='header'>
