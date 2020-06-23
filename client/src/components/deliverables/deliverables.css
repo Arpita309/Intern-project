@@ -695,6 +695,16 @@
     font-size: 16px;
     cursor: pointer;
 }
+.teamBox .customDropdown:after {
+    font-family:"Font Awesome\ 5 Free";
+    font-weight: 900;
+    content: "\f054";
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: rotate(90deg) translateX(-50%);
+    color: #0070e0;
+}
 .speedBox {
     position: relative;
     width: 350px;
@@ -1268,5 +1278,242 @@ button.shareUrl {
 button.shareUrl {
     margin: 0 0 0 10px;
 }}
+.platformBox.disableBox {
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.deliveryHolder .phasesSection h2 .advanceTab strong.active{
+    background: #00c853;
+}
+.deliveryHolder .phasesSection h2 .advanceTab strong.active:before {
+    left: auto;
+    right: 3px;
+}
+.platformBox.disableBox p {
+    color: rgba(0,0,0,.1);
+}
+.platformBox.disableBox ul li {
+    border: 1px solid #e2e7ed;
+    color: rgba(0,0,0,.1);
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.platformBox.disableBox ul li img {
+    opacity: .2;
+}
+/*advanced mode*/
+.deliveryHolder .phasesSection .phasesRow .phasesBox .phasesHead.advancedMode {
+    background: #f9fbfd;
+}
+.deliveryHolder .phasesSection .phasesRow .phasesBox .featureSection {
+    width: 100%;
+    float: left;
+    clear: both;
+    border-bottom: 1px solid #ebebeb;
+    padding: 15px;
+}
+.deliveryHolder .phasesSection .phasesRow .phasesBox .featureSection h3 {
+    margin: 0 0 5px;
+    font-size: 14px;
+    color: #000;
+}
+.deliveryHolder .phasesSection .phasesRow .phasesBox .featureSection h3 span {
+    float: right;
+    cursor: pointer;
+    color: #0070e0;
+    font-size: 12px;
+}
+.deliveryHolder .phasesSection .phasesRow .phasesBox .featureSection p {
+    margin: 0;
+    font-size: 13px;
+    color: rgba(0,0,0,.6);
+    cursor: pointer;
+}
+.deliveryHolder .phasesSection .phasesRow .phasesBox .speedSection {
+    width: 100%;
+    float: left;
+    clear: both;
+    border-bottom: 1px solid #ebebeb;
+    padding: 15px;
+    position: relative;
+}
+.deliveryHolder .phasesSection .phasesRow .phasesBox .speedSection h3 {
+    margin: 0 0 5px;
+    font-size: 14px;
+    color: #000;
+}
+.deliveryHolder .phasesSection .phasesRow .phasesBox .speedSection .selectedSpeedRow {
+    width: 100%;
+    float: left;
+    display: flex;
+    justify-content: space-between;
+}
+/* dropdown*/
+.teamBox .customDropdown .timezoneDropdown {
+    position: absolute;
+    padding: 15px 0;
+    background: #fff;
+    border-radius: 5px;
+    border: 1px solid rgba(0,0,0,.2);
+    top: 50%;
+    left: 10px;
+    z-index: 120;
+    width: calc(100% - 20px);
+    transform: translateY(-50%);
+    transition: all .3s ease-in-out;
+}
+@media only screen and (max-width: 768px)
+{
+.teamBox[_ngcontent-serverApp-c192] .customDropdown[_ngcontent-serverApp-c192] .timezoneDropdown[_ngcontent-serverApp-c192] {
+    position: fixed;
+    z-index: 9999999;
+    top: auto;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 80px);
+    bottom: -100%;
+    transform: none;
+    border-radius: 20px 20px 0 0;
+    -webkit-animation: teamzoneslide .4s ease-in-out forwards;
+    animation: teamzoneslide .4s ease-in-out forwards;
+    border: 1px solid #e2e7ed;
+    box-shadow: 0 0 30px rgba(0,0,0,.1);
+}}
+@media only screen and (max-width: 768px)
+{
+.teamBox .customDropdown .timezoneDropdown:before {
+    content: "";
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: hsla(0,0%,100%,.95);
+}}
+.teamBox .customDropdown .timezoneDropdown .closeIcon {
+    float: right;
+    clear: both;
+    width: 20px;
+    height: 20px;
+    font-size: 11px;
+    color: #000;
+    cursor: pointer;
+    position: relative;
+    z-index: 99;
+    margin: 0 20px 5px 0;
+    display: none;
+}
+@media only screen and (max-width: 768px)
+{
+.teamBox .customDropdown .timezoneDropdown .closeIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}}
+.teamBox .customDropdown .timezoneDropdown .timezoneSearch {
+    background: #f4f7fc;
+    position: relative;
+    width: 90%;
+    border-radius: 3px;
+    overflow: hidden;
+    margin: 0 auto 15px;
+}
+@media only screen and (max-width: 768px)
+{
+.teamBox .customDropdown .timezoneDropdown .timezoneSearch {
+    width: calc(100% - 40px);
+    clear: both;
+    margin: 0 20px;
+}}
+.teamBox .customDropdown .timezoneDropdown .timezoneSearch input {
+    width: 100%;
+    height: 30px;
+    background: none;
+    border: none;
+    font-size: 13px;
+}
+.form-control {
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    display: block;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+}
+.teamBox .customDropdown .timezoneDropdown .timezoneSearch button {
+    border: none;
+    background: none;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    width: 30px;
+    height: 100%;
+    line-height: 34px;
+}
+.teamBox .customDropdown .timezoneDropdown .timezoneList {
+    width: 100%;
+    float: left;
+    clear: both;
+    max-height: 50vh;
+    overflow-y: auto;
+}
+@media only screen and (max-width: 768px)
+{
+.teamBox .customDropdown .timezoneDropdown .timezoneList {
+    max-height: calc(100% - 35px);
+}}
+.teamBox .customDropdown .timezoneDropdown .timezoneList ul {
+    margin: 0;
+    padding: 0;
+}
+.teamBox .customDropdown .timezoneDropdown .timezoneList ul li {
+    position: relative;
+    list-style-type: none;
+    cursor: pointer;
+    font-size: 13px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    color: rgba(0,0,0,.8);
+    text-indent: 20px;
+}
+.teamBox .customDropdown .timezoneDropdown .timezoneList ul li strong {
 
-
+    color: #000;
+}
+@media only screen and (max-width: 768px)
+{
+.teamBox .customDropdown .timezoneDropdown {
+    position: fixed;
+    z-index: 9999999;
+     top:120px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 100px);
+    
+    transform: none;
+    border-radius: 20px 20px 0 0;
+    -webkit-animation: teamzoneslide .4s ease-in-out forwards;
+    animation: teamzoneslide .4s ease-in-out forwards;
+    border: 1px solid #e2e7ed;
+    box-shadow: 0 0 30px rgba(0,0,0,.1);
+}}
+.teamBox .customDropdown .timezoneDropdown .timezoneList ul li.selectedzone {
+    font-weight:bolder;
+    color:black
+}

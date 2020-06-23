@@ -34,6 +34,7 @@ const bundleDetailsRouter=require('./routes/bundleDetailRouter')
 const featureFilter=require('./routes/featureFilterRouter')
 const users = require("./routes/userRouter");
 const auth=require("./routes/users")
+const teams=require("./routes/teamRouter")
 const app = express();
 app.use(cors({credentials: true, origin: 'http://localhost:3000'}))
 
@@ -91,6 +92,7 @@ app.use('/bundle',bundleDetailsRouter);
 app.use('/filter',featureFilter);
 app.use("/users", users);
 app.use("/auth", auth);
+app.use("/teams", teams);
 /*app.use((req, res, next) => {
 
 

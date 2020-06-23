@@ -50,7 +50,7 @@ class QuestionType extends React.Component{
                                 
                                 <div className='rightSide'>
                                     <div className='viewAll'>
-                                    <em  className="icon-next"><i class="fa fa-chevron-right" aria-hidden="true"></i></em>
+                                    <em  className="icon-next"></em>
                                     <Link to ='/problemsolve' style={{color:'white',underline:'none'}}>View All</Link> 
                                     </div>
                                 </div>

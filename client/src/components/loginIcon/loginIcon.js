@@ -78,11 +78,12 @@ class LoginIcon extends React.Component{
       }
       
     render(){
+      console.log(auth)
     return (
            <div>
                 <div className='mobuserLogin' style={{marginLeft:'150px'}}>
                 <em onClick={this.togglePopUp} style={{backgroundColor:'white'}} ><i class="far fa-user " style={{color:'rgb(0, 112, 224)'}}></i></em></div>
-          {this.props.auth?<div className={`mobNavigation ${this.state.mobNavigation?'active':''}`}>
+          {auth?<div className={`mobNavigation ${this.state.mobNavigation?'active':''}`}>
                   <div className="mobOverlay"></div>
                   <div className="menuBox">
                     <div className="closeNav" onClick={this,this.closeMobNavigation}><em className="icon-close"></em></div>
@@ -111,7 +112,7 @@ class LoginIcon extends React.Component{
                     
                 
                 
-              {this.props.auth?'':<div class="loginPanel ul" >
+              {auth?'':<div class="loginPanel ul" >
                     <Tool/>
                     
                 </div>}  

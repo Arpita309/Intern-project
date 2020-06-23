@@ -35,23 +35,25 @@ class FeatureRight extends React.Component{
           .then(res => {
             const data = res.data;
             this.setState({ app:data });
+           
           })
           axios.get(`http://localhost:4000/bundle`)
           .then(res => {
             const data = res.data;
             this.setState({ features:data });
           })
+          
                         
           
     }
+    
     componentDidUpdate(){
         
             let mobileImages=[]
             {this.state.app.map((value)=>
               value.attributes.map(info=>{
                 mobileImages.push(...info.features)
-                          
-                            this.state.data=[...mobileImages]}))}
+                this.state.data=[...mobileImages]}))}
             console.log(this.state.data)    
         this.setFeature()
         
@@ -95,9 +97,11 @@ class FeatureRight extends React.Component{
     }
     show=()=>{
         this.setState({showAll:true})
+        console.log('show')
     }
     hide=()=>{
         this.setState({showAll:false})
+        console.log('hide')
     }
     handleClick=(e,id)=>{
         let item=this.state.data.filter(value=>
@@ -127,6 +131,12 @@ class FeatureRight extends React.Component{
     
     
     render(){
+        let mobileImages=[]
+            {this.state.app.map((value)=>
+              value.attributes.map(info=>{
+                mobileImages.push(...info.features)
+                this.state.data=[...mobileImages]}))}
+               
         
         const removeAll=()=>{
             this.setState({app:[],data:[]})
@@ -221,8 +231,8 @@ class FeatureRight extends React.Component{
                         <React.Fragment>
                             <div className={`${this.state.mobileView?'iphonePrev':'webPrev'}`}>
                                 <div className={`${this.state.mobileView?'phoneScreen':'webScreen'}`}>
-                                    
-                                {this.state.selectedItem.length==1?<img src={this.state.selectedItem[0].feature_screenshots.map(img=>this.state.mobileView?img.android:img.web)}></img>:<img className="active animation1" src={this.state.data.length?this.state.data[this.state.currentImageIndex].feature_screenshots.map(img=>this.state.mobileView?img.android:img.web):''} onChange={this.showBundle}></img>}    
+                                
+                                {this.state.selectedItem.length===1?<img src={this.state.selectedItem[0].feature_screenshots.map(img=>this.state.mobileView?img.android:img.web)}></img>:<img className="active animation1" src={this.state.data.length?this.state.data[this.state.currentImageIndex].feature_screenshots.map(img=>this.state.mobileView?img.android:img.web):''} onChange={this.showBundle}></img>}    
                                 </div>
                             </div>
                             <div className="iphoneNav">

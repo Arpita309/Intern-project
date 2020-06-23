@@ -213,6 +213,7 @@
     line-height: 26px;
     padding: 0 6px;
     z-index: 9;
+    cursor: pointer;
 }
 @media only screen and (max-width: 1199px)
 {
@@ -368,9 +369,11 @@ perfect-scrollbar {
 }
 .show{
     display: block;
+    cursor: pointer;
 }
 .hide{
     display: none;
+    cursor: pointer;
 }
 .featureStudio .studioRight .previewTop .previewSlider.webView .slideItem {
     width: 135px;

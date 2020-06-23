@@ -5,13 +5,28 @@ import {Link} from 'react-router-dom'
 import AddCustom from '../addCustomDelivery/addCustomDelivery'
 import SliderComponent from '../deliverySlider/deliverySlider'
 import PhasesRow from '../phasesSlider/phasesSlider'
+import axios from 'axios'
+let filter={}
 class Delivery extends React.Component{
     constructor(props){
         super(props)
         this.state={
            showPlatform:false,firstDelivery:false,
-           custom:[],count:1
+           custom:[],count:1,platformList:[],
+           selectedPlatform:[],advance:false,teams:{},dropdown:false,teamLocation:'Anywhere',search:''
         }
+    }
+    componentDidMount(){
+        axios.get(`http://localhost:4000/configurations`)
+          .then(res => {
+            const data = res.data;
+            this.setState({platformList: data[0].platforms });
+          }) 
+          axios.get(`http://localhost:4000/teams`)
+          .then(res => {
+            const data = res.data;
+            this.setState({teams:data[0].teams });
+          })  
     }
     platform=()=>{
         this.setState({showPlatform:!this.state.showPlatform})
@@ -29,39 +44,91 @@ class Delivery extends React.Component{
         this.setState({count:this.state.count+1})
         this.setState({custom:[...this.state.custom,<AddCustom count={this.state.count}/>]})
     }
+    selectPlatform=(icon)=>{
+        this.state.selectedPlatform=[...this.state.selectedPlatform,icon]
+    }
+    showAdvance=()=>{
+        this.setState({advance:!this.state.advance})
+    }
+    showDropdown=()=>{
+        this.setState({dropdown:true})
+       
+    }
+    closeDropdown=()=>{
+        this.setState({dropdown:false})
+        console.log('heyy')
+    }
+    setTeamLocation=(title)=>{
+        this.setState({teamLocation:title,dropdown:false})
+    }
+    handleChange=(e)=>{
+        
+        this.setState({search:e.target.value})
+        {filter=this.state.teams.all.data.filter(info=>info.attributes.title.toLowerCase().indexOf(this.state.search.toLowerCase())!==-1)}
+    }
     render(){
         
+       console.log(filter)
         return(
+           
             <div className='wrapper'>
                 <div className='middlePart'>
                     <div className='deliveryHolder'>
                         <app-general-phase-platform>
-                            <div  className="platformBox">
+                            <div  className={`platformBox ${this.state.advance?'disableBox':''}`}>
                                 <h3>Decide your deliverables</h3>
                                 <p>Select platform for your product</p>
                                 <ul>
-                                    <li>
-                                        <img  src="https://duj87royd3ze0.cloudfront.net/uploads/image/file/591a9b0014c49f7f46746441/Android_blue.png" alt="Android"></img>
-                                    </li>
-                                    <li >
-                                        <img  src="https://duj87royd3ze0.cloudfront.net/uploads/image/file/59fd56b888f3ac79a46ef210/ios_blue.png" alt="iOS"></img>
-                                    </li>
-                                    <li>
-                                        <img  src="https://duj87royd3ze0.cloudfront.net/uploads/image/file/59fd570d88f3ac79a46ef213/Web_xh.png" alt="Web"></img>
-                                    </li>
+                                    
+                                    {this.state.selectedPlatform.map(value=>
+                                        <li>
+                                            <img src={value}></img>
+                                        </li>)}
                                     <li  className="moreplatform" onClick={this.platform}>
                                         <em  className="icon-plus"></em>
                                     </li>
                                 </ul>
                             </div>
                             
-                            {this.state.showPlatform?<SideBar close={this.platform}/>:null}
+                            {this.state.showPlatform?<platform-list  className="forMobileNew">
+                            <div  className='platformSidebarOverlay active'></div>
+                            <div  className='platformSidebar active'>
+                                <div  className="topHead">
+                                    <h3>Platforms</h3>
+                                    <div className="closeBar"><em  className="icon-cancel"  onClick={this.platform}></em></div>
+                                </div>
+                                <div  className="platformListing">
+                                    <perfect-scrollbars>
+                                        <div style={{position: 'static'}} className="ps"> 
+                                            <div className="ps-content">
+                                                <ul>
+                                                {this.state.platformList.map(data=>
+                                                data.attributes.map(platform=>
+                                                    <li  key={platform.id} onClick={(e)=>{this.selectPlatform(platform.icon)}}>
+                                                        <div  className="platformImg">
+                                                            <img  alt="" src={platform.icon}></img>
+                                                        </div>
+                                                        <div  className="platformName">{platform.title}</div>
+                                                        <div className="platformCheck">
+                                                            <input  type="checkbox" id={platform.id}></input>
+                                                            <label  for={platform.id}></label>
+                                                        </div>
+                                                    </li>
+                                                    ))}
+                                                    
+                                                    
+                                                </ul>
+                                            </div></div>
+                                        </perfect-scrollbars>
+                                    </div>
+                                </div>
+                            </platform-list>:null}
                         </app-general-phase-platform>
                         <div className='phasesSection'>
                             <h2> Select phases for your product 
-                                <div  className="advanceTab">
+                                <div  className="advanceTab" onClick={this.showAdvance}>
                                     <span>Advance</span>
-                                    <strong></strong>
+                                    <strong className={this.state.advance?'active':''}></strong>
                                 </div>
                             </h2>
                             
@@ -77,19 +144,41 @@ class Delivery extends React.Component{
                             <h3>When do you want the delivery?</h3>
                             <div  className="rowBoxes">
                                 <team-card  >
-                                    <div className="teamBox hide">
+                                    <div className={`teamBox ${this.state.advance?'':'hide'}`}>
                                         <h4>Your team to be located in</h4>
-                                        <div  className="customDropdown">
-                                            <div  className="selectedValue"> Anywhere </div>
+                                        <div  className="customDropdown" >
+                                            <div  className="selectedValue" onClick={this.showDropdown}>{this.state.teamLocation}</div>
+                                            {this.state.dropdown?<div className='timezoneDropdown'>
+                                            
+                                                <div  className="closeIcon" onClick={this.closeDropdown} ><em  className="icon-cancel" ></em></div>
+                                                <div  className="timezoneSearch"><input  type="text" placeholder="Search" className="form-control" onChange={this.handleChange}></input>
+                                                    <button  type="submit"><em  class="icon-magnifying"></em></button></div>
+                                                <div className='timezoneList'>
+                                                    <ul>
+                                                    
+                                                        
+                                                        {this.state.search?'':<React.Fragment><li><strong>Popular Timezones</strong></li>
+                                                        {this.state.teams.popular.all.data.map(value=>
+                                                           <li key={value.id} className={`canBeSelected ${this.state.teamLocation===value.attributes.title?'selectedzone':''}`} onClick={(e)=>this.setTeamLocation(value.attributes.title)}>{value.attributes.title}</li>
+                                                        )}
+                                                        <li ><strong >All Timezones</strong></li></React.Fragment>}
+                                                        
+                                                        {filter.length?filter.map(value=>
+                                                         <li key={value.id} className={`canBeSelected ${this.state.teamLocation===value.attributes.title?'selectedzone':''}`} onClick={(e)=>this.setTeamLocation(value.attributes.title)}>{value.attributes.title}</li>):this.state.teams.all.data.map(value=>
+                                                         <li key={value.id} className={`canBeSelected ${this.state.teamLocation===value.attributes.title?'selectedzone':''}`} onClick={(e)=>this.setTeamLocation(value.attributes.title)}>{value.attributes.title}</li>
+                                                        )}
+                                                    </ul>
+                                                </div>    
+                                            </div>:''}
                                         </div>
                                     </div>
                                 </team-card>
                                 <app-general-phase-speed>
-                                    <div  className="speedBox">
+                                   {this.state.advance?'':<div  className="speedBox">
                                         <h4 >Select a delivery speed</h4>
                                         <div  className="speedSlider">
                                         </div>
-                                    </div>
+                                    </div>}
                                 </app-general-phase-speed>
                                 <div  className="planDates" >
                                     <p>First delivery: 

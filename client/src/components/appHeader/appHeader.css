@@ -298,3 +298,18 @@ a {
     width: auto;
     max-width: 35px;
 }
+.requestDemo.view-proto {
+    background: #fff;
+    color: #f02397;
+    border-color: #f02397;
+    padding: 0 10px;
+}
+@media only screen and (max-width: 768px)
+{
+.mobile-btn {
+    width: 100%;
+    margin-top: 40px!important;
+    color: #f02397!important;
+    text-align: center;
+    padding: 5px 0;
+}}
