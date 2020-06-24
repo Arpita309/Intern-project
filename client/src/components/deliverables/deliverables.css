@@ -788,11 +788,11 @@
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 999991;
+   
 }
 .deliveryHolder .planDelivery .planDates p .infoIcon .infoContent{
     position: absolute;
-    z-index: 99;
+    
     bottom: calc(100% + 5px);
     right: 0;
     background: #fff;
@@ -807,7 +807,7 @@
 }
 .deliveryHolder .planDelivery .planDates p .infoIcon .infoContent.active {
     display: block;
-    z-index: 99998;
+   
 }
 .deliveryHolder .planDelivery .planDates p .infoIcon .infoContent .icon-cancel {
     position: absolute;
@@ -820,7 +820,7 @@
     right: 6px;
     font-size: 10px;
     color: #0070e0;
-    cursor: pointer;
+    cursor: pointer !important;
 }
 .deliveryHolder .planDelivery .planDates p .infoIcon .infoContent u {
     color: #0070e0;
@@ -1516,4 +1516,54 @@ button.shareUrl {
 .teamBox .customDropdown .timezoneDropdown .timezoneList ul li.selectedzone {
     font-weight:bolder;
     color:black
+}
+
+/* infobox*/
+.phaseInfo{
+    position: fixed;
+    width: 400px;
+    background: #fff;
+    box-shadow: 0 10px 20px rgba(0,0,0,.02);
+    border-radius: 10px;
+    border: 1px solid #e2e7ed;
+    top: 50%;
+    left: 50%;
+    z-index: 9999999;
+    transform: translate(-50%,-50%) scale(0);
+    transition: all .3s ease-in-out;
+}
+@media only screen and (max-width: 768px)
+{
+.phaseInfo {
+    width: 100%;
+    top:auto;
+    bottom: -500px;
+    left: 0;
+    border-radius: 10px 10px 0 0;
+    transform: translate(0) scale(1);
+}}
+.phaseInfo.active{
+    transform: translate(-50%,-50%) scale(1);
+    top:1150px;
+}
+@media only screen and (max-width: 768px)
+{
+.phaseInfo.active{
+    transform: translate(0) scale(1);
+    -webkit-animation: infoslide .4s ease-in-out forwards;
+    animation: infoslide .4s ease-in-out forwards;
+}}
+.phaseInfo .phaseContent {
+    position: relative;
+    z-index: 999;
+    padding: 15px;
+    width: 100%;
+}
+@media only screen and (max-width: 768px)
+{
+.phaseInfo .phaseContent {
+    text-align: center;
+}}
+.phaseOverlay.active {
+    display: block;
 }

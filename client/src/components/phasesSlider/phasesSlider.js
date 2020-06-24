@@ -5,7 +5,7 @@ export default class PhasesRow extends React.Component {
         super();
     
         this.state = {
-          
+            productRoadmap:false,mvp:false,design:false,fullBuild:false,tailor:false,
           width: 0
        
         };
@@ -23,7 +23,27 @@ export default class PhasesRow extends React.Component {
           width: window.innerWidth
         });
       };
+      infoBox=(id)=>{
+        
+        if(id==1){
+            
+        this.setState({productRoadmap:true})}
+        if(id==2){
+            
+            this.setState({mvp:true})}
+        if(id==3){
+        
+            this.setState({design:true})}
+        if(id==4){
+    
+            this.setState({fullBuild:true})}
+        if(id==5){
+
+            this.setState({tailor:true})}
+        else this.setState({productRoadmap:false,mvp:false,design:false,fullBuild:false,tailor:false})
+      }
       render(){
+          
         if (this.state.width > 768) { return(
 
           
@@ -39,7 +59,7 @@ export default class PhasesRow extends React.Component {
                                     <img  alt="" src="https://bstudio-assets.azureedge.net/assets-builder/uploads/build_phase/icon/58cbad7d14c49f1f2a318071/Roadmap_blue.png"></img>
                                 </div>
                                 <strong>Product Roadmap </strong>
-                                <div  className="phasesinfo"><img alt="" src="https://studio.builder.ai/assets/images/info_blue.png"></img></div>
+                                <div  className="phasesinfo"  id= '1' onClick={(e)=>this.infoBox(1)}><img alt="" src="https://studio.builder.ai/assets/images/info_blue.png"></img></div>
                             </h3>
                             <div  className="mobileDate">
                                 <strong>Delivered by</strong>
@@ -50,10 +70,10 @@ export default class PhasesRow extends React.Component {
                             </div>
                         </div>
                         <learn-more>
-                            <div  className="phaseOverlay"></div>
-                            <div  className="phaseInfo">
+                            <div  className={`phaseOverlay ${this.state.productRoadmap?'active':''}`}></div>
+                            <div  className={`phaseInfo ${this.state.productRoadmap?'active':''}`}>
                                 <div  className="phaseContent">
-                                    <div  className="closeIcon"><em  class="icon-cancel"></em></div>
+                                    <div  className="closeIcon" onClick={(e)=>this.infoBox(e)}><em  class="icon-cancel"></em></div>
                                     <h3>Product Roadmap</h3>
                                     <h4 >Avail an in-depth product timeline with development and release plans to align your goals</h4>
                                     <p >A product roadmap is simply a guiding strategy document with a timeline that makes execution hassle-free. We help lay out the foundation of what you're building, converting your vision into formal documents with development action plan. Our product roadmap will help put your launch plan in place so that you can align your business and marketing strategy.</p>
@@ -69,7 +89,7 @@ export default class PhasesRow extends React.Component {
                             <h3>
                                 <div  className="phaseIcon"><img  alt="" src="https://bstudio-assets.azureedge.net/assets-builder/uploads/build_phase/icon/587f162314c49f39f0d5b61d/Design_blue.png"></img></div>
                                 <strong>Design </strong>
-                                <div  className="phasesinfo"><img  alt="" src="https://studio.builder.ai/assets/images/info_blue.png"></img></div>
+                                <div  className="phasesinfo" onClick={(e)=>this.infoBox(3)}><img  alt="" src="https://studio.builder.ai/assets/images/info_blue.png"></img></div>
                             </h3>
                             <div  className="mobileDate">
                                 <strong>Delivered by</strong>
@@ -81,6 +101,18 @@ export default class PhasesRow extends React.Component {
                                 <label  htmlFor="phaseSelected1"></label>
                             </div>
                         </div>
+                        <learn-more>
+                            <div  className={`phaseOverlay ${this.state.design?'active':''}`}></div>
+                            <div  className={`phaseInfo ${this.state.design?'active':''}`}>
+                                <div  className="phaseContent">
+                                    <div  className="closeIcon" onClick={this.infoBox}><em  className="icon-cancel"></em></div>
+                                    <h3>Design</h3>
+                                    <h4>Trust us to do the wireframing of your concept and design a seamless experience. Get a fully scalable UI/UX</h4>
+                                    <p>We combine visual principles, data, color psychology, and decades worth of experience to create aesthetic interfaces that will drive the growth of your product. We are experts in creating human-centric designs that allow customers to intuitively use your product and have a great product experience.</p>
+                                    <div  className="infoButton"></div>
+                                </div>
+                            </div>
+                        </learn-more>
                     </div>
                     <div className="phasesBox Tailor-made-theme dactive" style={{display: 'inline-block'}}>
                         <div  className="phasesHead">
@@ -89,21 +121,34 @@ export default class PhasesRow extends React.Component {
                                     <img  alt="" src="https://bstudio-assets.azureedge.net/assets-builder/uploads/build_phase/icon/587f162314c49f39f0d5b61e/Prototype_blue.png"></img>
                                 </div>
                                 <strong>Tailor-made Prototype </strong>
-                                <div  className="phasesinfo">
+                                <div  className="phasesinfo" onClick={(e)=>this.infoBox(5)}>
                                     <img  alt="" src="https://studio.builder.ai/assets/images/info_blue.png"></img>
                                 </div>
                             </h3>
                             <div  className="mobileDate">
-                                <strong >Delivered by</strong><span ></span></div>
+                                <strong >Delivered by</strong><span ></span>
+                            </div>
                                 <div  className="checkBox"><input  type="checkbox" id="phaseSelected2"></input><label  htmlFor="phaseSelected2"></label></div>
                             </div>
+                            <learn-more>
+                                <div  className={`phaseOverlay ${this.state.tailor?'active':''}`}></div>
+                                <div  className={`phaseInfo ${this.state.tailor?'active':''}`}>
+                                    <div  className="phaseContent">
+                                        <div  className="closeIcon" onClick={this.infoBox}><em  class="icon-cancel"></em></div>
+                                        <h3>Tailor-made Prototype</h3>
+                                        <h4>Get a fully functional design prototype to test the design hypothesis, and end user journey. This includes designs for prototype too</h4>
+                                        <p>Prototypes are realistic design representation of your ideas. We design interactive prototypes for iPhone, iPad, Android, and Web. Creation of prototypes is more specific, measurable, quick, and intensive than just describing the design. Test how the user will interact with an environment comparable to the final product.</p>
+                                        <div  className="infoButton"></div>
+                                    </div>
+                                </div>
+                            </learn-more>
                         </div>
                     <div className="phasesBox MVP-theme active" style={{display: 'inline-block'}}>
                         <div  className="phasesHead">
                             <h3>
                                 <div  className="phaseIcon"><img alt="" src="https://bstudio-assets.azureedge.net/assets-builder/uploads/build_phase/icon/5963a29c14c49f1407590ad5/MVP_blue.png"></img></div>
                                 <strong >MVP </strong>
-                                <div className="phasesinfo"><img  alt="" src="https://studio.builder.ai/assets/images/info_blue.png"></img></div>
+                                <div className="phasesinfo " onClick={(e)=>this.infoBox(2)}><img  alt="" src="https://studio.builder.ai/assets/images/info_blue.png"></img></div>
                             </h3>
                             <div  className="mobileDate">
                                 <strong >Delivered by</strong><span > 08 December 2020 </span><span ></span>
@@ -125,10 +170,10 @@ export default class PhasesRow extends React.Component {
                             </ul>
                         </div>
                         <learn-more >
-                            <div  className="phaseOverlay"></div>
-                            <div  className="phaseInfo">
+                            <div  className={`phaseOverlay ${this.state.mvp?'active':''}`}></div>
+                            <div  className={`phaseInfo ${this.state.mvp?'active':''}`}>
                                 <div  className="phaseContent">
-                                    <div  className="closeIcon"><em  className="icon-cancel"></em></div>
+                                    <div  className="closeIcon" onClick={this.infoBox}><em  className="icon-cancel"></em></div>
                                     <h3>MVP</h3>
                                     <h4>Ship the first build of your idea and get early adopters to try out your product</h4>
                                     <p >We help design a Minimum Viable Product as a proof of concept to satisfy early customers and provide feedback for future development. It’s an easy way to build a product with a minimum set of features to test the market. Collect the maximum amount of validated learning about your customers with the least effort.</p>
@@ -142,7 +187,7 @@ export default class PhasesRow extends React.Component {
                             <h3>
                                 <div  className="phaseIcon"><img  alt="" src="https://bstudio-assets.azureedge.net/assets-builder/uploads/build_phase/icon/587f162314c49f39f0d5b620/Full_blue.png"></img></div>
                                 <strong>Full Build </strong>
-                                <div  className="phasesinfo"><img  alt="" src="https://studio.builder.ai/assets/images/info_blue.png"></img></div>
+                                <div  className="phasesinfo" onClick={(e)=>this.infoBox(4)}><img  alt="" src="https://studio.builder.ai/assets/images/info_blue.png"></img></div>
                             </h3>
                             <div  className="mobileDate">
                                 <strong>Delivered by</strong><span> 14 December 2020 </span><span ></span>
@@ -152,6 +197,18 @@ export default class PhasesRow extends React.Component {
                                 <label htmlFor="phaseSelected3"></label>
                             </div>
                         </div>
+                        <learn-more>
+                            <div  className={`phaseOverlay ${this.state.fullBuild?'active':''}`}></div>
+                            <div  className={`phaseInfo ${this.state.fullBuild?'active':''}`}>
+                                <div  className="phaseContent">
+                                    <div  className="closeIcon" onClick={this.infoBox}><em  className="icon-cancel"></em></div>
+                                    <h3>Full Build</h3>
+                                    <h4>We will do end to end designing and development of your idea. Get a market-ready product</h4>
+                                    <p >We build a full-fledged product based on the product roadmap and the features laid out in the specification document. We will also perfect the product based on user feedback received on the Minimum Viable Product. We will ship a fully mature, responsive, scalable, business-ready and a user-friendly product.</p>
+                                    <div  className="infoButton"></div>
+                                </div>
+                            </div>
+                        </learn-more>
                     </div>
                     {this.props.custom.map(child => child)}
                     </SliderComponent>
@@ -173,7 +230,7 @@ export default class PhasesRow extends React.Component {
                                     <img  alt="" src="https://bstudio-assets.azureedge.net/assets-builder/uploads/build_phase/icon/58cbad7d14c49f1f2a318071/Roadmap_blue.png"></img>
                                 </div>
                                 <strong>Product Roadmap </strong>
-                                <div  className="phasesinfo"><img alt="" src="https://studio.builder.ai/assets/images/info_blue.png"></img></div>
+                                <div  className="phasesinfo" onClick={(e)=>this.infoBox(1)}><img alt="" src="https://studio.builder.ai/assets/images/info_blue.png"></img></div>
                             </h3>
                             <div  className="mobileDate">
                                 <strong>Delivered by</strong>
@@ -184,11 +241,11 @@ export default class PhasesRow extends React.Component {
                             </div>
                         </div>
                         <learn-more>
-                            <div  className="phaseOverlay"></div>
-                            <div  className="phaseInfo">
+                            <div  className={`phaseOverlay ${this.state.productRoadmap?'active':''}`}></div>
+                            <div  className={`phaseInfo ${this.state.productRoadmap?'active':''}`}>
                                 <div  className="phaseContent">
-                                    <div  className="closeIcon"><em  class="icon-cancel"></em></div>
-                                    <h3>Product Roadmap</h3>
+                                    <div  className="closeIcon" onClick={this.infoBox}><em  class="icon-cancel"></em></div>
+                                    <h3 style={{color:'black'}}>Product Roadmap</h3>
                                     <h4 >Avail an in-depth product timeline with development and release plans to align your goals</h4>
                                     <p >A product roadmap is simply a guiding strategy document with a timeline that makes execution hassle-free. We help lay out the foundation of what you're building, converting your vision into formal documents with development action plan. Our product roadmap will help put your launch plan in place so that you can align your business and marketing strategy.</p>
                                     <div  className="infoButton">
@@ -203,7 +260,7 @@ export default class PhasesRow extends React.Component {
                             <h3>
                                 <div  className="phaseIcon"><img  alt="" src="https://bstudio-assets.azureedge.net/assets-builder/uploads/build_phase/icon/587f162314c49f39f0d5b61d/Design_blue.png"></img></div>
                                 <strong>Design </strong>
-                                <div  className="phasesinfo"><img  alt="" src="https://studio.builder.ai/assets/images/info_blue.png"></img></div>
+                                <div  className="phasesinfo" onClick={(e)=>this.infoBox(3)}><img  alt="" src="https://studio.builder.ai/assets/images/info_blue.png"></img></div>
                             </h3>
                             <div  className="mobileDate">
                                 <strong>Delivered by</strong>
@@ -215,6 +272,18 @@ export default class PhasesRow extends React.Component {
                                 <label  htmlFor="phaseSelected1"></label>
                             </div>
                         </div>
+                        <learn-more>
+                            <div  className={`phaseOverlay ${this.state.design?'active':''}`}></div>
+                            <div  className={`phaseInfo ${this.state.design?'active':''}`}>
+                                <div  className="phaseContent">
+                                    <div  className="closeIcon" onClick={this.infoBox}><em  className="icon-cancel"></em></div>
+                                    <h3>Design</h3>
+                                    <h4>Trust us to do the wireframing of your concept and design a seamless experience. Get a fully scalable UI/UX</h4>
+                                    <p>We combine visual principles, data, color psychology, and decades worth of experience to create aesthetic interfaces that will drive the growth of your product. We are experts in creating human-centric designs that allow customers to intuitively use your product and have a great product experience.</p>
+                                    <div  className="infoButton"></div>
+                                </div>
+                            </div>
+                        </learn-more>
                     </div>
                     <div className="phasesBox Tailor-made-theme dactive" style={{display: 'inline-block'}}>
                         <div  className="phasesHead">
@@ -223,7 +292,7 @@ export default class PhasesRow extends React.Component {
                                     <img  alt="" src="https://bstudio-assets.azureedge.net/assets-builder/uploads/build_phase/icon/587f162314c49f39f0d5b61e/Prototype_blue.png"></img>
                                 </div>
                                 <strong>Tailor-made Prototype </strong>
-                                <div  className="phasesinfo">
+                                <div  className="phasesinfo" onClick={(e)=>this.infoBox(5)}>
                                     <img  alt="" src="https://studio.builder.ai/assets/images/info_blue.png"></img>
                                 </div>
                             </h3>
@@ -231,13 +300,25 @@ export default class PhasesRow extends React.Component {
                                 <strong >Delivered by</strong><span ></span></div>
                                 <div  className="checkBox"><input  type="checkbox" id="phaseSelected2"></input><label  htmlFor="phaseSelected2"></label></div>
                             </div>
+                            <learn-more>
+                                <div  className={`phaseOverlay ${this.state.tailor?'active':''}`}></div>
+                                <div  className={`phaseInfo ${this.state.tailor?'active':''}`}>
+                                    <div  className="phaseContent">
+                                        <div  className="closeIcon" onClick={this.infoBox}><em  class="icon-cancel"></em></div>
+                                        <h3>Tailor-made Prototype</h3>
+                                        <h4>Get a fully functional design prototype to test the design hypothesis, and end user journey. This includes designs for prototype too</h4>
+                                        <p>Prototypes are realistic design representation of your ideas. We design interactive prototypes for iPhone, iPad, Android, and Web. Creation of prototypes is more specific, measurable, quick, and intensive than just describing the design. Test how the user will interact with an environment comparable to the final product.</p>
+                                        <div  className="infoButton"></div>
+                                    </div>
+                                </div>
+                            </learn-more>
                         </div>
                     <div className="phasesBox MVP-theme active" style={{display: 'inline-block'}}>
                         <div  className="phasesHead">
                             <h3>
                                 <div  className="phaseIcon"><img alt="" src="https://bstudio-assets.azureedge.net/assets-builder/uploads/build_phase/icon/5963a29c14c49f1407590ad5/MVP_blue.png"></img></div>
                                 <strong >MVP </strong>
-                                <div className="phasesinfo"><img  alt="" src="https://studio.builder.ai/assets/images/info_blue.png"></img></div>
+                                <div className="phasesinfo" onClick={(e)=>this.infoBox(2)}><img  alt="" src="https://studio.builder.ai/assets/images/info_blue.png"></img></div>
                             </h3>
                             <div  className="mobileDate">
                                 <strong >Delivered by</strong><span > 08 December 2020 </span><span ></span>
@@ -259,10 +340,10 @@ export default class PhasesRow extends React.Component {
                             </ul>
                         </div>
                         <learn-more >
-                            <div  className="phaseOverlay"></div>
-                            <div  className="phaseInfo">
+                            <div  className={`phaseOverlay ${this.state.mvp?'active':''}`}></div>
+                            <div  className={`phaseInfo ${this.state.mvp?'active':''}`}>
                                 <div  className="phaseContent">
-                                    <div  className="closeIcon"><em  className="icon-cancel"></em></div>
+                                    <div  className="closeIcon" onClick={this.infoBox}><em  className="icon-cancel"></em></div>
                                     <h3>MVP</h3>
                                     <h4>Ship the first build of your idea and get early adopters to try out your product</h4>
                                     <p >We help design a Minimum Viable Product as a proof of concept to satisfy early customers and provide feedback for future development. It’s an easy way to build a product with a minimum set of features to test the market. Collect the maximum amount of validated learning about your customers with the least effort.</p>
@@ -276,7 +357,7 @@ export default class PhasesRow extends React.Component {
                             <h3>
                                 <div  className="phaseIcon"><img  alt="" src="https://bstudio-assets.azureedge.net/assets-builder/uploads/build_phase/icon/587f162314c49f39f0d5b620/Full_blue.png"></img></div>
                                 <strong>Full Build </strong>
-                                <div  className="phasesinfo"><img  alt="" src="https://studio.builder.ai/assets/images/info_blue.png"></img></div>
+                                <div  className="phasesinfo" onClick={(e)=>this.infoBox(4)}><img  alt="" src="https://studio.builder.ai/assets/images/info_blue.png"></img></div>
                             </h3>
                             <div  className="mobileDate">
                                 <strong>Delivered by</strong><span> 14 December 2020 </span><span ></span>
@@ -286,6 +367,18 @@ export default class PhasesRow extends React.Component {
                                 <label htmlFor="phaseSelected3"></label>
                             </div>
                         </div>
+                        <learn-more>
+                            <div  className={`phaseOverlay ${this.state.fullBuild?'active':''}`}></div>
+                            <div  className={`phaseInfo ${this.state.fullBuild?'active':''}`}>
+                                <div  className="phaseContent">
+                                    <div  className="closeIcon" onClick={this.infoBox}><em  className="icon-cancel"></em></div>
+                                    <h3>Full Build</h3>
+                                    <h4>We will do end to end designing and development of your idea. Get a market-ready product</h4>
+                                    <p >We build a full-fledged product based on the product roadmap and the features laid out in the specification document. We will also perfect the product based on user feedback received on the Minimum Viable Product. We will ship a fully mature, responsive, scalable, business-ready and a user-friendly product.</p>
+                                    <div  className="infoButton"></div>
+                                </div>
+                            </div>
+                        </learn-more>
                     </div>
                     {this.props.custom.map(child => child)}
                     </div>

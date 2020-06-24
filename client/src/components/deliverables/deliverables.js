@@ -13,7 +13,8 @@ class Delivery extends React.Component{
         this.state={
            showPlatform:false,firstDelivery:false,
            custom:[],count:1,platformList:[],
-           selectedPlatform:[],advance:false,teams:{},dropdown:false,teamLocation:'Anywhere',search:''
+           selectedPlatform:[],advance:false,teams:{},dropdown:false,teamLocation:'Anywhere',search:'',
+           
         }
     }
     componentDidMount(){
@@ -32,11 +33,11 @@ class Delivery extends React.Component{
         this.setState({showPlatform:!this.state.showPlatform})
     }
     showInfobox=(e)=>{
-        if(e.target.id==1||e.target.id==2){
-            this.setState({firstDelivery:!this.state.firstDelivery})
+        if(e.target.id==1){
+            this.setState({firstDelivery:true})
         }
         else{
-            
+            console.log('close')
             this.setState({firstDelivery:false})
         }
     }
@@ -56,7 +57,7 @@ class Delivery extends React.Component{
     }
     closeDropdown=()=>{
         this.setState({dropdown:false})
-        console.log('heyy')
+       
     }
     setTeamLocation=(title)=>{
         this.setState({teamLocation:title,dropdown:false})
@@ -66,6 +67,7 @@ class Delivery extends React.Component{
         this.setState({search:e.target.value})
         {filter=this.state.teams.all.data.filter(info=>info.attributes.title.toLowerCase().indexOf(this.state.search.toLowerCase())!==-1)}
     }
+    
     render(){
         
        console.log(filter)
