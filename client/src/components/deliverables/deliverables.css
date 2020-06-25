@@ -1544,7 +1544,7 @@ button.shareUrl {
 }}
 .phaseInfo.active{
     transform: translate(-50%,-50%) scale(1);
-    top:1150px;
+    
 }
 @media only screen and (max-width: 768px)
 {
@@ -1552,6 +1552,7 @@ button.shareUrl {
     transform: translate(0) scale(1);
     -webkit-animation: infoslide .4s ease-in-out forwards;
     animation: infoslide .4s ease-in-out forwards;
+    top:1150px;
 }}
 .phaseInfo .phaseContent {
     position: relative;

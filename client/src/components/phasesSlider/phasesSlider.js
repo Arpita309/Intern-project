@@ -24,22 +24,20 @@ export default class PhasesRow extends React.Component {
         });
       };
       infoBox=(id)=>{
-        
+       
         if(id==1){
             
         this.setState({productRoadmap:true})}
-        if(id==2){
+        else if(id==2){
             
             this.setState({mvp:true})}
-        if(id==3){
-        
+        else if(id==3){
+            
             this.setState({design:true})}
-        if(id==4){
-    
-            this.setState({fullBuild:true})}
-        if(id==5){
-
-            this.setState({tailor:true})}
+        else if(id==4){
+         this.setState({fullBuild:true})}
+        else if(id==5){
+         this.setState({tailor:true})}
         else this.setState({productRoadmap:false,mvp:false,design:false,fullBuild:false,tailor:false})
       }
       render(){

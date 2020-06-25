@@ -26,7 +26,7 @@ class Header  extends React.Component{
                         <a><img width="107" height="26" alt="" className="mainLogo" src="https://studio.builder.ai/assets/images/engineer-logo.png"></img></a>
                         <a><img width="26" height="35" alt="" class="smallLogo" src="https://studio.builder.ai/assets/images/logoSmall.png"></img></a>
                     </div>
-                    <div style={{marginLeft:'800px'}} className='hidden-xs'>
+                    <div style={{marginLeft:'720px'}} className='hidden-xs'>
                     <ProtoTypeButton />
                     </div>
                     <div  className='show-xs'>

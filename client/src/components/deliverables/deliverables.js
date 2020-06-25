@@ -6,6 +6,10 @@ import AddCustom from '../addCustomDelivery/addCustomDelivery'
 import SliderComponent from '../deliverySlider/deliverySlider'
 import PhasesRow from '../phasesSlider/phasesSlider'
 import axios from 'axios'
+import {auth} from '../authentication'
+import User from '../loggedInUser/loggedInUser'
+import LoginIcon from '../loginIcon/loginIcon'
+import CurrencyBox from '../currencyBox/currencyBox'
 let filter={}
 class Delivery extends React.Component{
     constructor(props){
@@ -13,7 +17,7 @@ class Delivery extends React.Component{
         this.state={
            showPlatform:false,firstDelivery:false,
            custom:[],count:1,platformList:[],
-           selectedPlatform:[],advance:false,teams:{},dropdown:false,teamLocation:'Anywhere',search:'',
+           selectedPlatform:[],advance:false,teams:{},dropdown:false,teamLocation:'Anywhere',search:'',mobNavigation:false
            
         }
     }
@@ -67,13 +71,72 @@ class Delivery extends React.Component{
         this.setState({search:e.target.value})
         {filter=this.state.teams.all.data.filter(info=>info.attributes.title.toLowerCase().indexOf(this.state.search.toLowerCase())!==-1)}
     }
-    
+    mobNavigation=()=>{
+        this.setState({mobNavigation:true})
+    }
+    closeNavigation=()=>{
+        this.setState({mobNavigation:false})
+    }
     render(){
         
        console.log(filter)
         return(
            
             <div className='wrapper'>
+                <div className='headerPart'>
+                    <nav id='header'>
+                        <div className='container-fluid'>
+                            <div className='row'>
+                                <div className="logo">
+                                    <a><img width="107" height="26" alt="" className="mainLogo" src="https://studio.builder.ai/assets/images/engineer-logo.png"></img></a>
+                                    <a><img width="26" height="35" alt="" className="smallLogo" src="https://studio.builder.ai/assets/images/logoSmall.png"></img></a>
+                                </div>
+                                <div className="mobilebreadcrums"><strong>Delivery</strong><span>(Step 3/4)</span></div>
+                                <app-header-breadcrumb className="appBottomBar">
+                                    <div className="breadcrums">
+                                        <ul>
+                                            <li className="">Apps <span>(1)</span></li>
+                                            <li className="">Features <span>(26)</span></li>
+                                            <li className="active">Delivery and Deliverables</li>
+                                            <li className="disablelink">Build Card</li>
+                                        </ul>
+                                    </div>
+                                </app-header-breadcrumb>
+                                <div className="requestDemo " style={{marginLeft:'550px'}}>
+                                <div className="text text-uppercase need-help">
+                                     Get help with my project 
+                                    <div className="needhelpdroupdown">
+                                        <ol>
+                                            <li>
+                                                <div className="user-icon-box"><em class="icon-newsales"></em></div>
+                                                <div className="user-txt"> Want a demo? <span class="bold-detail"> Talk to Sales <span> (Free) </span></span></div>
+                                            </li>
+                                            <li>
+                                                <div className="user-icon-box"><em className="icon-newexpert"></em></div>
+                                                <div className="user-txt"> Want help with specing? <span class="bold-detail"> Talk to Expert <span> (Refundable)</span></span></div>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                                {auth?<div className='hidemobileScreen'><User/></div>:
+                                <div >
+                                    <CurrencyBox/></div>}
+                            <LoginIcon/>
+                            <div class="mobileClick" ><em class="icon-hamicon" onClick={this.mobNavigation}></em></div>
+                                <div className={`mobNavigation ${this.state.mobNavigation?'active':''}`}>
+                                    <div className="mobOverlay"></div>
+                                    <div className="menuBox"><div class="closeNav" onClick={this.closeNavigation}><em class="icon-close"></em></div>
+                                    <div>
+                                    
+                                    <div className="requestDemo view-proto mobile-btn custom-disabled"></div>
+                                    <div className="requestLinks"><h3>NEED HELP?</h3><span className="buttonHold"><button type="button"><span className="reqIcon"><em className="icon-newsales"></em></span> Want a demo? <strong>Talk to Sales <span>(Free)</span></strong></button></span><span className="buttonHold"><button type="button"><span className="reqIcon"><em className="icon-newexpert"></em></span> Want help with specing? <strong>Talk to Expert <span>(Refundable)</span></strong></button></span></div></div></div></div>
+                                        
+                                    
+                            </div>
+                        </div>
+                    </nav>
+                </div>
                 <div className='middlePart'>
                     <div className='deliveryHolder'>
                         <app-general-phase-platform>

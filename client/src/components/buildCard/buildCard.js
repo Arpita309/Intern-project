@@ -5,6 +5,7 @@ import {Link} from'react-router-dom'
 import Header from '../buildcardHeader/buildcardHeader'
 import Footer from '../footer/footer'
 import axios from 'axios'
+import {auth} from '../authentication'
 class BuildCard extends React.Component{
     constructor(props){
         super(props)
@@ -70,7 +71,7 @@ class BuildCard extends React.Component{
     }
     
     render(){
-       
+       console.log(auth)
         return(
             <div className='wrapper'>
                 <Header showSidebar={this.state.showSidebar} sidebar={this.sidebar}/>
@@ -83,7 +84,7 @@ class BuildCard extends React.Component{
                                         <div className='buildCardTop'>
                                             <div  className="buildCardLeft">
                                                 <h1>
-                                                    <span  className="userspace"> Hi, Arpita, </span> Here is your 
+                                                    <span  className="userspace"> Hi,{auth.name}, </span> Here is your 
                                                     <strong  className="cardHover">
                                                         <span>
                                                             <img  alt="" src="https://studio.builder.ai/assets/images/buildcard-icon.png" className="card-default"></img>
@@ -390,26 +391,26 @@ class BuildCard extends React.Component{
                                                                     </div>
                                                                     <div  className="list-box">
                                                                     <div className="pro-head">
-                                                                        <h3 > Builder Care </h3>
+                                                                        <h3 style={{color:'black'}}> Builder Care </h3>
                                                                     </div>
                                                                     <div  className="pro-mid btm-bdr-none">
                                                                         <div  className="mid-txt-block">
-                                                                            <p> Get on demand cloud support - setup, monitoring,scalability and migrations. Upgrade your app to support newer iOS/Android updates. </p>
-                                                                            <p> Technical support for SDK, third party integrations and upgrades. Support for unexpected bugs, crashes and security issues. </p>
+                                                                            <p style={{color:'black'}}> Get on demand cloud support - setup, monitoring,scalability and migrations. Upgrade your app to support newer iOS/Android updates. </p>
+                                                                            <p style={{color:'black'}}> Technical support for SDK, third party integrations and upgrades. Support for unexpected bugs, crashes and security issues. </p>
                                                                         </div>
                                                                     </div>
                                                                     </div>
                                                                     <div  className="list-box ">
                                                                         <div  className="pro-head">
-                                                                            <h3> Builder Cloud </h3>
+                                                                            <h3 style={{color:'black'}}> Builder Cloud </h3>
                                                                         </div>
                                                                     <div className="pro-mid btm-bdr-none">
                                                                         <div  className="mid-txt-block">
-                                                                            <p>
+                                                                            <p style={{color:'black'}}>
                                                                                 <strong>Commitment-free savings:</strong> our customers saved over $4.5m, last year.
                                                                             </p>
-                                                                            <p><strong>World-class analytics:</strong> Optimise your software and infrastructure.</p>
-                                                                            <p><strong >Best-in-class multicloud:</strong> AWS, Digital Ocean, Azure and more. Just one bill (for a lot less).</p>
+                                                                            <p style={{color:'black'}}><strong>World-class analytics:</strong> Optimise your software and infrastructure.</p>
+                                                                            <p style={{color:'black'}}><strong >Best-in-class multicloud:</strong> AWS, Digital Ocean, Azure and more. Just one bill (for a lot less).</p>
                                                                         </div>
                                                                     </div>
                                                                 </div>

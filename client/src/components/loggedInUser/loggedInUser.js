@@ -17,7 +17,7 @@ class User extends React.Component{
     }
    
     render(){
-        
+        console.log(auth)
         return(
             <div className="userPanel">
                 <h3> Hello <strong onClick={this.setActive}>{auth.name}</strong></h3>
