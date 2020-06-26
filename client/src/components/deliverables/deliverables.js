@@ -10,6 +10,7 @@ import {auth} from '../authentication'
 import User from '../loggedInUser/loggedInUser'
 import LoginIcon from '../loginIcon/loginIcon'
 import CurrencyBox from '../currencyBox/currencyBox'
+import { ApiGet} from '../../api'
 let filter={}
 class Delivery extends React.Component{
     constructor(props){
@@ -17,7 +18,8 @@ class Delivery extends React.Component{
         this.state={
            showPlatform:false,firstDelivery:false,
            custom:[],count:1,platformList:[],
-           selectedPlatform:[],advance:false,teams:{},dropdown:false,teamLocation:'Anywhere',search:'',mobNavigation:false
+           selectedPlatform:[],advance:false,teams:{},dropdown:false,teamLocation:'Anywhere',search:'',mobNavigation:false,
+           bottomBar:false,promotion:false
            
         }
     }
@@ -31,18 +33,35 @@ class Delivery extends React.Component{
           .then(res => {
             const data = res.data;
             this.setState({teams:data[0].teams });
-          })  
+          }) 
+          ApiGet('app').then(res=>console.log(res.data))
+          
+            
+            
+           
+    }
+    showPromotion=()=>{
+        
+        this.setState({promotion:true})
+    }
+    closePromotion=()=>{
+       
+        this.setState({promotion:false})
     }
     platform=()=>{
         this.setState({showPlatform:!this.state.showPlatform})
     }
     showInfobox=(e)=>{
+        
         if(e.target.id==1){
             this.setState({firstDelivery:true})
         }
+        else if(e.target.id==2){
+            this.setState({bottomBar:true})
+        }
         else{
-            console.log('close')
-            this.setState({firstDelivery:false})
+           
+            this.setState({firstDelivery:false,bottomBar:false})
         }
     }
     AddCustom=()=>{
@@ -79,7 +98,7 @@ class Delivery extends React.Component{
     }
     render(){
         
-       console.log(filter)
+       console.log(this.state.platformList)
         return(
            
             <div className='wrapper'>
@@ -103,22 +122,40 @@ class Delivery extends React.Component{
                                     </div>
                                 </app-header-breadcrumb>
                                 <div className="requestDemo " style={{marginLeft:'550px'}}>
-                                <div className="text text-uppercase need-help">
-                                     Get help with my project 
-                                    <div className="needhelpdroupdown">
-                                        <ol>
-                                            <li>
-                                                <div className="user-icon-box"><em class="icon-newsales"></em></div>
-                                                <div className="user-txt"> Want a demo? <span class="bold-detail"> Talk to Sales <span> (Free) </span></span></div>
-                                            </li>
-                                            <li>
-                                                <div className="user-icon-box"><em className="icon-newexpert"></em></div>
-                                                <div className="user-txt"> Want help with specing? <span class="bold-detail"> Talk to Expert <span> (Refundable)</span></span></div>
-                                            </li>
-                                        </ol>
+                                    <div className="text text-uppercase need-help">
+                                        Get help with my project 
+                                        <div className="needhelpdroupdown">
+                                            <ol>
+                                                <li>
+                                                    <div className="user-icon-box"><em class="icon-newsales"></em></div>
+                                                    <div className="user-txt"> Want a demo? <span class="bold-detail"> Talk to Sales <span> (Free) </span></span></div>
+                                                </li>
+                                                <li>
+                                                    <div className="user-icon-box"><em className="icon-newexpert"></em></div>
+                                                    <div className="user-txt"> Want help with specing? <span class="bold-detail"> Talk to Expert <span> (Refundable)</span></span></div>
+                                                </li>
+                                            </ol>
+                                        </div>
                                     </div>
+                                    
                                 </div>
-                            </div>
+                                <div className={`priceSideBar ${this.state.promotion?'active':''}`}>
+                                        <div className="priceOverflow"></div>
+                                        <div className="priceBoxHold">
+                                            <div className="priceListing">
+                                                <div className="close-btn"><em className="icon-cancel" onClick={this.closePromotion}></em></div>
+                                                <div className="applyPromoBox">
+                                                    <h4>Apply Promotion</h4>
+                                                    <div className="pro-box">
+                                                        <form>
+                                                            <input type="text" maxLength="15" placeholder="Enter coupon code"></input>
+                                                            <button type="submit"> Apply </button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 {auth?<div className='hidemobileScreen'><User/></div>:
                                 <div >
                                     <CurrencyBox/></div>}
@@ -331,20 +368,65 @@ class Delivery extends React.Component{
                             <strong>₹8,38,352.00</strong>
                         </h3>
                         <div  className="phasebreakBox">
-                            <div  className="phaseIcon">
-                                <img alt="" src="https://studio.builder.ai/assets/images/info_blue.png"></img>
+                            <div  className="phaseIcon" >
+                                <img alt="" src="https://studio.builder.ai/assets/images/info_blue.png" id='2' onClick={(e)=>this.showInfobox(e)}></img>
                             </div>
-                            <div  className="phasebreakOverlay"></div>
+                            <div  className={`phasebreakOverlay ${this.state.bottomBar?'active':''}`}></div>
+                            <div className={`phasebreakDetail ${this.state.bottomBar?'active':''}`}>
+                                <div  className="closeButton" onClick={this.showInfobox}><em  className="icon-cancel"></em></div>
+                                <div className='pricedetailBox'>
+                                    <h3 >Price Details</h3>
+                                    <ul>
+                                        <li  className="headRow">
+                                            <span>Phases</span>
+                                            <span>Duration</span>
+                                            <span>Price</span>
+                                        </li>
+                                        <li  className="headRow">
+                                            <span>Product Roadmap</span>
+                                            <span>Not Added</span>
+                                        </li>
+                                        <li>
+                                            <span>Design</span>
+                                            <span>6  weeks</span>
+                                            <span>₹209641</span>
+                                        </li>
+                                        <li  className="headRow">
+                                            <span>Tailor-made Prototype</span>
+                                            <span>Not Added</span>
+                                        </li>
+                                        <li>
+                                            <span>MVP</span>
+                                            <span>17.2  weeks</span>
+                                            <span>₹585377</span>
+                                        </li>
+                                        <li>
+                                            <span >Full Build</span>
+                                            <span >0.8  week</span>
+                                            <span >₹43546</span>
+                                        </li>
+                                        <li  className="bgRow discountRow applyPromoMobile">
+                                            <img  src="https://studio.builder.ai/assets/images/promotion_icon.png" alt=""></img>
+                                            <button type="button" onClick={this.showPromotion}>Apply Promotion</button>
+                                        </li>
+                                        <li  className="bgRow">
+                                            <strong>Total</strong>
+                                            <strong>24 weeks</strong>
+                                            <strong>₹8,38,564.00</strong>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div  className="applyPromoBox">
+                    <div  className="applyPromoBox" >
                         <span className="promo-hd">Promotion </span>
                         <div  className="promo-container">
                             <img  src="https://studio.builder.ai/assets/images/promotion_icon.png" alt=""></img>
-                            <button  type="button">Apply Promotion</button>
+                            <button  type="button"  onClick={this.showPromotion}>Apply Promotion</button>
                         </div>
                     </div>
-                    <div  className="previewBottom">
+                    <div  className={`previewBottom ${this.state.bottomBar?'child_btn_full':''}`}>
                         <div >
                             <button type="button" className="nextButton"><Link to='/build-card' style={{color:'white'}}> Done </Link></button>
                         </div>

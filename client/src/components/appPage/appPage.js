@@ -7,6 +7,7 @@ import Footer from '../footer/footer';
 import Slider from '@material-ui/core/Slider';
 import { withStyles, rgbToHex } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import InitialLoader from '../initialLoader/initialLoader';
 
 const useStyles = theme => ({
     root: {
@@ -40,7 +41,8 @@ class AppPage extends React.Component{
             checkId:'',
             checkPlatformId:'',
             sortId:'',
-            checkedApps:[]
+            checkedApps:[],
+            loading:true
 
         }
         this.showMore = this.showMore.bind(this);
@@ -56,7 +58,7 @@ class AppPage extends React.Component{
         axios.get(`http://localhost:4000/apps`)
           .then(res => {
             const data = res.data;
-            this.setState({ data });
+            this.setState({ data,loading:false });
           })
           axios.get(`http://localhost:4000/categories`)
           .then(res => {
@@ -186,8 +188,8 @@ function valuetext(value) {
   console.log(this.state.checkedApps.map(info=>info))
   
      
-             return (
-            <div>
+            
+  return (this.state.loading?<InitialLoader/>:<div>
                 <AppHeader/>
                 <div className='middlePart'>
                     <div className='templateSection'>

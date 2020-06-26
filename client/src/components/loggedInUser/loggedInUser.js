@@ -24,7 +24,7 @@ class User extends React.Component{
                 <div className={`userDropdown ${this.state.active?'active':''}`} style={{zIndex:'2'}}>
                     <ul>
                         <li className="mydashBoard">
-                            <span><em className="icon-dashboard-3" onClick={<Dashboard user={auth}/>}></em><Link to='/dashboard'>My Dashboard</Link> </span>
+                            <span><em className="icon-dashboard-3" ></em><Link to='/dashboard'>My Dashboard</Link> </span>
                         </li>
                         <li><span className="userSetting"><em className="icon-settings-streamline-1"></em> Settings</span></li>
                         <li><span className="userLogout" ><em class="icon-logout-1"></em><a href='http://localhost:4000/auth/logout'>  Log Out</a></span></li>
