@@ -8,7 +8,7 @@ import Slider from '@material-ui/core/Slider';
 import { withStyles, rgbToHex } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import InitialLoader from '../initialLoader/initialLoader';
-
+import{ApiGet} from '../../api'
 const useStyles = theme => ({
     root: {
       width: 250,
@@ -55,12 +55,12 @@ class AppPage extends React.Component{
     }
     componentDidMount() {
         document.addEventListener('mousedown', this.handleClickOutside);
-        axios.get(`http://localhost:4000/apps`)
+        ApiGet('apps')
           .then(res => {
             const data = res.data;
             this.setState({ data,loading:false });
           })
-          axios.get(`http://localhost:4000/categories`)
+          ApiGet('categories')
           .then(res => {
             const data = res.data;
             this.setState({categories:data });

@@ -5,7 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import {featureList} from '../featuresdb/featuresdb'
 import axios from 'axios'
-
+import {ApiGet} from '../../api'
 const useStyles = theme => ({
     root: {
       width: 250,
@@ -41,17 +41,17 @@ class AppFeaturesLeft extends React.Component{
     componentDidMount() {
         document.addEventListener('mousedown', this.handleClickOutside);
         this.update();
-        axios.get(`http://localhost:4000/bundle`)
+        ApiGet('bundle')
           .then(res => {
             const data = res.data;
             this.setState({ features:data });
           })
-          axios.get(`http://localhost:4000/filter`)
+          ApiGet('filter')
           .then(res => {
             const data = res.data;
             this.setState({ filter:data });
           })
-          axios.get(`http://localhost:4000/app/?attributes.title=${this.props.name}`)
+          ApiGet(`app/?attributes.title=${this.props.name}`)
           .then(res => {
             const data = res.data;
             this.setState({ app:data });

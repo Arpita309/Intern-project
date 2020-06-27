@@ -3,6 +3,7 @@ import './ProblemSolve.css'
 import axios from 'axios'
 import Header from '../problemSolveHeader/problemSolveHeader'
 import Footer from '../footer/footer';
+import {ApiGet} from '../../api'
 class ProblemSolve extends React.Component{
     constructor(props) {
         super(props);
@@ -16,7 +17,7 @@ class ProblemSolve extends React.Component{
     }
     
     componentDidMount() {
-        axios.get(`http://localhost:4000/question-row`)
+        ApiGet('question-row')
           .then(res => {
             const data = res.data;
             this.setState({ data });

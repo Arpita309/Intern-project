@@ -5,6 +5,9 @@ const morgan = require('morgan');
 const cors=require('cors')
 const path=require('path')
 const passport = require("passport");
+const stripe=require('stripe')('sk_test_51Gye5bDuX2TrUjLdIr15WLxqhu6iSD4BI0JHnTB5aUG59Iou0rXy1S5d9bOjolPKXWlu1kNcCRwOwSRhhlf0mZ4E00y5UiVxip')
+const uuid = require("uuid/v4");
+require('dotenv').config()
 //confusion-server
 var session = require('express-session');
 
@@ -16,7 +19,7 @@ const hostname = process.env.HOST || 'localhost';
 const port = process.env.PORT || 4000;
 const dbUrl = process.env.DB_URL || "mongodb+srv://arpita_W3dev:7985714375@ar@cluster0-ond1z.mongodb.net/builderDb?retryWrites=true&w=majority";
 
-require("./config/passport")(passport);
+
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
@@ -32,9 +35,10 @@ const appDetailsRouter=require('./routes/appDetailRouter')
 const configurationsRouter=require('./routes/configurationRouter')
 const bundleDetailsRouter=require('./routes/bundleDetailRouter')
 const featureFilter=require('./routes/featureFilterRouter')
-const users = require("./routes/userRouter");
+
 const auth=require("./routes/users")
 const teams=require("./routes/teamRouter")
+const buildCard=require('./routes/buildCardRouter')
 const app = express();
 app.use(cors({credentials: true, origin: 'http://localhost:3000'}))
 
@@ -54,6 +58,7 @@ app.use(express.static(__dirname + '/public'));
 app.use(passport.initialize());
 app.use(passport.session());
 const authenticate = require('./authenticate');
+
 
 //app.use(cookieParser('12345-67890-09876-54321'));
 
@@ -90,9 +95,42 @@ app.use('/app',appDetailsRouter);
 app.use('/configurations',configurationsRouter)
 app.use('/bundle',bundleDetailsRouter);
 app.use('/filter',featureFilter);
-app.use("/users", users);
+
 app.use("/auth", auth);
 app.use("/teams", teams);
+app.use("/buildcard",buildCard);
+app.post("/payment", (req, res) => {
+  const { product, token } = req.body;
+  console.log("PRODUCT ", product);
+  console.log("PRICE ", product.price);
+  const idempontencyKey = uuid();
+
+  return stripe.customers
+    .create({
+      email: token.email,
+      source: token.id
+    })
+    .then(customer => {
+      stripe.charges.create(
+        {
+          amount: product.price * 100,
+          currency: "usd",
+          customer: customer.id,
+          receipt_email: token.email,
+          description: `purchase of ${product.name}`,
+          shipping: {
+            name: token.card.name,
+            address: {
+              country: token.card.address_country
+            }
+          }
+        },
+        { idempontencyKey }
+      );
+    })
+    .then(result => res.status(200).json(result))
+    .catch(err => console.log(err));
+});
 /*app.use((req, res, next) => {
 
 

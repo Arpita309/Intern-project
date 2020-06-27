@@ -2,6 +2,7 @@ import React from 'react';
 import './sectionTypeContent.css'
 import SliderParent from '../productType/productType'
 import axios from 'axios'
+import {ApiGet} from '../../api'
 class Type extends React.Component{
     constructor(props){
 		super(props)
@@ -11,7 +12,7 @@ class Type extends React.Component{
 	}
 	componentDidMount() {
         
-        axios.get(`http://localhost:4000/product-type`)
+        ApiGet('product-type')
           .then(res => {
             const data = res.data;
             this.setState({types:data });

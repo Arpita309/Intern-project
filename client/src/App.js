@@ -16,6 +16,7 @@ import PaymentPlan from './components/paymentPlan/paymentPlan';
 import BillingDetails from './components/billingDetails/billingDetails';
 import BecomePartner from './components/becomePartner/becomePartner';
 import Dashboard from './components/Dashboard/dashboard';
+import Payment from './components/payment';
 function App() {
   return (
     <BrowserRouter>
@@ -36,6 +37,7 @@ function App() {
          <Route exact path='/billing-details' component={BillingDetails}/>
          <Route exact path='/become-a-partner' component={BecomePartner}/>
          <Route exact path='/dashboard' component={Dashboard}/>
+         <Route exact path='/payment' component={Payment}/>
 
        </Switch>
        

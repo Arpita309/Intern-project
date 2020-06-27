@@ -1,6 +1,7 @@
 import React from 'react'
 import './currencyBox.css'
 import axios from 'axios'
+import{ApiGet} from '../../api'
 class CurrencyBox extends React.Component{
     constructor(props){
         super(props);
@@ -12,7 +13,7 @@ class CurrencyBox extends React.Component{
         this.toggleBox=this.toggleBox.bind(this);
     }
     componentDidMount(){
-        axios.get(`http://localhost:4000/configurations`)
+        ApiGet('configurations')
           .then(res => {
             const data = res.data;
             this.setState({currency: data });

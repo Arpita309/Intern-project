@@ -6,6 +6,7 @@ import Slider from '../platformSlider/platformSlider'
 import FeatureInfo from '../appFeature/appFeature'
 import Footer from '../footer/footer'
 import Header from '../appDetailHeader/appDetailHeader'
+import {ApiGet} from '../../api'
 class AppDetail extends React.Component{
     constructor(props){
         super(props);
@@ -21,12 +22,12 @@ class AppDetail extends React.Component{
      
      componentDidMount() {
         
-        axios.get(`http://localhost:4000/app/?attributes.title=${this.props.match.params.name}`)
+        ApiGet(`app/?attributes.title=${this.props.match.params.name}`)
           .then(res => {
             const data = res.data;
             this.setState({ data });
           })
-          axios.get(`http://localhost:4000/configurations`)
+          ApiGet('configurations')
           .then(res => {
             const data = res.data;
             this.setState({platforms: data });

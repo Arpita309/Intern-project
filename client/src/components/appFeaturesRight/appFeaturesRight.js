@@ -1,7 +1,8 @@
 import React from 'react'
 import './appFeaturesRight.css'
-import {mobileData,webData,carouselDescription} from '../featuresdb/featuresdb'
+import {carouselDescription} from '../featuresdb/featuresdb'
 import axios from 'axios'
+import {ApiGet} from '../../api'
 let selectedDescription=[] 
 
 class FeatureRight extends React.Component{
@@ -31,13 +32,13 @@ class FeatureRight extends React.Component{
     }
     componentDidMount(){
         
-        axios.get(`http://localhost:4000/app/?attributes.title=${this.props.name}`)
+        ApiGet(`app/?attributes.title=${this.props.name}`)
           .then(res => {
             const data = res.data;
             this.setState({ app:data });
            
           })
-          axios.get(`http://localhost:4000/bundle`)
+          ApiGet('bundle')
           .then(res => {
             const data = res.data;
             this.setState({ features:data });

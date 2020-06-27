@@ -3,7 +3,7 @@ import Slider from '../slider/slider'
 import './appTrending.css'
 import axios from 'axios'
 import Loader from '../questionSectionLoader/loaderbox'
-
+import {ApiGet} from '../../api'
 class AppTrending extends React.Component{
     constructor(props){
         super(props)
@@ -15,7 +15,7 @@ class AppTrending extends React.Component{
     }
     componentDidMount() {
         
-        axios.get(`http://localhost:4000/trending`)
+        ApiGet('trending')
           .then(res => {
             const data = res.data;
             this.setState({info:data ,isLoading:false});

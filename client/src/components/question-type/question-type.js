@@ -5,6 +5,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Loader from '../questionSectionLoader/loaderbox'
 import BottomBar from '../homepageBottombar/homepageBottombar'
+import {ApiGet} from '../../api'
 class QuestionType extends React.Component{
     constructor(props) {
         super(props);
@@ -22,7 +23,7 @@ class QuestionType extends React.Component{
         this.setState({ checked: !currentState });
     };
     componentDidMount() {
-        axios.get(`http://localhost:4000/question-row`)
+        ApiGet('question-row')
           .then(res => {
             const data = res.data;
             this.setState({ data ,isLoading:false});

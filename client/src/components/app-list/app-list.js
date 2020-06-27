@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 import axios from 'axios'
 import Loader from '../questionSectionLoader/loaderbox'
 import BottomBar from '../homepageBottombar/homepageBottombar'
-
+import{ApiGet} from '../../api'
 class AppList extends React.Component{
     constructor(props){
         super(props)
@@ -20,7 +20,7 @@ class AppList extends React.Component{
     }
     componentDidMount() {
         
-        axios.get(`http://localhost:4000/applications`)
+        ApiGet('applications')
           .then(res => {
             const data = res.data;
             this.setState({data,isLoading:false });

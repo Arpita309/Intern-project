@@ -1,6 +1,6 @@
 import React from 'react'
 import './deliverables.css'
-import {SideBar} from '../sideBar/sideBar'
+
 import {Link} from 'react-router-dom'
 import AddCustom from '../addCustomDelivery/addCustomDelivery'
 import SliderComponent from '../deliverySlider/deliverySlider'
@@ -24,22 +24,17 @@ class Delivery extends React.Component{
         }
     }
     componentDidMount(){
-        axios.get(`http://localhost:4000/configurations`)
+        ApiGet('configurations')
           .then(res => {
             const data = res.data;
             this.setState({platformList: data[0].platforms });
           }) 
-          axios.get(`http://localhost:4000/teams`)
+          ApiGet('teams')
           .then(res => {
             const data = res.data;
             this.setState({teams:data[0].teams });
           }) 
-          ApiGet('app').then(res=>console.log(res.data))
-          
-            
-            
-           
-    }
+        }
     showPromotion=()=>{
         
         this.setState({promotion:true})

@@ -9,6 +9,7 @@ import './Navbar.css'
 import axios from 'axios'
 import NeedHelp from '../needHelp/needHelp'
 import Authentication from '../authentication'
+import {ApiGet} from '../../api'
 export default class Navbar extends React.Component {
   constructor(props) {
     super(props);
@@ -18,7 +19,7 @@ this.state = {
     
     }}
     componentDidMount(){
-      axios.get(`http://localhost:4000/auth/current_user`,{withCredentials:true})
+      ApiGet('auth/current_user')
           .then(res => {
             
             this.setState({auth:res.data})
