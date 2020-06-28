@@ -110,9 +110,10 @@ app.post("/payment", (req, res) => {
       email: token.email,
       source: token.id
     })
-    .then(customer => {
+    .then(customer => 
       stripe.charges.create(
         {
+
           amount: product.price * 100,
           currency: "usd",
           customer: customer.id,
@@ -125,9 +126,8 @@ app.post("/payment", (req, res) => {
             }
           }
         },
-        { idempontencyKey }
-      );
-    })
+        { idempontencyKey })
+        )
     .then(result => res.status(200).json(result))
     .catch(err => console.log(err));
 });

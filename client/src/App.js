@@ -16,7 +16,10 @@ import PaymentPlan from './components/paymentPlan/paymentPlan';
 import BillingDetails from './components/billingDetails/billingDetails';
 import BecomePartner from './components/becomePartner/becomePartner';
 import Dashboard from './components/Dashboard/dashboard';
-import Payment from './components/payment';
+import Pay from './components/payment';
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+
 function App() {
   return (
     <BrowserRouter>
@@ -37,7 +40,7 @@ function App() {
          <Route exact path='/billing-details' component={BillingDetails}/>
          <Route exact path='/become-a-partner' component={BecomePartner}/>
          <Route exact path='/dashboard' component={Dashboard}/>
-         <Route exact path='/payment' component={Payment}/>
+         <Route exact path='/payment' component={Pay}/>
 
        </Switch>
        
