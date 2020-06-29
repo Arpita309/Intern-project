@@ -1,35 +1,10 @@
 import React from 'react'
 import {useStripe, useElements, CardElement} from '@stripe/react-stripe-js';
 import './pay.css'
-const CARD_ELEMENT_OPTIONS = {
-    style: {
-      base: {
-        color: "#32325d",
-        fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-        fontSmoothing: "antialiased",
-        fontSize: "16px",
-        "::placeholder": {
-          color: "#aab7c4",
-        },
-      },
-      invalid: {
-        color: "#fa755a",
-        iconColor: "#fa755a",
-      },
-    },
-  };
-  
-  function CardSection() {
-    return (
-      <label>
-        Card details
-        <CardElement options={CARD_ELEMENT_OPTIONS} />
-      </label>
-    );
-  };
+
 
 const  Pay =()=>{
-    const stripe = useStripe();
+  const stripe = useStripe();
   const elements = useElements();
 
   const handleSubmit = async (event) => {
@@ -42,16 +17,27 @@ const  Pay =()=>{
       // Make sure to disable form submission until Stripe.js has loaded.
       return;
     }
-    const result = await stripe.confirmCardPayment('{CLIENT_SECRET}', {
+    var cardNumber = elements.create('cardNumber'
+    );
+    cardNumber.mount('#card-number');
+  
+    var cardExpiry = elements.create('cardExpiry');
+    cardExpiry.mount('#card-exp');
+  
+    var cardCvc = elements.create('cardCvc');
+    cardCvc.mount('#card-cvc');
+    stripe.createToken('cardExpiry').then(result=>console.log(result.token))
+    
+    /*const result = await stripe.confirmCardPayment('{CLIENT_SECRET}', {
         payment_method: {
           card: elements.getElement(CardElement),
           billing_details: {
             name: 'Jenny Rosen',
           },
         }
-      });
+      });*/
   
-      if (result.error) {
+      /*if (result.error) {
         // Show error to your customer (e.g., insufficient funds)
         console.log(result.error.message);
       } else {
@@ -59,7 +45,7 @@ const  Pay =()=>{
         if (result.paymentIntent.status === 'succeeded') {
           console.log('succeeded')
         }
-      }
+      }*/
     };
    
         return(
@@ -92,8 +78,9 @@ const  Pay =()=>{
                                                 <li>
                                                     <div className="form-group">
                                                         <label htmlFor="cc-number" className="control-label">Card Number</label>
-                                                        <div className="input-group">
-                                                        <input id="cc-number" type="tel" className="input-lg form-control cc-number" autoComplete="cc-number" placeholder="Enter Card Number" data-payment="cc-number" required=""></input>
+                                                        <div className="input-group" >
+                                                          <div id='card-number'>
+                                                        <input id="cc-number" type="tel" className="input-lg form-control cc-number" autoComplete="cc-number" placeholder="Enter Card Number" data-payment="cc-number" required=""></input></div>
                                                         <div className="card-green-icon" style={{display: 'none'}}><em class="icon-right"></em></div>
                                                         <div className="card-number-icon" style={{display: 'none'}}>
                                                             <img style={{display: 'none'}} id="icon-visa" src="/assets/razorpay/card_icons/icon-visa-4617d8b7df88542b0186e1980c4b6b791fe5a19389d0e6755c85a0c7e4c87486.svg" alt="Icon visa"></img>
@@ -118,7 +105,7 @@ const  Pay =()=>{
                                                     <li className="smallView">
                                                         <div className="form-group">
                                                             <label>Card Expiry</label>
-                                                            <div className="input-group">
+                                                            <div className="input-group" id='card-exp'>
                                                             <input id="cc-exp" type="tel" class="input-lg form-control cc-exp" autocomplete="cc-exp" placeholder="MM / YYYY" data-payment="cc-exp" required=""></input>
                                                             </div>
                                                         </div>
@@ -126,7 +113,7 @@ const  Pay =()=>{
                                                     <li className="smallView mr-0">
                                                         <div className="form-group">
                                                             <label>CVV</label>
-                                                            <div className="input-group">
+                                                            <div className="input-group" id='card-cvc'>
                                                             <input id="cc-cvc" type="password" class="input-lg form-control cc-cvc" autoComplete="off" placeholder="CVV" data-payment="cc-cvc" required=""></input>
                                                             </div>
                                                         </div>
