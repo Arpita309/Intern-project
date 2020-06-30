@@ -1,52 +1,32 @@
-import React from 'react'
-import {useStripe, useElements, CardElement} from '@stripe/react-stripe-js';
+import React,{useState} from 'react'
+import {useStripe, useElements,CardCvcElement,CardExpiryElement,CardNumberElement} from '@stripe/react-stripe-js';
 import './pay.css'
-
+import axios from 'axios'
 
 const  Pay =()=>{
   const stripe = useStripe();
   const elements = useElements();
-
+  const [name,setName]=useState()
+ 
   const handleSubmit = async (event) => {
-    // We don't want to let default form submission happen here,
-    // which would refresh the page.
+    
     event.preventDefault();
 
     if (!stripe || !elements) {
-      // Stripe.js has not yet loaded.
-      // Make sure to disable form submission until Stripe.js has loaded.
+     
       return;
     }
-    var cardNumber = elements.create('cardNumber'
-    );
-    cardNumber.mount('#card-number');
-  
-    var cardExpiry = elements.create('cardExpiry');
-    cardExpiry.mount('#card-exp');
-  
-    var cardCvc = elements.create('cardCvc');
-    cardCvc.mount('#card-cvc');
-    stripe.createToken('cardExpiry').then(result=>console.log(result.token))
-    
-    /*const result = await stripe.confirmCardPayment('{CLIENT_SECRET}', {
-        payment_method: {
-          card: elements.getElement(CardElement),
-          billing_details: {
-            name: 'Jenny Rosen',
-          },
-        }
-      });*/
-  
-      /*if (result.error) {
-        // Show error to your customer (e.g., insufficient funds)
-        console.log(result.error.message);
-      } else {
-        // The payment has been processed!
-        if (result.paymentIntent.status === 'succeeded') {
-          console.log('succeeded')
-        }
-      }*/
+    const cardNumber = elements.getElement(CardNumberElement);
+    const cardExpiry = elements.getElement(CardExpiryElement);
+    const cardCvc = elements.getElement(CardCvcElement);
+   
+    stripe.createToken(cardExpiry,{name}).then(result=>
+    axios.post('http://localhost:4000/payment',result.token).then(res=>console.log(res))
+    )
     };
+    
+    
+    
    
         return(
             <React.Fragment>
@@ -71,16 +51,17 @@ const  Pay =()=>{
                                         </ul>
                                     </div>
                                     <div className='paymentOption2'>
-                                        <div class="optionClick active" data-tab="tab-2"> Credit/Debit Card </div>
-                                        <div class="stripeCards2 tab-content active" id="tab-2" style={{display: 'block'}}>
-                                            <div id='payment-stripe' classname='container'>
+                                        <div className="optionClick active" data-tab="tab-2"> Credit/Debit Card </div>
+                                        <div className="stripeCards2 tab-content active" id="tab-2" style={{display: 'block'}}>
+                                            <div id='payment-stripe' className='container'>
                                                 <ul>
                                                 <li>
                                                     <div className="form-group">
                                                         <label htmlFor="cc-number" className="control-label">Card Number</label>
                                                         <div className="input-group" >
                                                           <div id='card-number'>
-                                                        <input id="cc-number" type="tel" className="input-lg form-control cc-number" autoComplete="cc-number" placeholder="Enter Card Number" data-payment="cc-number" required=""></input></div>
+                                                              <CardNumberElement/>
+                                                        </div>
                                                         <div className="card-green-icon" style={{display: 'none'}}><em class="icon-right"></em></div>
                                                         <div className="card-number-icon" style={{display: 'none'}}>
                                                             <img style={{display: 'none'}} id="icon-visa" src="/assets/razorpay/card_icons/icon-visa-4617d8b7df88542b0186e1980c4b6b791fe5a19389d0e6755c85a0c7e4c87486.svg" alt="Icon visa"></img>
@@ -100,13 +81,13 @@ const  Pay =()=>{
                                                     </li>
                                                     <li>
                                                         <label>Name on Card</label> 
-                                                        <input id="cc-holdername" type="text" name="cardholder_name" data-stripe="name" data-rule-required="true" maxLength="50" placeholder="Name on Card" required=""></input>
+                                                        <input id="cc-holdername" type="text" name="cardholder_name" data-stripe="name" data-rule-required="true" maxLength="50" placeholder="Name on Card" required="" onChange={(e)=>setName(e.target.value)}></input>
                                                     </li>
                                                     <li className="smallView">
                                                         <div className="form-group">
                                                             <label>Card Expiry</label>
                                                             <div className="input-group" id='card-exp'>
-                                                            <input id="cc-exp" type="tel" class="input-lg form-control cc-exp" autocomplete="cc-exp" placeholder="MM / YYYY" data-payment="cc-exp" required=""></input>
+                                                            <CardExpiryElement/>
                                                             </div>
                                                         </div>
                                                     </li>
@@ -114,7 +95,7 @@ const  Pay =()=>{
                                                         <div className="form-group">
                                                             <label>CVV</label>
                                                             <div className="input-group" id='card-cvc'>
-                                                            <input id="cc-cvc" type="password" class="input-lg form-control cc-cvc" autoComplete="off" placeholder="CVV" data-payment="cc-cvc" required=""></input>
+                                                            <CardCvcElement/>
                                                             </div>
                                                         </div>
                                                     </li>
