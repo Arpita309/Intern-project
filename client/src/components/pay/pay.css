@@ -130,8 +130,9 @@ body{
     font-family:"Font Awesome\ 5 Free";
     font-weight: 900;
     content: "\f00c";
-    color: #0070e0;
-    font-size: 24px;
+    background-color: #0070e0;
+    color: white;
+    font-size: 20px;
     border: none;
     line-height: 20px;
 }
@@ -399,3 +400,526 @@ body{
 .paymentArea .paymentLeft>.inr-user-block>.paymentMethod2>.paymentOption2 .optionClick {
     display: block;
 }}
+
+/* internet banking*/
+.paymentArea .paymentLeft>.inr-user-block>.paymentMethod2>.paymentOption2 .InternetBanking .InternetBanking-list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+.paymentArea .paymentLeft>.inr-user-block>.paymentMethod2>.paymentOption2 .savedCards2 ul li {
+    position: relative;
+    width: 100%;
+    border-bottom: 1px solid #e6e6e6;
+    padding: 20px 0;
+}
+.paymentArea .paymentLeft>.inr-user-block>.paymentMethod2>.paymentOption2 .InternetBanking .InternetBanking-list li {
+    width: calc(50% - 10px);
+    height: 50px;
+    border: 1px solid #E2E7ED;
+    padding: 0 20px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+@media (max-width: 768px){
+.paymentArea .paymentLeft>.inr-user-block>.paymentMethod2>.paymentOption2 .InternetBanking .InternetBanking-list li {
+    background: #fff;
+    padding: 0 10px;
+}}
+.paymentArea .paymentLeft>.inr-user-block>.paymentMethod2>.paymentOption2 .savedCards2 ul li .cardType2 {
+    position: relative;
+    font-size: 13px;
+}
+@media (max-width: 768px){
+.paymentArea .paymentLeft>.inr-user-block>.paymentMethod2>.paymentOption2 .savedCards2 ul li .cardType2 {
+    width: 100%;
+}}
+.paymentArea .paymentLeft>.inr-user-block .savedCards2 ul li .cardType2 input[type="radio"] {
+    position: absolute;
+    z-index: -9;
+    left: -200px;
+    top: -200px;
+    opacity: 0;
+}
+.paymentArea .paymentLeft>.inr-user-block>.paymentMethod2>.paymentOption2 .savedCards2 ul li .cardType2 label {
+    display: block;
+    margin: 0;
+    cursor: pointer;
+    position: relative;
+    padding: 0 0 0 30px;
+    font-size: 12px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+}
+@media (max-width: 768px){
+.paymentArea .paymentLeft>.inr-user-block>.paymentMethod2>.paymentOption2 .savedCards2 ul li .cardType2 label {
+    width: 100%;
+    padding: 0 0 0 25px;
+}}
+.paymentArea .paymentLeft>.inr-user-block>.paymentMethod2>.paymentOption2 .savedCards2 ul li .cardType2 label:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #dadada;
+    border-radius: 50px;
+}
+.paymentArea .paymentLeft>.inr-user-block>.paymentMethod2>.paymentOption2 .savedCards2 ul li.active .cardType2 input:checked+label:before {
+    font-family: "Font Awesome\ 5 Free";
+    font-weight: 900;
+    content: "\f00c";
+    color: #0070e0;
+    font-size: 22px;
+    border: none;
+    line-height: 20px;
+}
+.paymentArea .paymentLeft>.inr-user-block>.paymentMethod2>.paymentOption2 .InternetBanking .InternetBanking-list li .cardType2 label:before {
+    top: 50%;
+    left: 0;
+    -webkit-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+}
+.paymentArea .paymentLeft>.inr-user-block>.paymentMethod2>.paymentOption2 .savedCards2 ul li .cardType2 label div {
+    display: inline-block;
+}
+.paymentArea .paymentLeft>.inr-user-block>.paymentMethod2>.paymentOption2 .InternetBanking .InternetBanking-list li .cardType2 label div>img {
+    width: auto;
+}
+@media (max-width: 768px){
+.paymentArea .paymentLeft>.inr-user-block>.paymentMethod2>.paymentOption2 .savedCards2 ul li .cardType2 label div>img {
+    margin-right: 10px;
+}}
+@media (max-width: 768px){
+.paymentArea .paymentLeft>.inr-user-block>.paymentMethod2>.paymentOption2 .InternetBanking .InternetBanking-list li .cardType2 label div>img {
+    width: 100%;
+}}
+/*bank options*/
+.paymentArea .paymentLeft>.inr-user-block>.paymentMethod2>.paymentOption2 .InternetBanking .bankoption label {
+    display: block;
+    margin-bottom: 8px;
+    opacity: .5;
+    color: #000;
+    font-size: 12px;
+}
+.paymentArea .paymentLeft>.inr-user-block>.paymentMethod2>.paymentOption2 .InternetBanking .bankoption .customSelect {
+    width: 100%;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid #E2E7ED;
+    border-radius: 5px;
+    height: 50px;
+    position: relative;
+}
+.paymentArea .paymentLeft>.inr-user-block>.paymentMethod2>.paymentOption2 .InternetBanking .bankoption .customSelect::before {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    content: "";
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 1px;
+    height: 1px;
+    border-top: 5px solid black;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    z-index: 9;
+}
+.paymentArea .paymentLeft>.inr-user-block>.paymentMethod2>.paymentOption2 .InternetBanking .bankoption .customSelect>select {
+    height: 100%;
+    font-size: 16px;
+    padding: 0 20px;
+    background: #fff;
+    border: 0;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    width: 100%;
+    position: relative;
+}
+.paymentArea .paymentLeft>.inr-user-block>.paymentMethod2>.paymentOption2 .InternetBanking .InternetBanking-list li:nth-child(2n+2) {
+    margin-right: 0;
+}
+/*upi*/
+.paymentArea .paymentLeft>.inr-user-block>.paymentMethod2>.paymentOption2 .upi .accept-bx>p {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    color: #999;
+    font-size: 12px;
+    margin: 0 0 30px 0;
+}
+.paymentArea .paymentLeft>.inr-user-block>.paymentMethod2>.paymentOption2 .upi .accept-bx>p span {
+    padding: 8px 0 0 8px;
+}
+.paymentArea .paymentLeft>.inr-user-block>.paymentMethod2>.paymentOption2 .upi .pay-block h3 {
+    font-size: 14px;
+    color: #000;
+    margin: 0 0 6px 0;
+}
+.paymentArea .paymentLeft>.inr-user-block>.paymentMethod2>.paymentOption2 .upi .pay-block p {
+    margin: 0 0 20px 0;
+    color: #999;
+    font-size: 12px;
+}
+.paymentArea .paymentLeft>.inr-user-block>.paymentMethod2>.paymentOption2 .upi .upiInput input {
+    display: block;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #E2E7ED;
+    height: 50px;
+    padding: 20px;
+    color: #000;
+    font-size: 14px;
+}
+.paymentArea .paymentLeft>.inr-user-block>.paymentMethod2>.paymentOption2 .optionClick.active:before {
+    font-family: "Font Awesome\ 5 Free";
+    font-weight: 900;
+    content: "\f00c";
+    background-color: #0070e0;
+    color:white;
+    font-size: 18px;
+    border: none;
+    line-height: 16px;
+    left: -1px;
+}
+.paymentArea .paymentLeft>.inr-user-block>.paymentMethod2>.paymentOption2 .optionClick:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    border: 1px solid #dadada;
+    border-radius: 50px;
+}
+/*other modes*/
+.paymentArea .paymentLeft .otherWay h3 {
+    color: #000;
+    font-size: 20px;
+    margin: 0 0 15px;
+}
+.paymentArea .paymentLeft .otherWay p {
+    color: #000;
+    font-size: 16px;
+    margin: 0 0 15px;
+    opacity: 0.4;
+    line-height: 24px;
+}
+@media (max-width: 768px){
+.mobile-view-btn {
+    position: fixed;
+    bottom: 20px;
+    z-index: 99999;
+    right: 20px;
+    padding: 0 !important;
+}}
+.paymentArea .paymentLeft .otherWay button {
+    background: #f31597;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    text-align: center;
+    width: 100%;
+    max-width: 200px;
+    height: 50px;
+    font-size: 14px;
+    color: #fff;
+}
+@media (max-width: 768px){
+.mobile-view-btn button {
+    margin: 0 !important;
+    padding: 0 20px !important;
+    width: auto !important;
+    height: 50px !important;
+}}
+@media (max-width: 768px){
+.paymentArea .paymentLeft .otherWay button {
+    max-width: 100%;
+}}
+/*payment right*/
+.paymentArea .paymentRight {
+    width: calc(30% - 10px);
+    float: right;
+    border-radius: 10px;
+    border: 1px solid #e2e7ed;
+    background: rgba(244,247,252,0.5);
+    padding: 20px;
+    position: relative;
+}
+@media (max-width: 768px){
+.paymentRight.showOnlyMobile {
+    padding: 20px !important;
+}}
+@media (max-width: 768px){
+.paymentRight {
+    position: fixed !important;
+    left: 0;
+    bottom: 0;
+    z-index: 99;
+    background: white !important;
+    margin: 0;
+    -webkit-box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    padding: 20px 20px 85px 20px !important;
+}}
+@media (max-width: 992px){
+.paymentRight {
+    width: 100% !important;
+}}
+.under-tooltip {
+    position: relative;
+}
+.paymentRight h3 {
+    position: relative;
+    color: #000;
+    font-size: 20px;
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+@media (max-width: 768px){
+.showOnlyMobile .under-tooltip {
+
+    font-size: 14px;
+    color: #000;
+    padding-bottom: 5px !important;
+    margin-bottom: 0;
+}}
+@media (max-width: 768px){
+.info-icon-bx a img {
+    position: relative;
+    top: 5px;
+    left: 5px;
+}}
+.info-icon-bx .tooltip {
+    display: none;
+    width: 272px;
+    min-height: 100px;
+    -webkit-box-shadow: 0 10px 20px rgba(0,0,0,0.02);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.02);
+    border-radius: 10px;
+    border: 1px solid #e2e7ed;
+    background: #fff;
+    position: absolute;
+    top: 15px;
+    padding: 20px 15px;
+    left: 0;
+    z-index: 99;
+    font-size: 12px;
+}
+@media (max-width: 768px){
+.showOnlyMobile .tooltip {
+    top: -126px;
+    left: 82px;
+}}
+@media (max-width: 768px){
+.info-icon-bx .tooltip {
+    top: -132px;
+    left: 99px;
+}}
+.info-icon-bx .tooltip p {
+    color: #000;
+    line-height: 20px;
+    font-weight: lighter;
+    margin: 0;
+}
+@media (max-width: 768px){
+.showOnlyMobile .costduration {
+    border: none;
+}}
+.paymentRight .costduration .detailRow, .paymentRight .costduration .total-amount {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+@media (max-width: 768px){
+.showOnlyMobile .detailRow, .showOnlyMobile .total-amount>label, .paymentArea .paymentLeft .savedCards ul li .cardAction .cardName p {
+    display: none !important;
+}}
+.paymentRight .costduration label {
+    color: #000;
+    font-size: 14px;
+    line-height: 16px;
+    margin: 0;
+}
+.paymentRight .costduration p {
+    margin: 0;
+}
+.paymentRight .costduration .total-amount {
+    border-top: 1px solid #e2e7ed;
+    padding-top: 20px;
+    margin-bottom: 0;
+}
+@media (max-width: 768px){
+.paymentRight .costduration .total-amount {
+    border: none !important;
+    margin-bottom: 9px;
+}}
+.paymentRight .costduration .total-amount label, .paymentRight .costduration .total-amount p {
+    color: #000;
+    font-size: 20px;
+}
+.closePriceDetail {
+    position: fixed;
+    right: 20px;
+    bottom: 212px;
+    cursor: pointer;
+    z-index: 999;
+    color: #0070e0;
+    display: none;
+}
+@media (max-width: 768px){
+.abc {
+    display: inherit;
+}}
+.info-icon-bx a:hover .tooltip {
+    display: block;
+}
+/*header*/
+.headerarea {
+    width: 100%;
+    height: 60px;
+    float: left;
+    clear: both;
+    background: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+    padding: 0 20px 0 50px;
+    border-bottom: 1px solid #E2E7ED;
+}
+@media (max-width: 768px){
+.headerarea {
+    padding: 0 20px;
+}}
+.headerarea .logo {
+    float: left;
+    padding: 15px 0;
+}
+.headerarea .logo img {
+    width: auto;
+    max-height: 38px;
+}
+.headerarea .breadcrums {
+    float: left;
+    padding: 20px 0 0 15px;
+}
+@media (max-width: 992px){
+.breadcrums {
+    display: none;
+}}
+.headerarea .breadcrums ul li {
+    float: left;
+    list-style-type: none;
+    display: block;
+    vertical-align: middle;
+    position: relative;
+    font-size: 13px;
+    color: #000;
+    padding: 2px 10px 2px 20px;
+    margin: 0 2px 0 0;
+    cursor: pointer;
+    line-height: 15px;
+}
+.breadcrums ul li a {
+    display: inline-block;
+    text-decoration: none;
+    color: #000;
+}
+.headerarea .breadcrums ul li.active {
+    color: #0070e0;
+}
+.request .secure {
+    color: #000;
+    float: right;
+    font-size: 14px;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 15px 0 0 20px;
+    float: right;
+}
+.request .secure img {
+    margin: 0 10px 0 0;
+}
+/*footer*/
+.containerblock {
+    background: #fff;
+    border-top: 1px solid #D2DAF0;
+    width: 100%;
+    float: left;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.containerblock .footer {
+    padding: 12px 15px 5px 15px;
+    max-width: 1470px;
+    margin: 0 auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #040404;
+    line-height: 18px;
+}

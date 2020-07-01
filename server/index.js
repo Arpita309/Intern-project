@@ -100,12 +100,35 @@ app.use("/auth", auth);
 app.use("/teams", teams);
 app.use("/buildcard",buildCard);
 app.post("/payment", (req, res) => {
-  console.log(req.body)
+  
   
   
   const idempontencyKey = uuid();
+  stripe.customers.create({
+    name:req.body.card.name,
+      source: req.body.id 
+  }).then(function(customer) {
+    
+    return stripe.charges.create(
+      {
+        amount: 2000,
+        currency: 'inr',
+        customer: customer.id,
+        shipping:{
+          name:customer.name
+        }
+      },{
+        idempotencyKey: idempontencyKey
+      }
+    );
+  }).then(function(charge) {
+    console.log(charge)
+    res.status(200).json(charge)
+  }).catch(function(err) {
+    // Deal with an error
+  });
 
-  return stripe.customers
+   /*stripe.customers
     .create({
       name:req.body.card.name,
       source: req.body.id
@@ -128,7 +151,7 @@ app.post("/payment", (req, res) => {
         
 )
     .then(result => res.status(200).json(result))
-    .catch(err => console.log(err));
+    .catch(err => console.log(err));*/
 });
 /*app.use((req, res, next) => {
 
