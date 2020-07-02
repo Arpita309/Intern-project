@@ -10,7 +10,11 @@ const uuid = require("uuid/v4");
 require('dotenv').config()
 //confusion-server
 var session = require('express-session');
-
+const Razorpay = require('razorpay')
+var razorpay = new Razorpay({
+  key_id: 'rzp_test_abGPkyLg8rUCDC',
+  key_secret: 'RoFTJM8DsNhNooBuiOaT2vl3'
+})
 var keys=require('./config/keys')
 const cookieSession = require('cookie-session');
 //var cookieParser = require('cookie-parser');

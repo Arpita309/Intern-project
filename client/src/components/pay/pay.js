@@ -2,7 +2,8 @@ import React,{useState} from 'react'
 import {useStripe, useElements,CardCvcElement,CardExpiryElement,CardNumberElement} from '@stripe/react-stripe-js';
 import './pay.css'
 import axios from 'axios'
-
+var razorpay = new window.Razorpay({  key: 'rzp_test_abGPkyLg8rUCDC',      image: 'https://i.imgur.com/n5tjHFD.png',});
+razorpay.once('ready', function(response) {  console.log(response.methods);})
 const  Pay =()=>{
   const stripe = useStripe();
   const elements = useElements();
