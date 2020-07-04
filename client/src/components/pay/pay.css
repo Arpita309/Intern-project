@@ -923,3 +923,12 @@ body{
     color: #040404;
     line-height: 18px;
 }
+.paymentArea .paymentLeft>.inr-user-block>.paymentMethod2>.paymentOption2 .savedCards2 ul li.active .cardType2 input+label:before {
+    font-family: "Font Awesome\ 5 Free";
+    font-weight: 900;
+    content: "\f00c";
+    color: #0070e0;
+    font-size: 22px;
+    border: none;
+    line-height: 20px;
+}

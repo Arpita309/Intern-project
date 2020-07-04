@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import {useStripe, useElements,CardCvcElement,CardExpiryElement,CardNumberElement} from '@stripe/react-stripe-js';
 import './pay.css'
 import axios from 'axios'
+
 var razorpay = new window.Razorpay({  key: 'rzp_test_abGPkyLg8rUCDC',      image: 'https://i.imgur.com/n5tjHFD.png',});
 razorpay.once('ready', function(response) {  console.log(response.methods);})
 const  Pay =()=>{
@@ -11,7 +12,66 @@ const  Pay =()=>{
   const [tab,setTab]=useState('tab-2');
   const [mainTab,setMainTab]=useState('main-tab-1');
   const [detail,setDetail]=useState(false)
- 
+  const [value,setValue]=useState();
+  const [id,setId]=useState();
+  function razorpay_payment_by_netbanking() {
+    
+    axios.post("http://localhost:4000/razorpay").then(res=>{
+       
+    (razorpay.createPayment({
+        
+        amount: res.data.amount,  
+        email: 'gaurav.kumar@example.com',
+        contact: '9123456780',
+         order_id: res.data.id, 
+          method: 'netbanking',  
+          bank:value
+    }),
+    axios.post("http://localhost:4000/savePayment",res).then(
+        data=>console.log(data)
+    )
+    
+    
+
+    )
+})
+}
+function razorpay_payment_by_wallet() {
+    
+    axios.post("http://localhost:4000/razorpay").then(res=>{
+        console.log(res)
+    razorpay.createPayment({
+        
+        amount: res.data.amount,  
+        email: 'gaurav.kumar@example.com',
+        contact: '9123456780',
+         order_id: res.data.id, 
+          method: 'wallet',  
+          wallet: value
+    })}
+
+)
+}
+function razorpay_payment_by_upi(e) {
+    const wallet=e.target.value
+    axios.post("http://localhost:4000/razorpay").then(res=>{
+        console.log(res)
+    
+        razorpay.createPayment({
+        
+            amount: res.data.amount,  
+            email: 'gaurav.kumar@example.com',
+            contact: '9123456780',
+             order_id: res.data.id, 
+              method: 'upi',  
+              wallet: wallet
+        })
+})
+}
+const setData=(e)=>{
+    setId(e.target.id)
+    setValue(e.target.value)
+}
   const handleSubmit = async (event) => {
     
     event.preventDefault();
@@ -28,7 +88,7 @@ const  Pay =()=>{
     axios.post('http://localhost:4000/payment',result.token).then(res=>console.log(res))
     )
     };
-    
+    console.log(id)
         return(
             <React.Fragment>
                 <div className='headerarea'>
@@ -133,9 +193,9 @@ const  Pay =()=>{
                                         <div className='savedCards2 InternetBanking tab-content' id='tab-3' style={{display:tab=='tab-3'?'block':'none'}}>
                                             <span id="banking_error" className="error-msg"></span>
                                             <ul className='InternetBanking-list'>
-                                                <li >
+                                                <li  className={`${id=='intbankone'?'active':''}`}>
                                                     <div className="cardType2">
-                                                        <input type="radio" name="creditcard" id="intbankone" checked="checked" value="SBIN"></input> 
+                                                        <input type="radio" name="creditcard" id="intbankone"  value="SBIN" onClick={(e)=>setData(e)}></input> 
                                                         <label htmlFor="intbankone" className="labeltag"> 
                                                         <div> 
                                                             <img src="https://payments.builder.ai/assets/razorpay/state-logo-02c5a28c4faadcba4937204963f175e02c5390ccefc96e5c47a176af17980f77.svg" alt="State logo"></img>
@@ -143,9 +203,9 @@ const  Pay =()=>{
                                                         </label>
                                                     </div>
                                                 </li>
-                                                <li>
+                                                <li  className={`${id=='intbanktwo'?'active':''}`}>
                                                     <div className="cardType2">
-                                                        <input type="radio" name="creditcard" id="intbanktwo" checked="checked" value="ICIC"></input> 
+                                                        <input type="radio" name="creditcard" id="intbanktwo" checked="checked" value="ICIC" onClick={(e)=>setData(e)}></input> 
                                                         <label htmlFor="intbanktwo" className="labeltag"> 
                                                         <div> 
                                                             <img src="https://payments.builder.ai/assets/razorpay/icici-logo-98dafc88610cb591a5fb70519c0f3f90723fa97062d431526e4f1c1c8e26712b.svg" alt="Icici logo"></img>
@@ -153,9 +213,9 @@ const  Pay =()=>{
                                                         </label>
                                                     </div>
                                                 </li>
-                                                <li>
+                                                <li  className={`${id=='intbankthree'?'active':''}`}>
                                                     <div className="cardType2">
-                                                        <input type="radio" name="creditcard" id="intbankthree" checked="checked" value="KKBK"></input> 
+                                                        <input type="radio" name="creditcard" id="intbankthree" checked="checked" value="KKBK" onClick={(e)=>setData(e)}></input> 
                                                         <label htmlFor="intbankthree" class="labeltag"> 
                                                         <div> 
                                                             <img src="https://payments.builder.ai/assets/razorpay/kotak-logo-dfc22c3558565125cd036983aa8b91c02fc12390b1fdbd287d46904f1f4b25e3.svg" alt="Kotak logo"></img>
@@ -163,9 +223,9 @@ const  Pay =()=>{
                                                         </label>
                                                     </div>
                                                 </li>
-                                                <li>
+                                                <li  className={`${id=='intbankfour'?'active':''}`}>
                                                     <div className="cardType2">
-                                                        <input type="radio" name="creditcard" id="intbankfour" checked="checked" value="UTIB"></input> 
+                                                        <input type="radio" name="creditcard" id="intbankfour" checked="checked" value="UTIB" onClick={(e)=>setData(e)}></input> 
                                                         <label htmlFor="intbankfour" className="labeltag"> 
                                                         <div> 
                                                             <img src="https://payments.builder.ai/assets/razorpay/axis-logo-b8238eb3118ee732b18391d4a127869a5f58376528eedb82b09ab01a1ad5fad2.svg" alt="Axis logo"></img>
@@ -173,9 +233,9 @@ const  Pay =()=>{
                                                         </label>
                                                     </div>
                                                 </li>
-                                                <li>
+                                                <li  className={`${id=='intbankfive'?'active':''}`}>
                                                     <div className="cardType2">
-                                                        <input type="radio" name="creditcard" id="intbankfive" checked="checked" value="CIUB"></input> 
+                                                        <input type="radio" name="creditcard" id="intbankfive" checked="checked" value="CIUB" onClick={(e)=>setData(e)}></input> 
                                                         <label htmlFor="intbankfive" class="labeltag"> 
                                                         <div> 
                                                             <img src="https://payments.builder.ai/assets/razorpay/citi-logo-c1c7f8f7d662c7fe47a46e9daf19ba6fae11956ee172bdf48e42c7f07f946eab.svg" alt="Citi logo"></img>
@@ -183,9 +243,9 @@ const  Pay =()=>{
                                                         </label>
                                                     </div>
                                                 </li>
-                                                <li>
+                                                <li  className={`${id=='intbanksix'?'active':''}`}>
                                                     <div className="cardType2">
-                                                        <input type="radio" name="creditcard" id="intbanksix" checked="checked" value="HDFC"></input> 
+                                                        <input type="radio" name="creditcard" id="intbanksix" checked="checked" value="HDFC" onClick={(e)=>setData(e)}></input> 
                                                         <label htmlFor="intbanksix" className="labeltag"> 
                                                         <div> 
                                                             <img src="https://payments.builder.ai/assets/razorpay/hdfc-logo-48e56a9346ea90c36e93a29e376204c94eea65528b52fbf4f5e2a14a8e81bca2.svg" alt="Hdfc logo"></img>
@@ -280,48 +340,51 @@ const  Pay =()=>{
                                                 
                                             </div>
                                             <div className="action-block">
-                                                <div className="paysecurely mobile-view-btn" id="banking_payment_pay_now"><button type="button">Pay Now</button></div>
+                                                <div className="paysecurely mobile-view-btn" id="banking_payment_pay_now"><button type="button" onClick={razorpay_payment_by_netbanking}>Pay Now</button></div>
                                             </div>
+                                            
+                                            
+                                           
                                         </div>
                                         <div className={`optionClick ${tab=='tab-4'?'active':''}`} data-tab="tab-4" onClick={(e)=>setTab('tab-4')}> Wallet </div>
                                         <div className='savedCards2 InternetBanking tab-content' id='tab-4' style={{display:tab=='tab-4'?'block':'none'}}>
                                             <span id="banking_error" className="error-msg"></span>
                                             <ul className='InternetBanking-list'>
-                                            <li className="" style={{display: 'none'}}>
+                                            <li  className={`${id=='walletone'?'active':''}`} style={{display: 'none'}}>
                                                     <div className="cardType2">
-                                                        <input type="radio" name="creditcard" id="walletone" value="amazonpay"></input> 
+                                                        <input type="radio" name="creditcard" id="walletone" value="amazonpay" onClick={(e)=>setData(e)}></input> 
                                                         <label htmlFor="walletone" className="labeltag"> 
                                                             <div> <img src="https://payments.builder.ai/assets/razorpay/amazon-logo-a44db78b6e33329b839bd082368c36f0a0763801fd0948732181a19a65c74b4e.svg" alt="Amazon logo"></img> </div> 
                                                         </label>
                                                     </div>
                                                 </li>
-                                                <li>
+                                                <li className={`${id=='wallettwo'?'active':''}`}>
                                                     <div className="cardType2">
-                                                        <input type="radio" name="creditcard" id="wallettwo" value="airtelmoney"></input> 
+                                                        <input type="radio" name="creditcard" id="wallettwo" value="airtelmoney" onClick={(e)=>setData(e)}></input> 
                                                         <label htmlFor="wallettwo" className="labeltag"> 
                                                             <div> <img src="https://payments.builder.ai/assets/razorpay/airtel-logo-0d9f8b98d1c4a0e44c56f901ce306b12157543b8ddb99584a9f794898c6ce220.svg" alt="Airtel logo"></img> </div> 
                                                         </label>
                                                     </div>
                                                 </li>
-                                                <li>
+                                                <li className={`${id=='walletfour'?'active':''}`}>
                                                     <div className="cardType2">
-                                                        <input type="radio" name="creditcard" id="walletfour" value="jiomoney"></input> 
+                                                        <input type="radio" name="creditcard" id="walletfour" value="jiomoney" onClick={(e)=>setData(e)}></input> 
                                                         <label htmlFor="walletfour" className="labeltag"> 
                                                             <div> <img src="https://payments.builder.ai/assets/jiomoney-f4b7f6cac40cae3dea917f6dff66bc0e8d6dd39d33443e40e2a99100ee83334a.png" alt="Jiomoney"></img> </div> 
                                                         </label>
                                                     </div>
                                                 </li>
-                                                <li>
+                                                <li className={`${id=='walletseven'?'active':''}`}>
                                                     <div className="cardType2">
-                                                        <input type="radio" name="creditcard" id="walletseven" value="freecharge"></input> 
+                                                        <input type="radio" name="creditcard" id="walletseven" value="freecharge" onClick={(e)=>setData(e)}></input> 
                                                         <label htmFor="walletseven" className="labeltag"> 
                                                             <div> <img src="https://payments.builder.ai/assets/razorpay/freecharge-logo-707f16cb50316318f438c8b6a18696740e39e4c25524b8e6f214c0df01d5a9da.svg" alt="Freecharge logo"></img> </div> 
                                                         </label>
                                                     </div>
                                                 </li>
-                                                <li>
+                                                <li className={`${id=='walleteight'?'active':''}`}>
                                                     <div className="cardType2">
-                                                        <input type="radio" name="creditcard" id="walleteight" value="phonepe"></input> 
+                                                        <input type="radio" name="creditcard" id="walleteight" value="phonepe" onClick={(e)=>setData(e)}></input> 
                                                         <label htmlFor="walleteight" className="labeltag"> 
                                                             <div> <img src="https://payments.builder.ai/assets/razorpay/phonepay-logo-263998ac03ff6b95336ede245aaf5744fc05deada70a300a04f700e6be020448.svg" alt="Phonepay logo"></img> </div> 
                                                         </label>
@@ -329,7 +392,7 @@ const  Pay =()=>{
                                                 </li>
                                             </ul>
                                             <div className="action-block">
-                                                <div className="paysecurely mobile-view-btn" id="wallet_payment_pay_now"><button type="button">Pay Now</button></div>
+                                                <div className="paysecurely mobile-view-btn" id="wallet_payment_pay_now"><button type="button" onClick={razorpay_payment_by_wallet}>Pay Now</button></div>
                                             </div>
                                         </div>
                                         <div className={`optionClick ${tab=='tab-5'?'active':''}`} data-tab="tab-5" onClick={(e)=>setTab('tab-5')}> UPI </div>
@@ -343,7 +406,7 @@ const  Pay =()=>{
                                                 <p> You must have a Virtual Payment Address </p>
                                             </div>
                                             <div className="upiInput">
-                                                <input type="text" name="" id="upi_payment_options" placeholder="Enter VPA"></input>
+                                                <input type="text" name="" id="upi_payment_options" placeholder="Enter VPA" onClick={(e)=>razorpay_payment_by_upi(e)}></input>
                                             </div>
                                             <div className="action-block">
                                                 <div className="paysecurely mobile-view-btn" id="upi_payment_pay_now"><button type="button">Pay Now</button></div>

@@ -26,6 +26,7 @@ const dbUrl = process.env.DB_URL || "mongodb+srv://arpita_W3dev:7985714375@ar@cl
 
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema
 mongoose.Promise = require('bluebird');
 
 
@@ -131,6 +132,32 @@ app.post("/payment", (req, res) => {
   }).catch(function(err) {
     // Deal with an error
   });
+});
+app.post("/razorpay", (req,res)=> {
+    
+
+  let order = {
+    "amount": 20 * 100,
+    
+    "currency": "INR",
+    "receipt": "receipt",
+    "payment_capture": 1
+  };
+
+  razorpay.orders.create(order).then((value)=> {
+    
+     
+    res.status(200).send(value);
+  });
+});
+app.post("/savePayment",(req,res)=>{
+  console.log(req)
+  razorpay.orders.fetchPayments(req.body.id).then(pay=>{
+    console.log(pay)
+    res.status(200).send(pay)
+  })
+})
+
 
    /*stripe.customers
     .create({
@@ -156,7 +183,7 @@ app.post("/payment", (req, res) => {
 )
     .then(result => res.status(200).json(result))
     .catch(err => console.log(err));*/
-});
+
 /*app.use((req, res, next) => {
 
 
