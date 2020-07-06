@@ -932,3 +932,6 @@ body{
     border: none;
     line-height: 20px;
 }
+.detailRow p{
+    color: #000;
+}

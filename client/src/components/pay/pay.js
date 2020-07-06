@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import {useStripe, useElements,CardCvcElement,CardExpiryElement,CardNumberElement} from '@stripe/react-stripe-js';
 import './pay.css'
 import axios from 'axios'
+import { Link } from 'react-router-dom';
 
 var razorpay = new window.Razorpay({  key: 'rzp_test_abGPkyLg8rUCDC',      image: 'https://i.imgur.com/n5tjHFD.png',});
 razorpay.once('ready', function(response) {  console.log(response.methods);})
@@ -18,7 +19,7 @@ const  Pay =()=>{
     
     axios.post("http://localhost:4000/razorpay").then(res=>{
        
-    (razorpay.createPayment({
+    razorpay.createPayment({
         
         amount: res.data.amount,  
         email: 'gaurav.kumar@example.com',
@@ -26,14 +27,11 @@ const  Pay =()=>{
          order_id: res.data.id, 
           method: 'netbanking',  
           bank:value
-    }),
-    axios.post("http://localhost:4000/savePayment",res).then(
-        data=>console.log(data)
-    )
+    })
     
     
 
-    )
+    
 })
 }
 function razorpay_payment_by_wallet() {
@@ -418,7 +416,7 @@ const setData=(e)=>{
                                     <h3>Prefer to pay another way?</h3>
                                     <p>You can use cash, cheques, wire transfers and many more. Once <br/> you confirm your order, you can pay in the way that suits your <br/> business.</p>
                                     <div className="mobile-view-btn">
-                                        <button type="button" id="payment_by_other">Confirm Order</button>
+                                     <Link to='/status'><button type="button" id="payment_by_other" >Confirm Order</button></Link>   
                                     </div>
                                  </div>
                             </div>

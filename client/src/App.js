@@ -19,6 +19,7 @@ import Dashboard from './components/Dashboard/dashboard';
 import Pay from './components/payment';
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
+import Status from './components/status/status';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
          <Route exact path='/become-a-partner' component={BecomePartner}/>
          <Route exact path='/dashboard' component={Dashboard}/>
          <Route exact path='/payment' component={Pay}/>
+         <Route exact path='/status' component={Status}/>
 
        </Switch>
        
