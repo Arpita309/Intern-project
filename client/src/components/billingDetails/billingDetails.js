@@ -1,13 +1,17 @@
+
 import React from 'react'
 import './billingDetails.css'
 import NeedHelp from '../needHelp/needHelp'
 import Footer from '../footer/footer'
+import {Link} from 'react-router-dom'
+import axios from 'axios'
+var userData={}
 class BillingDetails extends React.Component{
     constructor(props){
         super(props)
         this.state={
             billingDetails:true,contract:false,
-            paymentSummary:false,dueNow:false,security:false
+            paymentSummary:false,dueNow:false,security:false,firstname:'',email:'',contact:'',loaclity:'',state:'',city:'',zip:'',apartment:'',gst:'',lastname:'',company:''
         }
 
     }
@@ -38,6 +42,42 @@ class BillingDetails extends React.Component{
             this.setState({dueNow:false,security:false})
         }
     }
+    handleChange=(e)=>{
+        this.setState({[e.target.id]: e.target.value })
+    }
+    onSubmit = e => {
+        e.preventDefault();
+     userData = {
+          firstName:this.state.firstname,
+          lastName:this.state.lastname,
+          companyName:this.state.company,
+          locality:this.state.locality,
+          contact:this.state.contact,
+          state:this.state.state,
+          apartment:this.state.apartment,
+          country:this.state.country,
+          gst:this.state.gst,
+          zip:this.state.zip,
+          email:this.state.email,
+          city:this.state.city
+        };
+    console.log(userData);
+    axios.post("http://localhost:4000/billing", userData)
+            
+            .then(res => {
+                console.log(res)
+              if(res.data){
+                  console.log('successful ')
+                  
+              }
+              else console.log('error')
+            })
+            .catch(err =>
+              console.log(err.response.data)
+              
+            ); 
+        
+}
     render(){
         return(
             <div className='wrapper'>
@@ -79,13 +119,13 @@ class BillingDetails extends React.Component{
                                                 <div  className="col-md-6 col-sm-12 col-xs-12" style={{textAlign:'left'}}>
                                                     <label>First Name <strong>*</strong></label>
                                                     <div  className="inputfield">
-                                                        <input  type="text" name="firstname" placeholder="Your first name" required="" maxlength="100" minlength="1"></input>
+                                                        <input  type="text" id="firstname" placeholder="Your first name" required="" maxlength="100" minlength="1" onChange={(e)=>this.handleChange(e)}></input>
                                                     </div>
                                                 </div>
                                                 <div  className="col-md-6 col-sm-12 col-xs-12" style={{textAlign:'left'}}>
                                                     <label>Last Name <strong>*</strong></label>
                                                     <div  className="inputfield">
-                                                        <input  type="text" name="lastname" placeholder="Your last name" required="" maxlength="100"></input>
+                                                        <input  type="text" id="lastname" placeholder="Your last name" required="" maxlength="100" onChange={(e)=>this.handleChange(e)}></input>
                                                     </div>
                                                 </div>
                                             </div>
@@ -93,13 +133,13 @@ class BillingDetails extends React.Component{
                                                 <div  className="col-md-6 col-sm-12 col-xs-12" style={{textAlign:'left'}}>
                                                     <label>Company Name </label>
                                                     <div  className="inputfield">
-                                                        <input type="text" name="companyName" minlength="1" maxlength="15" placeholder="Your Company Name" ></input>
+                                                        <input type="text" id="company" minlength="1" maxlength="15" placeholder="Your Company Name" onChange={(e)=>this.handleChange(e)}></input>
                                                     </div>
                                                 </div>
                                                 <div  className="col-md-6 col-sm-12 col-xs-12" style={{textAlign:'left'}}>
                                                     <label>E-mail Address <strong>*</strong></label>
                                                     <div  className="inputfield">
-                                                        <input  type="text" name="email" placeholder="Your e-mail address" required="" email="" maxlength="100" disabled="" ></input>
+                                                        <input  type="text" id="email" placeholder="Your e-mail address" required="" email="" maxlength="100" disabled="" onChange={(e)=>this.handleChange(e)}></input>
                                                     </div>
                                                 </div>
                                             </div>
@@ -111,15 +151,8 @@ class BillingDetails extends React.Component{
                                                             <div  className="inputfield">
                                                                 <international-phone-number  placeholder="Your phone number" name="mobileNumber" required=""  maxlength="20" >
                                                                     <div className="input-group">
-                                                                        <span  className="input-group-addon flagInput">
-                                                                            <div  className="dropdown">
-                                                                                <button  type="button" class="dropbtn btn">
-                                                                                    <span  className="flag flag-in "></span>
-                                                                                    <span  className="arrow-down"></span>
-                                                                                </button>
-                                                                            </div>
-                                                                        </span>
-                                                                        <input  required="" class="form-control " placeholder="Your phone number" type="text" maxlength="20"></input>
+                                                                        
+                                                                        <input  required="" class="form-control " placeholder="Your phone number" type="text" maxlength="20" id='contact' onChange={(e)=>this.handleChange(e)}></input>
                                                                     </div>
                                                                 </international-phone-number>
                                                             </div>
@@ -131,13 +164,13 @@ class BillingDetails extends React.Component{
                                                 <div  className="col-md-6 col-sm-12 col-xs-12" style={{textAlign:'left'}}>
                                                     <label>Street/ Locality <strong>*</strong></label>
                                                     <div  className="inputfield">
-                                                        <input   type="text" name="street" required="" maxlength="100" minlength="1" className=" pac-target-input" placeholder="Enter a location" autoComplete="off"></input>
+                                                        <input   type="text" id="locality" required="" maxlength="100" minlength="1" className=" pac-target-input" placeholder="Enter a location" autoComplete="off" onChange={(e)=>this.handleChange(e)}></input>
                                                     </div>
                                                 </div>
                                                 <div  className="col-md-6 col-sm-12 col-xs-12" style={{textAlign:'left'}}>
                                                     <label>City <strong >*</strong></label>
                                                     <div  className="inputfield">
-                                                        <input  type="text" name="city" placeholder="eg. Los Angeles" required="" maxlength="100" minlength="1" ></input>
+                                                        <input  type="text" id="city" placeholder="eg. Los Angeles" required="" maxlength="100" minlength="1" onChange={(e)=>this.handleChange(e)}></input>
                                                     </div>
                                                 </div>
                                             </div>
@@ -145,13 +178,13 @@ class BillingDetails extends React.Component{
                                                 <div  className="col-md-6 col-sm-12 col-xs-12" style={{textAlign:'left'}}>
                                                     <label >Apartment/ Unit Number <strong>*</strong></label>
                                                     <div className="inputfield">
-                                                        <input type="text" name="apartment" placeholder="eg. 1234" required="" maxlength="100" minlength="1" ></input>
+                                                        <input type="text" id="apartment" placeholder="eg. 1234" required="" maxlength="100" minlength="1" onChange={(e)=>this.handleChange(e)}></input>
                                                     </div>
                                                 </div>
                                                 <div  className="col-md-6 col-sm-12 col-xs-12 " style={{textAlign:'left'}}>
                                                     <label>State/ Territory/ Region <strong>*</strong></label>
                                                     <div  className="inputfield">
-                                                        <input  type="text" name="state" placeholder="eg. California" required="" maxlength="100" minlength="1" ></input>
+                                                        <input  type="text" id="state" placeholder="eg. California" required="" maxlength="100" minlength="1" onChange={(e)=>this.handleChange(e)}></input>
                                                     </div>
                                                 </div>
                                             </div>
@@ -159,27 +192,27 @@ class BillingDetails extends React.Component{
                                                 <div  className="col-md-6 col-sm-12 col-xs-12" style={{textAlign:'left'}}>
                                                     <label>ZIP Code <strong>*</strong></label>
                                                     <div  className="inputfield">
-                                                        <input  type="text" name="pincode" placeholder="eg. 90051" required="" minlength="1" maxlength="12"></input>
+                                                        <input  type="text" id="zip" placeholder="eg. 90051" required="" minlength="1" maxlength="12" onChange={(e)=>this.handleChange(e)}></input>
                                                     </div>
                                                 </div>
                                                 <div  className="col-md-6 col-sm-12 col-xs-12" style={{textAlign:'left'}}>
                                                     <label >Country <strong>*</strong></label>
                                                     <div  className="inputfield">
-                                                        <input  type="text" name="country" placeholder="eg. USA" required="" maxlength="100" minlength="1" ></input>
+                                                        <input  type="text" id="country" placeholder="eg. USA" required="" maxlength="100" minlength="1" onChange={(e)=>this.handleChange(e)}></input>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div className="row">
                                                 <div  className="col-xs-12">
                                                     <div className="usegstin" style={{textAlign:'left'}}>
-                                                        <input  type="checkbox" name="vehicle" value="" id="usegstin"></input>
-                                                        <label  for="usegstin" > Use GSTIN for this project <span >(optional)</span></label>
+                                                        <input  type="checkbox" name="vehicle" value="" id="gst"onChange={(e)=>this.handleChange(e)}></input>
+                                                        <label  htmlFor="gst" > Use GSTIN for this project <span >(optional)</span></label>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div  className="row">
                                                 <div  className="col-md-12">
-                                                    <button  type="button">SAVE<span   className="tooltip-left-arrow">Please fill billing details</span></button>
+                                                    <button  type="button" onClick={(e)=>this.onSubmit(e)}>SAVE<span   className="tooltip-left-arrow">Please fill billing details</span></button>
                                                 </div>
                                             </div>
                                         </form>
@@ -240,7 +273,7 @@ class BillingDetails extends React.Component{
                                             </div>
                                             <div className='detailRow'>
                                                 <specing-payment className='specingCompo'>
-                                                    <button  type="button" className="payNowBtn onlyShowDesktop"> Continue </button>
+                                                   <Link to='/payment'><button  type="button" className="payNowBtn onlyShowDesktop" > Continue </button></Link> 
                                                     <button  type="button" className="payNowBtn onlyShowMobile"> PROCEED TO PAYMENT </button>
                                                 </specing-payment>
                                             </div>

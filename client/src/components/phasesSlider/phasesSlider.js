@@ -64,7 +64,7 @@ export default class PhasesRow extends React.Component {
                                 <span >28 June 2020 </span>
                             </div>
                             <div className="checkBox">
-                                <input  type="checkbox" id="phaseSelected4"></input><label  htmlfor="phaseSelected4"></label>
+                                <input  type="checkbox" id="phaseSelected4"></input><label  htmlFor="phaseSelected4"></label>
                             </div>
                         </div>
                         <learn-more>

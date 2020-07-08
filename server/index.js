@@ -40,7 +40,7 @@ const appDetailsRouter=require('./routes/appDetailRouter')
 const configurationsRouter=require('./routes/configurationRouter')
 const bundleDetailsRouter=require('./routes/bundleDetailRouter')
 const featureFilter=require('./routes/featureFilterRouter')
-
+const billing=require('./routes/billingDetailRouter')
 const auth=require("./routes/users")
 const teams=require("./routes/teamRouter")
 const buildCard=require('./routes/buildCardRouter')
@@ -100,7 +100,7 @@ app.use('/app',appDetailsRouter);
 app.use('/configurations',configurationsRouter)
 app.use('/bundle',bundleDetailsRouter);
 app.use('/filter',featureFilter);
-
+app.use('/billing',billing);
 app.use("/auth", auth);
 app.use("/teams", teams);
 app.use("/buildcard",buildCard);

@@ -329,11 +329,7 @@ function valuetext(value) {
                                          <em class="icon-magnifying"></em>
                                      </div>
                                  </div>
-                                 <div class="customTemplate">
-                                     <em class="icon-plus" ></em>
-                                     
-                                    <span>Custom Template</span>
-                                </div>
+                                 
                                 
                             </div>
                         </div>
