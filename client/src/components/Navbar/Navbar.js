@@ -70,7 +70,7 @@ this.state = {
                     </div>
                 </div>
             </div>
-              {this.state.auth?<div className='hidemobileScreen'><User auth={this.state.auth}/></div>:
+              {this.state.auth.length?<div className='hidemobileScreen'><User auth={this.state.auth}/></div>:
                 <div >
                   <CurrencyBox/></div>}
                 

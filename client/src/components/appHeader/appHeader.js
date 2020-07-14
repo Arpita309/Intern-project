@@ -62,7 +62,7 @@ class AppHeader extends React.Component{
                                     Experts online 
                                 </div>
                             </div>
-                            {auth?<div className='hidemobileScreen'><User/></div>:
+                            {auth.length?<div className='hidemobileScreen'><User/></div>:
                                 <div >
                                     <CurrencyBox/></div>}
                             <LoginIcon/>

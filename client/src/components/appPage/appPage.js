@@ -34,7 +34,7 @@ class AppPage extends React.Component{
             sortpriceD:false,
             sortdurA:false,
             sortdurD:false,
-            value:'',
+            template_weeks:[0,74],
             categories:[],
             categoryId:'',
             platformId:'',
@@ -42,7 +42,11 @@ class AppPage extends React.Component{
             checkPlatformId:'',
             sortId:'',
             checkedApps:[],
-            loading:true
+            loading:true,
+            template_price:[0,63480],
+            slider:[],
+            sort:[]
+            
 
         }
         this.showMore = this.showMore.bind(this);
@@ -51,14 +55,14 @@ class AppPage extends React.Component{
         this.Clear=this.Clear.bind(this);
         this.handleClickOutside=this.handleClickOutside.bind(this);
         this.setWrapperRef = this.setWrapperRef.bind(this);
-        this.handleCh=this.handleChange.bind(this);
+        this.handleChange=this.handleChange.bind(this);
     }
     componentDidMount() {
         document.addEventListener('mousedown', this.handleClickOutside);
         ApiGet('apps')
           .then(res => {
             const data = res.data;
-            this.setState({ data,loading:false });
+            this.setState({ data,loading:false,sort:data });
           })
           ApiGet('categories')
           .then(res => {
@@ -89,11 +93,17 @@ class AppPage extends React.Component{
         }
       }
     handleCategory=(e,id)=>{
-      this.setState({categoryId:id,checkId:id,checkPlatformId:''})
+        if(this.state.categoryId==id)
+        this.setState({categoryId:''})
+        else
+      this.setState({categoryId:id,checkPlatformId:''})
      
     }
     handlePlatform=(e,id)=>{
-        this.setState({platformId:e.target.id,checkPlatformId:e.target.id,checkId:''})
+        if(this.state.platformId==e.target.id)
+        this.setState({platformId:''})
+        else
+        this.setState({platformId:e.target.id,checkId:''})
        
       }
     
@@ -119,11 +129,19 @@ class AppPage extends React.Component{
      
       
     render(){
+        
         var filtered=this.state.data.filter((value)=>{
             
             return value.title.toLowerCase().indexOf(this.state.search.toLowerCase())!==-1;
         })
-        
+        const sliderPrice=(field)=>{
+            console.log(field)
+            
+            this.state.slider=this.state.data.filter((value)=>
+              (value[field]>=this.state[field][0]&&value[field]<=this.state[field][1])
+            )
+        }
+        if(this.state.slider.length){filtered=this.state.slider}
         const length=filtered.length
     const Result=()=>{if(this.state.search)  {return(<div><div class="resultFound">{filtered.length} apps found for a</div><button type="button" class="backButton" onClick={this.Clear}><em class="icon-prev"></em>Back</button></div>)} else return(null)}
     const NotFound=()=>{if(length==0) {return(<div className="searchNotFound"><img src="https://studio.builder.ai/assets/images/searchNotFound.png" alt=""></img><h3>NO RESULTS FOUND</h3><h4>We searched far and wide and couldn’t find<br/> any template matching your search.</h4><button type="button" className="button1"><em className="icon-plus"></em> Custom Template </button></div>)} else return(null)}
@@ -143,7 +161,6 @@ class AppPage extends React.Component{
        
      }
      function sortDesc(arr, field) {
-        
         return arr.sort(function (a, b) {
             if (a[field] > b[field]) {
                 return -1;
@@ -154,17 +171,27 @@ class AppPage extends React.Component{
             return 0;
         })
      }
-     
-     const ascending=(field,e)=>{
-       
+      const ascending=(field,e)=>{
+        if(this.state.sortId==e.target.id)
+        this.setState({data:this.state.sort,sortId:''})
+        else
         this.setState({data:sortAsc(this.state.data,field),sortId:e.target.id})
         
         filtered=this.state.data
          }
     const descending=(field,e)=>{
-        this.setState({data:sortDesc(this.state.data,field),sortId:e.target.id})
         
-        filtered=this.state.data
+        if(this.state.sortId==e.target.id)
+
+        {filtered=this.state.data
+            this.setState({sortId:''})
+        console.log(this.state.sort)
+    }
+        else{
+            filtered=sortDesc(this.state.data,field)
+        this.setState({sortId:e.target.id})}
+        
+        
         } 
     const filter=this.state.data.filter(value=>
          value.category_ids.filter(info=>info==this.state.categoryId).length
@@ -179,13 +206,21 @@ class AppPage extends React.Component{
     filtered=platforms
 }
     const classes = useStyles();     
-    const markC=[{value:0,label:"0.00"},{value:63480,label:"63480.00"}]
-    const markD=[{value:0,label:"0 Week"},{value:74,label:"74 Week"}]
+    const markC=[{value:0,label:this.state.template_price[0]},{value:63480,label:this.state.template_price[1]}]
+    const markD=[{value:0,label:this.state.template_weeks[0]},{value:74,label:this.state.template_weeks[1]}]
 function valuetext(value) {
     return `${value}`;
     
   }
-  console.log(this.state.checkedApps.map(info=>info))
+  const handleSliderChange = (event, newValue) => {
+    this.setState({template_price:newValue});
+    sliderPrice('template_price')
+  };
+  const handleSliderWeeks = (event, newValue) => {
+    this.setState({template_weeks:newValue});
+    sliderPrice('template_weeks')
+  };
+  
   
      
             
@@ -238,7 +273,7 @@ function valuetext(value) {
                                                     {this.state.categories.map(value=>{
                                                         return(value.categories.slice(0,this.state.itemsToShow).map((info) => 
                                                              <li key={info._id}>
-                                                                 <input type="checkbox" id={info.id}  checked={this.state.checkId==info.id} onChange={e=>this.handleCategory(e,info.id)} ></input>
+                                                                 <input type="checkbox" id={info.id}   onChange={e=>this.handleCategory(e,info.id)} ></input>
                                                                 <label htmlFor={info.id}  >{info.title}</label>
                                                              </li>))}
                                                     )}
@@ -266,7 +301,7 @@ function valuetext(value) {
                                                             getAriaValueText={valuetext}
                                                             defaultValue={[0, 63480]}
                                                             marks={markC}
-                                                            onChange={e=>this.onChangeSlider(e)}
+                                                            onChange={handleSliderChange}
                                                         />
                                                         </div>
                                                     </div>
@@ -285,6 +320,7 @@ function valuetext(value) {
                                                             getAriaValueText={valuetext}
                                                             defaultValue={[0, 74]}
                                                             marks={markD}
+                                                            onChange={handleSliderWeeks}
                                                         />
                                                         </div>
                                                     </div>
@@ -296,7 +332,7 @@ function valuetext(value) {
                                                         {this.state.categories.map(value=>{
                                                             return(value.platforms.map(info=>
                                                                 <li>
-                                                                    <input type="checkbox" id={info.id} onClick={e=>this.handlePlatform(e)} checked={this.state.checkPlatformId==info.id} ></input>
+                                                                    <input type="checkbox" id={info.id} onClick={e=>this.handlePlatform(e)}  ></input>
                                                                     <label htmlFor={info.id}>{info.title}</label>
                                                                 </li>
                                                                 ))
@@ -342,7 +378,7 @@ function valuetext(value) {
                                             return (
                                                 <React.Fragment key={value._id} >
                                                  <div className={`templateBox ${this.state.checkedApps.filter(info=>info===value.id).length?'active':''}`} >
-                                                     {console.log(this.state.checkedApps.filter(info=>info===value.id))}
+                                        
                                                     <h3>{value.title}</h3>
                                                     <p>{value.description}</p>
                                                     <div className='tickBox' onClick={(e)=>this.handleCheck(value.id)}></div>
