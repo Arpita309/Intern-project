@@ -1946,3 +1946,23 @@ perfect-scrollbars > .ps {
     width: 100%;
     height: 100%;
 }
+/*speed slider*/
+.deliveryHolder .phasesSection .phasesRow .phasesBox .speedSection {
+    width: 100%;
+    float: left;
+    clear: both;
+    border-bottom: 1px solid #ebebeb;
+    padding: 15px;
+    position: relative;
+}
+.deliveryHolder .phasesSection .phasesRow .phasesBox .speedSection h3 {
+   
+    margin: 0 0 5px;
+    font-size: 14px;
+    color: #000;
+}
+.deliveryHolder .phasesSection .phasesRow .phasesBox .speedSection .speedSlider {
+    width: 100%;
+    float: left;
+    clear: both;
+}

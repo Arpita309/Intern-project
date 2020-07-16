@@ -1,11 +1,21 @@
 import React from 'react'
 import SliderComponent from '../deliverySlider/deliverySlider';
+import Slider from '@material-ui/core/Slider';
+const useStyles = theme => ({
+    root: {
+      width: 250,
+      
+    },
+    rail:{
+        color:'#00c853'
+    }
+  });
 export default class PhasesRow extends React.Component {
     constructor() {
         super();
     
         this.state = {
-            productRoadmap:false,mvp:false,design:false,fullBuild:false,tailor:false,
+            productRoadmap:false,mvp:false,design:false,fullBuild:false,tailor:false,slider:'',
           width: 0
        
         };
@@ -42,6 +52,23 @@ export default class PhasesRow extends React.Component {
       }
       render(){
           
+        const classes = useStyles();     
+    
+        const marks = [
+        {
+          value: 0,
+          label: 'relaxed',
+        }
+      ]; 
+      function valuetext(value) {
+          return `${value}`;
+          
+        }
+        const handleSliderChange = (event, newValue) => {
+          this.setState({slider:newValue});
+      
+        };
+          
         if (this.state.width > 768) { return(
 
           
@@ -59,6 +86,29 @@ export default class PhasesRow extends React.Component {
                                 <strong>Product Roadmap </strong>
                                 <div  className="phasesinfo"  id= '1' onClick={(e)=>this.infoBox(1)}><img alt="" src="https://studio.builder.ai/assets/images/info_blue.png"></img></div>
                             </h3>
+                            {this.props.advance?<div className='speedSection'>
+                           <h3 >Working Speed</h3>
+                           <div className='speedSlider'>
+                           <div className='rangeSlider'>
+                                                    <div className={classes.root}>
+                                                    
+                                                        
+                                                        <Slider
+                                                            color={"secondary"}
+                                                            
+                                                            
+                                                            onChange={handleSliderChange}
+                                                            defaultValue={0-500}
+                                                            getAriaValueText={valuetext}
+                                                            aria-labelledby="discrete-slider-custom"
+                                                            
+                                                           step={20}
+                                                            marks={marks}
+                                                        />
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                    </div>:''}
                             <div  className="mobileDate">
                                 <strong>Delivered by</strong>
                                 <span >28 June 2020 </span>
@@ -89,6 +139,29 @@ export default class PhasesRow extends React.Component {
                                 <strong>Design </strong>
                                 <div  className="phasesinfo" onClick={(e)=>this.infoBox(3)}><img  alt="" src="https://studio.builder.ai/assets/images/info_blue.png"></img></div>
                             </h3>
+                            {this.props.advance?<div className='speedSection'>
+                           <h3 >Working Speed</h3>
+                           <div className='speedSlider'>
+                           <div className='rangeSlider'>
+                                                    <div className={classes.root}>
+                                                    
+                                                        
+                                                        <Slider
+                                                            color={"secondary"}
+                                                            
+                                                            
+                                                            onChange={handleSliderChange}
+                                                            defaultValue={0-500}
+                                                            getAriaValueText={valuetext}
+                                                            aria-labelledby="discrete-slider-custom"
+                                                            
+                                                           step={20}
+                                                            marks={marks}
+                                                        />
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                    </div>:''}
                             <div  className="mobileDate">
                                 <strong>Delivered by</strong>
                                 <span > 09 August 2020 </span>
@@ -123,6 +196,29 @@ export default class PhasesRow extends React.Component {
                                     <img  alt="" src="https://studio.builder.ai/assets/images/info_blue.png"></img>
                                 </div>
                             </h3>
+                            {this.props.advance?<div className='speedSection'>
+                           <h3 >Working Speed</h3>
+                           <div className='speedSlider'>
+                           <div className='rangeSlider'>
+                                                    <div className={classes.root}>
+                                                    
+                                                        
+                                                        <Slider
+                                                            color={"secondary"}
+                                                            
+                                                            
+                                                            onChange={handleSliderChange}
+                                                            defaultValue={0-500}
+                                                            getAriaValueText={valuetext}
+                                                            aria-labelledby="discrete-slider-custom"
+                                                            
+                                                           step={20}
+                                                            marks={marks}
+                                                        />
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                    </div>:''}
                             <div  className="mobileDate">
                                 <strong >Delivered by</strong><span ></span>
                             </div>
@@ -148,6 +244,7 @@ export default class PhasesRow extends React.Component {
                                 <strong >MVP </strong>
                                 <div className="phasesinfo " onClick={(e)=>this.infoBox(2)}><img  alt="" src="https://studio.builder.ai/assets/images/info_blue.png"></img></div>
                             </h3>
+                            
                             <div  className="mobileDate">
                                 <strong >Delivered by</strong><span > 08 December 2020 </span><span ></span>
                             </div>
@@ -167,6 +264,29 @@ export default class PhasesRow extends React.Component {
                                 <li ><div  className="platformIcon"><img  src="https://bstudio-assets.azureedge.net/assets-builder/uploads/image/file/59fd570d88f3ac79a46ef213/Web_xh.png"></img></div> Web </li>
                             </ul>
                         </div>
+                        {this.props.advance?<div className='speedSection'>
+                           <h3 >Working Speed</h3>
+                           <div className='speedSlider'>
+                           <div className='rangeSlider'>
+                                                    <div className={classes.root}>
+                                                    
+                                                        
+                                                        <Slider
+                                                            color={"secondary"}
+                                                            
+                                                            
+                                                            onChange={handleSliderChange}
+                                                            defaultValue={0-500}
+                                                            getAriaValueText={valuetext}
+                                                            aria-labelledby="discrete-slider-custom"
+                                                            
+                                                           step={20}
+                                                            marks={marks}
+                                                        />
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                    </div>:''}
                         <learn-more >
                             <div  className={`phaseOverlay ${this.state.mvp?'active':''}`}></div>
                             <div  className={`phaseInfo ${this.state.mvp?'active':''}`}>
@@ -187,6 +307,29 @@ export default class PhasesRow extends React.Component {
                                 <strong>Full Build </strong>
                                 <div  className="phasesinfo" onClick={(e)=>this.infoBox(4)}><img  alt="" src="https://studio.builder.ai/assets/images/info_blue.png"></img></div>
                             </h3>
+                            {this.props.advance?<div className='speedSection'>
+                           <h3 >Working Speed</h3>
+                           <div className='speedSlider'>
+                           <div className='rangeSlider'>
+                                                    <div className={classes.root}>
+                                                    
+                                                        
+                                                        <Slider
+                                                            color={"secondary"}
+                                                            
+                                                            
+                                                            onChange={handleSliderChange}
+                                                            defaultValue={0-500}
+                                                            getAriaValueText={valuetext}
+                                                            aria-labelledby="discrete-slider-custom"
+                                                            
+                                                           step={20}
+                                                            marks={marks}
+                                                        />
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                    </div>:''}
                             <div  className="mobileDate">
                                 <strong>Delivered by</strong><span> 14 December 2020 </span><span ></span>
                             </div>
@@ -230,12 +373,36 @@ export default class PhasesRow extends React.Component {
                                 <strong>Product Roadmap </strong>
                                 <div  className="phasesinfo" onClick={(e)=>this.infoBox(1)}><img alt="" src="https://studio.builder.ai/assets/images/info_blue.png"></img></div>
                             </h3>
+                           {this.props.advance?<div className='speedSection'>
+                           <h3 >Working Speed</h3>
+                           <div className='speedSlider'>
+                           <div className='rangeSlider'>
+                                                    <div className={classes.root}>
+                                                    
+                                                        
+                                                        <Slider
+                                                            color={"secondary"}
+                                                            
+                                                            
+                                                            onChange={handleSliderChange}
+                                                            defaultValue={0-500}
+                                                            getAriaValueText={valuetext}
+                                                            aria-labelledby="discrete-slider-custom"
+                                                            
+                                                           step={20}
+                                                            marks={marks}
+                                                        />
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                    </div>:''}
+                                           
                             <div  className="mobileDate">
                                 <strong>Delivered by</strong>
                                 <span >28 June 2020 </span>
                             </div>
                             <div className="checkBox">
-                                <input  type="checkbox" id="phaseSelected4"></input><label  htmlfor="phaseSelected4"></label>
+                                <input  type="checkbox" id="phaseSelected4"></input><label  htmlFor="phaseSelected4"></label>
                             </div>
                         </div>
                         <learn-more>
@@ -260,6 +427,29 @@ export default class PhasesRow extends React.Component {
                                 <strong>Design </strong>
                                 <div  className="phasesinfo" onClick={(e)=>this.infoBox(3)}><img  alt="" src="https://studio.builder.ai/assets/images/info_blue.png"></img></div>
                             </h3>
+                            {this.props.advance?<div className='speedSection'>
+                           <h3 >Working Speed</h3>
+                           <div className='speedSlider'>
+                           <div className='rangeSlider'>
+                                                    <div className={classes.root}>
+                                                    
+                                                        
+                                                        <Slider
+                                                            color={"secondary"}
+                                                            
+                                                            
+                                                            onChange={handleSliderChange}
+                                                            defaultValue={0-500}
+                                                            getAriaValueText={valuetext}
+                                                            aria-labelledby="discrete-slider-custom"
+                                                            
+                                                           step={20}
+                                                            marks={marks}
+                                                        />
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                    </div>:''}
                             <div  className="mobileDate">
                                 <strong>Delivered by</strong>
                                 <span > 09 August 2020 </span>
@@ -318,6 +508,7 @@ export default class PhasesRow extends React.Component {
                                 <strong >MVP </strong>
                                 <div className="phasesinfo" onClick={(e)=>this.infoBox(2)}><img  alt="" src="https://studio.builder.ai/assets/images/info_blue.png"></img></div>
                             </h3>
+                           
                             <div  className="mobileDate">
                                 <strong >Delivered by</strong><span > 08 December 2020 </span><span ></span>
                             </div>
@@ -337,6 +528,29 @@ export default class PhasesRow extends React.Component {
                                 <li ><div  className="platformIcon"><img  src="https://bstudio-assets.azureedge.net/assets-builder/uploads/image/file/59fd570d88f3ac79a46ef213/Web_xh.png"></img></div> Web </li>
                             </ul>
                         </div>
+                        {this.props.advance?<div className='speedSection'>
+                           <h3 >Working Speed</h3>
+                           <div className='speedSlider'>
+                           <div className='rangeSlider'>
+                                                    <div className={classes.root}>
+                                                    
+                                                        
+                                                        <Slider
+                                                            color={"secondary"}
+                                                            
+                                                            
+                                                            onChange={handleSliderChange}
+                                                            defaultValue={0-500}
+                                                            getAriaValueText={valuetext}
+                                                            aria-labelledby="discrete-slider-custom"
+                                                            
+                                                           step={20}
+                                                            marks={marks}
+                                                        />
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                    </div>:''}
                         <learn-more >
                             <div  className={`phaseOverlay ${this.state.mvp?'active':''}`}></div>
                             <div  className={`phaseInfo ${this.state.mvp?'active':''}`}>
@@ -357,6 +571,29 @@ export default class PhasesRow extends React.Component {
                                 <strong>Full Build </strong>
                                 <div  className="phasesinfo" onClick={(e)=>this.infoBox(4)}><img  alt="" src="https://studio.builder.ai/assets/images/info_blue.png"></img></div>
                             </h3>
+                            {this.props.advance?<div className='speedSection'>
+                           <h3 >Working Speed</h3>
+                           <div className='speedSlider'>
+                           <div className='rangeSlider'>
+                                                    <div className={classes.root}>
+                                                    
+                                                        
+                                                        <Slider
+                                                            color={"secondary"}
+                                                            
+                                                            
+                                                            onChange={handleSliderChange}
+                                                            defaultValue={0-500}
+                                                            getAriaValueText={valuetext}
+                                                            aria-labelledby="discrete-slider-custom"
+                                                            
+                                                           step={20}
+                                                            marks={marks}
+                                                        />
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                    </div>:''}
                             <div  className="mobileDate">
                                 <strong>Delivered by</strong><span> 14 December 2020 </span><span ></span>
                             </div>

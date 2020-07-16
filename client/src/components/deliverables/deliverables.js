@@ -10,7 +10,19 @@ import {auth} from '../authentication'
 import User from '../loggedInUser/loggedInUser'
 import LoginIcon from '../loginIcon/loginIcon'
 import CurrencyBox from '../currencyBox/currencyBox'
+import { withStyles, rgbToHex } from '@material-ui/core/styles';
+import Slider from '@material-ui/core/Slider';
+import Typography from '@material-ui/core/Typography';
 import { ApiGet} from '../../api'
+const useStyles = theme => ({
+    root: {
+      width: 250,
+      
+    },
+    rail:{
+        color:'#00c853'
+    }
+  });
 let filter={}
 class Delivery extends React.Component{
     constructor(props){
@@ -19,7 +31,7 @@ class Delivery extends React.Component{
            showPlatform:false,firstDelivery:false,
            custom:[],count:1,platformList:[],
            selectedPlatform:[],advance:false,teams:{},dropdown:false,teamLocation:'Anywhere',search:'',mobNavigation:false,
-           bottomBar:false,promotion:false
+           bottomBar:false,promotion:false,slider:''
            
         }
     }
@@ -61,7 +73,7 @@ class Delivery extends React.Component{
     }
     AddCustom=()=>{
         this.setState({count:this.state.count+1})
-        this.setState({custom:[...this.state.custom,<AddCustom count={this.state.count}/>]})
+        this.setState({custom:[...this.state.custom,<AddCustom count={this.state.count} advance={this.state.advance}/>]})
     }
     selectPlatform=(icon)=>{
         this.state.selectedPlatform=[...this.state.selectedPlatform,icon]
@@ -91,8 +103,38 @@ class Delivery extends React.Component{
     closeNavigation=()=>{
         this.setState({mobNavigation:false})
     }
+    
     render(){
+
         
+        const classes = useStyles();     
+    
+  const marks = [
+  {
+    value: 0-500,
+    label: '0-500',
+  },
+  {
+    value: 500-5000,
+    label: '500-5k',
+  },
+  {
+    value: 5000-50000,
+    label: '5k-50k',
+  },
+  {
+    value: 50000-100000,
+    label: '50k-100k',
+  },
+]; 
+function valuetext(value) {
+    return `${value}`;
+    
+  }
+  const handleSliderChange = (event, newValue) => {
+    this.setState({slider:newValue});
+
+  };
        console.log(this.state.platformList)
         return(
            
@@ -230,7 +272,7 @@ class Delivery extends React.Component{
                             </h2>
                             
                                         
-                                        <PhasesRow custom={this.state.custom} />
+                                        <PhasesRow custom={this.state.custom}  advance={this.state.advance}/>
                                         
                                         
                                         
@@ -335,7 +377,26 @@ class Delivery extends React.Component{
                                     <div  className="footerRow">
                                         <div  className="numberUser">
                                             <h3 >Number of users <strong >0 - 500</strong></h3>
-                                            <div className="userSlider"></div>
+                                            <div className="userSlider">
+                                            <div className='rangeSlider'>
+                                                    <div className={classes.root}>
+                                                    
+                                                        
+                                                        <Slider
+                                                            color={"secondary"}
+                                                            
+                                                            
+                                                            onChange={handleSliderChange}
+                                                            defaultValue={0-500}
+                                                            getAriaValueText={valuetext}
+                                                            aria-labelledby="discrete-slider-custom"
+                                                            
+                                                           step={25}
+                                                            marks={marks}
+                                                        />
+                                                        </div>
+                                                    </div>
+                                            </div>
                                         </div>
                                         <h5 ><strong >₹2,266.94</strong> /month</h5> 
                                         <h6 >*This is an estimated price for cloud hosting and will vary according to usage.</h6>
