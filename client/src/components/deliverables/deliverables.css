@@ -1966,3 +1966,105 @@ perfect-scrollbars > .ps {
     float: left;
     clear: both;
 }
+.MuiSlider-rail {
+    left: 0;
+    width: 100%;
+    height: 4px !important;
+    z-index: 1;
+    background: #d8e0f3 !important;
+    border-radius: 2px !important;
+}
+.MuiSlider-thumb {
+   
+    display: flex;
+    outline: 0;
+    position: absolute;
+    box-sizing: border-box;
+    margin-top: -5px;
+    transition: box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    align-items: center;
+    margin-left: -6px;
+    border-radius: 50%;
+    justify-content: center;
+    margin-top: -10px !important;
+    background: #eb2f96 !important;
+    box-shadow: 0 5px 5px rgba(0,0,0,.1);
+    width: 24px !important;
+    height: 24px !important;
+   
+}
+.MuiSlider-markLabel {
+    margin-left: 15px;
+}
+/*select all*/
+.deliveryHolder .phasesSection .phasesRow .phasesBox .speedSection .selectAll {
+    width: 100%;
+    float: left;
+    clear: both;
+    padding: 0;
+    position: relative;
+    margin: 15px 0 0;
+    overflow: hidden;
+}
+.deliveryHolder .phasesSection .phasesRow .phasesBox .speedSection .selectAll input[type=checkbox] {
+    position: absolute;
+    top: -200px;
+    left: -200px;
+    z-index: -99;
+}
+.deliveryHolder .phasesSection .phasesRow .phasesBox .speedSection .selectAll label {
+    font-size: 13px;
+    color: rgba(0,0,0,.8);
+    margin: 0;
+    position: relative;
+    padding: 4px 0 3px 30px;
+    cursor: pointer;
+}
+.deliveryHolder .phasesSection .phasesRow .phasesBox .speedSection .selectAll label:before {
+    content: "";
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 100px;
+    border: 2px solid #00c853;
+    background: #fff;
+    line-height: 21px;
+    font-size: 13px;
+}
+.deliveryHolder .phasesSection .phasesRow .phasesBox .speedSection .selectAll input[type=checkbox]:checked+label:before {
+    font-family:"Font Awesome\ 5 Free";
+    content: "\f00c";
+    font-weight: 900;
+    color: #fff;
+    background: #00c853;
+}
+/*delivered by*/
+.deliveryHolder .phasesSection .phasesRow .phasesBox .deliveryDate {
+    width: 100%;
+    float: left;
+    clear: both;
+    padding: 15px;
+    min-height: 65px;
+}
+.deliveryHolder .phasesSection .phasesRow .phasesBox .deliveryDate h3 {
+    margin: 0;
+    font-size: 14px;
+    color: #000;
+    
+}
+.deliveryHolder .phasesSection .phasesRow .phasesBox .deliveryDate h3 strong {
+    font-weight:bold;
+    color: #000;
+    font-size: 14px;
+    display: block;
+    margin: 0 0 5px;
+}
+.deliveryHolder .phasesSection .phasesRow .phasesBox .deliveryDate h3 span {
+    font-size: 16px;
+    color: rgba(0,0,0,.6);
+    display: block;
+}

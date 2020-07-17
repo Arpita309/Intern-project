@@ -23,6 +23,7 @@ class Features extends React.Component{
           this.setState({selectedFeature:value})
     }
     render(){
+        console.log(this.state.selectedFeature)
         this.state.name=this.props.match.params.name
        
         return(

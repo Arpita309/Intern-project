@@ -73,9 +73,10 @@ class Delivery extends React.Component{
     }
     AddCustom=()=>{
         this.setState({count:this.state.count+1})
-        this.setState({custom:[...this.state.custom,<AddCustom count={this.state.count} advance={this.state.advance}/>]})
+        this.setState({custom:[...this.state.custom,<AddCustom count={this.state.count} advance={this.state.advance} platform={this.state.selectedPlatform}/>]})
     }
-    selectPlatform=(icon)=>{
+    selectPlatform=(icon,e)=>{
+        e.preventDefault()
         this.state.selectedPlatform=[...this.state.selectedPlatform,icon]
     }
     showAdvance=()=>{
@@ -135,7 +136,7 @@ function valuetext(value) {
     this.setState({slider:newValue});
 
   };
-       console.log(this.state.platformList)
+       
         return(
            
             <div className='wrapper'>
@@ -243,7 +244,7 @@ function valuetext(value) {
                                                 <ul>
                                                 {this.state.platformList.map(data=>
                                                 data.attributes.map(platform=>
-                                                    <li  key={platform.id} onClick={(e)=>{this.selectPlatform(platform.icon)}}>
+                                                    <li  key={platform.id} onClick={(e)=>this.selectPlatform(platform.icon,e)}>
                                                         <div  className="platformImg">
                                                             <img  alt="" src={platform.icon}></img>
                                                         </div>
@@ -272,7 +273,7 @@ function valuetext(value) {
                             </h2>
                             
                                         
-                                        <PhasesRow custom={this.state.custom}  advance={this.state.advance}/>
+                                        <PhasesRow custom={this.state.custom}  advance={this.state.advance} platform={this.state.selectedPlatform}/>
                                         
                                         
                                         

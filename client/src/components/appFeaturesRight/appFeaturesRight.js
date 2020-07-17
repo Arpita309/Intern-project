@@ -55,7 +55,7 @@ class FeatureRight extends React.Component{
               value.attributes.map(info=>{
                 mobileImages.push(...info.features)
                 this.state.data=[...mobileImages]}))}
-            console.log(this.state.data)    
+                
         this.setFeature()
         
               
@@ -114,6 +114,7 @@ class FeatureRight extends React.Component{
          
     }
     setFeature=()=>{
+        
         let filter=this.props.selectedFeature.filter(value=>value.length)
     if(this.props.selectedFeature.length){this.state.app.map(value=>
         value.attributes.map(info=>
@@ -132,6 +133,7 @@ class FeatureRight extends React.Component{
     
     
     render(){
+       
         let mobileImages=[]
             {this.state.app.map((value)=>
               value.attributes.map(info=>{

@@ -7,7 +7,7 @@ const useStyles = theme => ({
       
     },
     rail:{
-        color:'#00c853'
+        color:'#d8e0f3'
     }
   });
 export default class PhasesRow extends React.Component {
@@ -16,7 +16,7 @@ export default class PhasesRow extends React.Component {
     
         this.state = {
             productRoadmap:false,mvp:false,design:false,fullBuild:false,tailor:false,slider:'',
-          width: 0
+          width: 0,selected:[]
        
         };
     
@@ -86,10 +86,22 @@ export default class PhasesRow extends React.Component {
                                 <strong>Product Roadmap </strong>
                                 <div  className="phasesinfo"  id= '1' onClick={(e)=>this.infoBox(1)}><img alt="" src="https://studio.builder.ai/assets/images/info_blue.png"></img></div>
                             </h3>
-                            {this.props.advance?<div className='speedSection'>
+                            
+                            {this.props.advance?'':<div  className="mobileDate">
+                                <strong>Delivered by</strong>
+                                <span >28 June 2020 </span>
+                            </div>}
+                            <div className="checkBox">
+                                <input  type="checkbox" id="phaseSelected4"></input><label  htmlFor="phaseSelected4"></label>
+                            </div>
+                        </div>
+                        {this.props.advance?<React.Fragment><div  className="featureSection">
+                        <h3 >Features <span  className="">View</span></h3>
+                        <p >26 Features Selected</p></div>
+                        <div className='speedSection'>
                            <h3 >Working Speed</h3>
                            <div className='speedSlider'>
-                           <div className='rangeSlider'>
+                           
                                                     <div className={classes.root}>
                                                     
                                                         
@@ -107,16 +119,12 @@ export default class PhasesRow extends React.Component {
                                                         />
                                                         </div>
                                                     </div>
+                                                    <div  className="selectAll"><input  type="checkbox" id="selectallsame0"></input><label  htmlFor="selectallsame0">Same speed for all the platforms</label></div>
                                                     </div>
-                                                    </div>:''}
-                            <div  className="mobileDate">
-                                <strong>Delivered by</strong>
-                                <span >28 June 2020 </span>
-                            </div>
-                            <div className="checkBox">
-                                <input  type="checkbox" id="phaseSelected4"></input><label  htmlFor="phaseSelected4"></label>
-                            </div>
-                        </div>
+                                                    <div  className="deliveryDate"><h3>
+                                                        <strong >Delivered By</strong>
+                                                        <span > 07 August 2020 </span></h3></div>
+                                                    </React.Fragment>:''}
                         <learn-more>
                             <div  className={`phaseOverlay ${this.state.productRoadmap?'active':''}`}></div>
                             <div  className={`phaseInfo ${this.state.productRoadmap?'active':''}`}>
@@ -139,7 +147,31 @@ export default class PhasesRow extends React.Component {
                                 <strong>Design </strong>
                                 <div  className="phasesinfo" onClick={(e)=>this.infoBox(3)}><img  alt="" src="https://studio.builder.ai/assets/images/info_blue.png"></img></div>
                             </h3>
-                            {this.props.advance?<div className='speedSection'>
+                            
+                            {this.props.advance?'':<div  className="mobileDate">
+                                <strong>Delivered by</strong>
+                                <span >28 June 2020 </span>
+                            </div>}
+                            <div  className="checkBox">
+                                <input  type="checkbox" id="phaseSelected1"></input>
+                                <label  htmlFor="phaseSelected1"></label>
+                            </div>
+
+                        </div>
+                        {this.props.advance?<React.Fragment><div  className="featureSection">
+                        <h3 >Features <span  className="">View</span></h3>
+                        <p >26 Features Selected</p></div>
+                        <div  className="platformSection">
+                            <h3>Platform <span>Change</span></h3>
+                            <ul>
+                                {this.props.platform.map(value=>
+                                   <li><div  className="platformIcon"><img src={value}></img></div> iOS </li>
+                                    )}
+                                
+                                
+                            </ul>
+                        </div>
+                        <div className='speedSection'>
                            <h3 >Working Speed</h3>
                            <div className='speedSlider'>
                            <div className='rangeSlider'>
@@ -161,17 +193,12 @@ export default class PhasesRow extends React.Component {
                                                         </div>
                                                     </div>
                                                     </div>
-                                                    </div>:''}
-                            <div  className="mobileDate">
-                                <strong>Delivered by</strong>
-                                <span > 09 August 2020 </span>
-                                <span ></span>
-                            </div>
-                            <div  className="checkBox">
-                                <input  type="checkbox" id="phaseSelected1"></input>
-                                <label  htmlFor="phaseSelected1"></label>
-                            </div>
-                        </div>
+                                                    <div  className="selectAll"><input  type="checkbox" id="selectallsame1"></input><label  htmlFor="selectallsame1">Same speed for all the platforms</label></div>
+                                                    </div>
+                                                    <div  className="deliveryDate"><h3>
+                                                        <strong >Delivered By</strong>
+                                                        <span > 07 August 2020 </span></h3></div>
+                                                    </React.Fragment>:''}
                         <learn-more>
                             <div  className={`phaseOverlay ${this.state.design?'active':''}`}></div>
                             <div  className={`phaseInfo ${this.state.design?'active':''}`}>
@@ -196,7 +223,17 @@ export default class PhasesRow extends React.Component {
                                     <img  alt="" src="https://studio.builder.ai/assets/images/info_blue.png"></img>
                                 </div>
                             </h3>
-                            {this.props.advance?<div className='speedSection'>
+                            
+                            {this.props.advance?'':<div  className="mobileDate">
+                                <strong>Delivered by</strong>
+                                <span >28 June 2020 </span>
+                            </div>}
+                                <div  className="checkBox"><input  type="checkbox" id="phaseSelected2"></input><label  htmlFor="phaseSelected2"></label></div>
+                            </div>
+                            {this.props.advance?<React.Fragment><div  className="featureSection">
+                        <h3 >Features <span  className="">View</span></h3>
+                        <p >26 Features Selected</p></div>
+                            <div className='speedSection'>
                            <h3 >Working Speed</h3>
                            <div className='speedSlider'>
                            <div className='rangeSlider'>
@@ -218,12 +255,12 @@ export default class PhasesRow extends React.Component {
                                                         </div>
                                                     </div>
                                                     </div>
-                                                    </div>:''}
-                            <div  className="mobileDate">
-                                <strong >Delivered by</strong><span ></span>
-                            </div>
-                                <div  className="checkBox"><input  type="checkbox" id="phaseSelected2"></input><label  htmlFor="phaseSelected2"></label></div>
-                            </div>
+                                                    <div  className="selectAll"><input  type="checkbox" id="selectallsame2"></input><label  htmlFor="selectallsame2">Same speed for all the platforms</label></div>
+                                                    </div>
+                                                    <div  className="deliveryDate"><h3>
+                                                        <strong >Delivered By</strong>
+                                                        <span > 07 August 2020 </span></h3></div>
+                                                        </React.Fragment>:''}
                             <learn-more>
                                 <div  className={`phaseOverlay ${this.state.tailor?'active':''}`}></div>
                                 <div  className={`phaseInfo ${this.state.tailor?'active':''}`}>
@@ -244,10 +281,10 @@ export default class PhasesRow extends React.Component {
                                 <strong >MVP </strong>
                                 <div className="phasesinfo " onClick={(e)=>this.infoBox(2)}><img  alt="" src="https://studio.builder.ai/assets/images/info_blue.png"></img></div>
                             </h3>
-                            
-                            <div  className="mobileDate">
-                                <strong >Delivered by</strong><span > 08 December 2020 </span><span ></span>
-                            </div>
+                            {this.props.advance?'':<div  className="mobileDate">
+                                <strong>Delivered by</strong>
+                                <span >28 June 2020 </span>
+                            </div>}
                             <div  className="checkBox">
                                 <input  type="checkbox" id="phaseSelected0"></input>
                                 <label  htmlFor="phaseSelected0"></label>
@@ -260,11 +297,15 @@ export default class PhasesRow extends React.Component {
                         <div  className="platformSection">
                             <h3>Platform <span>Change</span></h3>
                             <ul>
-                                <li><div  className="platformIcon"><img  src="https://bstudio-assets.azureedge.net/assets-builder/uploads/image/file/59fd56b888f3ac79a46ef210/ios_blue.png"></img></div> iOS </li>
-                                <li ><div  className="platformIcon"><img  src="https://bstudio-assets.azureedge.net/assets-builder/uploads/image/file/59fd570d88f3ac79a46ef213/Web_xh.png"></img></div> Web </li>
+                                {this.props.platform.map(value=>
+                                   <li><div  className="platformIcon"><img src={value}></img></div> iOS </li>
+                                    )}
+                                
+                                
                             </ul>
                         </div>
-                        {this.props.advance?<div className='speedSection'>
+                        {this.props.advance?<React.Fragment>
+                        <div className='speedSection'>
                            <h3 >Working Speed</h3>
                            <div className='speedSlider'>
                            <div className='rangeSlider'>
@@ -286,7 +327,12 @@ export default class PhasesRow extends React.Component {
                                                         </div>
                                                     </div>
                                                     </div>
-                                                    </div>:''}
+                                                    <div  className="selectAll"><input  type="checkbox" id="selectallsame3"></input><label  htmlFor="selectallsame3">Same speed for all the platforms</label></div>
+                                                    </div>
+                                                    <div  className="deliveryDate"><h3>
+                                                        <strong >Delivered By</strong>
+                                                        <span > 07 August 2020 </span></h3></div>
+                                                        </React.Fragment>:''}
                         <learn-more >
                             <div  className={`phaseOverlay ${this.state.mvp?'active':''}`}></div>
                             <div  className={`phaseInfo ${this.state.mvp?'active':''}`}>
@@ -307,10 +353,32 @@ export default class PhasesRow extends React.Component {
                                 <strong>Full Build </strong>
                                 <div  className="phasesinfo" onClick={(e)=>this.infoBox(4)}><img  alt="" src="https://studio.builder.ai/assets/images/info_blue.png"></img></div>
                             </h3>
-                            {this.props.advance?<div className='speedSection'>
+                            {this.props.advance?'':<div  className="mobileDate">
+                                <strong>Delivered by</strong>
+                                <span >28 June 2020 </span>
+                            </div>}
+                            <div  className="checkBox">
+                                <input  type="checkbox" id="phaseSelected3"></input>
+                                <label htmlFor="phaseSelected3"></label>
+                            </div>
+                        </div>
+                        {this.props.advance?<React.Fragment><div  className="featureSection">
+                        <h3 >Features <span  className="">View</span></h3>
+                        <p >26 Features Selected</p></div>
+                        <div  className="platformSection">
+                            <h3>Platform <span>Change</span></h3>
+                            <ul>
+                                {this.props.platform.map(value=>
+                                   <li><div  className="platformIcon"><img src={value}></img></div> iOS </li>
+                                    )}
+                                
+                                
+                            </ul>
+                        </div>
+                        <div className='speedSection'>
                            <h3 >Working Speed</h3>
                            <div className='speedSlider'>
-                           <div className='rangeSlider'>
+                           
                                                     <div className={classes.root}>
                                                     
                                                         
@@ -328,16 +396,12 @@ export default class PhasesRow extends React.Component {
                                                         />
                                                         </div>
                                                     </div>
+                                                    <div  className="selectAll"><input  type="checkbox" id="selectallsame4"></input><label  htmlFor="selectallsame4">Same speed for all the platforms</label></div>
                                                     </div>
-                                                    </div>:''}
-                            <div  className="mobileDate">
-                                <strong>Delivered by</strong><span> 14 December 2020 </span><span ></span>
-                            </div>
-                            <div  className="checkBox">
-                                <input  type="checkbox" id="phaseSelected3"></input>
-                                <label htmlFor="phaseSelected3"></label>
-                            </div>
-                        </div>
+                                                    <div  className="deliveryDate"><h3>
+                                                        <strong >Delivered By</strong>
+                                                        <span > 07 August 2020 </span></h3></div>
+                                                    </React.Fragment>:''}
                         <learn-more>
                             <div  className={`phaseOverlay ${this.state.fullBuild?'active':''}`}></div>
                             <div  className={`phaseInfo ${this.state.fullBuild?'active':''}`}>
@@ -373,7 +437,18 @@ export default class PhasesRow extends React.Component {
                                 <strong>Product Roadmap </strong>
                                 <div  className="phasesinfo" onClick={(e)=>this.infoBox(1)}><img alt="" src="https://studio.builder.ai/assets/images/info_blue.png"></img></div>
                             </h3>
-                           {this.props.advance?<div className='speedSection'>
+                            {this.props.advance?'':<div  className="mobileDate">
+                                <strong>Delivered by</strong>
+                                <span >28 June 2020 </span>
+                            </div>}
+                            <div className="checkBox">
+                                <input  type="checkbox" id="phaseSelected4"></input><label  htmlFor="phaseSelected4"></label>
+                            </div>
+                        </div>
+                        {this.props.advance?<React.Fragment><div  className="featureSection">
+                        <h3 >Features <span  className="">View</span></h3>
+                        <p >26 Features Selected</p></div>
+                        <div className='speedSection'>
                            <h3 >Working Speed</h3>
                            <div className='speedSlider'>
                            <div className='rangeSlider'>
@@ -395,16 +470,12 @@ export default class PhasesRow extends React.Component {
                                                         </div>
                                                     </div>
                                                     </div>
-                                                    </div>:''}
-                                           
-                            <div  className="mobileDate">
-                                <strong>Delivered by</strong>
-                                <span >28 June 2020 </span>
-                            </div>
-                            <div className="checkBox">
-                                <input  type="checkbox" id="phaseSelected4"></input><label  htmlFor="phaseSelected4"></label>
-                            </div>
-                        </div>
+                                                    <div  className="selectAll"><input  type="checkbox" id="selectallsame0"></input><label  htmlFor="selectallsame0">Same speed for all the platforms</label></div>
+                                                    </div>
+                                                    <div  className="deliveryDate"><h3>
+                                                        <strong >Delivered By</strong>
+                                                        <span > 07 August 2020 </span></h3></div>
+                                                    </React.Fragment>:''}
                         <learn-more>
                             <div  className={`phaseOverlay ${this.state.productRoadmap?'active':''}`}></div>
                             <div  className={`phaseInfo ${this.state.productRoadmap?'active':''}`}>
@@ -427,7 +498,29 @@ export default class PhasesRow extends React.Component {
                                 <strong>Design </strong>
                                 <div  className="phasesinfo" onClick={(e)=>this.infoBox(3)}><img  alt="" src="https://studio.builder.ai/assets/images/info_blue.png"></img></div>
                             </h3>
-                            {this.props.advance?<div className='speedSection'>
+                            {this.props.advance?'':<div  className="mobileDate">
+                                <strong>Delivered by</strong>
+                                <span >28 June 2020 </span>
+                            </div>}
+                            <div  className="checkBox">
+                                <input  type="checkbox" id="phaseSelected1"></input>
+                                <label  htmlFor="phaseSelected1"></label>
+                            </div>
+                        </div>
+                        {this.props.advance?<React.Fragment><div  className="featureSection">
+                        <h3 >Features <span  className="">View</span></h3>
+                        <p >26 Features Selected</p></div>
+                        <div  className="platformSection">
+                            <h3>Platform <span>Change</span></h3>
+                            <ul>
+                                {this.props.platform.map(value=>
+                                   <li><div  className="platformIcon"><img src={value}></img></div> iOS </li>
+                                    )}
+                                
+                                
+                            </ul>
+                        </div>
+                        <div className='speedSection'>
                            <h3 >Working Speed</h3>
                            <div className='speedSlider'>
                            <div className='rangeSlider'>
@@ -449,17 +542,12 @@ export default class PhasesRow extends React.Component {
                                                         </div>
                                                     </div>
                                                     </div>
-                                                    </div>:''}
-                            <div  className="mobileDate">
-                                <strong>Delivered by</strong>
-                                <span > 09 August 2020 </span>
-                                <span ></span>
-                            </div>
-                            <div  className="checkBox">
-                                <input  type="checkbox" id="phaseSelected1"></input>
-                                <label  htmlFor="phaseSelected1"></label>
-                            </div>
-                        </div>
+                                                    <div  className="selectAll"><input  type="checkbox" id="selectallsame1"></input><label  htmlFor="selectallsame1">Same speed for all the platforms</label></div>
+                                                    </div>
+                                                    <div  className="deliveryDate"><h3>
+                                                        <strong >Delivered By</strong>
+                                                        <span > 07 August 2020 </span></h3></div>
+                                                    </React.Fragment>:''}
                         <learn-more>
                             <div  className={`phaseOverlay ${this.state.design?'active':''}`}></div>
                             <div  className={`phaseInfo ${this.state.design?'active':''}`}>
@@ -484,10 +572,63 @@ export default class PhasesRow extends React.Component {
                                     <img  alt="" src="https://studio.builder.ai/assets/images/info_blue.png"></img>
                                 </div>
                             </h3>
-                            <div  className="mobileDate">
-                                <strong >Delivered by</strong><span ></span></div>
-                                <div  className="checkBox"><input  type="checkbox" id="phaseSelected2"></input><label  htmlFor="phaseSelected2"></label></div>
+                            {this.props.advance?'':<div  className="mobileDate">
+                                <strong>Delivered by</strong>
+                                <span >28 June 2020 </span>
+                            </div>}
+                            <div  className="checkBox"><input  type="checkbox" id="phaseSelected2"></input><label  htmlFor="phaseSelected2"></label></div>
                             </div>
+                            {this.props.advance?<React.Fragment><div  className="featureSection">
+                        <h3 >Features <span  className="">View</span></h3>
+                        <p >26 Features Selected</p></div>
+                        <div  className="platformSection">
+                            <h3>Platform <span>Change</span></h3>
+                            <ul>
+                                {this.props.platform.map(value=>
+                                   <li><div  className="platformIcon"><img src={value}></img></div> iOS </li>
+                                    )}
+                                
+                                
+                            </ul>
+                        </div>
+                        <div  className="platformSection">
+                            <h3>Platform <span>Change</span></h3>
+                            <ul>
+                                {this.props.platform.map(value=>
+                                   <li><div  className="platformIcon"><img src={value}></img></div> iOS </li>
+                                    )}
+                                
+                                
+                            </ul>
+                        </div>
+                            <div className='speedSection'>
+                           <h3 >Working Speed</h3>
+                           <div className='speedSlider'>
+                           <div className='rangeSlider'>
+                                                    <div className={classes.root}>
+                                                    
+                                                        
+                                                        <Slider
+                                                            color={"secondary"}
+                                                            
+                                                            
+                                                            onChange={handleSliderChange}
+                                                            defaultValue={0-500}
+                                                            getAriaValueText={valuetext}
+                                                            aria-labelledby="discrete-slider-custom"
+                                                            
+                                                           step={20}
+                                                            marks={marks}
+                                                        />
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                    <div  className="selectAll"><input  type="checkbox" id="selectallsame2"></input><label  htmlFor="selectallsame2">Same speed for all the platforms</label></div>
+                                                    </div>
+                                                    <div  className="deliveryDate"><h3>
+                                                        <strong >Delivered By</strong>
+                                                        <span > 07 August 2020 </span></h3></div>
+                                                    </React.Fragment>:''}
                             <learn-more>
                                 <div  className={`phaseOverlay ${this.state.tailor?'active':''}`}></div>
                                 <div  className={`phaseInfo ${this.state.tailor?'active':''}`}>
@@ -509,9 +650,10 @@ export default class PhasesRow extends React.Component {
                                 <div className="phasesinfo" onClick={(e)=>this.infoBox(2)}><img  alt="" src="https://studio.builder.ai/assets/images/info_blue.png"></img></div>
                             </h3>
                            
-                            <div  className="mobileDate">
-                                <strong >Delivered by</strong><span > 08 December 2020 </span><span ></span>
-                            </div>
+                            {this.props.advance?'':<div  className="mobileDate">
+                                <strong>Delivered by</strong>
+                                <span >28 June 2020 </span>
+                            </div>}
                             <div  className="checkBox">
                                 <input  type="checkbox" id="phaseSelected0"></input>
                                 <label  htmlFor="phaseSelected0"></label>
@@ -524,11 +666,14 @@ export default class PhasesRow extends React.Component {
                         <div  className="platformSection">
                             <h3>Platform <span>Change</span></h3>
                             <ul>
-                                <li><div  className="platformIcon"><img  src="https://bstudio-assets.azureedge.net/assets-builder/uploads/image/file/59fd56b888f3ac79a46ef210/ios_blue.png"></img></div> iOS </li>
-                                <li ><div  className="platformIcon"><img  src="https://bstudio-assets.azureedge.net/assets-builder/uploads/image/file/59fd570d88f3ac79a46ef213/Web_xh.png"></img></div> Web </li>
+                                {this.props.platform.map(value=>
+                                   <li><div  className="platformIcon"><img src={value}></img></div> iOS </li>
+                                    )}
+                                
+                                
                             </ul>
                         </div>
-                        {this.props.advance?<div className='speedSection'>
+                        {this.props.advance?<React.Fragment><div className='speedSection'>
                            <h3 >Working Speed</h3>
                            <div className='speedSlider'>
                            <div className='rangeSlider'>
@@ -550,7 +695,12 @@ export default class PhasesRow extends React.Component {
                                                         </div>
                                                     </div>
                                                     </div>
-                                                    </div>:''}
+                                                    <div  className="selectAll"><input  type="checkbox" id="selectallsame3"></input><label  htmlFor="selectallsame3">Same speed for all the platforms</label></div>
+                                                    </div>
+                                                    <div  className="deliveryDate"><h3>
+                                                        <strong >Delivered By</strong>
+                                                        <span > 07 August 2020 </span></h3></div>
+                                                    </React.Fragment>:''}
                         <learn-more >
                             <div  className={`phaseOverlay ${this.state.mvp?'active':''}`}></div>
                             <div  className={`phaseInfo ${this.state.mvp?'active':''}`}>
@@ -571,7 +721,29 @@ export default class PhasesRow extends React.Component {
                                 <strong>Full Build </strong>
                                 <div  className="phasesinfo" onClick={(e)=>this.infoBox(4)}><img  alt="" src="https://studio.builder.ai/assets/images/info_blue.png"></img></div>
                             </h3>
-                            {this.props.advance?<div className='speedSection'>
+                            {this.props.advance?'':<div  className="mobileDate">
+                                <strong>Delivered by</strong>
+                                <span >28 June 2020 </span>
+                            </div>}
+                            <div  className="checkBox">
+                                <input  type="checkbox" id="phaseSelected3"></input>
+                                <label htmlFor="phaseSelected3"></label>
+                            </div>
+                        </div>
+                        {this.props.advance?<React.Fragment><div  className="featureSection">
+                        <h3 >Features <span  className="">View</span></h3>
+                        <p >26 Features Selected</p></div>
+                        <div  className="platformSection">
+                            <h3>Platform <span>Change</span></h3>
+                            <ul>
+                                {this.props.platform.map(value=>
+                                   <li><div  className="platformIcon"><img src={value}></img></div> iOS </li>
+                                    )}
+                                
+                                
+                            </ul>
+                        </div>
+                        <div className='speedSection'>
                            <h3 >Working Speed</h3>
                            <div className='speedSlider'>
                            <div className='rangeSlider'>
@@ -593,15 +765,12 @@ export default class PhasesRow extends React.Component {
                                                         </div>
                                                     </div>
                                                     </div>
-                                                    </div>:''}
-                            <div  className="mobileDate">
-                                <strong>Delivered by</strong><span> 14 December 2020 </span><span ></span>
-                            </div>
-                            <div  className="checkBox">
-                                <input  type="checkbox" id="phaseSelected3"></input>
-                                <label htmlFor="phaseSelected3"></label>
-                            </div>
-                        </div>
+                                                    <div  className="selectAll"><input  type="checkbox" id="selectallsame4"></input><label  htmlFor="selectallsame4">Same speed for all the platforms</label></div>
+                                                    </div>
+                                                    <div  className="deliveryDate"><h3>
+                                                        <strong >Delivered By</strong>
+                                                        <span > 07 August 2020 </span></h3></div>
+                                                    </React.Fragment>:''}
                         <learn-more>
                             <div  className={`phaseOverlay ${this.state.fullBuild?'active':''}`}></div>
                             <div  className={`phaseInfo ${this.state.fullBuild?'active':''}`}>

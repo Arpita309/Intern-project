@@ -100,14 +100,15 @@ class AppFeaturesLeft extends React.Component{
     deselectAll(){
         this.setState({selectAll:false})
     }
-    selectFeature=(id)=>{
+    selectFeature=(id,e)=>{
+        e.preventDefault()
         this.setState({featureId:id,data:this.state.features.map(value=>
             value.features.filter(feature=>
-                feature.id==id))})
-        this.props.selectedFeature(this.state.data)        
+                feature.id===id))})
+        this.props.selectedFeature(this.state.data.filter(value=>value.length==1))        
     }
     render(){
-       console.log(this.state.app)
+      console.log(this.state.data)
         const classes = useStyles();     
         
     function valuetext(value) {
@@ -393,7 +394,7 @@ class AppFeaturesLeft extends React.Component{
                                                 
                                                 return(
                                                     <li className='active'>
-                                                        <div className='featureTab' onClick={(e)=>this.selectFeature(li.id)}>
+                                                        <div className='featureTab' onClick={(e)=>this.selectFeature(li.id,e)}>
                                                             <div className='featureDetail'>
                                                                 <div className='featureImg'>
                                                                     <object data={li.icon}></object>
