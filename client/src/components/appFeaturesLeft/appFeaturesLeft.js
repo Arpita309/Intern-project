@@ -98,14 +98,18 @@ class AppFeaturesLeft extends React.Component{
         this.setState({selectAll:true})
     }
     deselectAll(){
-        this.setState({selectAll:false})
+        this.setState({selectAll:false,featureId:''})
     }
     selectFeature=(id,e)=>{
         e.preventDefault()
+        if(this.state.featureId===id){
+            this.setState({featureId:''})
+        }
+        else{
         this.setState({featureId:id,data:this.state.features.map(value=>
             value.features.filter(feature=>
                 feature.id===id))})
-        this.props.selectedFeature(this.state.data.filter(value=>value.length==1))        
+        this.props.selectedFeature(this.state.data.filter(value=>value.length==1)) }       
     }
     render(){
       console.log(this.state.data)
@@ -404,7 +408,7 @@ class AppFeaturesLeft extends React.Component{
                                                             <div className='featureDetailRight'>
                                                                     <div className="main-checkbox">
                                                                         <div className="checkBox">
-                                                                            <input type="checkbox" id={li.id} checked={this.state.selectAll?'true':''}></input>
+                                                                            <input type="checkbox" id={li.id} checked={this.state.selectAll||this.state.featureId===li.id?'true':''}></input>
                                                                             <label for={li.id}></label>
                                                                     </div>
                                                                 </div>

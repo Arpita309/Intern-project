@@ -50,8 +50,12 @@ export default class PhasesRow extends React.Component {
          this.setState({tailor:true})}
         else this.setState({productRoadmap:false,mvp:false,design:false,fullBuild:false,tailor:false})
       }
+      selectPhase=(e)=>{
+          this.setState({selected:[...this.state.selected,e.target.id]})
+      }
+
       render(){
-          
+         console.log(this.state.selected) 
         const classes = useStyles();     
     
         const marks = [
@@ -92,7 +96,7 @@ export default class PhasesRow extends React.Component {
                                 <span >28 June 2020 </span>
                             </div>}
                             <div className="checkBox">
-                                <input  type="checkbox" id="phaseSelected4"></input><label  htmlFor="phaseSelected4"></label>
+                                <input  type="checkbox" id="phaseSelected4" onClick={(e)=>this.selectPhase(e)}></input><label  htmlFor="phaseSelected4"></label>
                             </div>
                         </div>
                         {this.props.advance?<React.Fragment><div  className="featureSection">
@@ -100,7 +104,7 @@ export default class PhasesRow extends React.Component {
                         <p >26 Features Selected</p></div>
                         <div className='speedSection'>
                            <h3 >Working Speed</h3>
-                           <div className='speedSlider'>
+                           {console.log(this.state.selected.filter(value=>value==='phaseSelected4'))}<div className='speedSlider'>
                            
                                                     <div className={classes.root}>
                                                     
@@ -153,7 +157,7 @@ export default class PhasesRow extends React.Component {
                                 <span >28 June 2020 </span>
                             </div>}
                             <div  className="checkBox">
-                                <input  type="checkbox" id="phaseSelected1"></input>
+                                <input  type="checkbox" id="phaseSelected1" onClick={(e)=>this.selectPhase(e)}></input>
                                 <label  htmlFor="phaseSelected1"></label>
                             </div>
 
@@ -228,7 +232,7 @@ export default class PhasesRow extends React.Component {
                                 <strong>Delivered by</strong>
                                 <span >28 June 2020 </span>
                             </div>}
-                                <div  className="checkBox"><input  type="checkbox" id="phaseSelected2"></input><label  htmlFor="phaseSelected2"></label></div>
+                                <div  className="checkBox"><input  type="checkbox" id="phaseSelected2" onClick={(e)=>this.selectPhase(e)}></input><label  htmlFor="phaseSelected2"></label></div>
                             </div>
                             {this.props.advance?<React.Fragment><div  className="featureSection">
                         <h3 >Features <span  className="">View</span></h3>
@@ -286,7 +290,7 @@ export default class PhasesRow extends React.Component {
                                 <span >28 June 2020 </span>
                             </div>}
                             <div  className="checkBox">
-                                <input  type="checkbox" id="phaseSelected0"></input>
+                                <input  type="checkbox" id="phaseSelected0" onClick={(e)=>this.selectPhase(e)}></input>
                                 <label  htmlFor="phaseSelected0"></label>
                             </div>
                         </div>
@@ -442,7 +446,7 @@ export default class PhasesRow extends React.Component {
                                 <span >28 June 2020 </span>
                             </div>}
                             <div className="checkBox">
-                                <input  type="checkbox" id="phaseSelected4"></input><label  htmlFor="phaseSelected4"></label>
+                                <input  type="checkbox" id="phaseSelected4" onClick={(e)=>this.selectPhase(e)}></input><label  htmlFor="phaseSelected4"></label>
                             </div>
                         </div>
                         {this.props.advance?<React.Fragment><div  className="featureSection">
@@ -503,7 +507,7 @@ export default class PhasesRow extends React.Component {
                                 <span >28 June 2020 </span>
                             </div>}
                             <div  className="checkBox">
-                                <input  type="checkbox" id="phaseSelected1"></input>
+                                <input  type="checkbox" id="phaseSelected1" onClick={(e)=>this.selectPhase(e)}></input>
                                 <label  htmlFor="phaseSelected1"></label>
                             </div>
                         </div>
@@ -576,7 +580,7 @@ export default class PhasesRow extends React.Component {
                                 <strong>Delivered by</strong>
                                 <span >28 June 2020 </span>
                             </div>}
-                            <div  className="checkBox"><input  type="checkbox" id="phaseSelected2"></input><label  htmlFor="phaseSelected2"></label></div>
+                            <div  className="checkBox"><input  type="checkbox" id="phaseSelected2" onClick={(e)=>this.selectPhase(e)}></input><label  htmlFor="phaseSelected2"></label></div>
                             </div>
                             {this.props.advance?<React.Fragment><div  className="featureSection">
                         <h3 >Features <span  className="">View</span></h3>
@@ -655,7 +659,7 @@ export default class PhasesRow extends React.Component {
                                 <span >28 June 2020 </span>
                             </div>}
                             <div  className="checkBox">
-                                <input  type="checkbox" id="phaseSelected0"></input>
+                                <input  type="checkbox" id="phaseSelected0" onClick={(e)=>this.selectPhase(e)}></input>
                                 <label  htmlFor="phaseSelected0"></label>
                             </div>
                         </div>
@@ -726,7 +730,7 @@ export default class PhasesRow extends React.Component {
                                 <span >28 June 2020 </span>
                             </div>}
                             <div  className="checkBox">
-                                <input  type="checkbox" id="phaseSelected3"></input>
+                                <input  type="checkbox" id="phaseSelected3" onClick={(e)=>this.selectPhase(e)}></input>
                                 <label htmlFor="phaseSelected3"></label>
                             </div>
                         </div>

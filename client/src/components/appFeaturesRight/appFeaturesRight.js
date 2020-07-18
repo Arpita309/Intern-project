@@ -115,10 +115,11 @@ class FeatureRight extends React.Component{
     }
     setFeature=()=>{
         
-        let filter=this.props.selectedFeature.filter(value=>value.length)
+       
     if(this.props.selectedFeature.length){this.state.app.map(value=>
         value.attributes.map(info=>
-        info.features.push(...filter[0])))}
+        info.features.push(...this.props.selectedFeature[0])))}
+        
     }
     showmore=()=>{
         this.setState({more:!this.state.more})

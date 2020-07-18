@@ -1198,7 +1198,7 @@ perfect-scrollbars > .ps {
 }
  .rightsidePanel .featureList ul .featureTab .featureDetailRight .checkBox label:before {
     font-weight: 900;
-    font-family: 'Font Awesome\5 Free';
+    font-family: 'Font Awesome\ 5 Free';
     display: none;
     content: "\f00c";
     position: absolute;
