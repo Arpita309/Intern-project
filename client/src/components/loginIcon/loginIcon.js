@@ -81,7 +81,7 @@ class LoginIcon extends React.Component{
       console.log(auth)
     return (
            <div>
-                <div className='mobuserLogin' style={{marginLeft:'150px'}}>
+                <div className='mobuserLogin' >
                 <em onClick={this.togglePopUp} style={{backgroundColor:'white'}} ><i class="far fa-user " style={{color:'rgb(0, 112, 224)'}}></i></em></div>
           {auth?<div className={`mobNavigation ${this.state.mobNavigation?'active':''}`}>
                   <div className="mobOverlay"></div>

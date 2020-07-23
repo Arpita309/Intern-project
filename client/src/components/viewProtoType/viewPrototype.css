@@ -1,8 +1,7 @@
 .requestDemo {
-    float: right;
+    float: right !important;
     cursor: pointer;
     background: #0070e0;
-    font-family: Gotham Bold,Arial,Georgia,serif;
     position: relative;
     color: #fff;
     border: 1px solid #0070e0;

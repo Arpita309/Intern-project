@@ -150,8 +150,8 @@ class FeatureRight extends React.Component{
         return(
             this.state.app.length?<div className={`studioRight ${this.props.hide?'active':''}`}>
                     <div class="iphoneToolbar">
-                        <div class="backButton">
-                            <em class="icon-prev" onClick={this.props.show}></em>
+                        <div class="backButton" onClick={this.props.show}>
+                            <em class="icon-prev" ></em>
                             <span>7/26</span>
                         </div>
                         <h3>

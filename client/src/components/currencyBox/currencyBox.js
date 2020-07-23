@@ -32,7 +32,7 @@ class CurrencyBox extends React.Component{
             value.currencies.filter(info=>info.id==this.state.currencyId))[0]
         console.log(code)
     return(
-        <div className='currencySelBox' >
+        <div className='currencySelBox'  >
             <span className="sel_state" onClick={this.toggleBox}>{this.state.currencyId&&this.state.currency.length?code.map(value=>value.code):''}</span>
             <div className={`userDropdown ${this.state.isOpen?'active':''}`}>
                 <div className="userDropdownBox">

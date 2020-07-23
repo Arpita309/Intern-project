@@ -42,7 +42,7 @@ class AppDetail extends React.Component{
       }
     
     render(){
-        console.log(this.state.platformId)
+        console.log(this.state.data)
         let price=this.state.platforms.map(value=>{
             return(
                 value.platforms.filter(info=>info.id===this.state.platformId))

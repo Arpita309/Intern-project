@@ -68,7 +68,7 @@ class Features extends React.Component{
                     </div>
                     <div  className="previewBottom">
                         <div >
-                            <button type="button" className="nextButton"><Link to='/delivery'> Plan Delivery </Link></button>
+                            <button type="button" className="nextButton"><Link to='/delivery' > Plan Delivery </Link></button>
                         </div>
                         <share-url-button  >
                             <button  type="button" className="shareUrl">

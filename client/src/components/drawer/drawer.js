@@ -44,7 +44,7 @@ export default function TemporaryDrawer() {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     > <div className='cross'>
-      X<ClearRoundedIcon/>
+ <ClearRoundedIcon/>
     </div>
       
       <button type="button" class="btn btn-primary  drawer-project" >BECOME A PARTNER</button>
@@ -69,7 +69,7 @@ export default function TemporaryDrawer() {
     <div>
       {[ 'right'].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)}><i className="fas fa-bars fa-2x" style={{color:'rgb(0, 112, 224)',verticalAlign:'center' }}></i>
+          <Button onClick={toggleDrawer(anchor, true)}><i className="fas fa-bars " style={{color:'rgb(0, 112, 224)',verticalAlign:'center' }}></i>
            </Button>
           <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)} className='drawer'>
             {list(anchor)}

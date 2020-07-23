@@ -127,11 +127,14 @@
     text-transform: uppercase;
     border-radius: 3px;
     background: #f21598;
-    color: #fff;
+    color: #fff ;
     font-size: 13px;
   
     vertical-align: middle;
     cursor: pointer;
+}
+.previewBottom .nextButton a{
+    color:white !important;
 }
 @media only screen and (max-width: 1199px)
 {

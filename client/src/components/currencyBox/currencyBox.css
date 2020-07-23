@@ -2,6 +2,7 @@
     float: right;
     position: relative;
     z-index: 96;
+    display: block;
 }
 .currencySelBox span.sel_state {
     position: relative;

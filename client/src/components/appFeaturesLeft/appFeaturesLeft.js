@@ -229,7 +229,7 @@ class AppFeaturesLeft extends React.Component{
                                  </div>
                                  </div>
                     </div>
-                    <div class="cartTab"><div class="cartIcon"><em class="icon-shopping-cart" onClick={this.props.hideLeft}></em><span>26</span></div></div>
+                    <div class="cartTab"><div class="cartIcon" onClick={this.props.hideLeft}><em class="icon-shopping-cart" ></em><span>26</span></div></div>
                     <div class="addFeature"><button type="button"><em>+</em> Add Custom Feature</button></div>
                 </div>
                 <div className='bundleFeature'>
