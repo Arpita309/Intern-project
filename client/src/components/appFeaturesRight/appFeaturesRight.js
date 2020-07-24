@@ -35,7 +35,7 @@ class FeatureRight extends React.Component{
         ApiGet(`app/?attributes.title=${this.props.name}`)
           .then(res => {
             const data = res.data;
-            this.setState({ app:data });
+            this.setState({ app:data,active:data.map(value=>value.attributes.map(info=>info.features[0].id)) });
            
           })
           ApiGet('bundle')
@@ -107,7 +107,7 @@ class FeatureRight extends React.Component{
     handleClick=(e,id)=>{
         let item=this.state.data.filter(value=>
              value.id==id)
-        console.log(item)
+       
         this.setState({selectedItem:item,active:id
         })
          
@@ -119,6 +119,7 @@ class FeatureRight extends React.Component{
     if(this.props.selectedFeature.length){this.state.app.map(value=>
         value.attributes.map(info=>
         info.features.push(...this.props.selectedFeature[0])))}
+    
         
     }
     showmore=()=>{
@@ -134,13 +135,16 @@ class FeatureRight extends React.Component{
     
     
     render(){
-       
+       console.log(this.state.app)
         let mobileImages=[]
             {this.state.app.map((value)=>
               value.attributes.map(info=>{
                 mobileImages.push(...info.features)
                 this.state.data=[...mobileImages]}))}
-               
+        const Delete=(id,e)=>{
+            this.state.app=this.state.app.map(value=>value.attributes.map(info=>info.features.filter(data=>data.id!=id)))
+                    
+        }       
         
         const removeAll=()=>{
             this.setState({app:[],data:[]})
@@ -194,7 +198,7 @@ class FeatureRight extends React.Component{
                                                             return(<img src={this.state.mobileView?img.android:img.web}></img>)}
                                                        )}
                                                         </div>
-                                                        <span className="deleteItem">+</span>
+                                                        <span className="deleteItem" onClick={(e)=>Delete(data.id,e)}>+</span>
                                                         <h4>{data.title}</h4>
                                                     </div>
                                                </React.Fragment>
