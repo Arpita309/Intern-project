@@ -132,24 +132,23 @@ class FeatureRight extends React.Component{
         this.setState({fullScreen:!this.state.fullScreen})
         this.props.hideLeft()
     }
-    
+    Delete=(id,e)=>{
+        this.state.app.forEach(value=>value.attributes.forEach(info=>{return(info.features=info.features.filter(data=>data.id!=id))})) 
+        }   
     
     render(){
-       console.log(this.state.app)
+       console.log(this.state.features)
         let mobileImages=[]
             {this.state.app.map((value)=>
               value.attributes.map(info=>{
                 mobileImages.push(...info.features)
                 this.state.data=[...mobileImages]}))}
-        const Delete=(id,e)=>{
-            this.state.app=this.state.app.map(value=>value.attributes.map(info=>info.features.filter(data=>data.id!=id)))
-                    
-        }       
+               
         
         const removeAll=()=>{
             this.setState({app:[],data:[]})
         }
-       
+   
         
         return(
             this.state.app.length?<div className={`studioRight ${this.props.hide?'active':''}`}>
@@ -198,7 +197,7 @@ class FeatureRight extends React.Component{
                                                             return(<img src={this.state.mobileView?img.android:img.web}></img>)}
                                                        )}
                                                         </div>
-                                                        <span className="deleteItem" onClick={(e)=>Delete(data.id,e)}>+</span>
+                                                        <span className="deleteItem" onClick={(e)=>this.Delete(data.id,e)}>+</span>
                                                         <h4>{data.title}</h4>
                                                     </div>
                                                </React.Fragment>
@@ -240,7 +239,7 @@ class FeatureRight extends React.Component{
                             <div className={`${this.state.mobileView?'iphonePrev':'webPrev'}`}>
                                 <div className={`${this.state.mobileView?'phoneScreen':'webScreen'}`}>
                                 
-                                {this.state.selectedItem.length===1?<img src={this.state.selectedItem[0].feature_screenshots.map(img=>this.state.mobileView?img.android:img.web)}></img>:<img className="active animation1" src={this.state.data.length?this.state.data[this.state.currentImageIndex].feature_screenshots.map(img=>this.state.mobileView?img.android:img.web):''} onChange={this.showBundle}></img>}    
+                                {this.state.selectedItem.length===1?<img src={this.state.selectedItem[0].feature_screenshots.map(img=>this.state.mobileView?img.android:img.web)}></img>:<img className="active animation2" src={this.state.data.length?this.state.data[this.state.currentImageIndex].feature_screenshots.map(img=>this.state.mobileView?img.android:img.web):''} onChange={this.showBundle}></img>}    
                                 </div>
                             </div>
                             <div className="iphoneNav">

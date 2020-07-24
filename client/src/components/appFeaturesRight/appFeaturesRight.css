@@ -810,3 +810,18 @@ perfect-scrollbar {
     padding: 0;
     transition: all .3s ease-in-out;
 }
+/*animation*/
+@keyframes imageload{
+    0% {
+        opacity:0;
+      }
+      45% {
+      opacity:0;
+      }
+      55% {
+      opacity:1;
+      }
+      100% {
+      opacity:1;
+      }
+}
