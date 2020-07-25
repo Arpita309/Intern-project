@@ -1,7 +1,7 @@
 .slider-container {
     /* if you want to have a scrollbar, you can add overflow here */ 
        overflow-x: hidden;
-       display: flex;
+       
        justify-content: center;
        align-items: center;
        margin: 0rem ;
@@ -9,12 +9,28 @@
     scroll-behavior: smooth;
    }
    .slider-wrapper {
-       display: flex;
        align-items: center;
        width: 100%;
+       display: block;
+       white-space: nowrap;
    }
    .btnn {
-       position: absolute;
+    position: absolute;
+    z-index: 9;
+    font-size: 20px;
+    line-height: 1;
+    padding: 0;
+    width: 60px;
+    height: 60px;
+    box-shadow: 0 8px 34px rgba(0,0,0,.05);
+    top: 50%;
+    transform: translateY(-50%);
+    border: 1px solid #e4e8f1;
+    background: #fff;
+    border-radius: 100px;
+    cursor: pointer;
+    color: #1d2c41;
+      /* position: absolute;
        box-shadow: 0 0 6.1px 0.9px grey;
        padding: 5px;
        cursor: pointer;
@@ -24,7 +40,7 @@
        text-align: center;
        color:white;
        border-radius: 50%;
-       z-index: 1;
+       z-index: 1;*/
    }
    .prev {
        left: 1rem;

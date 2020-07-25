@@ -47,6 +47,7 @@ class AppTrending extends React.Component{
                                             <div className='trendingItemrow' > 
                                             <div className='drag-scroll-content'style={{display: 'block', whiteSpace: 'nowrap', width: '100%', height: `calc(100% + 20px)`}}>
                                                 <Slider>
+                                                    <div className='trendingItemRow' style={{display:'flex'}}>
                                                 {this.state.info.map(value=>{
                                                  return(
                                                         value.section_details.map(detail=>{
@@ -55,7 +56,7 @@ class AppTrending extends React.Component{
                                                                 
                                                                
                                                                
-                                                            <div key={value} className='child'>
+                                                            <div key={value} className='child' style={{display:'flex'}}>
                                                                 <div className='trendingItembox' style={{display:'inline-block'}}>
                                                                     <div className='trendingItemImage'>
                                                                         <img src={detail.icon} className='trendingItemImage'></img>
@@ -76,6 +77,7 @@ class AppTrending extends React.Component{
                                                             </div>
                                                         )}));
                                                     })}
+                                                    </div>
                                                 </Slider>
                                             </div> 
                                                 </div>  }

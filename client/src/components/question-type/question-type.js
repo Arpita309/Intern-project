@@ -52,21 +52,22 @@ class QuestionType extends React.Component{
                                 <div className='rightSide'>
                                     <div className='viewAll'>
                                     <em  className="icon-next"></em>
-                                    <Link to ='/problemsolve' style={{color:'white',underline:'none'}}>View All</Link> 
+                                    <Link to ='/problemsolve' style={{color:'white',textDecoration:'none'}}>View All</Link> 
                                     </div>
                                 </div>
                             </div>
                             {this.state.isLoading?<Loader times={this.state.times}/>:
-                            <div className='questionRow'> 
+                             
                                 <div className='drag-scroll-content'style={{display: 'block', whiteSpace: 'nowrap', width: '100%', height: `calc(100% + 17px)`}}>
                                     <Slider>
+                                    <div className='questionRow' style={{display:'flex'}}>
                                         {this.state.data.map(value => {
                                             
                                             return (
                                                 value.section_details.map(info=>{
                                                     return(
                                                       
-                                                        <div key={info.id} className='child'>
+                                                        <div key={info.id} className='child' style={{display:'flex'}}>
                                                     
                                                         <div className= {`questionbox ${this.state.checked ? 'completed': '' }`} style={{display:'inline-block'}}  onChange={(e)=>this.handleChange(info.id)}>
                                                             <h3>{info.problem_statement}</h3>
@@ -93,8 +94,9 @@ class QuestionType extends React.Component{
                                                 
                                             );
                                         })}
+                                        </div>
                                     </Slider>
-                                </div> 
+                                 
                                     </div>}  
                         </div>
                         {this.state.checkId?<BottomBar section='question' activeQues={this.state.checkId}/>:''}

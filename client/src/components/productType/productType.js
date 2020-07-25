@@ -24,12 +24,13 @@ class SliderParent extends React.Component {
 		
 		return (
 		<React.Fragment>
-			<div className='parent'>
+			<div className='parent' >
 				<Slider>
+					<div className='productTypeRow' style={{display:'flex'}}>
 					{this.props.details.map(value => {
 						
 						return (
-							<div key={value._id} className='child'>
+							<div key={value._id}  style={{display:'flex'}}>
 								<div className={`productType ${this.state.checkId==value._id?'active':''}`} style={{backgroundColor:`${value.background_color}`}} id={value._id} onClick={e=>this.handleChange(e,value._id)}>
 									<h3>{value.title}</h3>
 									<p>{value.description} </p>
@@ -39,6 +40,7 @@ class SliderParent extends React.Component {
 							</div>
 						);
 					})}
+					</div>
 				</Slider>
 			</div>
 			{this.state.checkId?<BottomBar section='productType' activeProduct={this.state.checkId}/>:''}

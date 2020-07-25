@@ -40,7 +40,7 @@ class AppList extends React.Component{
             <div className='sectionContent'>
                 
                 <div className='leftside'>
-                    <h3>Try selecting similar apps to your idea. <img _ngcontent-serverapp-c118="" src="https://studio.builder.ai/assets/images/smile1.png" width="37" height="38" alt=""></img></h3>
+                    <h3>Try selecting similar apps to your idea. <img  src="https://studio.builder.ai/assets/images/smile1.png" width="37" height="38" alt=""></img></h3>
                     <p >This will allow us to understand your idea better.</p>
 
                 </div>
@@ -51,12 +51,12 @@ class AppList extends React.Component{
                     </div>
                     <div className='viewAllApps'>
                         <em><i class="fa fa-chevron-right" aria-hidden="true"></i></em>
-                        <Link to='/apps' style={{color:'white'}}>View All</Link>
+                        <Link to='/apps' style={{color:'white',textDecoration:'none'}}>View All</Link>
                     </div>
                 </div>
             </div>
             {this.state.isLoading?<Loader times={this.state.times}/>:
-            <div className='appListRow'>
+            <div className='appListRow' style={{display:'flex'}}>
             {this.state.data.map(value=>{
                 
                    return(value.section_details.map(info=>{

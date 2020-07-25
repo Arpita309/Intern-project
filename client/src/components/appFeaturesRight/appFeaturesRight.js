@@ -104,11 +104,11 @@ class FeatureRight extends React.Component{
         this.setState({showAll:false})
         console.log('hide')
     }
-    handleClick=(e,id)=>{
+    handleClick=(e,id,index)=>{
         let item=this.state.data.filter(value=>
              value.id==id)
        
-        this.setState({selectedItem:item,active:id
+        this.setState({selectedItem:item,active:id,currentImageIndex:index
         })
          
          
@@ -137,7 +137,7 @@ class FeatureRight extends React.Component{
         }   
     
     render(){
-       console.log(this.state.features)
+       console.log(this.state.app.map(value=>value.attributes.map(info=>info.features.length)))
         let mobileImages=[]
             {this.state.app.map((value)=>
               value.attributes.map(info=>{
@@ -185,10 +185,10 @@ class FeatureRight extends React.Component{
                                         {this.state.app.map((value)=>
                                               value.attributes.map(info=>{
                                                 
-                                                return(info.features.map(data=>
+                                                return(info.features.map((data,index)=>
                                                     <React.Fragment key={data.id}>
                                                    
-                                                   <div className={`slideItem ${this.state.active==data.id?'active':''}`} id={data.id} onClick={(e)=>{this.handleClick(e,data.id)}}>
+                                                   <div className={`slideItem ${this.state.active==data.id?'active':''}`} id={data.id} onClick={(e)=>{this.handleClick(e,data.id,index)}}>
                                                        <div class="slideImg">
                                                        {data.feature_screenshots.map(img=>{
                                                             
@@ -264,7 +264,10 @@ class FeatureRight extends React.Component{
                             </div>
                         </div>
                     </div>
-                </div></div>
+                </div>
+                
+                
+            </div>
               
            
         )

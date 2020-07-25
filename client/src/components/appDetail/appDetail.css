@@ -203,7 +203,6 @@
     font-size: 16px;
     color: #1d2c41;
     margin: 0 0 15px;
-    font-family: Gotham Bold,Arial,Georgia,serif;
 }
 .appdetailSection .appdetailBox .selectPlatform .selectPlatformSlider {
     width: 100%;
@@ -327,4 +326,25 @@
 }
 .view-brak-bx button:nth-child(2n+2) {
     margin-right: 0;
+}
+/*login register modal*/
+.loginScreenAppDetail .loginRegister {
+    width: calc(100% - 20px)!important;
+    max-width: 740px!important;
+    position: absolute;
+    top: 50%!important;
+    left: 50%!important;
+    transform: translate(-50%,-50%)!important;
+    height: auto!important;
+    max-height: calc(100vh - 100px)!important;
+    padding: 50px 30px!important;
+    overflow-x: hidden!important;
+    overflow-y: auto!important;
+    border-radius: 10px!important;
+}
+.loginScreenAppDetail .loginRegister .loginRegisterRight {
+    width: 100%;
+    padding: 0;
+    max-height: inherit;
+    display: flex!important;
 }
