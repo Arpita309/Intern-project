@@ -1235,3 +1235,6 @@ perfect-scrollbars > .ps {
         width: 160px;
     }
 }
+.rightsidePanel li:hover{
+    background: rgba(67,206,1,.1);
+}

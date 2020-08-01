@@ -9,7 +9,8 @@ class Features extends React.Component{
         super(props)
         this.state={
             hideLeft:false,name:'',
-            selectedFeature:[]
+            selectedFeature:[],
+            selectedView:{}
         }
     }
     
@@ -22,8 +23,11 @@ class Features extends React.Component{
     selectedFeature=(value)=>{
           this.setState({selectedFeature:value})
     }
+    selectedView=(value)=>{
+        this.setState({selectedView:value})
+    }
     render(){
-        console.log(this.state.selectedFeature)
+        console.log(this.state.selectedView)
         this.state.name=this.props.match.params.name
        
         return(
@@ -31,8 +35,8 @@ class Features extends React.Component{
             <FeaturesHeader/>
             <div className='middlePart'>
             <div className='featureStudio'>
-                <Left hide={this.state.hideLeft} hideLeft={this.hideLeft} selectedFeature={this.selectedFeature} name={this.state.name}/>
-                <Right hideLeft={this.hideLeft} hide={this.state.hideLeft} show={this.showLeft} name={this.state.name} selectedFeature={this.state.selectedFeature.filter(value=>value.length)}/>
+                <Left hide={this.state.hideLeft} hideLeft={this.hideLeft} selectedFeature={this.selectedFeature} name={this.state.name} selectedView={this.selectedView}/>
+                <Right hideLeft={this.hideLeft} hide={this.state.hideLeft} show={this.showLeft} name={this.state.name} selectedFeature={this.state.selectedFeature.filter(value=>value.length)} view={this.state.selectedView}/>
             </div></div>
             <div class="bottomSelectFeature">
                 <div className='appBottomBar'>
