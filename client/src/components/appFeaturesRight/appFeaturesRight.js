@@ -18,7 +18,7 @@ class FeatureRight extends React.Component{
            Description:carouselDescription,
            test:carouselDescription,
            img:'',
-           currentImageIndex: 0,selectedItem:[],fullScreen:false,
+           currentImageIndex: 0,selectedItem:{},fullScreen:false,
            app:[],
            features:[]
          };
@@ -48,7 +48,7 @@ class FeatureRight extends React.Component{
           
     }
     
-    componentDidUpdate(){
+    componentDidUpdate(prevProps){
         
             let mobileImages=[]
             {this.state.app.map((value)=>
@@ -56,7 +56,8 @@ class FeatureRight extends React.Component{
                 mobileImages.push(...info.features)
                 this.state.data=[...mobileImages]}))}
                 
-        this.setFeature()
+                
+       if(this.props!=prevProps) this.setFeature()
         
               
     }
@@ -68,7 +69,7 @@ class FeatureRight extends React.Component{
 		const index =  shouldResetIndex ? 0 : currentImageIndex + 1;
         
 		this.setState({
-            currentImageIndex: index,img:this.state.data[this.state.currentImageIndex].id,active:this.state.data[index].id,selectedItem:[],
+            currentImageIndex: index,img:this.state.data[this.state.currentImageIndex].id,active:this.state.data[index].id,selectedItem:{},
            
         });
        
@@ -80,7 +81,7 @@ class FeatureRight extends React.Component{
     const index =  shouldResetIndex ? lastIndex : currentImageIndex - 1;
     
     this.setState({
-        currentImageIndex: index,img:this.state.data[this.state.currentImageIndex].id,active:this.state.data[index].id,selectedItem:[],
+        currentImageIndex: index,img:this.state.data[this.state.currentImageIndex].id,active:this.state.data[index].id,selectedItem:{},
     
         
     });
@@ -119,6 +120,9 @@ class FeatureRight extends React.Component{
     if(this.props.selectedFeature.length){this.state.app.map(value=>
         value.attributes.map(info=>
         info.features.push(...this.props.selectedFeature[0])))}
+        if(this.props.view.length){
+            this.state.selectedItem=this.props.view[0]
+        }       
     
         
     }
@@ -137,12 +141,14 @@ class FeatureRight extends React.Component{
         }   
     
     render(){
-       console.log(this.state.app.map(value=>value.attributes.map(info=>info.features.length)))
+        
+      
         let mobileImages=[]
             {this.state.app.map((value)=>
               value.attributes.map(info=>{
                 mobileImages.push(...info.features)
                 this.state.data=[...mobileImages]}))}
+
                
         
         const removeAll=()=>{

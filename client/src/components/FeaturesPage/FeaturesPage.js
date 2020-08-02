@@ -27,7 +27,7 @@ class Features extends React.Component{
         this.setState({selectedView:value})
     }
     render(){
-        console.log(this.state.selectedView)
+       
         this.state.name=this.props.match.params.name
        
         return(

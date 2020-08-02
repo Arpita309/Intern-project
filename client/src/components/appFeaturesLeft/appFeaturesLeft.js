@@ -99,11 +99,12 @@ class AppFeaturesLeft extends React.Component {
       );
     }
   };
-  selectedView=(id)=>{
+  selectedView=(id,e)=>{
+    
       this.props.selectedView(
-        this.state.features.map(value=>value.features.filter(feature=>feature.id===id)).filter(value=>value.length==1)
+      this.state.features.map(value=>value.features.filter(feature=>feature.id===id)).filter(value=>value.length==1)
       )
-      
+     
   }
   render() {
    
@@ -395,7 +396,7 @@ class AppFeaturesLeft extends React.Component {
                 <React.Fragment>
                   <div className="featureHead">
                     <h3>
-                      Features({value.selected_feature_count}/
+                      Features({this.state.featureId.length}/
                       {value.total_features})
                     </h3>
                     <div className="checkBox">
@@ -464,10 +465,10 @@ class AppFeaturesLeft extends React.Component {
                                         </div>
                                       </div>
                                       <div className="featureView webView" >
-                                        <em className="icon-view" onClick={(e)=>this.selectedView(li.id)}></em>
+                                        <em className="icon-view" onClick={(e)=>this.selectedView(li.id,e)}></em>
                                       </div>
                                       <div className="featureView mobileView" >
-                                        <em className="icon-view" onClick={(e)=>this.selectedView(li.id)}></em>
+                                        <em className="icon-view" onClick={(e)=>this.selectedView(li.id,e)}></em>
                                       </div>
                                     </div>
                                   </div>

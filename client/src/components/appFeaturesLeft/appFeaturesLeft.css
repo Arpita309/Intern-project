@@ -1238,3 +1238,6 @@ perfect-scrollbars > .ps {
 .rightsidePanel li:hover{
     background: rgba(67,206,1,.1);
 }
+.icon-view:hover{
+    color:#008ef7;
+}
