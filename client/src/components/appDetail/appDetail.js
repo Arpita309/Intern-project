@@ -1,12 +1,15 @@
 import React from "react";
 import "./appDetail.css";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Carousel from "../carouselimgDetail/carouselImgDetail";
 import Slider from "../platformSlider/platformSlider";
 import FeatureInfo from "../appFeature/appFeature";
 import Footer from "../footer/footer";
 import Header from "../appDetailHeader/appDetailHeader";
 import { ApiGet } from "../../api";
+import axios from 'axios'
+import Contact from '../connectModal/connectModal'
+let userData={}
 class AppDetail extends React.Component {
   constructor(props) {
     super(props);
@@ -15,6 +18,12 @@ class AppDetail extends React.Component {
       images: [],
       platforms: [],
       platformId: [],
+      auth:{yes:'true'},
+      popup:false,
+      email: "",
+      password: "",
+      name:'',organisation:'',contactNumber:'',nextStep:false,
+      redirect:false,
     };
   }
 
@@ -29,12 +38,69 @@ class AppDetail extends React.Component {
       const data = res.data;
       this.setState({ platforms: data });
     });
+    ApiGet('auth/current_user')
+    .then(res => {
+      
+      this.setState({auth:res.data})
+    })
   }
+  handleChange=(e)=>{
+    this.setState({[e.target.id]: e.target.value })
+}
+onSubmit = e => {
+    e.preventDefault();
+ userData = {
+      username: this.state.email,
+      password: this.state.password,
+      name:this.state.name,
+      organisation:this.state.organisation,
+      contactNumber:this.state.contactNumber
+    };
+console.log(userData);
+ 
+
+    
+       
+        axios.post("http://localhost:4000/auth/signup", userData)
+        
+        .then(res => {
+            console.log(res.config.data)
+          if(res.data){
+              console.log('successful signup')
+              this.setState({redirect:true})
+          }
+          else console.log('signup error')
+        })
+        .catch(err =>
+          console.log(err.response.data)
+          
+        ); 
+    
+        }
 
   selectPlatform = (id) => {
     this.state.platformId.push(id);
   };
-
+  popup=()=>{
+    window.location.href=`http://localhost:3000/features/${this.props.match.params.name}`
+    /*if(this.state.auth.length){
+      return(<Redirect to={{
+        pathname:'http://localhost:3000/features',
+      state:{
+          name:`${this.props.match.params.name}`
+      }
+      }}/>)
+    }
+    else
+    this.setState({popup:true})
+    console.log(this.state.popup)*/
+  }
+  closePopup=()=>{
+    this.setState({popup:false,nextStep:false,email:'',name:'',organisation:'',contactNumber:''})
+  }
+  showNext=()=>{
+    this.setState({nextStep:!this.state.nextStep})
+}
   render() {
     console.log(this.state.data);
     let price = this.state.platforms.map((value) => {
@@ -160,16 +226,11 @@ class AppDetail extends React.Component {
                       </div>
                       <div className="createBuild view-brak-bx">
                         <button type="button" className="view-proto-btn">
-                          <span className="desktop">
-                            <a
-                              href={`http://localhost:3000/features/${info.title}`}
-                              style={{
-                                textDecoration: "none",
-                                color: "#f02397",
-                              }}
-                            >
+                          <span className="desktop" onClick={this.popup}>
+                            
+                             
                               Customize with an Expert
-                            </a>{" "}
+                            
                           </span>
                           <span className="mobile"> Customize with Expert</span>
                         </button>
@@ -186,53 +247,28 @@ class AppDetail extends React.Component {
           })}
         </div>
         <Footer />
+        <Contact/>
         <div className="loginScreenAppDetail">
-          <div className="commonPopUp higher-zindex ">
+         <div className={`commonPopUp higher-zindex ${this.state.popup?'active':''}`}>
             <div className="popOverlay"></div>
             <div className="popHolder loginRegister">
-              <div>
-                <button
-                  className="cross"
-                  onClick={(event) => (window.location.href = "/")}
-                  style={{ float: "right" }}
-                >
-                  X
-                </button>
-              </div>
+             
+              <div class="new-CloseButton"><em  class="icon-cancel" onClick={this.closePopup}></em></div>
               <div className="loginRegisterRight">
                 <div
                   className="heading-appdetail"
                   style={{ textAlign: "left" }}
                 >
-                  <p> one last step. </p>
-                  <h2>
-                    {" "}
-                    Build your own version of <span></span>
+                  <p style={{color:'black'}}> one last step. </p>
+                  <h2 style={{ textAlign: "left" }}>
+                 
+                    Build your own version of <br/>
+                    <span style={{float:'left',fontWeight:'bolder'}}>{this.props.match.params.name}</span>
                   </h2>
                 </div>
                 <div className="loginBox active">
                   <div className="loginRegisterForm">
-                    {this.state.nextStep ? (
-                      <div className="authHeading">
-                        {" "}
-                        <span className="authHeading-main">Instant quote</span>
-                        <span className="authHeading-sub">
-                          for your product
-                        </span>
-                      </div>
-                    ) : (
-                      <div className="authHeading">
-                        <span
-                          className="authHeading-main"
-                          style={{ fontWeight: "bolder" }}
-                        >
-                          Bring your idea to life
-                        </span>
-                        <span className="authHeading-sub">
-                          It’s easy – no techie skills needed
-                        </span>
-                      </div>
-                    )}
+                    
 
                     <form name="registerForm">
                       <ul
@@ -243,7 +279,7 @@ class AppDetail extends React.Component {
                         <li>
                           <span
                             className="field-labels"
-                            style={{ textAlign: "left " }}
+                            style={{ float:'left' }}
                           >
                             Sign up to builder
                           </span>
@@ -283,10 +319,10 @@ class AppDetail extends React.Component {
                       <ul
                         className={`signupSteps ${
                           this.state.nextStep ? "activeStep" : ""
-                        }`}
+                        }`} style={{textAlign:'left'}}
                       >
                         <li>
-                          <div className="onlyAppdetailPopup"> Edit </div>
+                          <div className="onlyAppdetailPopup" onClick={()=>this.setState({nextStep:false})}> Edit </div>
                           <div className="errorMsgBox"></div>
                           <div>
                             <legend className="ex-label">Email Address</legend>
@@ -425,7 +461,7 @@ class AppDetail extends React.Component {
                           <span className="socialIcon googleIcon">
                             <a href="http://localhost:4000/auth/google">
                               {" "}
-                              <em className="icon-google-plus">
+                              <em className="icon-google-plus" style={{color:'#dc4e41'}}>
                                 <i class="fab fa-google-plus-g"></i>
                               </em>
                             </a>

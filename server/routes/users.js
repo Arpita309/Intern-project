@@ -88,7 +88,7 @@ router.get('/google', passport.authenticate('google', {
 // hand control to passport to use code to grab profile info
 router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
  
- res.redirect('http://localhost:3000')
+ res.redirect('/')
 });
 router.get('/current_user', (req, res) => {
   console.log(req.user)

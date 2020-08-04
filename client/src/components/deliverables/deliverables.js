@@ -31,7 +31,7 @@ class Delivery extends React.Component{
            showPlatform:false,firstDelivery:false,
            custom:[],count:1,platformList:[],
            selectedPlatform:[],advance:false,teams:{},dropdown:false,teamLocation:'Anywhere',search:'',mobNavigation:false,
-           bottomBar:false,promotion:false,slider:''
+           bottomBar:false,promotion:false,slider:'',platformId:[]
            
         }
     }
@@ -75,9 +75,10 @@ class Delivery extends React.Component{
         this.setState({count:this.state.count+1})
         this.setState({custom:[...this.state.custom,<AddCustom count={this.state.count} advance={this.state.advance} platform={this.state.selectedPlatform}/>]})
     }
-    selectPlatform=(icon,e)=>{
+    selectPlatform=(icon,e,id)=>{
         e.preventDefault()
         this.state.selectedPlatform=[...this.state.selectedPlatform,icon]
+        this.state.platformId=[...this.state.platformId,id]
     }
     showAdvance=()=>{
         this.setState({advance:!this.state.advance})
@@ -244,13 +245,13 @@ function valuetext(value) {
                                                 <ul>
                                                 {this.state.platformList.map(data=>
                                                 data.attributes.map(platform=>
-                                                    <li  key={platform.id} onClick={(e)=>this.selectPlatform(platform.icon,e)}>
+                                                    <li  key={platform.id} onClick={(e)=>this.selectPlatform(platform.icon,e,platform.id)}>
                                                         <div  className="platformImg">
                                                             <img  alt="" src={platform.icon}></img>
                                                         </div>
                                                         <div  className="platformName">{platform.title}</div>
                                                         <div className="platformCheck">
-                                                            <input  type="checkbox" id={platform.id}></input>
+                                                            <input  type="checkbox" id={platform.id} checked={this.state.platformId.map(value=>value===platform.id).length?true:false}></input>
                                                             <label  for={platform.id}></label>
                                                         </div>
                                                     </li>

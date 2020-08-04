@@ -348,3 +348,30 @@
     max-height: inherit;
     display: flex!important;
 }
+.loginScreenAppDetail .loginRegister .loginRegisterRight .heading-appdetail p {
+    font-size: 22px;
+    line-height: 29px;
+    margin-bottom: 10px;
+}
+.loginScreenAppDetail .loginRegister .loginRegisterRight .heading-appdetail h2 {
+    font-size: 35px;
+    margin-bottom: 15px;
+    margin-top: 0;
+}
+.loginScreenAppDetail .loginRegister .loginRegisterRight .heading-appdetail {
+    width: 100%;
+    max-width: 500px;
+    display: block;
+}
+.loginScreenAppDetail .loginRegister .loginRegisterRight .loginBox {
+    width: 100%;
+    max-width: 500px;
+    display: block;
+}
+.loginScreenAppDetail .loginRegister .onlyAppdetailPopup {
+    float: right;
+    cursor: pointer;
+    font-size: 16px;
+    color: #187de3;
+    display: block;
+}

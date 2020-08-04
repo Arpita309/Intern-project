@@ -444,7 +444,7 @@ class AppFeaturesLeft extends React.Component {
                                       </div>
                                       <div className="featureName">
                                         <h3>{li.title}</h3>
-                                        <p>{li.feature_weeks}</p>
+                                        <p>{Math.round(`${li.feature_weeks}`*10)/10}</p>
                                         <h4>{li.feature_price}</h4>
                                       </div>
                                     </div>

@@ -1,0 +1,236 @@
+.specCall-bx .popHolder .speCallPopup_bx .baseBlock {
+    border: 1px solid #e2e7ed;
+    box-shadow: 0 10px 30px rgba(0,0,0,.05);
+    transition: all 2s ease-in-out;
+}
+.baseBlock {
+    background: #fff;
+    position: relative;
+    width: 100vw;
+    max-width: 500px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 1;
+}
+.specCall-bx .popHolder .speCallPopup_bx .baseBlock:before {
+    position: inherit!important;
+}
+.baseBlock:before {
+    content: "";
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    z-index: -1;
+}
+.baseBlock .middle-block {
+    margin: 0 auto;
+    min-height: 450px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+}
+@media only screen and (max-width: 768px)
+{
+.baseBlock, .baseBlock .middle-block {
+    height: 100vh;
+}}
+@media only screen and (max-width: 768px)
+{
+.baseBlock {
+    width: 100vw;
+    padding: 0;
+    text-align: center;
+}}
+@media only screen and (max-width: 768px)
+{
+.baseBlock .middle-block .availableExpert-screen, .baseBlock .middle-block .findExpert-screen, .baseBlock .middle-block .main-screen, .baseBlock .middle-block .NotAvailExpert-screen, .baseBlock .middle-block .paymentFail-screen, .baseBlock .middle-block .paymentSucess-screen, .baseBlock .middle-block .sinndapopupscreen {
+    padding: 0 30px;
+}}
+.baseBlock .middle-block .slideThis {
+    -webkit-animation: slideeffect .8s ease-in-out forwards;
+    animation: slideeffect .8s ease-in-out forwards;
+    opacity:1 !important;
+}
+.baseBlock .middle-block .availableExpert-screen, .baseBlock .middle-block .findExpert-screen, .baseBlock .middle-block .main-screen, .baseBlock .middle-block .NotAvailExpert-screen, .baseBlock .middle-block .paymentFail-screen, .baseBlock .middle-block .paymentSucess-screen, .baseBlock .middle-block .sinndapopupscreen {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 9;
+    padding: 0 50px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+}
+.baseBlock .middle-block .spec-call-folow {
+    width: 100%;
+}
+.baseBlock .middle-block .spec-call-folow .closeButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    font-size: 11px;
+    z-index: 99;
+    color: #0070e0;
+}
+@media only screen and (max-width: 768px)
+{
+.baseBlock .middle-block .closeButton {
+    top: 70px!important;
+    right: 10px!important;
+    border: 1px solid #dfe0e6;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    color: #000!important;
+    text-align: center;
+}}
+.baseBlock .middle-block .spec-call-folow .header {
+    font-size: 20px;
+    margin: 0 0 20px;
+}
+.baseBlock .middle-block .spec-call-folow .experts-block .img-bx {
+    margin: 30px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.baseBlock .middle-block .spec-call-folow .experts-block .img-bx img {
+    width: 100%;
+    max-width: 226px;
+}
+.baseBlock .middle-block .spec-call-folow .talktoTeam {
+    width: 100%;
+    float: left;
+    clear: both;
+    text-align: center;
+    margin: 10px 0 20px;
+}
+.baseBlock .middle-block .spec-call-folow .talktoTeam p {
+    margin: 0;
+    font-size: 16px;
+    color: #000;
+    line-height: 20px;
+    font-weight: bolder;
+}
+.baseBlock .middle-block .spec-call-folow .talktoTeam p strong.strick {
+    color: rgba(0,0,0,.5);
+    text-decoration: line-through;
+}
+.baseBlock .middle-block .spec-call-folow .talktoTeam p strong span {
+    color: #d82b8a;
+}
+.baseBlock .middle-block .spec-call-folow .action-space .availableCall {
+    width: 100%;
+    height: 50px;
+    float: left;
+    clear: both;
+    margin: 0 0 10px;
+    position: relative;
+    overflow: hidden;
+}
+.baseBlock .middle-block .spec-call-folow .action-space .availableCall input {
+    width: calc(100% - 80px);
+    height: 100%;
+    float: left;
+    border: 1px solid #d82b8a;
+    border-right: none;
+    font-size: 15px;
+    padding: 5px 15px;
+    border-radius: 5px 0 0 5px;
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+@media only screen and (max-width: 768px)
+{
+.baseBlock .middle-block .spec-call-folow .action-space .availableCall input {
+    font-size: 13px;
+}}
+.baseBlock .middle-block .spec-call-folow .action-space .availableCall button.yesButton {
+    width: 80px;
+    border: none;
+    font-size: 15px;
+    border-radius: 0 5px 5px 0;
+}
+.baseBlock .middle-block .spec-call-folow .action-space .availableCall button {
+    cursor: pointer;
+    height: 100%;
+    color: #fff;
+    background: #d82b8a;
+}
+.baseBlock .middle-block .spec-call-folow .action-space .availableCall button.connectButton {
+    font-size: 14px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-transform: capitalize;
+    border-radius: 5px;
+    width: 100%;
+    border: 1px solid #d82b8a;
+    color: #fff;
+    transition: all .4s ease-in-out;
+}
+.baseBlock .middle-block .spec-call-folow .action-space .actionbtn {
+    float: left;
+    width: 100%;
+    clear: both;
+}
+.baseBlock .middle-block .spec-call-folow .action-space .actionbtn button.scheduleButton {
+    background: #fff;
+    color: #d82b8a;
+    border: 1px solid #d82b8a;
+}
+.baseBlock .middle-block .spec-call-folow .noteText {
+    display: block;
+    width: 100%;
+    float: left;
+    clear: both;
+    text-align: center;
+    margin: 15px 0 0;
+    font-size: 13px;
+    color: rgba(0,0,0,.6);
+}
+.baseBlock .middle-block .spec-call-folow .action-space .actionbtn button {
+    font-size: 14px;
+    height: 50px;
+    margin-bottom: 10px;
+    background: #d82b8a;
+    border-radius: 5px;
+    width: 100%;
+    border: 1px solid #d82b8a;
+    color: #fff;
+}
+.baseBlock .middle-block .spec-call-folow .experts-block .nadtext-text p {
+    font-size: 15px;
+    margin: 0 0 15px;
+    line-height: 20px;
+    color: #000;
+}
+.baseBlock .middle-block .spec-call-folow .experts-block .nadtext-text p a, .baseBlock .middle-block .spec-call-folow .experts-block .nadtext-text p span {
+    color: #428bca;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.baseBlock .middle-block .spec-call-folow .experts-block .nadtext-text h4 {
+    font-size: 15px;
+    line-height: 20px;
+    margin: 0 0 20px;
+}
+.baseBlock .middle-block .spec-call-folow .action-space .actionbtn:last-child button {
+    margin-bottom: 0;
+}
