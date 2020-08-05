@@ -23,7 +23,7 @@ class AppDetail extends React.Component {
       email: "",
       password: "",
       name:'',organisation:'',contactNumber:'',nextStep:false,
-      redirect:false,
+      redirect:false,customize:false
     };
   }
 
@@ -32,8 +32,12 @@ class AppDetail extends React.Component {
       (res) => {
         const data = res.data;
         this.setState({ data });
-      }
-    );
+        this.state.data.map(value=>value.attributes.map(info=>info.platform_ids.map(obj=>{
+          this.setState({platformId:[...this.state.platformId,obj]})
+        }) ))
+        console.log(this.state.platformId.map(value=>value))
+      
+       } );
     ApiGet("configurations").then((res) => {
       const data = res.data;
       this.setState({ platforms: data });
@@ -78,8 +82,15 @@ console.log(userData);
     
         }
 
-  selectPlatform = (id) => {
-    this.state.platformId.push(id);
+  selectPlatform = (e,id) => {
+    if(this.state.platformId.filter(value=>value===id).length){
+      
+      this.setState({platformId:this.state.platformId.filter(value=>value!=id)})
+  }
+  else{
+  
+  this.setState({platformId:[...this.state.platformId,id]})
+  }
   };
   popup=()=>{
     window.location.href=`http://localhost:3000/features/${this.props.match.params.name}`
@@ -100,6 +111,9 @@ console.log(userData);
   }
   showNext=()=>{
     this.setState({nextStep:!this.state.nextStep})
+}
+customize=()=>{
+  this.setState({customize:!this.state.customize})
 }
   render() {
     console.log(this.state.data);
@@ -190,10 +204,7 @@ console.log(userData);
                                         <div
                                           className={`selectPlatformbox ${
                                             this.state.platformId.filter(
-                                              (obj) => obj == platform.id
-                                            ).length ||
-                                            info.platform_ids.filter(
-                                              (value) => value == platform.id
+                                              (obj) => obj === platform.id
                                             ).length
                                               ? "selected"
                                               : ""
@@ -203,18 +214,13 @@ console.log(userData);
                                             width: "122px",
                                           }}
                                           onClick={(e) =>
-                                            this.selectPlatform(platform.id)
+                                            this.selectPlatform(e,platform.id)
                                           }
                                         >
-                                          <img src={platform.icon}></img>
+                                          <img src={platform.icon} ></img>
                                           <span>{platform.title}</span>
                                           <em className="icon-tick"></em>
                                         </div>
-                                        {console.log(
-                                          this.state.platformId.filter(
-                                            (obj) => obj == platform.id
-                                          )
-                                        )}
                                       </React.Fragment>
                                     ))
                                   )
@@ -234,7 +240,7 @@ console.log(userData);
                           </span>
                           <span className="mobile"> Customize with Expert</span>
                         </button>
-                        <button type="button ">Customize Your Idea </button>
+                        <button type="button " onClick={this.customize}>Customize Your Idea </button>
                       </div>
                     </React.Fragment>
                   );
@@ -247,7 +253,7 @@ console.log(userData);
           })}
         </div>
         <Footer />
-        <Contact/>
+        
         <div className="loginScreenAppDetail">
          <div className={`commonPopUp higher-zindex ${this.state.popup?'active':''}`}>
             <div className="popOverlay"></div>
@@ -473,6 +479,21 @@ console.log(userData);
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+        <div className={`commonPopUp ${this.state.customize?'active':''}`}>
+          <div className="popOverlay bgNone"></div>
+          <div className="popHolder buildcardname">
+            <div className="closePopUp" onClick={this.customize}>
+              <span className="icon-cancel"></span>
+            </div>
+            <div className="cardnameIcon">
+              <img src="https://studio.builder.ai/assets/images/thumb-icon.png"/>
+            </div>
+            <h3>Great job! We are summarising your requirements into a <strong>Buildcard.</strong></h3>
+            <p><strong>Meanwhile, please name your project</strong></p>
+            <input type="text" maxlength="25" placeholder="eg. Booking.com" />
+            <button type="button" disabled="">Save </button>
           </div>
         </div>
       </div>

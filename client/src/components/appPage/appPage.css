@@ -841,6 +841,7 @@ button{
     bottom: -2px;
     left: -4px;
 }
+/*custom template*/
 .commonPopUp {
     opacity: 0;
     width: 100vw;
@@ -961,6 +962,11 @@ button{
 .addNewTemplate .tempLeft p {
     margin: 0;
 }}
+.addNewTemplate .tempLeft h3, .addNewTemplate .tempLeft p {
+    color: hsla(0,0%,100%,.9);
+    margin: 0 0 15px;
+    text-shadow: #000 0 0 20px;
+}
 .addNewTemplate .tempRight {
     box-sizing: border-box;
     width: 380px;
@@ -1136,7 +1142,86 @@ input.mat-input-element {
     transform-origin: 50%;
    
 }
-
+.addNewTemplate .tempRight ul li .customDropdown select {
+    width: calc(100% + 25px);
+    height: 100%;
+    background: none;
+    outline: none;
+    float: left;
+    border: none;
+}
+.addNewTemplate .tempRight ul li .customDropdown:after {
+    box-sizing: border-box;
+    position: absolute;
+    content: "";
+    width: 1px;
+    height: 1px;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 15px;
+    border-top: 5px solid #000;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    z-index: -1;
+}
+.addNewTemplate .tempRight ul li .customDropdown {
+    box-sizing: border-box;
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(35,36,48,.12);
+    border-radius: 0;
+    position: relative;
+    overflow: hidden;
+}
+.addNewTemplate .tempRight ul li .relativeRow {
+    position: relative;
+    width: 100%;
+}
+.addNewTemplate .tempRight ul li .relativeRow input {
+    padding-right: 60px;
+}
+.addNewTemplate .tempRight ul li .platformChip {
+    float: left;
+    background: #d8d8d8;
+    border-radius: 100px;
+    padding: 4px 15px;
+    font-size: 13px;
+    color: rgba(0,0,0,.6);
+    margin: 0 6px 6px 0;
+    cursor: pointer;
+}
+.addNewTemplate .tempRight ul li .platformChip em {
+    float: left;
+    margin: 1px 5px 0 0;
+    line-height: 0;
+    display: none;
+}
+.addNewTemplate .tempRight ul li .platformChip.selected {
+    background: #00c852;
+    color: #fff;
+}
+.addNewTemplate .tempRight ul li .submitButton {
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: middle;
+    width: 130px;
+    text-align: center;
+    background: #208a20;
+    box-shadow: 0 7px 22px 0 rgba(32,44,69,.1);
+    border-radius: 4px;
+    color: #fff;
+    font-size: 14px;
+    border: none;
+    padding: 8px 0;
+    transition: all .3s ease-in-out;
+}
+.addNewTemplate .tempRight ul li .submitButton:disabled {
+    cursor: auto;
+    background: #ccc;
+}
+/*bottombar*/
 .tempBottomBar {
     box-sizing: border-box;
     position: fixed;

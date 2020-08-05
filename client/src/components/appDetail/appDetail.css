@@ -375,3 +375,57 @@
     color: #187de3;
     display: block;
 }
+/*customize popup*/
+.commonPopUp.active .popOverlay.bgNone {
+    background: none;
+}
+.buildcardname {
+    box-sizing: border-box;
+    background: #fff;
+    padding: 70px;
+    width: calc(100% - 30px);
+    max-width: 500px;
+    box-shadow: 0 0 20px rgba(0,0,0,.2);
+    text-align: center;
+}
+.buildcardname .cardnameIcon {
+    display: inline-block;
+    text-align: center;
+    margin-bottom: 15px;
+    position: relative;
+}
+.buildcardname h3 {
+    font-size: 18px;
+    margin: 0 0 20px;
+}
+.buildcardname p {
+    color: #000;
+    font-size: 16px;
+    margin: 0 0 15px;
+}
+.buildcardname input {
+    width: 100%;
+    border-radius: 6px;
+    background: #fff;
+    height: 45px;
+    padding: 4px 10px;
+    border: 1px solid rgba(0,0,0,.2);
+    margin: 0 0 15px;
+}
+.buildcardname button {
+    width: 100%;
+    border: none;
+    background: #f21598;
+    border-radius: 6px;
+    height: 45px;
+    text-align: center;
+    color: #fff;
+    font-size: 13px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+.buildcardname button:disabled {
+    cursor: auto;
+    background: #ccc;
+    box-shadow: none;
+}

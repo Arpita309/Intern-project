@@ -1928,7 +1928,9 @@ perfect-scrollbars > .ps {
 .platformSidebar .platformListing ul li .platformCheck label:before {
     
     display: none;
-    content: "h";
+    font-weight: 900;
+    font-family: 'Font Awesome\ 5 Free';
+    content: "\f00c";
     z-index: 2;
     font-size: 10px;
     color: #fff;

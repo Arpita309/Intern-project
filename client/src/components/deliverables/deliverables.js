@@ -76,9 +76,15 @@ class Delivery extends React.Component{
         this.setState({custom:[...this.state.custom,<AddCustom count={this.state.count} advance={this.state.advance} platform={this.state.selectedPlatform}/>]})
     }
     selectPlatform=(icon,e,id)=>{
-        e.preventDefault()
+        
+        if(this.state.selectedPlatform.filter(value=>value===icon).length){
+            this.state.selectedPlatform=this.state.selectedPlatform.filter(value=>value!=icon)
+            this.state.platformId=this.state.platformId.filter(value=>value!=id)
+        }
+        else{
         this.state.selectedPlatform=[...this.state.selectedPlatform,icon]
         this.state.platformId=[...this.state.platformId,id]
+        }
     }
     showAdvance=()=>{
         this.setState({advance:!this.state.advance})
@@ -107,7 +113,7 @@ class Delivery extends React.Component{
     }
     
     render(){
-
+     
         
         const classes = useStyles();     
     
@@ -245,14 +251,15 @@ function valuetext(value) {
                                                 <ul>
                                                 {this.state.platformList.map(data=>
                                                 data.attributes.map(platform=>
-                                                    <li  key={platform.id} onClick={(e)=>this.selectPlatform(platform.icon,e,platform.id)}>
+                                                    <li  key={platform.id} >
                                                         <div  className="platformImg">
                                                             <img  alt="" src={platform.icon}></img>
                                                         </div>
                                                         <div  className="platformName">{platform.title}</div>
-                                                        <div className="platformCheck">
-                                                            <input  type="checkbox" id={platform.id} checked={this.state.platformId.map(value=>value===platform.id).length?true:false}></input>
-                                                            <label  for={platform.id}></label>
+                                                        <div className="platformCheck" >
+                                                           
+                                                            <input  type="checkbox" id={platform.id}  checked={this.state.selectedPlatform.filter(value=>value===platform.icon).length?true:false}  onChange={()=>this.setState({platformId:[...this.state.platformId,platform.id]})}></input>
+                                                            <label  htmlFor={platform.id} onClick={(e)=>this.selectPlatform(platform.icon,e,platform.id)}></label>
                                                         </div>
                                                     </li>
                                                     ))}
