@@ -31,7 +31,7 @@ class SliderComponent extends React.Component {
 			>
 				<div className='slider-wrapper'>{this.props.children}</div>
 				<div
-					className={`btnn prev ${this.state.prevDisable ? 'disable' : ''}`}
+					className='btnn prev'
 					disabled={this.state.prevDisable}
 					onClick={() => {
 						this.refs.scrollLeft -= offsetWidthValue / 2;
@@ -41,7 +41,7 @@ class SliderComponent extends React.Component {
 					{'<'}
 				</div>
 				<div
-					className={`btnn next ${this.state.nextDisable ? 'disable' : ''}`}
+					className='btnn next'
 					disabled={this.state.nextDisable}
 					onClick={() => {
 						this.refs.scrollLeft += offsetWidthValue / 2;

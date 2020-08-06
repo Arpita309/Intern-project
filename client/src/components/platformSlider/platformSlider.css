@@ -13,25 +13,7 @@
        align-items: center;
        width: 100%;
    }
-   .btnn {
-       position: absolute;
-       box-shadow: 0 0 6.1px 0.9px grey;
-       padding: 5px;
-       cursor: pointer;
-       width: 35px;
-       height: 35px;
-       background: grey;
-       text-align: center;
-       color:white;
-       border-radius: 50%;
-       z-index: 1;
-   }
-   .prev {
-       left: 1rem;
-   }
-   .next {
-       right: 1rem;
-   }
+   
     .dragbutton {
     position: absolute;
     z-index: 9;

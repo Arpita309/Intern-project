@@ -66,8 +66,12 @@ class AppPage extends React.Component {
     });
   }
 
-  handleCheck = (id) => {
-    this.state.checkedApps.push(id);
+  handleCheck = (e,id) => {
+    e.preventDefault()
+    if(this.state.checkedApps.filter(value=>value===id).length)
+    this.setState({checkedApps:[]})
+    else
+    this.state.checkedApps=[...this.state.checkedApps,id];
   };
 
   componentWillUnmount() {
@@ -131,7 +135,7 @@ class AppPage extends React.Component {
     if (this.state.slider.length) {
       filtered = this.state.slider;
     }
-    const length = filtered.length;
+    
     const Result = () => {
       if (this.state.search) {
         return (
@@ -204,6 +208,7 @@ class AppPage extends React.Component {
     if (this.state.platformId) {
       filtered = platforms;
     }
+    const length = filtered.length;
     const NotFound = () => {
       if (length == 0) {
         return (
@@ -511,7 +516,7 @@ class AppPage extends React.Component {
                         <p>{value.description}</p>
                         <div
                           className="tickBox"
-                          onClick={(e) => this.handleCheck(value.id)}
+                          onClick={(e) => this.handleCheck(e,value.id)}
                         ></div>
                         <img
                           width="96"

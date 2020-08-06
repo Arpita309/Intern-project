@@ -14,7 +14,7 @@ class AppList extends React.Component{
             isLoading:true,
             times:6,
             checkId:'',
-            
+            apps:[],
 			hideBottom:false
         }
     }
@@ -25,15 +25,28 @@ class AppList extends React.Component{
             const data = res.data;
             this.setState({data,isLoading:false });
           })
-         
+          ApiGet("app").then((res) => {
+            const data = res.data;
+            this.setState({apps: data});
+          });  
           
       }
       handleChange=(e,id)=>{
-          this.setState({checkId:id})
+        if(this.state.checkId===id){
+            this.setState({checkId:''})
+          }
+          else
+          {this.setState({checkId:id})}
           
       }
     render(){
-        
+      console.log(this.state.apps)
+      console.log(this.props.type) 
+      if(this.props.type){
+          let filtered=this.state.apps.map(value=>value.attributes.map(info=>info.products.filter(product=>product===this.props.type
+          )))
+          console.log(filtered)
+      } 
     return(
         
         <div className='app-list'>

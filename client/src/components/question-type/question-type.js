@@ -57,10 +57,10 @@ class QuestionType extends React.Component{
                                 </div>
                             </div>
                             {this.state.isLoading?<Loader times={this.state.times}/>:
-                             
+                             <div className='questionRow' style={{display:'flex'}}>
                                 <div className='drag-scroll-content'style={{display: 'block', whiteSpace: 'nowrap', width: '100%', height: `calc(100% + 17px)`}}>
                                     <Slider>
-                                    <div className='questionRow' style={{display:'flex'}}>
+                                    <div  style={{display:'flex'}}>
                                         {this.state.data.map(value => {
                                             
                                             return (
@@ -96,7 +96,7 @@ class QuestionType extends React.Component{
                                         })}
                                         </div>
                                     </Slider>
-                                 
+                                 </div>
                                     </div>}  
                         </div>
                         {this.state.checkId?<BottomBar section='question' activeQues={this.state.checkId}/>:''}

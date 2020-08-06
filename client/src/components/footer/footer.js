@@ -1,7 +1,8 @@
 import React from 'react'
 import './footer.css'
 const Footer =()=>{
-    return (<div id='footerArea'>
+    return (
+    <div id='footerArea'>
     <div className='container'>
         <div className='row'>
         <div className="col-xs-12 col-sm-4"><p><strong></strong> - Made with Love</p></div>

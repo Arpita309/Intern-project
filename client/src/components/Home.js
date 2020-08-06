@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React,{useEffect, useState} from 'react';
 
 import Navbar from './Navbar/Navbar'
 import Type from './sectionTypeContent/sectionTypeContent'
@@ -8,22 +8,33 @@ import QuestionType from './question-type/question-type';
 import Video from './video/video'
 import Footer from './footer/footer';
 import {auth} from './authentication'
-
+import '../App.css'
 function Home() {
-  
-   
+  const [type,setType]=useState();
+  const set=(type)=>{
+    setType(type)
+  }
   console.log(auth)
   return (
-    
-    <div className="App">
+    <div className='wrap'>
       <Navbar/>
-       <Type/>
-       <AppList/>
-       <AppTrending/>
-       <QuestionType/>
-       <Video/>
-       <Footer/>
-       </div>
+      <div className='middlePart'>
+        <div className="newHomeSection">
+          <div className='setDisplayOrder'>
+          
+          <Type setType={set}/>
+          <AppList type={type}/>
+          <AppTrending/>
+          <QuestionType/>
+          <Video/>
+          
+          </div>
+        
+        </div>
+      </div>
+      <Footer/>
+    </div>
+    
     
     
   );

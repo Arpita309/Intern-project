@@ -52,8 +52,8 @@ class ProblemSolve extends React.Component{
                                  <p>Answere simple questions to get started.</p>
                              </div>
                              <div className='rightSide'>
-                                 <div className='problemSearch'>
-                                    <input  type="text" placeholder="Search..." onChange={this.handleChange}></input>
+                                 <div className='problemSearch' style={{marginTop:'20px'}}>
+                                    <input  type="text" placeholder="Search..." onChange={this.handleChange} value={this.state.search}></input>
                                     <em className='icon-magnifying'></em>
                                    {this.state.search?<div  className="cancelIcon icon-cancel" onClick={this.clear}></div>:''} 
                                     
