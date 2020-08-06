@@ -58,7 +58,7 @@ onSubmit = e => {
       password: this.state.password,
       name:this.state.name,
       organisation:this.state.organisation,
-      contactNumber:this.state.contactNumber
+      contactNumber:this.state.contactNumber,promotion:false
     };
 console.log(userData);
  
@@ -81,7 +81,14 @@ console.log(userData);
         ); 
     
         }
-
+        showPromotion=()=>{
+        
+          this.setState({promotion:true})
+      }
+      closePromotion=()=>{
+         
+          this.setState({promotion:false})
+      }
   selectPlatform = (e,id) => {
     if(this.state.platformId.filter(value=>value===id).length){
       
@@ -126,7 +133,7 @@ customize=()=>{
     return (
       <div className="wrapper">
         <Header />
-        <div className="middlePart">
+        <div className="middlePart" style={{marginLeft:'-20px'}} >
           <div className="appdetailSection">
             {this.state.data.map((value) => {
               return value.attributes.map((info) => {
@@ -174,14 +181,20 @@ customize=()=>{
                           alt=""
                         ></img>
                         <div>
-                          <button type="button">Apply Promo Code</button>
+                          <button type="button" onClick={this.showPromotion}>Apply Promo Code</button>
                         </div>
                       </div>
                       <div className="builderCare">
-                        <input type="checkbox" id="buildercarecheck"></input>
+                        <input type="checkbox" id="buildercarecheck" defaultChecked></input>
                         <label for="buildercarecheck"></label>
                         <strong>Builder Care: </strong>
                         <span> ₹7,020.65/Month</span>
+                      </div>
+                      <div  className="builderCare cloudRow">
+                        <input type="checkbox" id="buildercloudcheck" defaultChecked/>
+                        <label htmlFor="buildercloudcheck"></label>
+                        <strong>Builder Cloud: </strong>
+                        <span> ₹11,175.45/Month </span>
                       </div>
                       <div className="selectPlatform">
                         <h3>Select Platform</h3>
@@ -251,6 +264,23 @@ customize=()=>{
           {this.state.data.map((value) => {
             return value.attributes.map((info) => <FeatureInfo data={info} />);
           })}
+          <div className={`priceSideBar ${this.state.promotion?'active':''}`} >
+              <div className="priceOverflow"></div>
+              <div className="priceBoxHold">
+                  <div className="priceListing">
+                      <div className="close-btn"><em className="icon-cancel" onClick={this.closePromotion}></em></div>
+                      <div className="applyPromoBox">
+                          <h4>Apply Promotion</h4>
+                          <div className="pro-box">
+                              <form>
+                                  <input type="text" maxLength="15" placeholder="Enter coupon code"></input>
+                                  <button type="submit"> Apply </button>
+                              </form>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            </div>
         </div>
         <Footer />
         

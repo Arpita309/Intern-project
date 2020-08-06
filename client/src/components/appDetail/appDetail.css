@@ -8,6 +8,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 40px;
 }
 @media only screen and (max-width: 768px)
 {
@@ -428,4 +429,17 @@
     cursor: auto;
     background: #ccc;
     box-shadow: none;
+}
+.priceSideBar.active{
+    z-index: 999999;
+}
+@media only screen and (max-width: 768px)
+{
+.priceSideBar.active{
+z-index: 10000000;
+}
+}
+.appdetailSection .appdetailBox .builderCare.cloudRow {
+    margin: -20px 0 20px;
+    border-top: none;
 }

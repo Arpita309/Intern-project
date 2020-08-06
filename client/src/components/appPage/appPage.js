@@ -414,10 +414,10 @@ class AppPage extends React.Component {
                                 <li>
                                   <input
                                     type="checkbox"
-                                    id={info.id}
+                                    id={info._id}
                                     onClick={(e) => this.handlePlatform(e,info.id)}
                                   ></input>
-                                  <label htmlFor={info.id}>{info.title}</label>
+                                  <label htmlFor={info._id}>{info.title}</label>
                                 </li>
                               ));
                             })}
@@ -544,6 +544,7 @@ class AppPage extends React.Component {
                 })}
               </div>
             </div>
+            
             <div className={`commonPopUp ${this.state.custom?'active':''}`}>
                 <div class="popOverlay"></div>
                 <div className='popHolder addNewTemplate'>
