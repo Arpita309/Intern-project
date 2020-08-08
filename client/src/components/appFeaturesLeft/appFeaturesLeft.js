@@ -14,7 +14,7 @@ const useStyles = (theme) => ({
     color: "#00c853",
   },
 });
-
+let featureCount=0;
 class AppFeaturesLeft extends React.Component {
   constructor(props) {
     super(props);
@@ -29,6 +29,9 @@ class AppFeaturesLeft extends React.Component {
       filter: [],
       featureId: [],
       app: [],
+      hidePanel:false,
+      activeFeatures:[]
+      
     };
     window.addEventListener("resize", this.update);
     this.handleClickOutside = this.handleClickOutside.bind(this);
@@ -48,7 +51,17 @@ class AppFeaturesLeft extends React.Component {
     ApiGet(`app/?attributes.title=${this.props.name}`).then((res) => {
       const data = res.data;
       this.setState({ app: data });
+    
+    let activeFeatures=[];
+    
+    this.state.features.map(value=>value.features.map(info=>
+      activeFeatures=[...activeFeatures,this.state.app.map(a=>a.attributes.map(b=>b.features.filter(c=>c.id===info.id)))]))
+      activeFeatures.map(value=>value.map(info=>info[0].map(a=>{
+        if(this.state.featureId.filter(e=>e!==a.id))
+        this.setState({featureId:[...this.state.featureId,a.id ]})})))
     });
+    
+        
   }
 
   update = () => {
@@ -85,8 +98,8 @@ class AppFeaturesLeft extends React.Component {
   }
   selectFeature = (id, e) => {
     e.preventDefault();
-    if (this.state.featureId.map(id=>id) === id) {
-      this.setState({ featureId: "" });
+    if (this.state.featureId.filter(info=>info=== id).length) {
+      this.setState({ featureId:[] });
     } else {
       this.setState({
         featureId:[...this.state.featureId,id],
@@ -106,12 +119,28 @@ class AppFeaturesLeft extends React.Component {
       )
      
   }
+  hidePanel=()=>{
+    this.setState({hidePanel:!this.state.hidePanel})
+  }
+  
   render() {
-   
     
-    let selectedBundle=this.state.features.filter(value=>value.id==this.state.selected);
-    let activeFeatures=this.state.app.map(value=>value.attributes.map(info=>info.features.filter(data=>data.id==selectedBundle.map(select=>select.id))))
-    
+    let selectedBundle=this.state.features.filter(value=>value.id===this.state.selected);
+    let disFeature=[];
+    this.state.featureId.map(value=>disFeature.filter(id=>{
+      if(id!=value){
+        return(disFeature=[...disFeature,id])
+      }
+    })
+    )
+    selectedBundle.map(data=>data.features.map(info=>
+      disFeature.map(a=>
+        {
+        if(info.id===a){
+        return(featureCount++);
+      }
+    })))
+    console.log(disFeature)
     const classes = useStyles();
 
     function valuetext(value) {
@@ -120,7 +149,7 @@ class AppFeaturesLeft extends React.Component {
     return (
       <div className={`studioLeft ${this.props.hide ? "hidePanel" : ""}`}>
         <div className="studioSearch">
-          <div class="searchBack">
+          <div class="searchBack" onClick={this.hidePanel}>
             <em class="icon-prev"></em>
           </div>
           <form>
@@ -136,13 +165,13 @@ class AppFeaturesLeft extends React.Component {
             </button>
           </form>
           <div class="addFeature">
-            <button type="button">
+            <button type="button" onClick={this.props.customFeature}>
               <em>+</em> NEW CUSTOM FEATURE
             </button>
           </div>
         </div>
-        <div className="studioToolbar">
-          <div class="searchTab">
+        <div className={`studioToolbar ${this.state.hidePanel?'hidePanel':''}`}>
+          <div class="searchTab" onClick={this.hidePanel}>
             <em class="icon-magnifying"></em>
           </div>
           <div className="filterTab">
@@ -246,7 +275,7 @@ class AppFeaturesLeft extends React.Component {
             </div>
           </div>
           <div class="addFeature">
-            <button type="button">
+            <button type="button" onClick={this.props.customFeature}>
               <em>+</em> Add Custom Feature
             </button>
           </div>
@@ -373,7 +402,7 @@ class AppFeaturesLeft extends React.Component {
                                       </h3>
                                       <p>{value.total_features} features</p>
                                       <div className="bundleCount">
-                                        {value.selected_feature_count}/
+                                        {featureCount}/
                                         {value.total_features}
                                       </div>
                                     </div>
@@ -430,8 +459,8 @@ class AppFeaturesLeft extends React.Component {
                           <ul>
                             {value.features.map((li) => {
                               return (
-                                <li className={`${li.id===activeFeatures.map(value=>value)||this.state.featureId.filter(value=>value==li.id).length!=0?'active':''}`}>
-                                    {console.log()}
+                                <li className={`${this.state.featureId.filter(value=>value===li.id).length!=0?'active':''}`}>
+                                   
                                   <div
                                     className="featureTab"
                                     onClick={(e) =>
@@ -487,6 +516,7 @@ class AppFeaturesLeft extends React.Component {
             )}
           </div>
         </div>
+        
       </div>
     );
   }

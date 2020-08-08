@@ -6,7 +6,7 @@ const cors=require('cors')
 const path=require('path')
 const passport = require("passport");
 const stripe=require('stripe')('sk_test_51Gye5bDuX2TrUjLdIr15WLxqhu6iSD4BI0JHnTB5aUG59Iou0rXy1S5d9bOjolPKXWlu1kNcCRwOwSRhhlf0mZ4E00y5UiVxip')
-const uuid = require("uuid/v4");
+const uuid = require("uuid");
 require('dotenv').config()
 //confusion-server
 var session = require('express-session');
@@ -204,7 +204,7 @@ const server = http.createServer(app);
 
 
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+server.listen(port, () => {
+  console.log(`Server running at http://:${port}/`);
 
 });

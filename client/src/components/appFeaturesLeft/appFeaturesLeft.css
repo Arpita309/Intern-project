@@ -10,6 +10,9 @@
     background-position: 0 0;
     transition: all .6s ease-in-out;
 }
+.featureStudio .studioLeft .studioToolbar.hidePanel {
+    top: -55px;
+}
 .featureStudio .studioLeft {
     width: 40%;
     height: 100%;

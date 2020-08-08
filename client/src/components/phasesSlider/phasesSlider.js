@@ -168,10 +168,11 @@ export default class PhasesRow extends React.Component {
                         <div  className="platformSection">
                             <h3>Platform <span>Change</span></h3>
                             <ul>
-                                {this.props.platform.map(value=>
-                                   <li><div  className="platformIcon"><img src={value}></img></div> iOS </li>
-                                    )}
-                                
+                                {this.props.platform.slice(0,3).map(value=>value.map(platform=>platform.map(info=>
+                                   <li><div  className="platformIcon"><img src={info.icon}></img></div>{info.title}</li>
+                                   )))}
+                               {this.props.platform.length>3?<li  className="lastLi">
+                                    <div  className="platformIcon moreLink"><span>+{this.props.platform.length-3}</span></div></li>:''}
                                 
                             </ul>
                         </div>
@@ -237,6 +238,16 @@ export default class PhasesRow extends React.Component {
                             {this.props.advance?<React.Fragment><div  className="featureSection">
                         <h3 >Features <span  className="">View</span></h3>
                         <p >26 Features Selected</p></div>
+                        <div  className="platformSection">
+                            <h3>Platform <span>Change</span></h3>
+                            <ul>
+                                {this.props.platform.slice(0,3).map(value=>value.map(platform=>platform.map(info=>
+                                   <li><div  className="platformIcon"><img src={info.icon}></img></div>{info.title}</li>
+                                   )))}
+                                {this.props.platform.length>3?<li  className="lastLi">
+                                    <div  className="platformIcon moreLink"><span>+{this.props.platform.length-3}</span></div></li>:''}
+                            </ul>
+                        </div>
                             <div className='speedSection'>
                            <h3 >Working Speed</h3>
                            <div className='speedSlider'>
@@ -301,10 +312,11 @@ export default class PhasesRow extends React.Component {
                         <div  className="platformSection">
                             <h3>Platform <span>Change</span></h3>
                             <ul>
-                                {this.props.platform.map(value=>
-                                   <li><div  className="platformIcon"><img src={value}></img></div> iOS </li>
-                                    )}
-                                
+                                {this.props.platform.slice(0,3).map(value=>value.map(platform=>platform.map(info=>
+                                   <li><div  className="platformIcon"><img src={info.icon}></img></div>{info.title}</li>
+                                   )))}
+                                {this.props.platform.length>3?<li  className="lastLi">
+                                    <div  className="platformIcon moreLink"><span>+{this.props.platform.length-3}</span></div></li>:''}
                                 
                             </ul>
                         </div>
@@ -372,10 +384,11 @@ export default class PhasesRow extends React.Component {
                         <div  className="platformSection">
                             <h3>Platform <span>Change</span></h3>
                             <ul>
-                                {this.props.platform.map(value=>
-                                   <li><div  className="platformIcon"><img src={value}></img></div> iOS </li>
-                                    )}
-                                
+                                {this.props.platform.slice(0,3).map(value=>value.map(platform=>platform.map(info=>
+                                   <li><div  className="platformIcon"><img src={info.icon}></img></div>{info.title}</li>
+                                   )))}
+                                {this.props.platform.length>3?<li  className="lastLi">
+                                    <div  className="platformIcon moreLink"><span>+{this.props.platform.length-3}</span></div></li>:''}
                                 
                             </ul>
                         </div>
@@ -517,10 +530,11 @@ export default class PhasesRow extends React.Component {
                         <div  className="platformSection">
                             <h3>Platform <span>Change</span></h3>
                             <ul>
-                                {this.props.platform.map(value=>
-                                   <li><div  className="platformIcon"><img src={value}></img></div> iOS </li>
-                                    )}
-                                
+                                {this.props.platform.slice(0,3).map(value=>value.map(platform=>platform.map(info=>
+                                   <li><div  className="platformIcon"><img src={info.icon}></img></div>{info.title}</li>
+                                   )))}
+                                {this.props.platform.length>3?<li  className="lastLi">
+                                    <div  className="platformIcon moreLink"><span>+{this.props.platform.length-3}</span></div></li>:''}
                                 
                             </ul>
                         </div>
@@ -588,21 +602,22 @@ export default class PhasesRow extends React.Component {
                         <div  className="platformSection">
                             <h3>Platform <span>Change</span></h3>
                             <ul>
-                                {this.props.platform.map(value=>
-                                   <li><div  className="platformIcon"><img src={value}></img></div> iOS </li>
-                                    )}
-                                
+                                {this.props.platform.slice(0,3).map(value=>value.map(platform=>platform.map(info=>
+                                   <li><div  className="platformIcon"><img src={info.icon}></img></div>{info.title}</li>
+                                   )))}
+                                {this.props.platform.length>3?<li  className="lastLi">
+                                    <div  className="platformIcon moreLink"><span>+{this.props.platform.length-3}</span></div></li>:''}
                                 
                             </ul>
                         </div>
                         <div  className="platformSection">
                             <h3>Platform <span>Change</span></h3>
                             <ul>
-                                {this.props.platform.map(value=>
-                                   <li><div  className="platformIcon"><img src={value}></img></div> iOS </li>
-                                    )}
-                                
-                                
+                                {this.props.platform.slice(0,3).map(value=>value.map(platform=>platform.map(info=>
+                                   <li><div  className="platformIcon"><img src={info.icon}></img></div>{info.title}</li>
+                                   )))}
+                                {this.props.platform.length>3?<li  className="lastLi">
+                                    <div  className="platformIcon moreLink"><span>+{this.props.platform.length-3}</span></div></li>:''}
                             </ul>
                         </div>
                             <div className='speedSection'>
@@ -670,10 +685,11 @@ export default class PhasesRow extends React.Component {
                         <div  className="platformSection">
                             <h3>Platform <span>Change</span></h3>
                             <ul>
-                                {this.props.platform.map(value=>
-                                   <li><div  className="platformIcon"><img src={value}></img></div> iOS </li>
-                                    )}
-                                
+                                {this.props.platform.slice(0,3).map(value=>value.map(platform=>platform.map(info=>
+                                   <li><div  className="platformIcon"><img src={info.icon}></img></div>{info.title}</li>
+                                   )))}
+                                {this.props.platform.length>3?<li  className="lastLi">
+                                    <div  className="platformIcon moreLink"><span>+{this.props.platform.length-3}</span></div></li>:''}
                                 
                             </ul>
                         </div>
@@ -740,11 +756,11 @@ export default class PhasesRow extends React.Component {
                         <div  className="platformSection">
                             <h3>Platform <span>Change</span></h3>
                             <ul>
-                                {this.props.platform.map(value=>
-                                   <li><div  className="platformIcon"><img src={value}></img></div> iOS </li>
-                                    )}
-                                
-                                
+                                {this.props.platform.slice(0,3).map(value=>value.map(platform=>platform.map(info=>
+                                   <li><div  className="platformIcon"><img src={info.icon}></img></div>{info.title}</li>
+                                   )))}
+                                {this.props.platform.length>3?<li  className="lastLi">
+                                    <div  className="platformIcon moreLink"><span>+{this.props.platform.length-3}</span></div></li>:''}
                             </ul>
                         </div>
                         <div className='speedSection'>

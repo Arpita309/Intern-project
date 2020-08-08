@@ -172,14 +172,18 @@ class AppPage extends React.Component {
       });
     }
     const ascending = (field, e) => {
-      if (this.state.sortId == e.target.id)
-        this.setState({ data: this.state.sort, sortId: "" });
-      else
+      if (this.state.sortId === e.target.id){
+        filtered =this.state.data;
+        this.setState({  sortId: "" })
+      }
+      else{
+        let sort=this.state.data
+        filtered=sortAsc(sort, field);
         this.setState({
-          data: sortAsc(this.state.data, field),
+          
           sortId: e.target.id,
         });
-
+      }
       filtered = this.state.data;
     };
     const descending = (field, e) => {
@@ -188,7 +192,8 @@ class AppPage extends React.Component {
         this.setState({ sortId: "" });
         console.log(this.state.sort);
       } else {
-        filtered = sortDesc(this.state.data, field);
+        let sort=this.state.data
+        filtered = sortDesc(sort, field);
         this.setState({ sortId: e.target.id });
       }
     };
@@ -250,9 +255,7 @@ class AppPage extends React.Component {
       sliderPrice("template_weeks");
     };
 
-    return this.state.loading ? (
-      <InitialLoader />
-    ) : (
+    return (
       <div>
         <AppHeader />
         <div className="middlePart">
@@ -496,6 +499,8 @@ class AppPage extends React.Component {
                 </div>
               </div>
             </div>
+            {this.state.loading?<InitialLoader />:
+    
             <div className="templateListing withLock">
               <Result />
               <NotFound />
@@ -543,7 +548,7 @@ class AppPage extends React.Component {
                   );
                 })}
               </div>
-            </div>
+            </div>}
             
             <div className={`commonPopUp ${this.state.custom?'active':''}`}>
                 <div class="popOverlay"></div>

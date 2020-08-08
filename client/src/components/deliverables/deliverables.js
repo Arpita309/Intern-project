@@ -31,7 +31,7 @@ class Delivery extends React.Component{
            showPlatform:false,firstDelivery:false,
            custom:[],count:1,platformList:[],
            selectedPlatform:[],advance:false,teams:{},dropdown:false,teamLocation:'Anywhere',search:'',mobNavigation:false,
-           bottomBar:false,promotion:false,slider:'',platformId:[]
+           bottomBar:false,promotion:false,slider:'',platformId:[],data:[],
            
         }
     }
@@ -46,6 +46,16 @@ class Delivery extends React.Component{
             const data = res.data;
             this.setState({teams:data[0].teams });
           }) 
+          ApiGet(`app/?attributes.title=${this.props.match.params.name}`).then(
+            (res) => {
+              const data = res.data;
+              this.setState({ data });
+              this.state.data.map(value=>value.attributes.map(info=>info.platform_ids.map(obj=>{
+                this.setState({selectedPlatform:[...this.state.selectedPlatform,this.state.platformList.map(data=>data.attributes.filter(platform=>platform.id===obj)).filter(value=>value.length)],platformId:[...this.state.platformId,obj]})
+              }) ))
+             
+            
+             } );
         }
     showPromotion=()=>{
         
@@ -77,7 +87,7 @@ class Delivery extends React.Component{
     }
     selectPlatform=(icon,e,id)=>{
         
-        if(this.state.selectedPlatform.filter(value=>value===icon).length){
+        if(this.state.platformId.filter(value=>value===id).length){
             this.state.selectedPlatform=this.state.selectedPlatform.filter(value=>value!=icon)
             this.state.platformId=this.state.platformId.filter(value=>value!=id)
         }
@@ -113,8 +123,7 @@ class Delivery extends React.Component{
     }
     
     render(){
-     
-        
+        console.log(this.state.selectedPlatform)
         const classes = useStyles();     
     
   const marks = [
@@ -227,10 +236,12 @@ function valuetext(value) {
                                 <p>Select platform for your product</p>
                                 <ul>
                                     
-                                    {this.state.selectedPlatform.map(value=>
+                                    {this.state.selectedPlatform.map(value=>value.map(platform=>platform.map(info=>
+                                         
                                         <li>
-                                            <img src={value}></img>
-                                        </li>)}
+                                            
+                                            <img src={info.icon}></img>
+                                        </li>)))}
                                     <li  className="moreplatform" onClick={this.platform}>
                                         <em  className="icon-plus"></em>
                                     </li>
@@ -258,8 +269,8 @@ function valuetext(value) {
                                                         <div  className="platformName">{platform.title}</div>
                                                         <div className="platformCheck" >
                                                            
-                                                            <input  type="checkbox" id={platform.id}  checked={this.state.selectedPlatform.filter(value=>value===platform.icon).length?true:false}  onChange={()=>this.setState({platformId:[...this.state.platformId,platform.id]})}></input>
-                                                            <label  htmlFor={platform.id} onClick={(e)=>this.selectPlatform(platform.icon,e,platform.id)}></label>
+                                                            <input  type="checkbox" id={platform.id}  checked={this.state.platformId.filter(id=>id===platform.id).length}  onChange={()=>this.setState({platformId:[...this.state.platformId,platform.id]})}></input>
+                                                            <label  htmlFor={platform.id} onClick={(e)=>this.selectPlatform(platform,e,platform.id)}></label>
                                                         </div>
                                                     </li>
                                                     ))}
@@ -415,93 +426,103 @@ function valuetext(value) {
                         </div>
                     </div>
                     <div className='deliveryBottomBar active'>
-                    <div className='appBottomBar'>
-                    <div className="priceBox">
-                        <h3 >
-                            <span>Installment</span> ₹34,931.00 / week <em ></em>
-                        </h3>
-                    </div>
-                
-                    <div  className="durationBox">
-                        <h3>
-                            <span>Duration</span> 24 weeks
-                        </h3>
-                    </div>
-                    <div className="maxpriceBox">
-                        <h3>
-                            <span >Max Price</span>
-                            <strong>₹8,38,352.00</strong>
-                        </h3>
-                        <div  className="phasebreakBox">
-                            <div  className="phaseIcon" >
-                                <img alt="" src="https://studio.builder.ai/assets/images/info_blue.png" id='2' onClick={(e)=>this.showInfobox(e)}></img>
-                            </div>
-                            <div  className={`phasebreakOverlay ${this.state.bottomBar?'active':''}`}></div>
-                            <div className={`phasebreakDetail ${this.state.bottomBar?'active':''}`}>
-                                <div  className="closeButton" onClick={this.showInfobox}><em  className="icon-cancel"></em></div>
-                                <div className='pricedetailBox'>
-                                    <h3 >Price Details</h3>
+                        <div className='appBottomBar'>
+                        <div className="priceBox">
+                            <h3 >
+                                <span>Installment</span> ₹34,931.00 / week <em ></em>
+                            </h3>
+                        </div>
+                    
+                        <div  className="durationBox">
+                            <h3>
+                                <span>Duration</span> 24 weeks
+                            </h3>
+                        </div>
+                        <div className="maxpriceBox">
+                            <h3>
+                                <span >Max Price</span>
+                                <strong>₹8,38,352.00</strong>
+                            </h3>
+                            <div  className="phasebreakBox">
+                                <div  className="phaseIcon" >
+                                    <img alt="" src="https://studio.builder.ai/assets/images/info_blue.png" id='2' onClick={(e)=>this.showInfobox(e)}></img>
+                                </div>
+                                <div  className={`phasebreakOverlay ${this.state.bottomBar?'active':''}`}></div>
+                                <div className={`phasebreakDetail ${this.state.bottomBar?'active':''}`}>
+                                    <div  className="closeButton" onClick={this.showInfobox}><em  className="icon-cancel"></em></div>
+                                    <div className='pricedetailBox'>
+                                        <h3 >Price Details</h3>
+                                        <ul>
+                                            <li  className="headRow">
+                                                <span>Phases</span>
+                                                <span>Duration</span>
+                                                <span>Price</span>
+                                            </li>
+                                            <li  className="headRow">
+                                                <span>Product Roadmap</span>
+                                                <span>Not Added</span>
+                                            </li>
+                                            <li>
+                                                <span>Design</span>
+                                                <span>6  weeks</span>
+                                                <span>₹209641</span>
+                                            </li>
+                                            <li  className="headRow">
+                                                <span>Tailor-made Prototype</span>
+                                                <span>Not Added</span>
+                                            </li>
+                                            <li>
+                                                <span>MVP</span>
+                                                <span>17.2  weeks</span>
+                                                <span>₹585377</span>
+                                            </li>
+                                            <li>
+                                                <span >Full Build</span>
+                                                <span >0.8  week</span>
+                                                <span >₹43546</span>
+                                            </li>
+                                            <li  className="bgRow discountRow applyPromoMobile">
+                                                <img  src="https://studio.builder.ai/assets/images/promotion_icon.png" alt=""></img>
+                                                <button type="button" onClick={this.showPromotion}>Apply Promotion</button>
+                                            </li>
+                                            <li  className="bgRow">
+                                                <strong>Total</strong>
+                                                <strong>24 weeks</strong>
+                                                <strong>₹8,38,564.00</strong>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div className='platformdetailBox'>
+                                    <h3>Platform <span onClick={this.platform}>Change</span></h3>
                                     <ul>
-                                        <li  className="headRow">
-                                            <span>Phases</span>
-                                            <span>Duration</span>
-                                            <span>Price</span>
-                                        </li>
-                                        <li  className="headRow">
-                                            <span>Product Roadmap</span>
-                                            <span>Not Added</span>
-                                        </li>
-                                        <li>
-                                            <span>Design</span>
-                                            <span>6  weeks</span>
-                                            <span>₹209641</span>
-                                        </li>
-                                        <li  className="headRow">
-                                            <span>Tailor-made Prototype</span>
-                                            <span>Not Added</span>
-                                        </li>
-                                        <li>
-                                            <span>MVP</span>
-                                            <span>17.2  weeks</span>
-                                            <span>₹585377</span>
-                                        </li>
-                                        <li>
-                                            <span >Full Build</span>
-                                            <span >0.8  week</span>
-                                            <span >₹43546</span>
-                                        </li>
-                                        <li  className="bgRow discountRow applyPromoMobile">
-                                            <img  src="https://studio.builder.ai/assets/images/promotion_icon.png" alt=""></img>
-                                            <button type="button" onClick={this.showPromotion}>Apply Promotion</button>
-                                        </li>
-                                        <li  className="bgRow">
-                                            <strong>Total</strong>
-                                            <strong>24 weeks</strong>
-                                            <strong>₹8,38,564.00</strong>
-                                        </li>
+                                    {this.state.selectedPlatform.map(value=>value.map(platform=>platform.map(info=>
+                                            <li>
+                                                <img src={info.icon}></img>
+                                            </li>)))}
                                     </ul>
                                 </div>
+                                </div>
+                                
                             </div>
                         </div>
-                    </div>
-                    <div  className="applyPromoBox" >
-                        <span className="promo-hd">Promotion </span>
-                        <div  className="promo-container">
-                            <img  src="https://studio.builder.ai/assets/images/promotion_icon.png" alt=""></img>
-                            <button  type="button"  onClick={this.showPromotion}>Apply Promotion</button>
+                        <div  className="applyPromoBox" >
+                            <span className="promo-hd">Promotion </span>
+                            <div  className="promo-container">
+                                <img  src="https://studio.builder.ai/assets/images/promotion_icon.png" alt=""></img>
+                                <button  type="button"  onClick={this.showPromotion}>Apply Promotion</button>
+                            </div>
                         </div>
-                    </div>
-                    <div  className={`previewBottom ${this.state.bottomBar?'child_btn_full':''}`}>
-                        <div >
-                            <button type="button" className="nextButton"><Link to='/build-card' style={{color:'white'}}> Done </Link></button>
+                        <div  className={`previewBottom ${this.state.bottomBar?'child_btn_full':''}`}>
+                            <div >
+                                <button type="button" className="nextButton"><Link to='/build-card' style={{color:'white'}}> Done </Link></button>
+                            </div>
+                            <share-url-button  >
+                                <button  type="button" className="shareUrl">
+                                    <em  class="icon-share-outline"></em>
+                                </button>
+                            </share-url-button>
                         </div>
-                        <share-url-button  >
-                            <button  type="button" className="shareUrl">
-                                <em  class="icon-share-outline"></em>
-                            </button>
-                        </share-url-button>
-                    </div>
-                 </div></div>
+                    </div></div>
                 </div>
             </div>
         )
