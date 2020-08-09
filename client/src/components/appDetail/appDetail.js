@@ -7,6 +7,7 @@ import FeatureInfo from "../appFeature/appFeature";
 import Footer from "../footer/footer";
 import Header from "../appDetailHeader/appDetailHeader";
 import { ApiGet } from "../../api";
+import InitialLoader from '../initialLoader/initialLoader'
 import axios from 'axios'
 import Contact from '../connectModal/connectModal'
 let userData={}
@@ -23,7 +24,7 @@ class AppDetail extends React.Component {
       email: "",
       password: "",
       name:'',organisation:'',contactNumber:'',nextStep:false,
-      redirect:false,customize:false
+      redirect:false,customize:false,loading:true
     };
   }
 
@@ -33,7 +34,7 @@ class AppDetail extends React.Component {
         const data = res.data;
         this.setState({ data });
         this.state.data.map(value=>value.attributes.map(info=>info.platform_ids.map(obj=>{
-          this.setState({platformId:[...this.state.platformId,obj]})
+          this.setState({platformId:[...this.state.platformId,obj],loading:false})
         }) ))
         console.log(this.state.platformId.map(value=>value))
       
@@ -133,7 +134,7 @@ customize=()=>{
     return (
       <div className="wrapper">
         <Header />
-        <div className="middlePart" style={{marginLeft:'-20px'}} >
+        {this.state.loading?<InitialLoader/>:<div className="middlePart" style={{marginLeft:'-20px'}} >
           <div className="appdetailSection">
             {this.state.data.map((value) => {
               return value.attributes.map((info) => {
@@ -281,7 +282,7 @@ customize=()=>{
                   </div>
               </div>
             </div>
-        </div>
+        </div>}
         <Footer />
         
         <div className="loginScreenAppDetail">

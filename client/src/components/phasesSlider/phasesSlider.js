@@ -81,7 +81,7 @@ export default class PhasesRow extends React.Component {
                         <div className='phasesRow'>
                     <SliderComponent>
 
-                    <div className="phasesBox Product-theme dactive" style={{display: 'inline-block'}}>
+                    <div className={`phasesBox Product-theme ${this.state.selected.filter(value=>value==='phaseSelected4').length?'active':'dactive'}`} style={{display: 'inline-block'}}>
                         <div  className="phasesHead">
                             <h3>
                                 <div  className="phaseIcon">
@@ -144,7 +144,7 @@ export default class PhasesRow extends React.Component {
                             </div>
                         </learn-more>
                     </div>
-                    <div  className="phasesBox Design-theme active" style={{display: 'inline-block'}}>
+                    <div  className={`phasesBox Design-theme ${this.state.selected.filter(value=>value==='phaseSelected1').length?'active':'dactive'}`} style={{display: 'inline-block'}}>
                         <div  className="phasesHead">
                             <h3>
                                 <div  className="phaseIcon"><img  alt="" src="https://bstudio-assets.azureedge.net/assets-builder/uploads/build_phase/icon/587f162314c49f39f0d5b61d/Design_blue.png"></img></div>
@@ -217,7 +217,7 @@ export default class PhasesRow extends React.Component {
                             </div>
                         </learn-more>
                     </div>
-                    <div className="phasesBox Tailor-made-theme dactive" style={{display: 'inline-block'}}>
+                    <div className={`phasesBox Tailor-made-theme ${this.state.selected.filter(value=>value==='phaseSelected2').length?'active':'dactive'}`} style={{display: 'inline-block'}}>
                         <div  className="phasesHead">
                             <h3>
                                 <div  className="phaseIcon">
@@ -289,7 +289,7 @@ export default class PhasesRow extends React.Component {
                                 </div>
                             </learn-more>
                         </div>
-                    <div className="phasesBox MVP-theme active" style={{display: 'inline-block'}}>
+                    <div className={`phasesBox MVP-theme ${this.state.selected.filter(value=>value==='phaseSelected0').length?'active':'dactive'}`} style={{display: 'inline-block'}}>
                         <div  className="phasesHead">
                             <h3>
                                 <div  className="phaseIcon"><img alt="" src="https://bstudio-assets.azureedge.net/assets-builder/uploads/build_phase/icon/5963a29c14c49f1407590ad5/MVP_blue.png"></img></div>
@@ -362,7 +362,7 @@ export default class PhasesRow extends React.Component {
                             </div>
                         </learn-more>
                     </div>
-                    <div className="phasesBox Full-theme active" style={{display: 'inline-block'}}>
+                    <div className={`phasesBox Full-theme ${this.state.selected.filter(value=>value==='phaseSelected3').length?'active':'dactive'}`} style={{display: 'inline-block'}}>
                         <div  className="phasesHead">
                             <h3>
                                 <div  className="phaseIcon"><img  alt="" src="https://bstudio-assets.azureedge.net/assets-builder/uploads/build_phase/icon/587f162314c49f39f0d5b620/Full_blue.png"></img></div>
@@ -445,7 +445,7 @@ export default class PhasesRow extends React.Component {
                     <div className='phasesRowSlider'>
                     <div className='phasesRowContent'>
                         <div className='phasesRow'>
-                    <div className="phasesBox Product-theme dactive" style={{display: 'inline-block'}}>
+                    <div className={`phasesBox Product-theme ${this.state.selected.filter(value=>value==='phaseSelected4').length?'active':'dactive'}`} style={{display: 'inline-block'}}>
                         <div  className="phasesHead">
                             <h3>
                                 <div  className="phaseIcon">
@@ -508,7 +508,7 @@ export default class PhasesRow extends React.Component {
                             </div>
                         </learn-more>
                     </div>
-                    <div  className="phasesBox Design-theme active" style={{display: 'inline-block'}}>
+                    <div  className={`phasesBox Design-theme ${this.state.selected.filter(value=>value==='phaseSelected1').length?'active':'dactive'}`} style={{display: 'inline-block'}}>
                         <div  className="phasesHead">
                             <h3>
                                 <div  className="phaseIcon"><img  alt="" src="https://bstudio-assets.azureedge.net/assets-builder/uploads/build_phase/icon/587f162314c49f39f0d5b61d/Design_blue.png"></img></div>
@@ -579,7 +579,7 @@ export default class PhasesRow extends React.Component {
                             </div>
                         </learn-more>
                     </div>
-                    <div className="phasesBox Tailor-made-theme dactive" style={{display: 'inline-block'}}>
+                    <div className={`phasesBox Tailor-made-theme ${this.state.selected.filter(value=>value==='phaseSelected2').length?'active':'dactive'}`} style={{display: 'inline-block'}}>
                         <div  className="phasesHead">
                             <h3>
                                 <div  className="phaseIcon">
@@ -661,7 +661,7 @@ export default class PhasesRow extends React.Component {
                                 </div>
                             </learn-more>
                         </div>
-                    <div className="phasesBox MVP-theme active" style={{display: 'inline-block'}}>
+                    <div className={`phasesBox MVP-theme ${this.state.selected.filter(value=>value==='phaseSelected0').length?'active':'dactive'}`} style={{display: 'inline-block'}}>
                         <div  className="phasesHead">
                             <h3>
                                 <div  className="phaseIcon"><img alt="" src="https://bstudio-assets.azureedge.net/assets-builder/uploads/build_phase/icon/5963a29c14c49f1407590ad5/MVP_blue.png"></img></div>
@@ -734,7 +734,7 @@ export default class PhasesRow extends React.Component {
                             </div>
                         </learn-more>
                     </div>
-                    <div className="phasesBox Full-theme active" style={{display: 'inline-block'}}>
+                    <div className={`phasesBox Full-theme ${this.state.selected.filter(value=>value==='phaseSelected3').length?'active':'dactive'}`} style={{display: 'inline-block'}}>
                         <div  className="phasesHead">
                             <h3>
                                 <div  className="phaseIcon"><img  alt="" src="https://bstudio-assets.azureedge.net/assets-builder/uploads/build_phase/icon/587f162314c49f39f0d5b620/Full_blue.png"></img></div>

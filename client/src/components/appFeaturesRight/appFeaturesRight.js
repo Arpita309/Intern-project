@@ -15,7 +15,7 @@ class FeatureRight extends React.Component{
            selected:'',
            active:'',
            more:true,
-           Description:carouselDescription,
+           Description:[],
            test:carouselDescription,
            img:'',
            currentImageIndex: 0,selectedItem:{},fullScreen:false,
@@ -141,8 +141,9 @@ class FeatureRight extends React.Component{
         }   
     
     render(){
-        
-      
+        console.log(this.state.features)
+       this.state.app.map(value=>value.attributes.map(info=>info.features.map(a=>this.state.Description=[...this.state.Description,this.state.features.map(b=>b.features.filter(c=>c.id===info.id))])))
+      console.log(this.state.Description)
         let mobileImages=[]
             {this.state.app.map((value)=>
               value.attributes.map(info=>{
@@ -245,7 +246,7 @@ class FeatureRight extends React.Component{
                             <div className={`${this.state.mobileView?'iphonePrev':'webPrev'}`}>
                                 <div className={`${this.state.mobileView?'phoneScreen':'webScreen'}`}>
                                 
-                                {this.state.selectedItem.length===1?<img src={this.state.selectedItem[0].feature_screenshots.map(img=>this.state.mobileView?img.android:img.web)}></img>:<img className="active animation2" src={this.state.data.length?this.state.data[this.state.currentImageIndex].feature_screenshots.map(img=>this.state.mobileView?img.android:img.web):''} onChange={this.showBundle}></img>}    
+                                {this.state.selectedItem.length===1?<img className="active animation1" src={this.state.selectedItem[0].feature_screenshots.map(img=>this.state.mobileView?img.android:img.web)}></img>:<img className="active animation1" src={this.state.data.length?this.state.data[this.state.currentImageIndex].feature_screenshots.map(img=>this.state.mobileView?img.android:img.web):''} onChange={this.showBundle}></img>}    
                                 </div>
                             </div>
                             <div className="iphoneNav">

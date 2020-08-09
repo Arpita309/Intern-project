@@ -43,23 +43,24 @@ class AppFeaturesLeft extends React.Component {
     ApiGet("bundle").then((res) => {
       const data = res.data;
       this.setState({ features: data });
+      ApiGet(`app/?attributes.title=${this.props.name}`).then((res) => {
+        const data = res.data;
+        this.setState({ app: data });
+      
+      let activeFeatures=[];
+      
+      this.state.features.map(value=>value.features.map(info=>
+        activeFeatures=[...activeFeatures,this.state.app.map(a=>a.attributes.map(c=>c.features.filter(b=>b.id===info.id)))]))
+        
+        activeFeatures.map(value=>value.map(info=>info[0].map(a=>{
+          this.setState({featureId:[...this.state.featureId,a.id ]})})))
+      });
     });
     ApiGet("filter").then((res) => {
       const data = res.data;
       this.setState({ filter: data });
     });
-    ApiGet(`app/?attributes.title=${this.props.name}`).then((res) => {
-      const data = res.data;
-      this.setState({ app: data });
     
-    let activeFeatures=[];
-    
-    this.state.features.map(value=>value.features.map(info=>
-      activeFeatures=[...activeFeatures,this.state.app.map(a=>a.attributes.map(b=>b.features.filter(c=>c.id===info.id)))]))
-      activeFeatures.map(value=>value.map(info=>info[0].map(a=>{
-        if(this.state.featureId.filter(e=>e!==a.id))
-        this.setState({featureId:[...this.state.featureId,a.id ]})})))
-    });
     
         
   }
@@ -124,23 +125,12 @@ class AppFeaturesLeft extends React.Component {
   }
   
   render() {
-    
+    console.log(this.state.featureId)
     let selectedBundle=this.state.features.filter(value=>value.id===this.state.selected);
     let disFeature=[];
-    this.state.featureId.map(value=>disFeature.filter(id=>{
-      if(id!=value){
-        return(disFeature=[...disFeature,id])
-      }
-    })
-    )
-    selectedBundle.map(data=>data.features.map(info=>
-      disFeature.map(a=>
-        {
-        if(info.id===a){
-        return(featureCount++);
-      }
-    })))
-    console.log(disFeature)
+    disFeature=this.state.featureId.filter(value=>disFeature.filter(id=>
+      id!=value))
+    
     const classes = useStyles();
 
     function valuetext(value) {
@@ -372,7 +362,7 @@ class AppFeaturesLeft extends React.Component {
             </div>
             <div className={`${this.state.width > 1200 ? "" : "bundleList"}`}>
               <perfect-scrollbars>
-                <div style={{ position: "static" }}>
+                <div style={{ position: "static"}}>
                   <div className="ps-content">
                     <ul>
                       {this.state.features.map((value) => {
@@ -421,7 +411,7 @@ class AppFeaturesLeft extends React.Component {
           </div>
           <div className="rightsidePanel">
             {this.state.features.map((value) =>
-              value.id == this.state.selected ? (
+              value.id === this.state.selected ? (
                 <React.Fragment>
                   <div className="featureHead">
                     <h3>
@@ -459,7 +449,7 @@ class AppFeaturesLeft extends React.Component {
                           <ul>
                             {value.features.map((li) => {
                               return (
-                                <li className={`${this.state.featureId.filter(value=>value===li.id).length!=0?'active':''}`}>
+                                <li className={`${this.state.featureId.filter(value=>value===li.id).length?'active':''}`}>
                                    
                                   <div
                                     className="featureTab"

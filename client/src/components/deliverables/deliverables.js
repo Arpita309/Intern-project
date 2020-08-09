@@ -514,7 +514,7 @@ function valuetext(value) {
                         </div>
                         <div  className={`previewBottom ${this.state.bottomBar?'child_btn_full':''}`}>
                             <div >
-                                <button type="button" className="nextButton"><Link to='/build-card' style={{color:'white'}}> Done </Link></button>
+                                <button type="button" className="nextButton"><Link to={`/build-card/${this.p}`} style={{color:'white'}}> Done </Link></button>
                             </div>
                             <share-url-button  >
                                 <button  type="button" className="shareUrl">
