@@ -1008,7 +1008,7 @@ perfect-scrollbars > .ps {
     width: 100%;
     float: left;
     clear: both;
-    padding: 15px 12px;
+    padding: 0px 12px;
     height: 100px;
 }
 

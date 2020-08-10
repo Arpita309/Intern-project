@@ -50,7 +50,7 @@ class Type extends React.Component{
               })}
               </div>
               <div className='productTypeRow' >
-              <div className='drag-scroll-content'style={{display: 'block', whiteSpace: 'nowrap', width: '100%', height: `calc(100% + 17px)`}}>
+              <div className='drag-scroll-content'style={{display: 'block', whiteSpace: 'nowrap', width: '100%'}}>
                 <Slider>
                     <div style={{display:'flex'}}>
                       {this.state.types.map(details=>{

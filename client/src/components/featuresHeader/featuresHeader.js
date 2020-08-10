@@ -42,7 +42,7 @@ class FeaturesHeader extends React.Component{
                                 <a href='http://localhost:3000/'><img width="26" height="35" alt="" class="smallLogo" src="https://studio.builder.ai/assets/images/logoSmall.png"></img></a>
                             </div>
                             
-                            <div className='appBottombar'>
+                            <div className='appBottom'>
                                 <div className='breadcrums'>
                                     <ul>
                                     <li  ><a href='http://localhost:3000/apps'>Apps </a><span style={{color:' rgba(0,0,0,.5)'}}>{'>'}</span> </li>

@@ -62,7 +62,7 @@ export default class FeatureInfo extends React.Component {
             </div>
             <div className={`appfeatureSlider ${this.state.mobileView?'mobileview':'webview'}`}>
                <div style={{pointerEvents:'auto'}}>
-               <div className='drag-scroll-content' style={{display: 'block',whiteSpace: 'nowrap',width: '100%',height: 'calc(100% + 20px)'}}>
+               <div className='drag-scroll-content' style={{display: 'block',whiteSpace: 'nowrap',width: '100%'}}>
                     <Slider>
                     {this.props.data.features.map(value=>{
                     return(

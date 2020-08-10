@@ -49,7 +49,9 @@ class Delivery extends React.Component{
           ApiGet(`app/?attributes.title=${this.props.match.params.name}`).then(
             (res) => {
               const data = res.data;
+              
               this.setState({ data });
+              console.log(this.state.data)
               this.state.data.map(value=>value.attributes.map(info=>info.platform_ids.map(obj=>{
                 this.setState({selectedPlatform:[...this.state.selectedPlatform,this.state.platformList.map(data=>data.attributes.filter(platform=>platform.id===obj)).filter(value=>value.length)],platformId:[...this.state.platformId,obj]})
               }) ))

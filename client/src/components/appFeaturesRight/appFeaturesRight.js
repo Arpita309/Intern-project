@@ -16,7 +16,7 @@ class FeatureRight extends React.Component{
            active:'',
            more:true,
            Description:[],
-           test:carouselDescription,
+           test:[],
            img:'',
            currentImageIndex: 0,selectedItem:{},fullScreen:false,
            app:[],
@@ -36,12 +36,14 @@ class FeatureRight extends React.Component{
           .then(res => {
             const data = res.data;
             this.setState({ app:data,active:data.map(value=>value.attributes.map(info=>info.features[0].id)) });
-           
+            this.state.app.map(value=>value.attributes.map(info=>this.setState({active:info.features[0].id})))
+            console.log(this.state.active)
           })
           ApiGet('bundle')
           .then(res => {
             const data = res.data;
             this.setState({ features:data });
+           
           })
           
                         
@@ -56,12 +58,13 @@ class FeatureRight extends React.Component{
                 mobileImages.push(...info.features)
                 this.state.data=[...mobileImages]}))}
                 
-                
+    
+      
        if(this.props!=prevProps) this.setFeature()
         
               
     }
-    
+   
     nextSlide () {
 		const lastIndex = this.state.data.length - 1;
 		const { currentImageIndex } = this.state;
@@ -142,8 +145,10 @@ class FeatureRight extends React.Component{
     
     render(){
         console.log(this.state.features)
-       this.state.app.map(value=>value.attributes.map(info=>info.features.map(a=>this.state.Description=[...this.state.Description,this.state.features.map(b=>b.features.filter(c=>c.id===info.id))])))
-      console.log(this.state.Description)
+        this.state.app.map(value=>value.attributes.map(info=>info.features.map(a=>this.state.Description=[...this.state.Description,this.state.features.map(b=>b.features.filter(c=>c.id===a.id)).filter(d=>d.length>0)])))
+      let desc=this.state.Description.filter(value=>value.length>0).map(value=>value[0].filter(info=>info.id===this.state.active)).filter(data=>data.length>0)
+      this.state.test=desc.map(value=>value[0])[0]
+        console.log(this.state.test)
         let mobileImages=[]
             {this.state.app.map((value)=>
               value.attributes.map(info=>{
@@ -221,18 +226,18 @@ class FeatureRight extends React.Component{
                         </div>
                         {this.state.active? 
                         <div className="featureDescription">
-                       
+                        
                             <div className="descriptionIcon">
-                                <img src={this.state.test[0].img}></img>
+                                <img src={desc.map(value=>value[0].icon)[0]}></img>
                             </div>
                             <div class="descriptionText">
-                                <h4>{this.state.test[0].carouselH4}</h4>
+                                <h4>{desc.map(value=>value[0].title)[0]}- {desc.map(value=>value[0].price)[0]} ({Math.round(`${desc.map(value=>value[0].weeks)[0]}`*10)/10}weeks)</h4>
                                 <div class="webView">
-                                    <p>{this.state.more?this.state.test[0].webViewP:this.state.test[0].P}<span onClick={this.showmore}>{this.state.more?'more...':'less...'}</span></p>
+                                    <p>{desc.map(value=>value[0].description)[0]}</p>
                                     
                                 </div>
                                 <div className='mobileView'>
-                                        <p>{this.state.more?this.state.test[0].mobileViewP:this.state.test[0].P}<span onClick={this.showmore}>{this.state.more?'more...':'less...'}</span></p>
+                                        <p>{desc.map(value=>value[0].description)[0]}</p>
                                 </div>    
                             </div>
 

@@ -42,6 +42,7 @@ class AppFeaturesLeft extends React.Component {
     this.update();
     ApiGet("bundle").then((res) => {
       const data = res.data;
+      console.log(data)
       this.setState({ features: data });
       ApiGet(`app/?attributes.title=${this.props.name}`).then((res) => {
         const data = res.data;
@@ -125,7 +126,7 @@ class AppFeaturesLeft extends React.Component {
   }
   
   render() {
-    console.log(this.state.featureId)
+    
     let selectedBundle=this.state.features.filter(value=>value.id===this.state.selected);
     let disFeature=[];
     disFeature=this.state.featureId.filter(value=>disFeature.filter(id=>

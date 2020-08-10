@@ -25,6 +25,7 @@ const FeatureSchema = new Schema({
     user_requested:{type:Boolean},
     status:{type:String},
     feature_bundle_id:Number,
+       description:String,
         difficulty:{type:Number},
         algorithm: {type:String},
         stream_media:{type:Boolean},

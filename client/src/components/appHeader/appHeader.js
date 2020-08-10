@@ -44,7 +44,7 @@ class AppHeader extends React.Component{
                                  <strong>Apps</strong>
                                  <span>(Step 1/4)</span>
                             </div>
-                            <div className='appBottombar'>
+                            <div className='appBottom'>
                                 <div className='breadcrums'>
                                     <ul>
                                     <li class="active">Apps <span style={{color:' rgba(0,0,0,.5)'}}>{'>'}</span> </li>
