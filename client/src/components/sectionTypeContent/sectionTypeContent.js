@@ -4,13 +4,14 @@ import Slider from '../slider/slider'
 import axios from 'axios'
 import {ApiGet} from '../../api'
 import BottomBar from '../homepageBottombar/homepageBottombar'
+import InitialLoader from '../initialLoader/initialLoader'
 class Type extends React.Component{
     constructor(props){
 		super(props)
 		this.state={
       types:[],
       checkId:'',
-      hideBottom:false
+      hideBottom:false,loading:true
 		}
 	}
 	componentDidMount() {
@@ -18,7 +19,7 @@ class Type extends React.Component{
         ApiGet('product-type')
           .then(res => {
             const data = res.data;
-            this.setState({types:data });
+            this.setState({types:data,loading:false });
           })
           
           
@@ -36,7 +37,7 @@ class Type extends React.Component{
     render(){
       
         return(
-          <div className='displaySection'>
+         this.state.loading?<InitialLoader/>:<div className='displaySection'>
             <div className='productTypeSection'>
               <div className='sectionContent'>
                 {this.state.types.map(value=>{

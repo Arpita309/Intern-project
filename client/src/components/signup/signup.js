@@ -5,6 +5,7 @@ import { Divider } from '@material-ui/core'
 import axios from 'axios'
 import jwt_decode from "jwt-decode";
 import setAuthToken from "../utils/setAuthToken";
+import {ApiPost} from "../../api"
 var userData={}
 class SignUp extends React.Component{
     constructor(props){
@@ -37,7 +38,7 @@ class SignUp extends React.Component{
 
         
            
-            axios.post("http://localhost:4000/auth/signup", userData)
+            ApiPost("auth/signup", userData)
             
             .then(res => {
                 console.log(res.config.data)

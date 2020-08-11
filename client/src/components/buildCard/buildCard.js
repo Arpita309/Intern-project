@@ -5,7 +5,7 @@ import {Link} from'react-router-dom'
 import Header from '../buildcardHeader/buildcardHeader'
 import Footer from '../footer/footer'
 import axios from 'axios'
-import {auth} from '../authentication'
+import AuthContext from '../../context/state'
 class BuildCard extends React.Component{
     constructor(props){
         super(props)
@@ -71,10 +71,11 @@ class BuildCard extends React.Component{
     }
     
     render(){
-       console.log(auth)
+       
         return(
             <div className='wrapper'>
                 <Header showSidebar={this.state.showSidebar} sidebar={this.sidebar}/>
+                
                 <div className='middlePart'>
                     <div className='main-buildcard-bx' >
                         <div className='container' style={{width:'1470px'}}>
@@ -84,7 +85,8 @@ class BuildCard extends React.Component{
                                         <div className='buildCardTop'>
                                             <div  className="buildCardLeft">
                                                 <h1>
-                                                    <span  className="userspace"> Hi,{auth.name}, </span> Here is your 
+                                                <AuthContext.Consumer>{(props)=>{return( <span  className="userspace"> Hi,{props.auth.auth.name}, </span>  )}}</AuthContext.Consumer>
+                                                Here is your
                                                     <strong  className="cardHover">
                                                         <span>
                                                             <img  alt="" src="https://studio.builder.ai/assets/images/buildcard-icon.png" className="card-default"></img>

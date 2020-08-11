@@ -3,6 +3,7 @@ import {useStripe, useElements,CardCvcElement,CardExpiryElement,CardNumberElemen
 import './pay.css'
 import axios from 'axios'
 import { Link } from 'react-router-dom';
+import {ApiPost} from '../../api'
 
 var razorpay = new window.Razorpay({  key: 'rzp_test_abGPkyLg8rUCDC',      image: 'https://i.imgur.com/n5tjHFD.png',});
 razorpay.once('ready', function(response) {  console.log(response.methods);})
@@ -17,7 +18,7 @@ const  Pay =()=>{
   const [id,setId]=useState();
   function razorpay_payment_by_netbanking() {
     
-    axios.post("http://localhost:4000/razorpay").then(res=>{
+    ApiPost("razorpay").then(res=>{
        
     razorpay.createPayment({
         
@@ -36,7 +37,7 @@ const  Pay =()=>{
 }
 function razorpay_payment_by_wallet() {
     
-    axios.post("http://localhost:4000/razorpay").then(res=>{
+    ApiPost("razorpay").then(res=>{
         console.log(res)
     razorpay.createPayment({
         
@@ -52,7 +53,7 @@ function razorpay_payment_by_wallet() {
 }
 function razorpay_payment_by_upi(e) {
     const wallet=e.target.value
-    axios.post("http://localhost:4000/razorpay").then(res=>{
+    ApiPost("razorpay").then(res=>{
         console.log(res)
     
         razorpay.createPayment({
@@ -83,12 +84,12 @@ const setData=(e)=>{
     const cardCvc = elements.getElement(CardCvcElement);
    
     stripe.createToken(cardExpiry,{name}).then(result=>
-    axios.post('http://localhost:4000/payment',result.token).then(res=>console.log(res))
+    ApiPost('payment',result.token).then(res=>console.log(res))
     )
     };
     console.log(id)
         return(
-            <React.Fragment>
+            <div style={{backgroundColor:'white'}}>
                 <div className='headerarea'>
                     <div className="logo">
                         <a href="/">
@@ -477,7 +478,7 @@ const setData=(e)=>{
                         <div> Builder accepts all major credit and debit cards. </div>
                     </div>
                 </div>
-           </React.Fragment>
+           </div>
         )
     
 }

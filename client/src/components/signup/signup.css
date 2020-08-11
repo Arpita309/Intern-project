@@ -125,7 +125,7 @@
 }}
 @media (max-width: 768px)
 {
-.loginRegisterRight[_ngcontent-serverApp-c98] {
+.loginRegisterRight {
     height: calc(100vh - 40px);
 }}
 .heading-appdetail, .onlyAppdetailPopup {

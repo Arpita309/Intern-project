@@ -43,11 +43,7 @@ class AppDetail extends React.Component {
       const data = res.data;
       this.setState({ platforms: data });
     });
-    ApiGet('auth/current_user')
-    .then(res => {
-      
-      this.setState({auth:res.data})
-    })
+    
   }
   handleChange=(e)=>{
     this.setState({[e.target.id]: e.target.value })
@@ -134,7 +130,7 @@ customize=()=>{
     return (
       <div className="wrapper">
         <Header />
-        {this.state.loading?<InitialLoader/>:<div className="middlePart" style={{marginLeft:'-20px'}} >
+        {this.state.loading?<InitialLoader/>:<><div className="middlePart" style={{marginLeft:'-20px'}} >
           <div className="appdetailSection">
             {this.state.data.map((value) => {
               return value.attributes.map((info) => {
@@ -282,8 +278,8 @@ customize=()=>{
                   </div>
               </div>
             </div>
-        </div>}
-        <Footer />
+        </div>
+        <Footer /></>}
         
         <div className="loginScreenAppDetail">
          <div className={`commonPopUp higher-zindex ${this.state.popup?'active':''}`}>

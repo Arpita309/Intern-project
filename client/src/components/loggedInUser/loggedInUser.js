@@ -1,9 +1,9 @@
 import React from 'react'
 import './loggedInUser.css'
-import {auth }from '../authentication'
+
 import {Link} from 'react-router-dom'
 import axios from 'axios'
-import Dashboard from '../Dashboard/dashboard'
+
 class User extends React.Component{
     constructor(props){
         super(props)
@@ -17,10 +17,10 @@ class User extends React.Component{
     }
    
     render(){
-        console.log(auth)
+       
         return(
             <div className="userPanel">
-                <h3> Hello <strong onClick={this.setActive}>{auth.name}</strong></h3>
+                <h3> Hello <strong onClick={this.setActive}>{this.props.auth.name}</strong></h3>
                 <div className={`userDropdown ${this.state.active?'active':''}`} style={{zIndex:'2'}}>
                     <ul>
                         <li className="mydashBoard">

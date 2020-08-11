@@ -1,9 +1,8 @@
 import React from 'react'
 import './appFeaturesRight.css'
-import {carouselDescription} from '../featuresdb/featuresdb'
-import axios from 'axios'
+
+
 import {ApiGet} from '../../api'
-let selectedDescription=[] 
 
 class FeatureRight extends React.Component{
     constructor(props){

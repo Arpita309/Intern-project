@@ -1,6 +1,7 @@
 import React from 'react'
 import './dashboard.css'
-import {auth }from '../authentication'
+
+import AuthContext from '../../context/state'
 class Dashboard extends React.Component{
     constructor(props){
         super(props)
@@ -13,10 +14,15 @@ class Dashboard extends React.Component{
         
     }
     render(){
-        console.log(auth)
+        
         return(
+            
             <div className='wrap'>
-                <div className='headerPart'>
+                <AuthContext.Consumer>
+                {
+                    (props)=>{
+                        return(
+                            <div className='headerPart'>
                     <nav id='header'>
                         <div className='container-fluid'>
                             <div className='row'>
@@ -27,7 +33,7 @@ class Dashboard extends React.Component{
                                 <div className="selectedCurrency " style={{marginLeft:'1000px'}}><img alt="" src="https://bstudio-assets.azureedge.net/assets-builder/uploads/image/file/591a9aa714c49f7f467463f6/Rupee.svg"></img></div>
                                 <div className="newProject"><button> Price new project </button></div>
                                 <div className="userPanel">
-                                    <h3> Hello <strong onClick={this.setActive}>{auth.name}</strong></h3>
+                                    <h3> Hello <strong onClick={this.setActive}>{props.auth.auth.name}</strong></h3>
                                     <div className={`userDropdown ${this.state.active?'active':''}`} style={{zIndex:'2'}}>
                                         <ul>
                                             <li>
@@ -42,6 +48,11 @@ class Dashboard extends React.Component{
                         </div>
                     </nav>
                 </div>
+                        )
+                    }
+                }
+            </AuthContext.Consumer>
+                
                 <div className='middlePart'>
                     <div className='dashboardArea'>
                         <div className="mobileMsg">

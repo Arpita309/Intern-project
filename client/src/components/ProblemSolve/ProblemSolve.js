@@ -4,6 +4,7 @@ import axios from 'axios'
 import Header from '../problemSolveHeader/problemSolveHeader'
 import Footer from '../footer/footer';
 import {ApiGet} from '../../api'
+import InitialLoader from '../initialLoader/initialLoader'
 class ProblemSolve extends React.Component{
     constructor(props) {
         super(props);
@@ -11,7 +12,7 @@ class ProblemSolve extends React.Component{
         this.state = {
             
             data:[],
-            
+            loading:true,
             search:''
         };
     }
@@ -20,7 +21,7 @@ class ProblemSolve extends React.Component{
         ApiGet('question-row')
           .then(res => {
             const data = res.data;
-            this.setState({ data });
+            this.setState({ data ,loading:false});
           })
       }
       handleChange = (e) => {
@@ -42,7 +43,7 @@ class ProblemSolve extends React.Component{
         return(
              <div className='wrapper'>
                  <Header/>
-                 <div className='middlePart'>
+                {this.state.loading?<InitialLoader/>:<><div className='middlePart'>
                      <div className='problemSection'>
                          <div className='sectionContent'>
                              <div className='leftSide'>
@@ -156,7 +157,7 @@ class ProblemSolve extends React.Component{
                      </div>
 
                  </div>
-                 <Footer/>
+                 <Footer/></>}
              </div>
         );
     }

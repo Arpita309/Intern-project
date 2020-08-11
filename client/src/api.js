@@ -7,5 +7,5 @@ export  function ApiGet(url){
 }
 export  function ApiPost(url,payload){
      
-     return axios.post(`${base_url}/${url}`,payload)
+     return axios.post(`${base_url}/${url}`,payload,{withCredentials:true})
 }

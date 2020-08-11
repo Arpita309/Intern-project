@@ -1,12 +1,17 @@
 import React from 'react'
-
+import AuthContext from '../../context/state'
 import  Drawer  from '../drawer/drawer'
 import CurrencyBox from '../currencyBox/currencyBox'
 import LoginIcon from '../loginIcon/loginIcon'
+import User from '../loggedInUser/loggedInUser'
 class ProblemSolveHeader extends React.Component{
     render(){
         return (
-            <div className='headerpart'>
+            <AuthContext.Consumer>
+                {
+                    (props)=>{
+                        return(
+                            <div className='headerpart'>
                 <div className='offerbarTop'>
                     <div className='offerHolder'>
                         <p></p>
@@ -25,20 +30,26 @@ class ProblemSolveHeader extends React.Component{
                             </div>
                             
                             
-                            
+                            {props.auth.auth?<User auth={props.auth.auth}/>:<>
                             <div style={{marginLeft:'100px',verticalAlign:'center'}}>
-                               <CurrencyBox/>
-                            </div >
+                            <CurrencyBox/>
+                         </div >
+                         
+                         <LoginIcon auth={props.auth.auth}/>
+                         <div className='mobileClick'>
+                             <em class="icon-hamicon" ><Drawer/></em>
+                         </div></>}
                             
-                            <LoginIcon/>
-                            <div className='mobileClick'>
-                                <em class="icon-hamicon" ><Drawer/></em>
-                            </div>
                         </div>
                     </div>
 
                 </nav>
             </div>
+                        )
+                    }
+                }
+            </AuthContext.Consumer>
+            
         );
     }
 }

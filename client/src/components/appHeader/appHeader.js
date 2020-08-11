@@ -4,7 +4,8 @@ import  Drawer  from '../drawer/drawer'
 import CurrencyBox from '../currencyBox/currencyBox'
 import LoginIcon from '../loginIcon/loginIcon'
 import User from '../loggedInUser/loggedInUser'
-import {auth} from '../authentication'
+
+import AuthContext from '../../context/state'
 class AppHeader extends React.Component{
     constructor(props)
     {
@@ -23,7 +24,11 @@ class AppHeader extends React.Component{
       }
     render(){
         return (
-            <div className='headerpart'>
+            <AuthContext.Consumer>
+                {
+                    (props)=>{
+                        return(
+                            <div className='headerpart'>
                 <div className='offerbarTop'>
                     <div className='offerHolder'>
                         <p></p>
@@ -62,26 +67,31 @@ class AppHeader extends React.Component{
                                     Experts online 
                                 </div>
                             </div>
-                            {auth.length?<div className='hidemobileScreen'><User/></div>:
+                            {props.auth.auth?<div className='hidemobileScreen'><User auth={props.auth.auth}/></div>:
                                 <div >
                                     <CurrencyBox/></div>}
-                            <LoginIcon/>
+                            <LoginIcon auth={props.auth.auth}/>
                             <div class="mobileClick" ><em class="icon-hamicon" onClick={this.mobNavigation}></em></div>
-                <div className={`mobNavigation ${this.state.mobNavigation?'active':''}`}>
-                  <div className="mobOverlay"></div>
-                  <div className="menuBox"><div class="closeNav" onClick={this.closeNavigation}><em class="icon-close"></em></div>
-                  <div>
-                    
-                  <div className="requestDemo view-proto mobile-btn custom-disabled"></div>
-                    <div className="requestLinks"><h3>NEED HELP?</h3><span className="buttonHold"><button type="button"><span className="reqIcon"><em className="icon-newsales"></em></span> Want a demo? <strong>Talk to Sales <span>(Free)</span></strong></button></span><span className="buttonHold"><button type="button"><span className="reqIcon"><em className="icon-newexpert"></em></span> Want help with specing? <strong>Talk to Expert <span>(Refundable)</span></strong></button></span></div>
-                    </div>
-                    </div>
-                    </div>
-                        </div>
-                    </div>
+                            <div className={`mobNavigation ${this.state.mobNavigation?'active':''}`}>
+                            <div className="mobOverlay"></div>
+                            <div className="menuBox"><div class="closeNav" onClick={this.closeNavigation}><em class="icon-close"></em></div>
+                            <div>
+                                
+                            <div className="requestDemo view-proto mobile-btn custom-disabled"></div>
+                                <div className="requestLinks"><h3>NEED HELP?</h3><span className="buttonHold"><button type="button"><span className="reqIcon"><em className="icon-newsales"></em></span> Want a demo? <strong>Talk to Sales <span>(Free)</span></strong></button></span><span className="buttonHold"><button type="button"><span className="reqIcon"><em className="icon-newexpert"></em></span> Want help with specing? <strong>Talk to Expert <span>(Refundable)</span></strong></button></span></div>
+                                </div>
+                                </div>
+                                </div>
+                                    </div>
+                                </div>
 
-                </nav>
-            </div>
+                            </nav>
+                        </div>
+                        )
+                    }
+                }
+            </AuthContext.Consumer>
+            
         );
     }
 }

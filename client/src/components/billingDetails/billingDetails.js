@@ -5,6 +5,7 @@ import NeedHelp from '../needHelp/needHelp'
 import Footer from '../footer/footer'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
+import {ApiPost} from '../../api'
 var userData={}
 class BillingDetails extends React.Component{
     constructor(props){
@@ -62,7 +63,7 @@ class BillingDetails extends React.Component{
           city:this.state.city
         };
     console.log(userData);
-    axios.post("http://localhost:4000/billing", userData)
+    ApiPost("billing", userData)
             
             .then(res => {
                 console.log(res)

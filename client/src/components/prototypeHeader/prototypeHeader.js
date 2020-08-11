@@ -2,6 +2,7 @@ import React from 'react'
 import './prototypeHeader.css'
 import Popup from '../prototypePopup/prototypePopup';
 import {Dropdown} from '../prototypePopup/prototypePopup'
+import AuthContext from '../../context/state'
 class ProtoHeader extends React.Component{
     constructor(props){
         super(props)
@@ -58,6 +59,7 @@ class ProtoHeader extends React.Component{
     render(){
        console.log(this.state.dropdown)
         return(
+            
             <React.Fragment>
                <div className='prototype-header'>
                 <div className='wrapper-header'>
@@ -159,10 +161,19 @@ class ProtoHeader extends React.Component{
                                     <span  className="profile-pic">
                                         <span  className="txt">A</span>
                                     </span>
-                                    <div  className="details">
-                                        <p  className="name">Arpita</p>
-                                        <p  className="email">arpitatiwari309@gmail.com</p>
-                                    </div>
+                                    <AuthContext.Consumer>
+                                        {
+                                            (props)=>{
+                                                return(
+                                                    <div  className="details">
+                                                        <p  className="name">{props.auth.auth.name}</p>
+                                                        <p  className="email">arpitatiwari309@gmail.com</p>
+                                                    </div>
+                                                )
+                                            }
+                                        }
+                                    </AuthContext.Consumer>
+                                    
                                 </div>
                                 <ul  className="options">
                                     <li  className="option-entity">Go to ideaboard</li>

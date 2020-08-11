@@ -1,8 +1,6 @@
 import React from 'react'
 import './app-list.css'
-import Divider from '@material-ui/core/Divider';
 import {Link} from 'react-router-dom'
-import axios from 'axios'
 import Loader from '../questionSectionLoader/loaderbox'
 import BottomBar from '../homepageBottombar/homepageBottombar'
 import{ApiGet} from '../../api'

@@ -7,14 +7,14 @@ import AppTrending from './appTrending/appTrending';
 import QuestionType from './question-type/question-type';
 import Video from './video/video'
 import Footer from './footer/footer';
-import {auth} from './authentication'
+
 import '../App.css'
 function Home() {
   const [type,setType]=useState();
   const set=(type)=>{
     setType(type)
   }
-  console.log(auth)
+
   return (
     <div className='wrap'>
       <Navbar/>

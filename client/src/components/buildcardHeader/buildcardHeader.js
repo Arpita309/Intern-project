@@ -1,8 +1,9 @@
 import React from 'react'
 import './buildcardHeader.css'
 import ProtoTypeButton from '../viewProtoType/viewProtoType'
-import User from '../userDashboard/userDashboard'
+import User from '../loggedInUser/loggedInUser'
 import NeedHelp from '../needHelp/needHelp'
+import AuthContext from '../../context/state'
 class Header  extends React.Component{
     constructor(props){
         super(props)
@@ -33,7 +34,7 @@ class Header  extends React.Component{
                     <NeedHelp />
                     </div>
                     <div style={{marginLeft:'10px'}}>
-                    <User />
+                    <AuthContext.Consumer>{(props)=><User auth={props.auth.auth}/>}</AuthContext.Consumer>
                     </div>
                     <div class="mobuserLogin" style={{marginLeft:'5px'}}><em class="icon-usernew" id='1' onClick={(e)=>this.mobUserNav(e)}></em></div>
                     <div class="mobileClick" style={{marginLeft:'5px'}}><em class="icon-hamicon" onClick={(e)=>this.mobUserNav(e)}></em></div>
@@ -68,7 +69,7 @@ class Header  extends React.Component{
                                 <em className="icon-close" onClick={this.mobUserNav}></em>
                             </div>
                            {this.state.userLogin?<div>
-                                <div className="welcomeUser"> Hello, <strong>Arpita</strong></div>
+                           <AuthContext.Consumer>{(props)=><div className="welcomeUser"> Hello, <strong>{props.auth.auth.name}</strong></div>}</AuthContext.Consumer>
                                 <ul className="mobile-loginscreen">
                                     <li><span class="userSetting"><em class="icon-settings-streamline-1"></em> Settings</span></li>
                                     <li className="mydashBoard"><span><em class="icon-dashboard-3"></em> Go to Dashboard</span></li>

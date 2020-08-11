@@ -1,6 +1,7 @@
 .wrapper {
     float: left;
     width: 100%;
+    background: #fff;
 }
 .middlePart {
     min-height: calc(100vh - 100px);

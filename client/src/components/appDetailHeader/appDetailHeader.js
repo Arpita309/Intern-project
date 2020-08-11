@@ -4,8 +4,9 @@ import  Drawer  from '../drawer/drawer'
 import CurrencyBox from '../currencyBox/currencyBox'
 import LoginIcon from '../loginIcon/loginIcon'
 import ProtoTypeButton from '../viewProtoType/viewProtoType';
-import {auth} from '../authentication'
+
 import User from '../loggedInUser/loggedInUser'
+import AuthContext from '../../context/state'
 class AppDetailHeader extends React.Component{
     constructor(props)
     {
@@ -24,7 +25,11 @@ class AppDetailHeader extends React.Component{
       }
     render(){
         return (
-            <div className='headerpart'>
+            <AuthContext.Consumer>
+                {
+                    (props)=>{
+                        return(
+                            <div className='headerpart'>
                 <div className='offerbarTop'>
                     <div className='offerHolder'>
                         <p></p>
@@ -46,10 +51,10 @@ class AppDetailHeader extends React.Component{
                             <ProtoTypeButton/>
                             </div>
                             
-                            {auth?<div className='hidemobileScreen'><User/></div>:
+                            {props.auth.auth?<div className='hidemobileScreen'><User auth={props.auth.auth}/></div>:
                                 <div >
                                     <CurrencyBox/></div>}
-                            <LoginIcon/>
+                            <LoginIcon auth={props.auth.auth}/>
                             <div class="mobileClick" ><em class="icon-hamicon" onClick={this.mobNavigation}></em></div>
                                 <div className={`mobNavigation ${this.state.mobNavigation?'active':''}`}>
                                 <div className="mobOverlay"></div>
@@ -64,6 +69,11 @@ class AppDetailHeader extends React.Component{
 
                 </nav>
             </div>
+                        )
+                    }
+                }
+            </AuthContext.Consumer>
+            
         );
     }
 }

@@ -5,14 +5,13 @@ import {Link} from 'react-router-dom'
 import AddCustom from '../addCustomDelivery/addCustomDelivery'
 import SliderComponent from '../deliverySlider/deliverySlider'
 import PhasesRow from '../phasesSlider/phasesSlider'
-import axios from 'axios'
-import {auth} from '../authentication'
+import AuthContext from '../../context/state'
 import User from '../loggedInUser/loggedInUser'
 import LoginIcon from '../loginIcon/loginIcon'
 import CurrencyBox from '../currencyBox/currencyBox'
-import { withStyles, rgbToHex } from '@material-ui/core/styles';
+
 import Slider from '@material-ui/core/Slider';
-import Typography from '@material-ui/core/Typography';
+
 import { ApiGet} from '../../api'
 const useStyles = theme => ({
     root: {
@@ -158,7 +157,11 @@ function valuetext(value) {
         return(
            
             <div className='wrapper'>
-                <div className='headerPart'>
+                <AuthContext.Consumer>
+                    {
+                        (props)=>{
+                            return(
+                                <div className='headerPart'>
                     <nav id='header'>
                         <div className='container-fluid'>
                             <div className='row'>
@@ -212,10 +215,10 @@ function valuetext(value) {
                                             </div>
                                         </div>
                                     </div>
-                                {auth?<div className='hidemobileScreen'><User/></div>:
+                                {props.auth.auth?<div className='hidemobileScreen'><User auth={props.auth.auth}/></div>:
                                 <div >
                                     <CurrencyBox/></div>}
-                            <LoginIcon/>
+                            <LoginIcon auth={props.auth.auth}/>
                             <div class="mobileClick" ><em class="icon-hamicon" onClick={this.mobNavigation}></em></div>
                                 <div className={`mobNavigation ${this.state.mobNavigation?'active':''}`}>
                                     <div className="mobOverlay"></div>
@@ -230,6 +233,11 @@ function valuetext(value) {
                         </div>
                     </nav>
                 </div>
+                            )
+                        }
+                    }
+                </AuthContext.Consumer>
+                
                 <div className='middlePart'>
                     <div className='deliveryHolder'>
                         <app-general-phase-platform>
@@ -516,7 +524,7 @@ function valuetext(value) {
                         </div>
                         <div  className={`previewBottom ${this.state.bottomBar?'child_btn_full':''}`}>
                             <div >
-                                <button type="button" className="nextButton"><Link to={`/build-card/${this.p}`} style={{color:'white'}}> Done </Link></button>
+                                <button type="button" className="nextButton"><Link to={`/build-card`} style={{color:'white'}}> Done </Link></button>
                             </div>
                             <share-url-button  >
                                 <button  type="button" className="shareUrl">

@@ -1,7 +1,7 @@
 import React from "react";
 import "./appPage.css";
 import AppHeader from "../appHeader/appHeader";
-import axios from "axios";
+
 import { Link } from "react-router-dom";
 import Footer from "../footer/footer";
 import Slider from "@material-ui/core/Slider";

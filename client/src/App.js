@@ -20,9 +20,10 @@ import Pay from './components/payment';
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import Status from './components/status/status';
-
+import {AuthState} from './context/state'
 function App() {
   return (
+    <AuthState>
     <BrowserRouter>
     
        <Switch>
@@ -47,7 +48,7 @@ function App() {
        </Switch>
        
     </BrowserRouter>   
-    
+    </AuthState>
   );
 }
 

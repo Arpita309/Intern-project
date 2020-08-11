@@ -1,11 +1,9 @@
 import React,{useState} from 'react'
 import './loginIcon.css'
-import {Modal,ModalBody,Form,FormGroup} from 'reactstrap'
-import ReactDOM from 'react-dom';
+
 import {Tooltip} from 'reactstrap'
 import {Link} from 'react-router-dom'
-import{auth} from '../authentication'
-import axios from 'axios';
+
 const Tool= () => {
     const [tooltipOpen, setTooltipOpen] = useState(false);
   
@@ -78,7 +76,7 @@ class LoginIcon extends React.Component{
       }
       
     render(){
-      console.log(auth)
+     
     return (
            <div>
                 <div className='mobuserLogin' >
@@ -88,7 +86,7 @@ class LoginIcon extends React.Component{
                   <div className="menuBox">
                     <div className="closeNav" onClick={this,this.closeMobNavigation}><em className="icon-close"></em></div>
                     <div>
-                      <div className="welcomeUser"> Hello, <strong>{auth.name}</strong></div>
+                      <div className="welcomeUser"> Hello, <strong>{this.props.auth.name}</strong></div>
                       <ul className="mobile-loginscreen">
                         <li><span className="userSetting"><em className="icon-settings-streamline-1"></em> Settings</span></li>
                         <li className="mydashBoard"><span>
@@ -112,7 +110,7 @@ class LoginIcon extends React.Component{
                     
                 
                 
-              {auth?'':<div class="loginPanel ul" >
+              {this.props.auth?'':<div class="loginPanel ul" >
                     <Tool/>
                     
                 </div>}  
