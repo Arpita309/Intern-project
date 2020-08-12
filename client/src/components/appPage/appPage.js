@@ -101,10 +101,11 @@ class AppPage extends React.Component {
   toggleFilter = () => {
     this.setState({ isOpen: true });
   };
-  handleChange(e) {
+  handleChange=(e) =>{
     this.setState({ search: e.target.value });
   }
-  Clear() {
+  Clear=() =>{
+    console.log('clear')
     this.setState({ search: "" });
   }
   showMore() {
@@ -136,13 +137,13 @@ class AppPage extends React.Component {
       filtered = this.state.slider;
     }
     
-    const Result = () => {
-      if (this.state.search) {
+    const Result = (props) => {
+      if (this.state.search!='') {
         return (
           <div>
-            <div class="resultFound">{filtered.length} apps found for a</div>
-            <button type="button" class="backButton" onClick={this.Clear}>
-              <em class="icon-prev"></em>Back
+            <div class="resultFound">{filtered.length} apps found for {this.state.search}</div>
+            <button type="button" className="backButton" onClick={()=>props.clear()}>
+              <em className="icon-prev" >{console.log(this.state.search)}</em>Back
             </button>
           </div>
         );
@@ -306,7 +307,7 @@ class AppPage extends React.Component {
                 </ul>
               </div>
               <div className="templateToolbar">
-                <div className="templateFilter" onClick={this.toggleFilter}>
+                {this.state.search?'':<div className="templateFilter" onClick={this.toggleFilter}>
                   <div
                     className={`filterIcon ${
                       this.state.isOpen ? "active" : ""
@@ -429,7 +430,7 @@ class AppPage extends React.Component {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div>}
                 <div className="templateSorting">
                   <div className="sortingIcon">
                     <em class="icon-filtercheck">
@@ -502,13 +503,13 @@ class AppPage extends React.Component {
             {this.state.loading?<InitialLoader />:
     
             <div className="templateListing withLock">
-              <Result />
+              <Result  clear={this.Clear}/>
               <NotFound />
               <div className="templateRow">
                 {filtered.map((value) => {
                   return (
                     <React.Fragment key={value._id}>
-                      <div
+                      <div 
                         className={`templateBox ${
                           this.state.checkedApps.filter(
                             (info) => info === value.id

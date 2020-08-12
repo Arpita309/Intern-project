@@ -44,6 +44,7 @@ const billing=require('./routes/billingDetailRouter')
 const auth=require("./routes/users")
 const teams=require("./routes/teamRouter")
 const buildCard=require('./routes/buildCardRouter')
+const selectedFeatures=require('./routes/selectedFeaturesRouter')
 const app = express();
 app.use(cors({credentials: true, origin: 'http://localhost:3000'}))
 
@@ -104,6 +105,7 @@ app.use('/billing',billing);
 app.use("/auth", auth);
 app.use("/teams", teams);
 app.use("/buildcard",buildCard);
+app.use("/selectedFeatures",selectedFeatures);
 app.post("/payment", (req, res) => {
   
   

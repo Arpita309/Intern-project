@@ -2,8 +2,8 @@ import React from 'react'
 import './appFeaturesRight.css'
 
 
-import {ApiGet} from '../../api'
-
+import {ApiGet, ApiPost} from '../../api'
+let features=[]; let template=''
 class FeatureRight extends React.Component{
     constructor(props){
         super(props);
@@ -36,7 +36,21 @@ class FeatureRight extends React.Component{
             const data = res.data;
             this.setState({ app:data,active:data.map(value=>value.attributes.map(info=>info.features[0].id)) });
             this.state.app.map(value=>value.attributes.map(info=>this.setState({active:info.features[0].id})))
-            console.log(this.state.active)
+           
+           this.state.app.map(value=>value.attributes.map(info=>info.features.map(data=>features=[...features,data.id])))
+          
+           this.state.app.map(value=>template=value.id)
+           console.log(features)
+           console.log(template)
+           let payload={features:features,templateId:template}
+          ApiPost('selectedFeatures',payload)
+          .then(res=>{
+              console.log(res)
+          })
+          .catch(err =>
+            console.log(err.response.data)
+            
+          ); 
           })
           ApiGet('bundle')
           .then(res => {
@@ -44,7 +58,10 @@ class FeatureRight extends React.Component{
             this.setState({ features:data });
            
           })
-          
+           ApiGet('selectedFeatures')
+           .then(res=>{
+               console.log(res)
+           })
                         
           
     }
