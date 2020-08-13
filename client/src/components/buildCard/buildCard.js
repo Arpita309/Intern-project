@@ -6,6 +6,8 @@ import Header from '../buildcardHeader/buildcardHeader'
 import Footer from '../footer/footer'
 import axios from 'axios'
 import AuthContext from '../../context/state'
+import { ApiGet } from '../../api'
+import InitialLoader from '../initialLoader/initialLoader'
 class BuildCard extends React.Component{
     constructor(props){
         super(props)
@@ -13,15 +15,14 @@ class BuildCard extends React.Component{
             dropdown:false,
             invite:false,share:false,transfer:false,prototype:false,
             builderCloud:false,builderCareinfo:false,showSidebar:false,builderSummary:false,
-            buildcardPayment:false,app:[]
+            buildcardPayment:false,app:[],features:[],loading:true
         }
     }
     componentDidMount(){
-        axios.get(`http://localhost:4000/apps/?slug=facebook`)
-          .then(res => {
-            const app = res.data;
-            this.setState({ app });
-          })
+        ApiGet(`selectedFeatures/template/?templateId=${this.props.match.params.template}`)
+        .then(res=>{
+           this.setState({features:res.data,loading:false})
+        })
           
     }
     showDropdown=()=>{
@@ -75,7 +76,7 @@ class BuildCard extends React.Component{
         return(
             <div className='wrapper'>
                 <Header showSidebar={this.state.showSidebar} sidebar={this.sidebar}/>
-                
+                {this.state.loading?<InitialLoader/>:<>
                 <div className='middlePart'>
                     <div className='main-buildcard-bx' >
                         <div className='container' style={{width:'1470px'}}>
@@ -141,7 +142,7 @@ class BuildCard extends React.Component{
                                             <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist" style={{width:'100%'}}>
                                                 <a class="nav-item nav-link tabList active" id="nav-info-tab" data-toggle="tab" href="#nav-info" role="tab" aria-controls="nav-info" aria-selected="false">Project Info</a>
                                                 <a class="nav-item nav-link tabList" id="nav-similar-tab" data-toggle="tab" href="#nav-similar" role="tab" aria-controls="nav-similar" aria-selected="false">Similar Apps(1)</a>
-                                                <a class="nav-item nav-link tabList" id="nav-features-tab" data-toggle="tab" href="#nav-features" role="tab" aria-controls="nav-features" aria-selected="false">Features(26)</a>
+                                                <a class="nav-item nav-link tabList" id="nav-features-tab" data-toggle="tab" href="#nav-features" role="tab" aria-controls="nav-features" aria-selected="false">Features({this.state.features.features.length})</a>
                                                  <a class="nav-item nav-link tabList" id="nav-phases-tab" data-toggle="tab" href="#nav-phases" role="tab" aria-controls="nav-phases" aria-selected="false">Phases(3)</a>
                                             </div>  
                                         </div>
@@ -240,19 +241,16 @@ class BuildCard extends React.Component{
                                             <div className="tab-pane fade " id="nav-features" role="tabpanel" aria-labelledby="nav-features">
                                                 <div  className="fixHeight">
                                                     <div  className="buildcard-detail">
-                                                        <h3  className="detail-heading"> Features (26) 
+                                                        <h3  className="detail-heading"> Features ({}) 
                                                             <span  className="btnStyle1 feature-btn ng-star-inserted"> Change </span>
                                                         </h3>
                                                         <div  className="detail-list-block feature-box">
                                                             <div>
                                                                 <ul  className="list-block">
-                                                                    <li> Comments </li>
-                                                                    <li> Download Options </li>
-                                                                    <li> Email Login </li>
-                                                                    <li> Facebook Login </li>
-                                                                    <li> Forgot Password </li>
-                                                                    <li> Free Trial </li>
-                                                                    <li> Google Login </li><li > Language Options </li><li > Location </li><li > Navigation Menu </li><li> Notification Settings </li><li> Notifications </li><li _ngcontent-serverapp-c136="" class="ng-star-inserted"> Payments </li><li _ngcontent-serverapp-c136="" class="ng-star-inserted"> Phone Verification </li><li _ngcontent-serverapp-c136="" class="ng-star-inserted"> Playlist </li><li _ngcontent-serverapp-c136="" class="ng-star-inserted"> Preview Video </li><li _ngcontent-serverapp-c136="" class="ng-star-inserted"> Restore Purchase </li><li _ngcontent-serverapp-c136="" class="ng-star-inserted"> Reviews </li><li _ngcontent-serverapp-c136="" class="ng-star-inserted"> Search </li><li _ngcontent-serverapp-c136="" class="ng-star-inserted"> Settings </li><li _ngcontent-serverapp-c136="" class="ng-star-inserted"> Share </li><li _ngcontent-serverapp-c136="" class="ng-star-inserted"> Sorting </li><li _ngcontent-serverapp-c136="" class="ng-star-inserted"> Splash Screen </li><li _ngcontent-serverapp-c136="" class="ng-star-inserted"> Subscriptions </li><li _ngcontent-serverapp-c136="" class="ng-star-inserted"> Trending </li><li _ngcontent-serverapp-c136="" class="ng-star-inserted"> Videos </li>
+                                                                {this.state.features.title.map(info=>
+                                                                    <li>{info}</li>
+                                                                )}
+                                                                    
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -391,31 +389,9 @@ class BuildCard extends React.Component{
                                                                         </div>
                                                                         </div>
                                                                     </div>
-                                                                    <div  className="list-box">
-                                                                    <div className="pro-head">
-                                                                        <h3 style={{color:'black'}}> Builder Care </h3>
-                                                                    </div>
-                                                                    <div  className="pro-mid btm-bdr-none">
-                                                                        <div  className="mid-txt-block">
-                                                                            <p style={{color:'black'}}> Get on demand cloud support - setup, monitoring,scalability and migrations. Upgrade your app to support newer iOS/Android updates. </p>
-                                                                            <p style={{color:'black'}}> Technical support for SDK, third party integrations and upgrades. Support for unexpected bugs, crashes and security issues. </p>
-                                                                        </div>
-                                                                    </div>
-                                                                    </div>
-                                                                    <div  className="list-box ">
-                                                                        <div  className="pro-head">
-                                                                            <h3 style={{color:'black'}}> Builder Cloud </h3>
-                                                                        </div>
-                                                                    <div className="pro-mid btm-bdr-none">
-                                                                        <div  className="mid-txt-block">
-                                                                            <p style={{color:'black'}}>
-                                                                                <strong>Commitment-free savings:</strong> our customers saved over $4.5m, last year.
-                                                                            </p>
-                                                                            <p style={{color:'black'}}><strong>World-class analytics:</strong> Optimise your software and infrastructure.</p>
-                                                                            <p style={{color:'black'}}><strong >Best-in-class multicloud:</strong> AWS, Digital Ocean, Azure and more. Just one bill (for a lot less).</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
+                                                                    
+                                                                    
+                                                                    
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -453,49 +429,8 @@ class BuildCard extends React.Component{
                                                         <img  src="https://studio.builder.ai/assets/images/promotion_icon.png" alt=""></img>
                                                         <button type="button" onClick={this.sidebar}>Apply Promotion </button>
                                                     </div>
-                                                    <div  className="additionalService">
-                                                        <h4>Additional Service</h4>
-                                                        <div  className="builderCare">
-                                                            <div  className="builderSelect">
-                                                                <label  className="builderCareCheck">Builder Care 
-                                                                    <input  type="checkbox" name="checkbox" className="check"></input>
-                                                                    <span  className="checkmark"></span>
-                                                                </label>
-                                                            <div  className="info">
-                                                                <img  src="https://studio.builder.ai/assets/images/info_blue.png" alt="" id='1' onClick={(e) => this.showInfobox(e)}></img>
-                                                                {this.state.builderCareinfo? <React.Fragment><div  className="infoBox ">
-                                                                    <ul>
-                                                                        <li >24/7 support and maintenance for your project year round.</li>
-                                                                        <li >On demand cloud support - setup, monitoring, scalability, and migrations.</li>
-                                                                        <li>Upgrade your app to support the newer iOS/ Android updates.</li>
-                                                                        <li >Technical support for SDK, third party integrations, and upgrades.</li>
-                                                                        <li>Support for unexpected bugs, crashes, and security issues.</li>
-                                                                    </ul>
-                                                                    <em  className="icon-cancel closeInfo" onClick={this.showInfobox}></em></div></React.Fragment>:''}
-                                                            </div>
-                                                        </div>
-                                                        <p>₹6,968.21 /Mo</p>
-                                                    </div>
-                                                    <div className="builderCare ">
-                                                        <div  className="builderSelect">
-                                                            <label  className="builderCareCheck">Builder Cloud 
-                                                                <input  type="checkbox" name="checkbox" class="check "></input>
-                                                                <span  className="checkmark"></span>
-                                                            </label>
-                                                            <div  className="info">
-                                                                <img  src="https://studio.builder.ai/assets/images/info_blue.png" alt="" id='2' onClick={(e) => this.showInfobox(e)}></img>
-                                                                {this.state.builderCloud?<div  className="infoBox ">
-                                                                <ul >
-                                                                    <li ><strong>Commitment-free savings:</strong> our customers saved over $4.5m, last year.</li>
-                                                                    <li ><strong >World-class analytics:</strong> Optimise your software and infrastructure.</li>
-                                                                    <li ><strong >Best-in-class multicloud:</strong> AWS, Digital Ocean, Azure and more. Just one bill (for a lot less).</li>
-                                                                    </ul>
-                                                                    <em  className="icon-cancel closeInfo" onClick={this.showInfobox}></em></div>:''}
-                                                            </div>
-                                                        </div>
-                                                        <p >₹2,259.84 /Mo</p>
-                                                    </div>
-                                                </div>
+                                                    
+                                                
                                                 </div>
                                             </div>
                                         </app-payment-summary>
@@ -536,7 +471,7 @@ class BuildCard extends React.Component{
                         </div>
                     </div>
                 </div>
-                <Footer/>
+                <Footer/></>}
             </div>
         )
     }

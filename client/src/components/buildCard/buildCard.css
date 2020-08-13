@@ -92,6 +92,15 @@
 .buildCardmain .buildCardTop .buildCardLeft h1 .cardHover .card-hover {
     display: none;
 }
+.buildCardmain .buildCardTop .buildCardLeft h1 .cardHover:hover {
+    color: #f31597;
+}
+.buildCardmain .buildCardTop .buildCardLeft h1 .cardHover:hover .card-default {
+    display: none;
+}
+.buildCardmain .buildCardTop .buildCardLeft h1 .cardHover:hover .card-hover {
+    display: inline-block;
+}
 .buildCardmain .buildCardTop .buildCardLeft h1 .icon-block {
     position: relative;
     display: inline-block;

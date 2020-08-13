@@ -3,20 +3,20 @@ const bodyParser = require('body-parser');
 
 const mongoose = require('mongoose');
 
-const SelectedFeatures = require('../models/selectedFeatures');
+const SelectedData = require('../models/selectedData');
 var authenticate = require('../authenticate');
-const SelectedFeaturesSchema = require('../models/selectedFeatures');
 
 
-const SelectedFeaturesRouter = express.Router();
 
-SelectedFeaturesRouter.use(bodyParser.json());
+const SelectedDataRouter = express.Router();
 
-SelectedFeaturesRouter.route('/')
+SelectedDataRouter.use(bodyParser.json());
+
+SelectedDataRouter.route('/')
 
 .get( (req,res,next) => {
     
-    SelectedFeatures.find({user: req.user._id})
+    SelectedData.find({user: req.user._id,templateId:req.query.templateId})
     .populate('user')
     
     .then((SelectedFeatures) => {
@@ -27,7 +27,7 @@ SelectedFeaturesRouter.route('/')
     .catch((err) => next(err));
 })
 .post( (req, res, next) => {
-    SelectedFeatures.find({user: req.user._id})
+    SelectedData.find({user: req.user._id})
     .then((SelectedFeature) => {
         if(SelectedFeature){
             let features=[];let  id=''
@@ -43,8 +43,9 @@ SelectedFeaturesRouter.route('/')
             if(features.length>0){
                 SelectedFeatures.findOne({_id:id}).then((Selected)=>{
                     console.log(Selected)
-                    Selected.features=req.body.features,
-                    Selected.title=req.body.title
+                    Selected.phases=req.body.phases,
+                    Selected.teamLocation=req.body.team,
+                    Selected.platformIDs=req.body.platforms
                     Selected.save()
                     .then((Feature) => {
                         console.log('SelectedFeatures Created ', Feature);
@@ -56,7 +57,7 @@ SelectedFeaturesRouter.route('/')
                 })}
                 
                 else {
-                    SelectedFeatures.create({"user": req.user._id,"features":req.body.features,"templateId":req.body.templateId,"title":req.body.title})
+                    SelectedData.create({"user": req.user._id,"phases":req.body.features,"templateId":req.body.templateId,"teamLocation":req.body.teamLocation,"platformIDs":req.body.platforms})
                     .then((SelectedFeature) => {
                         console.log( SelectedFeature);
                         res.statusCode = 200;
@@ -66,7 +67,7 @@ SelectedFeaturesRouter.route('/')
                 }    
             }
         else {
-            SelectedFeatures.create({"user": req.user._id,"features":req.body.features,"templateId":req.body.templateId,'title':req.body.title})
+            SelectedData.create({"user": req.user._id,"phases":req.body.features,"templateId":req.body.templateId,"teamLocation":req.body.teamLocation,"platformIDs":req.body.platforms})
             .then((SelectedFeature) => {
                 console.log( SelectedFeature);
                 res.statusCode = 200;
@@ -82,7 +83,7 @@ SelectedFeaturesRouter.route('/')
     }, (err) => next(err))
     .catch((err) => next(err));  
 });
-SelectedFeaturesRouter.route('/template')
+SelectedDataRouter.route('/template')
 .get( (req,res,next) => {
     console.log(req.query.templateId)
     SelectedFeatures.findOne({user: req.user._id,templateId:req.query.templateId})
@@ -98,4 +99,4 @@ SelectedFeaturesRouter.route('/template')
 
 
 
-module.exports = SelectedFeaturesRouter;
+module.exports = SelectedDataRouter;

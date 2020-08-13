@@ -96,7 +96,7 @@ export default class PhasesRow extends React.Component {
                                 <span >28 June 2020 </span>
                             </div>}
                             <div className="checkBox">
-                                <input  type="checkbox" id="phaseSelected4" onClick={(e)=>this.selectPhase(e)}></input><label  htmlFor="phaseSelected4"></label>
+                                <input  type="checkbox" id="phaseSelected4" onClick={(e)=>this.selectPhase(e)} checked={this.state.selected.filter(value=>value==='phaseSelected4').length}></input><label  htmlFor="phaseSelected4"></label>
                             </div>
                         </div>
                         {this.props.advance?<React.Fragment><div  className="featureSection">

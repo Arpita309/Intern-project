@@ -30,7 +30,7 @@ class Delivery extends React.Component{
            showPlatform:false,firstDelivery:false,
            custom:[],count:1,platformList:[],
            selectedPlatform:[],advance:false,teams:{},dropdown:false,teamLocation:'Anywhere',search:'',mobNavigation:false,
-           bottomBar:false,promotion:false,slider:'',platformId:[],data:[],
+           bottomBar:false,promotion:false,slider:'',platformId:[],data:[],template:''
            
         }
     }
@@ -51,9 +51,9 @@ class Delivery extends React.Component{
               
               this.setState({ data });
               console.log(this.state.data)
-              this.state.data.map(value=>value.attributes.map(info=>info.platform_ids.map(obj=>{
+              this.state.data.map(value=>value.attributes.map(info=>{return(this.setState({template:info.id}),info.platform_ids.map(obj=>{
                 this.setState({selectedPlatform:[...this.state.selectedPlatform,this.state.platformList.map(data=>data.attributes.filter(platform=>platform.id===obj)).filter(value=>value.length)],platformId:[...this.state.platformId,obj]})
-              }) ))
+              }))} ))
              
             
              } );
@@ -124,7 +124,7 @@ class Delivery extends React.Component{
     }
     
     render(){
-        console.log(this.state.selectedPlatform)
+        console.log(this.state.template)
         const classes = useStyles();     
     
   const marks = [
@@ -367,74 +367,7 @@ function valuetext(value) {
                                     </p>
                                 </div>
                             </div></div>
-                        <div className='additionalServices'>
-                            <h2>Add these services to nurture your idea</h2>
-                            <div className='rowBoxes'>
-                                <div  className="serviceBox selected">
-                                    <div  className="sectionIcon">
-                                        <img  src="https://studio.builder.ai/assets/images/buildercare_logo.png" width="162" height="29" alt=""></img>
-                                        <div  className="checkIcon">
-                                            <input  type="checkbox" id="builderCare"></input>
-                                            <label  htmlFor="builderCare"><em></em></label>
-                                        </div>
-                                    </div>
-                                    <h3>How Builder Care protects your software</h3>
-                                    <ul>
-                                        <li ><strong>Confidence:</strong> round-the-clock technical support for third party updates (API/SDK).</li>
-                                        <li ><strong>Relevance:</strong> App upgrades for all the latest Android/ iOS versions.</li>
-                                        <li><strong>Competitive edge:</strong> security patches (both app and infrastructure level).</li>
-                                    </ul>
-                                    <h4 ><a  href="https://www.builder.ai/builder-care" target="_blank">Learn more</a></h4>
-                                    <div  className="footerRow">
-                                        <h5><strong > ₹5,242.57 </strong>/month</h5>
-                                    </div>
-                                </div>
-                                <div  className="serviceBox selected">
-                                    <div  className="sectionIcon">
-                                        <img  src="https://studio.builder.ai/assets/images/buildercloud_logo.png" alt=""></img>
-                                        <div  className="checkIcon">
-                                            <input  type="checkbox" id="builderCloud"></input>
-                                            <label  htmlFor="builderCloud"><em></em></label>
-                                        </div>
-                                    </div>
-                                    <h3 >Builder Cloud helps you scale your business</h3>
-                                    <ul>
-                                        <li><strong>Commitment-free savings:</strong> our customers saved over $4.5m, last year.</li>
-                                        <li><strong>World-class analytics:</strong> Optimise your software and infrastructure.</li>
-                                        <li><strong>Best-in-class multicloud:</strong> AWS, Digital Ocean, Azure and more. Just one bill (for a lot less).</li>
-                                    </ul>
-                                    <h4 ><a  href="https://www.builder.ai/builder-cloud" target="_blank">Learn more</a></h4>
-                                    <div  className="footerRow">
-                                        <div  className="numberUser">
-                                            <h3 >Number of users <strong >0 - 500</strong></h3>
-                                            <div className="userSlider">
-                                            <div className='rangeSlider'>
-                                                    <div className={classes.root}>
-                                                    
-                                                        
-                                                        <Slider
-                                                            color={"secondary"}
-                                                            
-                                                            
-                                                            onChange={handleSliderChange}
-                                                            defaultValue={0-500}
-                                                            getAriaValueText={valuetext}
-                                                            aria-labelledby="discrete-slider-custom"
-                                                            
-                                                           step={25}
-                                                            marks={marks}
-                                                        />
-                                                        </div>
-                                                    </div>
-                                            </div>
-                                        </div>
-                                        <h5 ><strong >₹2,266.94</strong> /month</h5> 
-                                        <h6 >*This is an estimated price for cloud hosting and will vary according to usage.</h6>
-                                    </div>
-                                </div>           
-                            </div>
                         </div>
-                    </div>
                     <div className='deliveryBottomBar active'>
                         <div className='appBottomBar'>
                         <div className="priceBox">
@@ -524,7 +457,7 @@ function valuetext(value) {
                         </div>
                         <div  className={`previewBottom ${this.state.bottomBar?'child_btn_full':''}`}>
                             <div >
-                                <button type="button" className="nextButton"><Link to={`/build-card`} style={{color:'white'}}> Done </Link></button>
+                                <button type="button" className="nextButton"><Link to={`/build-card/${this.state.template}`} style={{color:'white'}}> Done </Link></button>
                             </div>
                             <share-url-button  >
                                 <button  type="button" className="shareUrl">

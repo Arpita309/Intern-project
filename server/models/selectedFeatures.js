@@ -8,7 +8,8 @@ const SelectedFeaturesSchema = new Schema({
         ref : 'User'
     },
     templateId:Number,
-    features:[]
+    features:[],
+    title:[]
     
 });
 var SelectedFeatures = mongoose.model('SelectedFeature',SelectedFeaturesSchema );

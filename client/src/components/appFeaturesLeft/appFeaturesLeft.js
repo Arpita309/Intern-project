@@ -4,7 +4,7 @@ import Slider from "@material-ui/core/Slider";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import axios from "axios";
-import { ApiGet } from "../../api";
+import { ApiGet,ApiPost } from "../../api";
 const useStyles = (theme) => ({
   root: {
     width: 250,
@@ -14,6 +14,7 @@ const useStyles = (theme) => ({
   },
 });
 let featureCount=0;
+let features=[]; let template='';let title=[]
 class AppFeaturesLeft extends React.Component {
   constructor(props) {
     super(props);
@@ -54,6 +55,20 @@ class AppFeaturesLeft extends React.Component {
         
         activeFeatures.map(value=>value.map(info=>info[0].map(a=>{
           this.setState({featureId:[...this.state.featureId,a.id ]})})))
+        this.state.app.map(value=>value.attributes.map(info=>info.features.map(data=>{return(features=[...features,data.id],title=[...title,data.title])})))
+        
+        this.state.app.map(value=>template=value.id)
+        let payload={features:features,templateId:template,title:title}
+      console.log(payload)
+      ApiPost('selectedFeatures',payload)
+        .then(res=>{
+            console.log(res)
+        })
+        .catch(err =>
+          console.log(err.response.data)
+          
+        ); 
+        
       });
     });
     ApiGet("filter").then((res) => {
@@ -98,20 +113,38 @@ class AppFeaturesLeft extends React.Component {
     this.setState({ selectAll: false, featureId: [] });
   }
   selectFeature = (id, e) => {
-    e.preventDefault();
     if (this.state.featureId.filter(info=>info=== id).length) {
       this.setState({ featureId:[] });
-    } else {
+    } 
+    else {
       this.setState({
         featureId:[...this.state.featureId,id],
         data: this.state.features.map((value) =>
           value.features.filter((feature) => feature.id === id)
         ),
       });
+      this.state.features.map(value=>value.features.map(info=>{
+        if(info.id===id){
+          features=[...features,info.id]
+          title=[...title,info.title]
+        }
+      }))
+      
+      let payload={features:features,templateId:template,title:title}
+      console.log(payload)
+      ApiPost('selectedFeatures',payload)
+        .then(res=>{
+            console.log(res)
+        })
+        .catch(err =>
+          console.log(err.response.data)
+          
+        ); 
       this.props.selectedFeature(
         this.state.data.filter((value) => value.length == 1)
       );
     }
+  
   };
   selectedView=(id,e)=>{
     

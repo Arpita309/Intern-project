@@ -15,9 +15,8 @@ const mongoose = require('mongoose'),
   let payementSummary=new Schema({
     totalCost:String,
   monthlyCost:String,
-  developmentDuration:String,
-  builderCare:String,
-  builderCloud:String
+  developmentDuration:String
+  
   },{_id:false})
 
 let BuildCard = new Schema({

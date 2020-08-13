@@ -3,7 +3,7 @@ import './appFeaturesRight.css'
 
 
 import {ApiGet, ApiPost} from '../../api'
-let features=[]; let template=''
+let features=[]
 class FeatureRight extends React.Component{
     constructor(props){
         super(props);
@@ -39,18 +39,7 @@ class FeatureRight extends React.Component{
            
            this.state.app.map(value=>value.attributes.map(info=>info.features.map(data=>features=[...features,data.id])))
           
-           this.state.app.map(value=>template=value.id)
-           console.log(features)
-           console.log(template)
-           let payload={features:features,templateId:template}
-          ApiPost('selectedFeatures',payload)
-          .then(res=>{
-              console.log(res)
-          })
-          .catch(err =>
-            console.log(err.response.data)
-            
-          ); 
+           
           })
           ApiGet('bundle')
           .then(res => {
@@ -66,7 +55,7 @@ class FeatureRight extends React.Component{
           
     }
     
-    componentDidUpdate(prevProps){
+    componentWillUpdate(prevProps){
         
             let mobileImages=[]
             {this.state.app.map((value)=>
@@ -80,7 +69,6 @@ class FeatureRight extends React.Component{
         
               
     }
-   
     nextSlide () {
 		const lastIndex = this.state.data.length - 1;
 		const { currentImageIndex } = this.state;
@@ -133,6 +121,7 @@ class FeatureRight extends React.Component{
          
          
     }
+    
     setFeature=()=>{
         
        
@@ -183,11 +172,11 @@ class FeatureRight extends React.Component{
                     <div class="iphoneToolbar">
                         <div class="backButton" onClick={this.props.show}>
                             <em class="icon-prev" ></em>
-                            <span>7/26</span>
+                            <span>{this.state.currentImageIndex+1}/{features.length}</span>
                         </div>
                         <h3>
                             <div class="countAnimationBox animation2">
-                                <div class="countHold">7/26</div>
+                                <div class="countHold">{this.state.currentImageIndex+1}/{features.length}</div>
                                 <div class="countIcon">
                                     <em class="icon-shopping-cart"></em>
                                 </div>
