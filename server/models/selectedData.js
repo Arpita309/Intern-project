@@ -2,16 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
   Schema = mongoose.Schema
-  let phasesSchema=new Schema({
-    title:{
-        type:String,
-        required:true
-    },
-    platforms:[],
-    speed:String,
-    id:Number
-
-  },{_id:false})
+  
 
 let Delivery = new Schema({
   _id : {
@@ -19,7 +10,7 @@ let Delivery = new Schema({
     auto : true,
     required : true
   },
-  _userID: {
+  user: {
     type: Schema.Types.ObjectId,
     required: true,
     ref : 'User'
@@ -28,9 +19,11 @@ let Delivery = new Schema({
     type:String,
     required:true
   },
-  phases:[phasesSchema],
+  phases:[],
   templateId:Number,
-  platformIDs:[]
+  platformIDs:[],
+  speed:''
+
 }
 ,{
   timestamps : true

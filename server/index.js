@@ -46,6 +46,7 @@ const teams=require("./routes/teamRouter")
 const buildCard=require('./routes/buildCardRouter')
 const selectedFeatures=require('./routes/selectedFeaturesRouter')
 const selectedData=require('./routes/selectedDataRouter')
+const selectedPlatforms=require('./routes/selectedPlatformRouter')
 const app = express();
 app.use(cors({credentials: true, origin: 'http://localhost:3000'}))
 
@@ -108,6 +109,7 @@ app.use("/teams", teams);
 app.use("/buildcard",buildCard);
 app.use("/selectedFeatures",selectedFeatures);
 app.use("/selectedData",selectedData)
+app.use("/selectedPlatform",selectedPlatforms)
 app.post("/payment", (req, res) => {
   
   

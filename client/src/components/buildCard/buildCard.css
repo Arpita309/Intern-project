@@ -619,8 +619,22 @@ font-style: normal;
 .full-theme {
     border: 1px solid #4db9c6!important;
 }
+.product-theme {
+    border: 1px solid #00a0f6!important;
+}
 .full-theme .pro-head {
     background: #4db9c6!important;
+    color: #fff!important;
+}
+.product-theme .pro-head {
+    background: #00a0f6!important;
+    color: #fff!important;
+}
+.tailor-made-theme {
+    border: 1px solid #8c4cf7!important;
+}
+.tailor-made-theme .pro-head {
+    background: #8c4cf7!important;
     color: #fff!important;
 }
 .buildCardmain .buildcard-detail .phases-box .list-box .pro-mid {
@@ -1231,4 +1245,50 @@ font-style: normal;
     top: -10px;
     left: 0;
     width: 100%;
+}}
+.buildCardmain h3{
+    color: black;
+}
+.buildCardmain .buildcard-detail .phases-box .list-box .pro-mid .plateform-list-block .Platform-detail-list {
+    position: absolute;
+    top: 4%;
+    right: 0;
+}
+.buildCardmain .buildcard-detail .phases-box .list-box .pro-mid .plateform-list-block .Platform-detail-list .showallplateform {
+    width: 32px;
+    height: 32px;
+    background: #f4f7fc;
+    text-align: center;
+    line-height: 32px;
+    color: #0070e0;
+    font-size: 14px;
+    font-weight: 700;
+    display: block;
+    border-radius: 50%;
+    letter-spacing: -2px;
+}
+.buildCardmain .buildcard-detail .detail-list-block .list .project-detail .pro-text-block .pro-name-block .pro-name-strip {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+}
+.buildCardmain .buildcard-detail .detail-list-block .list .project-detail .pro-text-block .pro-name-block .pro-name-strip input {
+    border: none;
+}
+.buildCardmain .buildcard-detail .detail-list-block .list .project-detail .pro-text-block .pro-name-block .pro-name-strip .strip-head {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0;
+    width: 80%;
+}
+.buildCardmain .buildcard-detail .detail-list-block .list .project-detail .pro-text-block .pro-name-block .save .strip-head{
+    display: inline-block;
+    width: 50%;
+    text-transform: capitalize;
+}
+@media (max-width: 768px)
+{
+.buildCardmain .buildcard-detail .detail-list-block .list .project-detail .pro-text-block .pro-name-block .save .strip-head {
+    width: 80%;
 }}

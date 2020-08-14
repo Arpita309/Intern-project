@@ -38,12 +38,14 @@ class AppList extends React.Component{
           
       }
     render(){
-      console.log(this.state.apps)
-      console.log(this.props.type) 
+      let filtered=[]
       if(this.props.type){
-          let filtered=this.state.apps.map(value=>value.attributes.map(info=>info.products.filter(product=>product===this.props.type
-          )))
-          console.log(filtered)
+          this.state.apps.map(value=>value.attributes.map(info=>info.products.map(product=>{if(product===this.props.type)
+        {
+           filtered=[...filtered,info]
+        }}
+)))
+         
       } 
     return(
         
@@ -68,7 +70,25 @@ class AppList extends React.Component{
             </div>
             {this.state.isLoading?<Loader times={this.state.times}/>:
             <div className='appListRow' style={{display:'flex'}}>
-            {this.state.data.map(value=>{
+            {filtered.length?filtered.slice(0,6).map(info=>
+                    <div  key={info.id} className={`appListBox ${this.state.checkId==info.id?'active':''}`}>
+                    <h3>{info.title}</h3>
+                    <p>{info.description}</p>
+                    <div  className="tickBox" id={info.id} onClick={e=>this.handleChange(e,info.id)}></div>
+                    <img  width="96" height="96" alt="" src={info.app_builder_icon_url}></img>
+                    
+                    <div className='appListFooter'>
+                
+                        <div>
+                            <div className='appPrice'>
+                                <span >Price</span>
+                                <strong >₹548 K</strong>
+                            </div>
+                            <a  target="_blank" class="btn apps-detailbtn" href={`http://localhost:3000/apps/${info.title}`}> View Details </a>
+                        </div>
+                    </div>
+                </div>
+            ):this.state.data.map(value=>{
                 
                    return(value.section_details.map(info=>{
                        

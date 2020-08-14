@@ -6,11 +6,12 @@ import Slider from "../platformSlider/platformSlider";
 import FeatureInfo from "../appFeature/appFeature";
 import Footer from "../footer/footer";
 import Header from "../appDetailHeader/appDetailHeader";
-import { ApiGet } from "../../api";
+import { ApiGet, ApiPost } from "../../api";
 import InitialLoader from '../initialLoader/initialLoader'
 import axios from 'axios'
 import Contact from '../connectModal/connectModal'
-let userData={}
+let userData={};
+let templateId
 class AppDetail extends React.Component {
   constructor(props) {
     super(props);
@@ -33,9 +34,13 @@ class AppDetail extends React.Component {
       (res) => {
         const data = res.data;
         this.setState({ data });
-        this.state.data.map(value=>value.attributes.map(info=>info.platform_ids.map(obj=>{
+        this.state.data.map(value=>value.attributes.map(info=>{
+        templateId=info.id;
+          info.platform_ids.map(obj=>{
           this.setState({platformId:[...this.state.platformId,obj],loading:false})
-        }) ))
+        })
+       
+          } ))
         console.log(this.state.platformId.map(value=>value))
       
        } );
@@ -62,7 +67,7 @@ console.log(userData);
 
     
        
-        axios.post("http://localhost:4000/auth/signup", userData)
+        ApiPost("auth/signup", userData)
         
         .then(res => {
             console.log(res.config.data)
@@ -97,7 +102,11 @@ console.log(userData);
   }
   };
   popup=()=>{
-    window.location.href=`http://localhost:3000/features/${this.props.match.params.name}`
+    let payload={platforms:this.state.platformId,templateId:templateId}
+    ApiPost('selectedPlatform',payload)
+    .then(res=>{
+      this.setState({redirect:true})
+    })
     /*if(this.state.auth.length){
       return(<Redirect to={{
         pathname:'http://localhost:3000/features',
@@ -120,6 +129,9 @@ customize=()=>{
   this.setState({customize:!this.state.customize})
 }
   render() {
+    if(this.state.redirect){
+      return(<Redirect to={`/features/${this.props.match.params.name}`}/>)
+    }
     console.log(this.state.data);
     let price = this.state.platforms.map((value) => {
       return value.platforms.filter(
@@ -180,18 +192,6 @@ customize=()=>{
                         <div>
                           <button type="button" onClick={this.showPromotion}>Apply Promo Code</button>
                         </div>
-                      </div>
-                      <div className="builderCare">
-                        <input type="checkbox" id="buildercarecheck" defaultChecked></input>
-                        <label for="buildercarecheck"></label>
-                        <strong>Builder Care: </strong>
-                        <span> ₹7,020.65/Month</span>
-                      </div>
-                      <div  className="builderCare cloudRow">
-                        <input type="checkbox" id="buildercloudcheck" defaultChecked/>
-                        <label htmlFor="buildercloudcheck"></label>
-                        <strong>Builder Cloud: </strong>
-                        <span> ₹11,175.45/Month </span>
                       </div>
                       <div className="selectPlatform">
                         <h3>Select Platform</h3>

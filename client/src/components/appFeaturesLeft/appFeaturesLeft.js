@@ -3,7 +3,6 @@ import "./appFeaturesLeft.css";
 import Slider from "@material-ui/core/Slider";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import axios from "axios";
 import { ApiGet,ApiPost } from "../../api";
 const useStyles = (theme) => ({
   root: {

@@ -52,6 +52,7 @@ export default class PhasesRow extends React.Component {
       }
       selectPhase=(e)=>{
           this.setState({selected:[...this.state.selected,e.target.id]})
+          this.props.selectPhase(e.target.id)
       }
 
       render(){
@@ -81,7 +82,7 @@ export default class PhasesRow extends React.Component {
                         <div className='phasesRow'>
                     <SliderComponent>
 
-                    <div className={`phasesBox Product-theme ${this.state.selected.filter(value=>value==='phaseSelected4').length?'active':'dactive'}`} style={{display: 'inline-block'}}>
+                    <div className={`phasesBox Product-theme ${this.state.selected.filter(value=>value==='1').length?'active':'dactive'}`} style={{display: 'inline-block'}}>
                         <div  className="phasesHead">
                             <h3>
                                 <div  className="phaseIcon">
@@ -96,7 +97,7 @@ export default class PhasesRow extends React.Component {
                                 <span >28 June 2020 </span>
                             </div>}
                             <div className="checkBox">
-                                <input  type="checkbox" id="phaseSelected4" onClick={(e)=>this.selectPhase(e)} checked={this.state.selected.filter(value=>value==='phaseSelected4').length}></input><label  htmlFor="phaseSelected4"></label>
+                                <input  type="checkbox" id="1" onClick={(e)=>this.selectPhase(e)} checked={this.state.selected.filter(value=>value==='1').length}></input><label  htmlFor="1"></label>
                             </div>
                         </div>
                         {this.props.advance?<React.Fragment><div  className="featureSection">
@@ -144,7 +145,7 @@ export default class PhasesRow extends React.Component {
                             </div>
                         </learn-more>
                     </div>
-                    <div  className={`phasesBox Design-theme ${this.state.selected.filter(value=>value==='phaseSelected1').length?'active':'dactive'}`} style={{display: 'inline-block'}}>
+                    <div  className={`phasesBox Design-theme ${this.state.selected.filter(value=>value==='2').length?'active':'dactive'}`} style={{display: 'inline-block'}}>
                         <div  className="phasesHead">
                             <h3>
                                 <div  className="phaseIcon"><img  alt="" src="https://bstudio-assets.azureedge.net/assets-builder/uploads/build_phase/icon/587f162314c49f39f0d5b61d/Design_blue.png"></img></div>
@@ -157,8 +158,8 @@ export default class PhasesRow extends React.Component {
                                 <span >28 June 2020 </span>
                             </div>}
                             <div  className="checkBox">
-                                <input  type="checkbox" id="phaseSelected1" onClick={(e)=>this.selectPhase(e)}></input>
-                                <label  htmlFor="phaseSelected1"></label>
+                                <input  type="checkbox" id="2" onClick={(e)=>this.selectPhase(e)}></input>
+                                <label  htmlFor="2"></label>
                             </div>
 
                         </div>
@@ -168,9 +169,9 @@ export default class PhasesRow extends React.Component {
                         <div  className="platformSection">
                             <h3>Platform <span>Change</span></h3>
                             <ul>
-                                {this.props.platform.slice(0,3).map(value=>value.map(platform=>platform.map(info=>
+                                {this.props.platform.slice(0,3).map(info=>
                                    <li><div  className="platformIcon"><img src={info.icon}></img></div>{info.title}</li>
-                                   )))}
+                                   )}
                                {this.props.platform.length>3?<li  className="lastLi">
                                     <div  className="platformIcon moreLink"><span>+{this.props.platform.length-3}</span></div></li>:''}
                                 
@@ -217,7 +218,7 @@ export default class PhasesRow extends React.Component {
                             </div>
                         </learn-more>
                     </div>
-                    <div className={`phasesBox Tailor-made-theme ${this.state.selected.filter(value=>value==='phaseSelected2').length?'active':'dactive'}`} style={{display: 'inline-block'}}>
+                    <div className={`phasesBox Tailor-made-theme ${this.state.selected.filter(value=>value==='3').length?'active':'dactive'}`} style={{display: 'inline-block'}}>
                         <div  className="phasesHead">
                             <h3>
                                 <div  className="phaseIcon">
@@ -233,7 +234,7 @@ export default class PhasesRow extends React.Component {
                                 <strong>Delivered by</strong>
                                 <span >28 June 2020 </span>
                             </div>}
-                                <div  className="checkBox"><input  type="checkbox" id="phaseSelected2" onClick={(e)=>this.selectPhase(e)}></input><label  htmlFor="phaseSelected2"></label></div>
+                                <div  className="checkBox"><input  type="checkbox" id="3" onClick={(e)=>this.selectPhase(e)}></input><label  htmlFor="3"></label></div>
                             </div>
                             {this.props.advance?<React.Fragment><div  className="featureSection">
                         <h3 >Features <span  className="">View</span></h3>
@@ -241,9 +242,9 @@ export default class PhasesRow extends React.Component {
                         <div  className="platformSection">
                             <h3>Platform <span>Change</span></h3>
                             <ul>
-                                {this.props.platform.slice(0,3).map(value=>value.map(platform=>platform.map(info=>
+                                {this.props.platform.slice(0,3).map(info=>
                                    <li><div  className="platformIcon"><img src={info.icon}></img></div>{info.title}</li>
-                                   )))}
+                                   )}
                                 {this.props.platform.length>3?<li  className="lastLi">
                                     <div  className="platformIcon moreLink"><span>+{this.props.platform.length-3}</span></div></li>:''}
                             </ul>
@@ -289,7 +290,7 @@ export default class PhasesRow extends React.Component {
                                 </div>
                             </learn-more>
                         </div>
-                    <div className={`phasesBox MVP-theme ${this.state.selected.filter(value=>value==='phaseSelected0').length?'active':'dactive'}`} style={{display: 'inline-block'}}>
+                    <div className={`phasesBox MVP-theme ${this.state.selected.filter(value=>value==='4').length?'active':'dactive'}`} style={{display: 'inline-block'}}>
                         <div  className="phasesHead">
                             <h3>
                                 <div  className="phaseIcon"><img alt="" src="https://bstudio-assets.azureedge.net/assets-builder/uploads/build_phase/icon/5963a29c14c49f1407590ad5/MVP_blue.png"></img></div>
@@ -301,8 +302,8 @@ export default class PhasesRow extends React.Component {
                                 <span >28 June 2020 </span>
                             </div>}
                             <div  className="checkBox">
-                                <input  type="checkbox" id="phaseSelected0" onClick={(e)=>this.selectPhase(e)}></input>
-                                <label  htmlFor="phaseSelected0"></label>
+                                <input  type="checkbox" id="4" onClick={(e)=>this.selectPhase(e)}></input>
+                                <label  htmlFor="4"></label>
                             </div>
                         </div>
                         <div  className="featureSection">
@@ -312,9 +313,9 @@ export default class PhasesRow extends React.Component {
                         <div  className="platformSection">
                             <h3>Platform <span>Change</span></h3>
                             <ul>
-                                {this.props.platform.slice(0,3).map(value=>value.map(platform=>platform.map(info=>
+                                {this.props.platform.slice(0,3).map(info=>
                                    <li><div  className="platformIcon"><img src={info.icon}></img></div>{info.title}</li>
-                                   )))}
+                                   )}
                                 {this.props.platform.length>3?<li  className="lastLi">
                                     <div  className="platformIcon moreLink"><span>+{this.props.platform.length-3}</span></div></li>:''}
                                 
@@ -362,7 +363,7 @@ export default class PhasesRow extends React.Component {
                             </div>
                         </learn-more>
                     </div>
-                    <div className={`phasesBox Full-theme ${this.state.selected.filter(value=>value==='phaseSelected3').length?'active':'dactive'}`} style={{display: 'inline-block'}}>
+                    <div className={`phasesBox Full-theme ${this.state.selected.filter(value=>value==='5').length?'active':'dactive'}`} style={{display: 'inline-block'}}>
                         <div  className="phasesHead">
                             <h3>
                                 <div  className="phaseIcon"><img  alt="" src="https://bstudio-assets.azureedge.net/assets-builder/uploads/build_phase/icon/587f162314c49f39f0d5b620/Full_blue.png"></img></div>
@@ -374,8 +375,8 @@ export default class PhasesRow extends React.Component {
                                 <span >28 June 2020 </span>
                             </div>}
                             <div  className="checkBox">
-                                <input  type="checkbox" id="phaseSelected3"></input>
-                                <label htmlFor="phaseSelected3"></label>
+                                <input  type="checkbox" id="5"></input>
+                                <label htmlFor="5"></label>
                             </div>
                         </div>
                         {this.props.advance?<React.Fragment><div  className="featureSection">
@@ -384,9 +385,9 @@ export default class PhasesRow extends React.Component {
                         <div  className="platformSection">
                             <h3>Platform <span>Change</span></h3>
                             <ul>
-                                {this.props.platform.slice(0,3).map(value=>value.map(platform=>platform.map(info=>
+                                {this.props.platform.slice(0,3).map(info=>
                                    <li><div  className="platformIcon"><img src={info.icon}></img></div>{info.title}</li>
-                                   )))}
+                                   )}
                                 {this.props.platform.length>3?<li  className="lastLi">
                                     <div  className="platformIcon moreLink"><span>+{this.props.platform.length-3}</span></div></li>:''}
                                 
@@ -445,7 +446,7 @@ export default class PhasesRow extends React.Component {
                     <div className='phasesRowSlider'>
                     <div className='phasesRowContent'>
                         <div className='phasesRow'>
-                    <div className={`phasesBox Product-theme ${this.state.selected.filter(value=>value==='phaseSelected4').length?'active':'dactive'}`} style={{display: 'inline-block'}}>
+                    <div className={`phasesBox Product-theme ${this.state.selected.filter(value=>value==='1').length?'active':'dactive'}`} style={{display: 'inline-block'}}>
                         <div  className="phasesHead">
                             <h3>
                                 <div  className="phaseIcon">
@@ -459,7 +460,7 @@ export default class PhasesRow extends React.Component {
                                 <span >28 June 2020 </span>
                             </div>}
                             <div className="checkBox">
-                                <input  type="checkbox" id="phaseSelected4" onClick={(e)=>this.selectPhase(e)}></input><label  htmlFor="phaseSelected4"></label>
+                                <input  type="checkbox" id="1" onClick={(e)=>this.selectPhase(e)}></input><label  htmlFor="1"></label>
                             </div>
                         </div>
                         {this.props.advance?<React.Fragment><div  className="featureSection">
@@ -508,7 +509,7 @@ export default class PhasesRow extends React.Component {
                             </div>
                         </learn-more>
                     </div>
-                    <div  className={`phasesBox Design-theme ${this.state.selected.filter(value=>value==='phaseSelected1').length?'active':'dactive'}`} style={{display: 'inline-block'}}>
+                    <div  className={`phasesBox Design-theme ${this.state.selected.filter(value=>value==='2').length?'active':'dactive'}`} style={{display: 'inline-block'}}>
                         <div  className="phasesHead">
                             <h3>
                                 <div  className="phaseIcon"><img  alt="" src="https://bstudio-assets.azureedge.net/assets-builder/uploads/build_phase/icon/587f162314c49f39f0d5b61d/Design_blue.png"></img></div>
@@ -520,8 +521,8 @@ export default class PhasesRow extends React.Component {
                                 <span >28 June 2020 </span>
                             </div>}
                             <div  className="checkBox">
-                                <input  type="checkbox" id="phaseSelected1" onClick={(e)=>this.selectPhase(e)}></input>
-                                <label  htmlFor="phaseSelected1"></label>
+                                <input  type="checkbox" id="2" onClick={(e)=>this.selectPhase(e)}></input>
+                                <label  htmlFor="2"></label>
                             </div>
                         </div>
                         {this.props.advance?<React.Fragment><div  className="featureSection">
@@ -530,9 +531,9 @@ export default class PhasesRow extends React.Component {
                         <div  className="platformSection">
                             <h3>Platform <span>Change</span></h3>
                             <ul>
-                                {this.props.platform.slice(0,3).map(value=>value.map(platform=>platform.map(info=>
+                                {this.props.platform.slice(0,3).map(info=>
                                    <li><div  className="platformIcon"><img src={info.icon}></img></div>{info.title}</li>
-                                   )))}
+                                   )}
                                 {this.props.platform.length>3?<li  className="lastLi">
                                     <div  className="platformIcon moreLink"><span>+{this.props.platform.length-3}</span></div></li>:''}
                                 
@@ -579,7 +580,7 @@ export default class PhasesRow extends React.Component {
                             </div>
                         </learn-more>
                     </div>
-                    <div className={`phasesBox Tailor-made-theme ${this.state.selected.filter(value=>value==='phaseSelected2').length?'active':'dactive'}`} style={{display: 'inline-block'}}>
+                    <div className={`phasesBox Tailor-made-theme ${this.state.selected.filter(value=>value==='3').length?'active':'dactive'}`} style={{display: 'inline-block'}}>
                         <div  className="phasesHead">
                             <h3>
                                 <div  className="phaseIcon">
@@ -594,7 +595,7 @@ export default class PhasesRow extends React.Component {
                                 <strong>Delivered by</strong>
                                 <span >28 June 2020 </span>
                             </div>}
-                            <div  className="checkBox"><input  type="checkbox" id="phaseSelected2" onClick={(e)=>this.selectPhase(e)}></input><label  htmlFor="phaseSelected2"></label></div>
+                            <div  className="checkBox"><input  type="checkbox" id="3" onClick={(e)=>this.selectPhase(e)}></input><label  htmlFor="3"></label></div>
                             </div>
                             {this.props.advance?<React.Fragment><div  className="featureSection">
                         <h3 >Features <span  className="">View</span></h3>
@@ -602,9 +603,9 @@ export default class PhasesRow extends React.Component {
                         <div  className="platformSection">
                             <h3>Platform <span>Change</span></h3>
                             <ul>
-                                {this.props.platform.slice(0,3).map(value=>value.map(platform=>platform.map(info=>
+                                {this.props.platform.slice(0,3).map(info=>
                                    <li><div  className="platformIcon"><img src={info.icon}></img></div>{info.title}</li>
-                                   )))}
+                                   )}
                                 {this.props.platform.length>3?<li  className="lastLi">
                                     <div  className="platformIcon moreLink"><span>+{this.props.platform.length-3}</span></div></li>:''}
                                 
@@ -661,7 +662,7 @@ export default class PhasesRow extends React.Component {
                                 </div>
                             </learn-more>
                         </div>
-                    <div className={`phasesBox MVP-theme ${this.state.selected.filter(value=>value==='phaseSelected0').length?'active':'dactive'}`} style={{display: 'inline-block'}}>
+                    <div className={`phasesBox MVP-theme ${this.state.selected.filter(value=>value==='4').length?'active':'dactive'}`} style={{display: 'inline-block'}}>
                         <div  className="phasesHead">
                             <h3>
                                 <div  className="phaseIcon"><img alt="" src="https://bstudio-assets.azureedge.net/assets-builder/uploads/build_phase/icon/5963a29c14c49f1407590ad5/MVP_blue.png"></img></div>
@@ -674,8 +675,8 @@ export default class PhasesRow extends React.Component {
                                 <span >28 June 2020 </span>
                             </div>}
                             <div  className="checkBox">
-                                <input  type="checkbox" id="phaseSelected0" onClick={(e)=>this.selectPhase(e)}></input>
-                                <label  htmlFor="phaseSelected0"></label>
+                                <input  type="checkbox" id="4" onClick={(e)=>this.selectPhase(e)}></input>
+                                <label  htmlFor="4"></label>
                             </div>
                         </div>
                         <div  className="featureSection">
@@ -685,9 +686,9 @@ export default class PhasesRow extends React.Component {
                         <div  className="platformSection">
                             <h3>Platform <span>Change</span></h3>
                             <ul>
-                                {this.props.platform.slice(0,3).map(value=>value.map(platform=>platform.map(info=>
+                                {this.props.platform.slice(0,3).map(info=>
                                    <li><div  className="platformIcon"><img src={info.icon}></img></div>{info.title}</li>
-                                   )))}
+                                   )}
                                 {this.props.platform.length>3?<li  className="lastLi">
                                     <div  className="platformIcon moreLink"><span>+{this.props.platform.length-3}</span></div></li>:''}
                                 
@@ -734,7 +735,7 @@ export default class PhasesRow extends React.Component {
                             </div>
                         </learn-more>
                     </div>
-                    <div className={`phasesBox Full-theme ${this.state.selected.filter(value=>value==='phaseSelected3').length?'active':'dactive'}`} style={{display: 'inline-block'}}>
+                    <div className={`phasesBox Full-theme ${this.state.selected.filter(value=>value==='5').length?'active':'dactive'}`} style={{display: 'inline-block'}}>
                         <div  className="phasesHead">
                             <h3>
                                 <div  className="phaseIcon"><img  alt="" src="https://bstudio-assets.azureedge.net/assets-builder/uploads/build_phase/icon/587f162314c49f39f0d5b620/Full_blue.png"></img></div>
@@ -746,8 +747,8 @@ export default class PhasesRow extends React.Component {
                                 <span >28 June 2020 </span>
                             </div>}
                             <div  className="checkBox">
-                                <input  type="checkbox" id="phaseSelected3" onClick={(e)=>this.selectPhase(e)}></input>
-                                <label htmlFor="phaseSelected3"></label>
+                                <input  type="checkbox" id="5" onClick={(e)=>this.selectPhase(e)}></input>
+                                <label htmlFor="5"></label>
                             </div>
                         </div>
                         {this.props.advance?<React.Fragment><div  className="featureSection">
@@ -756,9 +757,9 @@ export default class PhasesRow extends React.Component {
                         <div  className="platformSection">
                             <h3>Platform <span>Change</span></h3>
                             <ul>
-                                {this.props.platform.slice(0,3).map(value=>value.map(platform=>platform.map(info=>
+                                {this.props.platform.slice(0,3).map(info=>
                                    <li><div  className="platformIcon"><img src={info.icon}></img></div>{info.title}</li>
-                                   )))}
+                                   )}
                                 {this.props.platform.length>3?<li  className="lastLi">
                                     <div  className="platformIcon moreLink"><span>+{this.props.platform.length-3}</span></div></li>:''}
                             </ul>

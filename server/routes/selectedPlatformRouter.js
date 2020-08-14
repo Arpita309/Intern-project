@@ -3,36 +3,36 @@ const bodyParser = require('body-parser');
 
 const mongoose = require('mongoose');
 
-const SelectedData = require('../models/selectedData');
+const SelectedPlatforms = require('../models/selectedPlatforms');
 var authenticate = require('../authenticate');
 
 
 
-const SelectedDataRouter = express.Router();
+const SelectedPlatformsRouter = express.Router();
 
-SelectedDataRouter.use(bodyParser.json());
+SelectedPlatformsRouter.use(bodyParser.json());
 
-SelectedDataRouter.route('/')
+SelectedPlatformsRouter.route('/')
 
 .get( (req,res,next) => {
     
-    SelectedData.find({user: req.user._id,templateId:req.query.templateId})
+    SelectedPlatforms.find({user: req.user._id})
     .populate('user')
     
-    .then((SelectedFeatures) => {
+    .then((SelectedPlatforms) => {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
-        res.json(SelectedFeatures);
+        res.json(SelectedPlatforms);
     }, (err) => next(err))
     .catch((err) => next(err));
 })
 .post( (req, res, next) => {
-    SelectedData.find({user: req.user._id})
-    .then((SelectedFeature) => {
-        if(SelectedFeature){
+    SelectedPlatforms.find({user: req.user._id})
+    .then((SelectedPlatform) => {
+        if(SelectedPlatform){
             let features=[];let  id=''
             
-            SelectedFeature.map(value=>{
+            SelectedPlatform.map(value=>{
                 if(value.templateId===req.body.templateId){
                     features=[...features,value.templateId]
                     id=value._id
@@ -41,13 +41,9 @@ SelectedDataRouter.route('/')
             console.log('filtered',features)
             console.log('_id',id)
             if(features.length>0){
-                SelectedData.findOne({_id:id}).then((Selected)=>{
+                SelectedPlatforms.findOne({_id:id}).then((Selected)=>{
                     console.log(Selected)
-                    Selected.phases=req.body.phases,
-                    Selected.teamLocation=req.body.teamLocation,
-                    Selected.platformIDs=req.body.platforms,
-                    Selected.speed=req.body.speed
-                    
+                    Selected.platforms=req.body.platforms
                     Selected.save()
                     .then((Feature) => {
                         console.log('SelectedFeatures Created ', Feature);
@@ -59,17 +55,17 @@ SelectedDataRouter.route('/')
                 })}
                 
                 else {
-                    SelectedData.create({"user": req.user._id,"phases":req.body.features,"templateId":req.body.templateId,"teamLocation":req.body.teamLocation,"platformIDs":req.body.platforms,"speed":req.body.speed})
-                    .then((SelectedFeature) => {
-                        console.log( SelectedFeature);
+                    SelectedPlatforms.create({"user": req.user._id,"platforms":req.body.platforms,"templateId":req.body.templateId})
+                    .then((SelectedPlatform) => {
+                        console.log( SelectedPlatform);
                         res.statusCode = 200;
                         res.setHeader('Content-Type', 'application/json');
-                        res.json(SelectedFeature);
+                        res.json(SelectedPlatform);
                     }, (err) => next(err));
                 }    
             }
         else {
-            SelectedData.create({"user": req.user._id,"phases":req.body.features,"templateId":req.body.templateId,"teamLocation":req.body.teamLocation,"platformIDs":req.body.platforms,"speed":req.body.speed})
+            SelectedPlatforms.create({"user": req.user._id,"platforms":req.body.platforms,"templateId":req.body.templateId})
             .then((SelectedFeature) => {
                 console.log( SelectedFeature);
                 res.statusCode = 200;
@@ -85,20 +81,20 @@ SelectedDataRouter.route('/')
     }, (err) => next(err))
     .catch((err) => next(err));  
 });
-SelectedDataRouter.route('/template')
+SelectedPlatformsRouter.route('/template')
 .get( (req,res,next) => {
     console.log(req.query.templateId)
-    SelectedData.findOne({user: req.user._id,templateId:req.query.templateId})
+    SelectedPlatforms.findOne({user: req.user._id,templateId:req.query.templateId})
     .populate('user')
     
-    .then((SelectedFeatures) => {
+    .then((SelectedPlatforms) => {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
-        res.json(SelectedFeatures);
+        res.json(SelectedPlatforms);
     }, (err) => next(err))
     .catch((err) => next(err));
 })
 
 
 
-module.exports = SelectedDataRouter;
+module.exports = SelectedPlatformsRouter;

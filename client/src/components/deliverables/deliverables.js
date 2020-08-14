@@ -1,7 +1,7 @@
 import React from 'react'
 import './deliverables.css'
 
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 import AddCustom from '../addCustomDelivery/addCustomDelivery'
 import SliderComponent from '../deliverySlider/deliverySlider'
 import PhasesRow from '../phasesSlider/phasesSlider'
@@ -11,8 +11,8 @@ import LoginIcon from '../loginIcon/loginIcon'
 import CurrencyBox from '../currencyBox/currencyBox'
 
 import Slider from '@material-ui/core/Slider';
-
-import { ApiGet} from '../../api'
+import Typography from "@material-ui/core/Typography";
+import { ApiGet,ApiPost} from '../../api'
 const useStyles = theme => ({
     root: {
       width: 250,
@@ -23,6 +23,7 @@ const useStyles = theme => ({
     }
   });
 let filter={}
+
 class Delivery extends React.Component{
     constructor(props){
         super(props)
@@ -30,7 +31,7 @@ class Delivery extends React.Component{
            showPlatform:false,firstDelivery:false,
            custom:[],count:1,platformList:[],
            selectedPlatform:[],advance:false,teams:{},dropdown:false,teamLocation:'Anywhere',search:'',mobNavigation:false,
-           bottomBar:false,promotion:false,slider:'',platformId:[],data:[],template:''
+           bottomBar:false,promotion:false,speed:'',platformId:[],data:[],template:'',phases:[]
            
         }
     }
@@ -38,6 +39,7 @@ class Delivery extends React.Component{
         ApiGet('configurations')
           .then(res => {
             const data = res.data;
+            console.log(data)
             this.setState({platformList: data[0].platforms });
           }) 
           ApiGet('teams')
@@ -51,13 +53,24 @@ class Delivery extends React.Component{
               
               this.setState({ data });
               console.log(this.state.data)
-              this.state.data.map(value=>value.attributes.map(info=>{return(this.setState({template:info.id}),info.platform_ids.map(obj=>{
-                this.setState({selectedPlatform:[...this.state.selectedPlatform,this.state.platformList.map(data=>data.attributes.filter(platform=>platform.id===obj)).filter(value=>value.length)],platformId:[...this.state.platformId,obj]})
-              }))} ))
+              this.state.data.map(value=>value.attributes.map(info=>{return(this.setState({template:info.id}))} ))
              
+              ApiGet(`selectedPlatform/template/?templateId=${this.state.template}`)
+              .then(res=>{
+                  let platforms=res.data.platforms
+                  platforms.map(obj=>
+                  this.state.platformList.map(data=>data.attributes.map(platform=>{
+                      if(platform.id===obj)
+                      {
+                          this.setState({selectedPlatform:[...this.state.selectedPlatform,platform],platformId:[...this.state.platformId,obj]})
+                      }
+                
+                    }))
+             )
             
-             } );
-        }
+        })
+    })}
+    
     showPromotion=()=>{
         
         this.setState({promotion:true})
@@ -87,7 +100,7 @@ class Delivery extends React.Component{
         this.setState({custom:[...this.state.custom,<AddCustom count={this.state.count} advance={this.state.advance} platform={this.state.selectedPlatform}/>]})
     }
     selectPlatform=(icon,e,id)=>{
-        
+        console.log(icon)
         if(this.state.platformId.filter(value=>value===id).length){
             this.state.selectedPlatform=this.state.selectedPlatform.filter(value=>value!=icon)
             this.state.platformId=this.state.platformId.filter(value=>value!=id)
@@ -122,38 +135,55 @@ class Delivery extends React.Component{
     closeNavigation=()=>{
         this.setState({mobNavigation:false})
     }
-    
+    selectPhase=(value)=>{
+        this.setState({phases:[...this.state.phases,value]})
+    }
+    redirect=()=>{
+    let payload={phases:this.state.phases,templateId:this.state.template,teamLocation:this.state.teamLocation,platforms:this.state.platformId}
+    ApiPost('selectedData',payload)
+    .then(res=>{
+      this.setState({redirect:true})
+    })
+    }
     render(){
-        console.log(this.state.template)
+        console.log(this.state.selectedPlatform)
+    if(this.state.redirect){
+        return(<Redirect to={`/build-card/${this.state.template}`}/>)
+    }
         const classes = useStyles();     
     
   const marks = [
   {
-    value: 0-500,
-    label: '0-500',
+    value:4,
+    label: 'Relaxed',
   },
   {
-    value: 500-5000,
-    label: '500-5k',
+    value: 3,
+    label: 'Slow',
   },
   {
-    value: 5000-50000,
-    label: '5k-50k',
+    value:1,
+    label:'Standard',
   },
   {
-    value: 50000-100000,
-    label: '50k-100k',
+    value: 5,
+    label: 'Fast',
   },
+  {
+  value:2,
+  label:'Speedy'
+  }
 ]; 
 function valuetext(value) {
     return `${value}`;
     
   }
-  const handleSliderChange = (event, newValue) => {
-    this.setState({slider:newValue});
+  const handleSliderChange = ( newValue) => {
+     
+    this.setState({speed:newValue});
 
   };
-       
+       console.log(this.state.speed)
         return(
            
             <div className='wrapper'>
@@ -246,12 +276,12 @@ function valuetext(value) {
                                 <p>Select platform for your product</p>
                                 <ul>
                                     
-                                    {this.state.selectedPlatform.map(value=>value.map(platform=>platform.map(info=>
+                                    {this.state.selectedPlatform.map(info=>
                                          
                                         <li>
                                             
                                             <img src={info.icon}></img>
-                                        </li>)))}
+                                        </li>)}
                                     <li  className="moreplatform" onClick={this.platform}>
                                         <em  className="icon-plus"></em>
                                     </li>
@@ -302,7 +332,7 @@ function valuetext(value) {
                             </h2>
                             
                                         
-                                        <PhasesRow custom={this.state.custom}  advance={this.state.advance} platform={this.state.selectedPlatform}/>
+                                        <PhasesRow custom={this.state.custom}  advance={this.state.advance} platform={this.state.selectedPlatform}selectPhase={this.selectPhase}/>
                                         
                                         
                                         
@@ -346,6 +376,28 @@ function valuetext(value) {
                                    {this.state.advance?'':<div  className="speedBox">
                                         <h4 >Select a delivery speed</h4>
                                         <div  className="speedSlider">
+                                                <div className={classes.root}>
+                                                    <Typography
+                                                        id="track-range-duration-slider"
+                                                        gutterBottom
+                                                        >
+                                                        track range
+                                                    </Typography>     
+                                                                
+                                                    <Slider
+                                                        color={"secondary"}
+                                                        
+                                                        
+                                                        onChange={handleSliderChange}
+                                                        defaultValue={4}
+                                                        getAriaValueText={valuetext}
+                                                        aria-labelledby="discrete-slider-custom"
+                                                        
+                                                       step={20}
+                                                        marks={marks}
+                                                    />
+                                                    </div>
+                                                
                                         </div>
                                     </div>}
                                 </app-general-phase-speed>
@@ -438,10 +490,10 @@ function valuetext(value) {
                                     <div className='platformdetailBox'>
                                     <h3>Platform <span onClick={this.platform}>Change</span></h3>
                                     <ul>
-                                    {this.state.selectedPlatform.map(value=>value.map(platform=>platform.map(info=>
+                                    {this.state.selectedPlatform.map(info=>
                                             <li>
                                                 <img src={info.icon}></img>
-                                            </li>)))}
+                                            </li>)}
                                     </ul>
                                 </div>
                                 </div>
@@ -457,7 +509,7 @@ function valuetext(value) {
                         </div>
                         <div  className={`previewBottom ${this.state.bottomBar?'child_btn_full':''}`}>
                             <div >
-                                <button type="button" className="nextButton"><Link to={`/build-card/${this.state.template}`} style={{color:'white'}}> Done </Link></button>
+                                <button type="button" className="nextButton" onClick={this.redirect}> Done</button>
                             </div>
                             <share-url-button  >
                                 <button  type="button" className="shareUrl">

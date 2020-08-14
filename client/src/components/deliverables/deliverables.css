@@ -2127,3 +2127,9 @@ perfect-scrollbars > .ps {
     color: rgba(0,0,0,.6);
     display: block;
 }
+.deliveryHolder .MuiSlider-thumb{
+    display:inline-block !important;
+}
+.deliveryHolder .MuiSlider-markLabel{
+    position: relative;
+}

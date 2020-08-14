@@ -15,7 +15,8 @@ class BuildCard extends React.Component{
             dropdown:false,
             invite:false,share:false,transfer:false,prototype:false,
             builderCloud:false,builderCareinfo:false,showSidebar:false,builderSummary:false,
-            buildcardPayment:false,app:[],features:[],loading:true
+            buildcardPayment:false,app:[],features:[],loading:true,phases:[],platforms:[],
+            teamLocation:'',similarApps:[],projectName:'My Builder Project',Edit:true
         }
     }
     componentDidMount(){
@@ -23,6 +24,37 @@ class BuildCard extends React.Component{
         .then(res=>{
            this.setState({features:res.data,loading:false})
         })
+        
+        ApiGet(`configurations`)
+        .then(res=>{
+           console.log(res.data)
+           ApiGet(`selectedData/template/?templateId=${this.props.match.params.template}`)
+            .then(build=>{
+            res.data[0].build_phases.map(value=>{
+                build.data.phases.map(info=>{
+                    if(info==value.id){
+
+                        this.setState({phases:[...this.state.phases,value]})
+                        console.log(value)
+                    }
+                    })
+                
+            })
+    
+            res.data[0].platforms.map(value=>value.attributes.map(info=>{
+                build.data.platformIDs.map(data=>{
+                    if(data===info.id)
+                    this.setState({platforms:[...this.state.platforms,info]})
+                })
+            }))
+            this.setState({teamLocation:build.data.teamLocation})
+            })
+        })
+        ApiGet(`apps/?id=${this.props.match.params.template}`).then(
+            (res) => {
+              const data = res.data;
+              this.setState({similarApps:data });       
+             } );
           
     }
     showDropdown=()=>{
@@ -64,15 +96,22 @@ class BuildCard extends React.Component{
         }
        
     }
+    setProjectName=(e)=>{
+        this.setState({projectName:e.target.value})
+    }
     sidebar=()=>{
         this.setState({showSidebar:!this.state.showSidebar})
     }
     closePopup=()=>{
         this.setState({invite:false,share:false,transfer:false,prototype:false})
     }
-    
+    Edit=()=>{
+        this.setState({Edit:!this.state.Edit})
+    }
     render(){
-       
+       console.log(this.state.phases)
+       console.log(this.state.platforms)
+       console.log(this.state.similarApps)
         return(
             <div className='wrapper'>
                 <Header showSidebar={this.state.showSidebar} sidebar={this.sidebar}/>
@@ -139,11 +178,11 @@ class BuildCard extends React.Component{
                                             <div  className="last-update"> Last edited: 4 June 2020 </div>
                                         </div>
                                         <div className='tabing-block' >
-                                            <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist" style={{width:'100%'}}>
-                                                <a class="nav-item nav-link tabList active" id="nav-info-tab" data-toggle="tab" href="#nav-info" role="tab" aria-controls="nav-info" aria-selected="false">Project Info</a>
-                                                <a class="nav-item nav-link tabList" id="nav-similar-tab" data-toggle="tab" href="#nav-similar" role="tab" aria-controls="nav-similar" aria-selected="false">Similar Apps(1)</a>
-                                                <a class="nav-item nav-link tabList" id="nav-features-tab" data-toggle="tab" href="#nav-features" role="tab" aria-controls="nav-features" aria-selected="false">Features({this.state.features.features.length})</a>
-                                                 <a class="nav-item nav-link tabList" id="nav-phases-tab" data-toggle="tab" href="#nav-phases" role="tab" aria-controls="nav-phases" aria-selected="false">Phases(3)</a>
+                                            <div class="nav nav-tabs " id="nav-tab" role="tablist" style={{width:'100%'}}>
+                                                <a class=" nav-link tabList active" id="nav-info-tab" data-toggle="tab" href="#nav-info" role="tab" aria-controls="nav-info" aria-selected="false">Project Info</a>
+                                                <a class=" nav-link tabList" id="nav-similar-tab" data-toggle="tab" href="#nav-similar" role="tab" aria-controls="nav-similar" aria-selected="false">Similar Apps(1)</a>
+                                                <a class=" nav-link tabList" id="nav-features-tab" data-toggle="tab" href="#nav-features" role="tab" aria-controls="nav-features" aria-selected="false">Features({this.state.features.features.length})</a>
+                                                 <a class=" nav-link tabList" id="nav-phases-tab" data-toggle="tab" href="#nav-phases" role="tab" aria-controls="nav-phases" aria-selected="false">Phases({this.state.phases.length})</a>
                                             </div>  
                                         </div>
                                         <div class="tab-content" id="nav-tabContent">
@@ -160,12 +199,18 @@ class BuildCard extends React.Component{
                                                                     <div  className="pro-text-block">
                                                                         <h3  className="pro-head"> Project Name </h3>
                                                                         <div  className="pro-name-block">
-                                                                        <div  className="pro-name-strip edit ng-star-inserted">
-                                                                            <p  className="strip-head"> My Builder Project </p>
-                                                                            <div  className="project-action2 ng-star-inserted">
+                                                                        {this.state.Edit?<div  className="pro-name-strip edit ng-star-inserted">
+                                                                            <p  className="strip-head">{this.state.projectName}</p>
+                                                                            <div  className="project-action2 " onClick={this.Edit}>
                                                                                 <em  className="icon-iconedit"></em>
                                                                             </div>
                                                                         </div>
+                                                                        :<div  className="pro-name-strip save ng-star-inserted">
+                                                                            <input  type="text" placeholder="My Builder Project" name="projectname" maxlength="25" autofocus="autofocus" onfocus="this.select()" className="strip-head" onChange={(e)=>this.setProjectName(e)}/>
+                                                                            <div  className="project-action2 save-mobile">
+                                                                                <span  className="btnStyle1" onClick={this.Edit}> Save </span>
+                                                                            </div>
+                                                                        </div>}
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -197,7 +242,7 @@ class BuildCard extends React.Component{
                                                                     <h3  className="pro-head"> Team Location </h3>
                                                                     <div  className="pro-name-block">
                                                                         <div  className="pro-name-strip change">
-                                                                            <p  className="strip-head"> Anywhere </p>
+                                                                            <p  className="strip-head">{this.state.teamLocation} </p>
                                                                             <div className="project-action ng-star-inserted">
                                                                                 <span  className="btnStyle1"> change </span>
                                                                             </div>
@@ -215,19 +260,22 @@ class BuildCard extends React.Component{
                                             <div className="tab-pane fade " id="nav-similar" role="tabpanel" aria-labelledby="nav-similar">
                                                 <div  className="fixHeight ng-star-inserted">
                                                     <div  className="buildcard-detail">
-                                                        <h3  className="detail-heading"> Similar Apps (1) 
+                                                        <h3  className="detail-heading"> Similar Apps ({this.state.similarApps.length}) 
                                                             <span  className="btnStyle1 feature-btn ng-star-inserted"> Change</span>
                                                         </h3>
+                                                        {this.state.similarApps.map(value=>
                                                         <div  className="detail-list-block list-block2">
                                                             <div  className="app-box ng-star-inserted">
                                                                 <div  className="app-left">
                                                                     <span  className="simiapp-ico-img">
-                                                                        <img  alt="" src="https://duj87royd3ze0.cloudfront.net/uploads/application/app_builder_icon/5c5013941f0c643d17336ed1/9gag.png"></img>
+                                                                        <img  alt="" src={value.app_builder_icon_url}></img>
                                                                     </span>
-                                                                    <span > 9GAG</span>
+                                                                    <span >{value.title}</span>
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                    )}
+                                                        
                                                     </div>
                                                     <hr  className="app-sep"/>
                                                     <div  className="buildcard-detail">
@@ -241,7 +289,7 @@ class BuildCard extends React.Component{
                                             <div className="tab-pane fade " id="nav-features" role="tabpanel" aria-labelledby="nav-features">
                                                 <div  className="fixHeight">
                                                     <div  className="buildcard-detail">
-                                                        <h3  className="detail-heading"> Features ({}) 
+                                                        <h3  className="detail-heading"> Features ({this.state.features.features.length}) 
                                                             <span  className="btnStyle1 feature-btn ng-star-inserted"> Change </span>
                                                         </h3>
                                                         <div  className="detail-list-block feature-box">
@@ -260,135 +308,53 @@ class BuildCard extends React.Component{
                                             <div className="tab-pane fade " id="nav-phases" role="tabpanel" aria-labelledby="nav-phases">
                                                 <div  className="fixHeight">
                                                     <div  className="buildcard-detail ">
-                                                        <h3  className="detail-heading"> Phases (3) 
+                                                        <h3  className="detail-heading"> Phases ({this.state.phases.length}) 
                                                             <span  className="btnStyle1 feature-btn "> Change </span>
                                                         </h3>
                                                         <div  className="detail-list-block">
                                                             <div className="phases-box">
-                                                                <div  className="design-theme list-box ">
-                                                                    <div className="pro-head">
-                                                                        <h3> Design </h3>
-                                                                    </div>
-                                                                    <div  className="pro-mid">
-                                                                        <p  className="head "> Platform </p>
-                                                                        <div className="plateform-list-block ">
-                                                                            <div  className="Platform-list showPlateform-">
-                                                                                <ul>
-                                                                                    <li>
-                                                                                        <span  className="icons">
-                                                                                            <img  alt="Android" src="https://duj87royd3ze0.cloudfront.net/uploads/image/file/591a9b0014c49f7f46746441/Android_blue.png"></img>
-                                                                                        </span>
-                                                                                        <span  className="mobile-hide"> Android </span>
-                                                                                    </li>
-                                                                                    <li  >
-                                                                                        <span  className="icons">
-                                                                                            <img  alt="iOS" src="https://duj87royd3ze0.cloudfront.net/uploads/image/file/59fd56b888f3ac79a46ef210/ios_blue.png"></img>
-                                                                                        </span>
-                                                                                        <span  className="mobile-hide"> iOS </span>
-                                                                                    </li>
-                                                                                    <li >
-                                                                                        <span  className="icons">
-                                                                                            <img  alt="Web" src="https://duj87royd3ze0.cloudfront.net/uploads/image/file/59fd570d88f3ac79a46ef213/Web_xh.png"></img>
-                                                                                        </span>
-                                                                                        <span  className="mobile-hide"> Web </span>
-                                                                                    </li>
-                                                                                </ul>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div  className="pro-ftr">
-                                                                        <p  class="head"> Project Speed </p>
-                                                                        <div  className="progress-box">
-                                                                            <div> Relaxed</div>
-                                                                            <div  className="progress">
-                                                                                <div  role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" className="progress-bar bg-green relaxed"></div>
-                                                                            </div>
-                                                                        </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div  className="list-box mvp-theme ">
-                                                                        <div  className="pro-head">
-                                                                            <h3> MVP </h3>
+                                                                {this.state.phases.map(value=>
+
+                                                                        <div  className={`${value.title.split(" ")[0]}-theme list-box `}>
+                                                                        <div className="pro-head">
+                                                                            <h3>{value.title}</h3>
                                                                         </div>
                                                                         <div  className="pro-mid">
-                                                                            <p  className="head"> Platform </p>
-                                                                            <div  className="plateform-list-block ">
+                                                                            <p  className="head "> Platform </p>
+                                                                            <div className="plateform-list-block ">
                                                                                 <div  className="Platform-list showPlateform-">
-                                                                                    <ul >
-                                                                                        <li >
-                                                                                            <span  className="icons">
-                                                                                                <img  alt="Android" src="https://duj87royd3ze0.cloudfront.net/uploads/image/file/591a9b0014c49f7f46746441/Android_blue.png"></img>
-                                                                                            </span>
-                                                                                            <span  className="mobile-hide"> Android </span>
-                                                                                        </li>
-                                                                                        <li  >
-                                                                                            <span  className="icons">
-                                                                                                <img  alt="iOS" src="https://duj87royd3ze0.cloudfront.net/uploads/image/file/59fd56b888f3ac79a46ef210/ios_blue.png"></img>
-                                                                                            </span>
-                                                                                            <span  className="mobile-hide"> iOS </span>
-                                                                                        </li>
-                                                                                        <li >
-                                                                                            <span  className="icons">
-                                                                                                <img  alt="Web" src="https://duj87royd3ze0.cloudfront.net/uploads/image/file/59fd570d88f3ac79a46ef213/Web_xh.png"></img>
-                                                                                            </span>
-                                                                                            <span  className="mobile-hide"> Web </span>
-                                                                                        </li>
+                                                                                    <ul>
+                                                                                        {this.state.platforms.map(data=>
+                                                                                            <li>
+                                                                                                <span  className="icons">
+                                                                                                    <img  alt={data.title} src={data.icon}></img>
+                                                                                                </span>
+                                                                                                <span  className="mobile-hide">{data.title}</span>
+                                                                                            </li>
+                                                                                        )}
+                                                                                        
+
                                                                                     </ul>
                                                                                 </div>
+                                                                                {this.state.platforms.length>3?<div  className="Platform-detail-list ng-star-inserted">
+                                                                                    <span  className="showallplateform">+ {this.state.platforms.length-3}</span>
+                                                                                </div>:''}
                                                                             </div>
                                                                         </div>
                                                                         <div  className="pro-ftr">
-                                                                        <p  class="head"> Project Speed </p>
-                                                                        <div  className="progress-box">
-                                                                            <div> Relaxed</div>
-                                                                            <div  className="progress">
-                                                                                <div  role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" className="progress-bar bg-green relaxed"></div>
+                                                                            <p  class="head"> Project Speed </p>
+                                                                            <div  className="progress-box">
+                                                                                <div> Relaxed</div>
+                                                                                <div  className="progress">
+                                                                                    <div  role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" className="progress-bar bg-green relaxed"></div>
+                                                                                </div>
+                                                                            </div>
                                                                             </div>
                                                                         </div>
-                                                                    </div>
+
+                                                                    )}
+                                                                
                                                                     
-                                                                    </div> 
-                                                                    <div  className="full-theme list-box ">
-                                                                    <div className="pro-head">
-                                                                        <h3> Full Build </h3>
-                                                                    </div>
-                                                                    <div  className="pro-mid">
-                                                                        <p  className="head "> Platform </p>
-                                                                        <div className="plateform-list-block ">
-                                                                            <div  className="Platform-list showPlateform-">
-                                                                                <ul>
-                                                                                    <li>
-                                                                                        <span  className="icons">
-                                                                                            <img  alt="Android" src="https://duj87royd3ze0.cloudfront.net/uploads/image/file/591a9b0014c49f7f46746441/Android_blue.png"></img>
-                                                                                        </span>
-                                                                                        <span  className="mobile-hide"> Android </span>
-                                                                                    </li>
-                                                                                    <li  >
-                                                                                        <span  className="icons">
-                                                                                            <img  alt="iOS" src="https://duj87royd3ze0.cloudfront.net/uploads/image/file/59fd56b888f3ac79a46ef210/ios_blue.png"></img>
-                                                                                        </span>
-                                                                                        <span  className="mobile-hide"> iOS </span>
-                                                                                    </li>
-                                                                                    <li >
-                                                                                        <span  className="icons">
-                                                                                            <img  alt="Web" src="https://duj87royd3ze0.cloudfront.net/uploads/image/file/59fd570d88f3ac79a46ef213/Web_xh.png"></img>
-                                                                                        </span>
-                                                                                        <span  className="mobile-hide"> Web </span>
-                                                                                    </li>
-                                                                                </ul>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div  className="pro-ftr">
-                                                                        <p  class="head"> Project Speed </p>
-                                                                        <div  className="progress-box">
-                                                                            <div> Relaxed</div>
-                                                                            <div  className="progress">
-                                                                                <div  role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" className="progress-bar bg-green relaxed"></div>
-                                                                            </div>
-                                                                        </div>
-                                                                        </div>
-                                                                    </div>
                                                                     
                                                                     
                                                                     
