@@ -1,13 +1,13 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import {useStripe, useElements,CardCvcElement,CardExpiryElement,CardNumberElement} from '@stripe/react-stripe-js';
 import './pay.css'
 import axios from 'axios'
-import { Link } from 'react-router-dom';
-import {ApiPost} from '../../api'
+import { Link, useParams } from 'react-router-dom';
+import {ApiPost, ApiGet} from '../../api'
 
 var razorpay = new window.Razorpay({  key: 'rzp_test_abGPkyLg8rUCDC',      image: 'https://i.imgur.com/n5tjHFD.png',});
 razorpay.once('ready', function(response) {  console.log(response.methods);})
-const  Pay =()=>{
+const  Pay =(props)=>{
   const stripe = useStripe();
   const elements = useElements();
   const [name,setName]=useState();
@@ -16,15 +16,38 @@ const  Pay =()=>{
   const [detail,setDetail]=useState(false)
   const [value,setValue]=useState();
   const [id,setId]=useState();
+  const[billing,setBilling]=useState([]);
+  const[price,setPrice]=useState();
+  const[weeks,setWeeks]=useState();
+  let {template}=useParams()
+  console.log(template)
+  useEffect(()=>{
+    ApiGet('billing')
+    .then(res=>{
+        console.log(res)
+        setBilling(res.data[0])
+        console.log(billing)
+    }
+    
+        )
+    ApiGet(`priceAndDuration/template/?templateId=${template}`)
+    .then(res=>{
+        setPrice(res.data.price)
+        setWeeks(res.data.weeks)
+    })    
+  },[weeks])
+      
+    
+      
   function razorpay_payment_by_netbanking() {
     
-    ApiPost("razorpay").then(res=>{
+    ApiPost("razorpay",{'price':price}).then(res=>{
        
     razorpay.createPayment({
         
         amount: res.data.amount,  
-        email: 'gaurav.kumar@example.com',
-        contact: '9123456780',
+        email: billing.email,
+        contact:billing.contact,
          order_id: res.data.id, 
           method: 'netbanking',  
           bank:value
@@ -37,13 +60,12 @@ const  Pay =()=>{
 }
 function razorpay_payment_by_wallet() {
     
-    ApiPost("razorpay").then(res=>{
-        console.log(res)
+    ApiPost("razorpay",{'price':price}).then(res=>{
     razorpay.createPayment({
         
         amount: res.data.amount,  
-        email: 'gaurav.kumar@example.com',
-        contact: '9123456780',
+        email: billing.email,
+        contact:billing.contact,
          order_id: res.data.id, 
           method: 'wallet',  
           wallet: value
@@ -53,14 +75,14 @@ function razorpay_payment_by_wallet() {
 }
 function razorpay_payment_by_upi(e) {
     const wallet=e.target.value
-    ApiPost("razorpay").then(res=>{
+    ApiPost("razorpay",{'price':price}).then(res=>{
         console.log(res)
     
         razorpay.createPayment({
         
             amount: res.data.amount,  
-            email: 'gaurav.kumar@example.com',
-            contact: '9123456780',
+            email: billing.email,
+            contact:billing.contact,
              order_id: res.data.id, 
               method: 'upi',  
               wallet: wallet

@@ -1,6 +1,7 @@
 import React from 'react'
 import SliderComponent from '../deliverySlider/deliverySlider';
 import Slider from '@material-ui/core/Slider';
+import AuthContext from '../../context/state'
 const useStyles = theme => ({
     root: {
       width: 250,
@@ -11,8 +12,9 @@ const useStyles = theme => ({
     }
   });
 export default class PhasesRow extends React.Component {
-    constructor() {
-        super();
+    static contextType=AuthContext
+    constructor(context) {
+        super(context);
     
         this.state = {
             productRoadmap:false,mvp:false,design:false,fullBuild:false,tailor:false,slider:'',
@@ -52,7 +54,7 @@ export default class PhasesRow extends React.Component {
       }
       selectPhase=(e)=>{
           this.setState({selected:[...this.state.selected,e.target.id]})
-          this.props.selectPhase(e.target.id)
+          this.context.setPhase(e.target.id)
       }
 
       render(){

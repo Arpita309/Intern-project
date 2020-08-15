@@ -51,7 +51,12 @@ const BillingDetail=new Schema({
     gst:{
         type:String,
         
-    }
+    },
+    user:{
+        type:Schema.Types.ObjectId,
+        ref:'User'
+    },
+    templateId:Number
 })
 
 

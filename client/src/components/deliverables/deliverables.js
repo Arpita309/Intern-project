@@ -25,13 +25,15 @@ const useStyles = theme => ({
 let filter={}
 
 class Delivery extends React.Component{
-    constructor(props){
-        super(props)
+    static contextType=AuthContext
+    constructor(props,context){
+        super(props,context)
         this.state={
            showPlatform:false,firstDelivery:false,
            custom:[],count:1,platformList:[],
            selectedPlatform:[],advance:false,teams:{},dropdown:false,teamLocation:'Anywhere',search:'',mobNavigation:false,
-           bottomBar:false,promotion:false,speed:'',platformId:[],data:[],template:'',phases:[]
+           bottomBar:false,promotion:false,speed:'Relaxed',platformId:[],data:[],template:'',phases:[],
+           price:'',weeks:'',configurations:[]
            
         }
     }
@@ -39,15 +41,23 @@ class Delivery extends React.Component{
         ApiGet('configurations')
           .then(res => {
             const data = res.data;
-            console.log(data)
-            this.setState({platformList: data[0].platforms });
+            this.setState({configurations:data[0]})
+            data[0].speed.map(platform=>{
+               
+                if(this.state.speed===platform.title){
+                this.setState({ price:+this.state.price* +platform.price_multiplier,weeks:Math.round(+this.state.weeks* +platform.week_multiplier)})
+                console.log(platform)
+                }
+            })
+                this.setState({platformList: data[0].platforms });
+                this.selectPhase()
           }) 
           ApiGet('teams')
           .then(res => {
             const data = res.data;
             this.setState({teams:data[0].teams });
           }) 
-          ApiGet(`app/?attributes.title=${this.props.match.params.name}`).then(
+          ApiGet(`app/?attributes.id=${this.props.match.params.name}`).then(
             (res) => {
               const data = res.data;
               
@@ -69,8 +79,15 @@ class Delivery extends React.Component{
              )
             
         })
+        ApiGet(`priceAndDuration/template/?templateId=${this.state.template}`)
+        .then(res=>{
+            console.log(res)
+            this.setState({price:res.data.price,weeks:res.data.weeks})
+        })
+
     })}
-    
+    componentDidUpdate(){
+    }
     showPromotion=()=>{
         
         this.setState({promotion:true})
@@ -104,10 +121,14 @@ class Delivery extends React.Component{
         if(this.state.platformId.filter(value=>value===id).length){
             this.state.selectedPlatform=this.state.selectedPlatform.filter(value=>value!=icon)
             this.state.platformId=this.state.platformId.filter(value=>value!=id)
+            this.state.price= Math.round(+this.state.price/ +icon.price_multiplier)
+            this.state.weeks= +this.state.weeks/ +icon.week_multiplier
         }
         else{
         this.state.selectedPlatform=[...this.state.selectedPlatform,icon]
         this.state.platformId=[...this.state.platformId,id]
+        this.state.price= +this.state.price* +icon.price_multiplier
+        this.state.weeks= +this.state.weeks* +icon.week_multiplier
         }
     }
     showAdvance=()=>{
@@ -135,55 +156,54 @@ class Delivery extends React.Component{
     closeNavigation=()=>{
         this.setState({mobNavigation:false})
     }
-    selectPhase=(value)=>{
+    selectPhase=()=>{
+        let value=this.context.phase
         this.setState({phases:[...this.state.phases,value]})
+        this.state.configurations.build_phases.map(
+            phase=>{
+                if(value.id===phase.id){
+                    console.log(value)
+                    this.state.price= +this.state.price* +phase.price_multiplier
+                    this.state.weeks=Math.round(+this.state.weeks* +phase.week_multiplier)
+                }
+            }
+        )
+    }
+    Speed=(e)=>{
+        console.log(e.target.value)
+        this.setState({speed:e.target.id})
+        this.state.configurations.speed.map(
+            phase=>{
+                if(e.target.value===phase.title){
+                    this.state.price= +this.state.price* +phase.price_multiplier
+                    this.state.weeks=Math.round(+this.state.weeks* +phase.week_multiplier)
+                }
+            }
+        )
     }
     redirect=()=>{
-    let payload={phases:this.state.phases,templateId:this.state.template,teamLocation:this.state.teamLocation,platforms:this.state.platformId}
+    let payload={phases:this.state.phases,templateId:this.state.template,teamLocation:this.state.teamLocation,platforms:this.state.platformId,speed:this.state.speed}
+    console.log(payload)
     ApiPost('selectedData',payload)
     .then(res=>{
-      this.setState({redirect:true})
+        console.log(res.data)
+        let data={price:this.state.price,weeks:this.state.weeks,templateId:this.state.template}
+        ApiPost('priceAndDuration',data)
+        .then(
+            this.setState({redirect:true})
+        )
+        
     })
-    }
+}
     render(){
+        if(this.state.redirect){
+            return(<Redirect to={`/build-card/${this.state.template}`}/>)
+        }
         console.log(this.state.selectedPlatform)
-    if(this.state.redirect){
-        return(<Redirect to={`/build-card/${this.state.template}`}/>)
-    }
+        console.log(this.state.price,this.state.weeks)
+    
         const classes = useStyles();     
-    
-  const marks = [
-  {
-    value:4,
-    label: 'Relaxed',
-  },
-  {
-    value: 3,
-    label: 'Slow',
-  },
-  {
-    value:1,
-    label:'Standard',
-  },
-  {
-    value: 5,
-    label: 'Fast',
-  },
-  {
-  value:2,
-  label:'Speedy'
-  }
-]; 
-function valuetext(value) {
-    return `${value}`;
-    
-  }
-  const handleSliderChange = ( newValue) => {
-     
-    this.setState({speed:newValue});
-
-  };
-       console.log(this.state.speed)
+        console.log(this.state.speed)
         return(
            
             <div className='wrapper'>
@@ -332,7 +352,7 @@ function valuetext(value) {
                             </h2>
                             
                                         
-                                        <PhasesRow custom={this.state.custom}  advance={this.state.advance} platform={this.state.selectedPlatform}selectPhase={this.selectPhase}/>
+                                        <PhasesRow custom={this.state.custom}  advance={this.state.advance} platform={this.state.selectedPlatform} selectPhase={this.selectPhase} price={this.state.price} weeks={this.state.weeks}/>
                                         
                                         
                                         
@@ -374,29 +394,17 @@ function valuetext(value) {
                                 </team-card>
                                 <app-general-phase-speed>
                                    {this.state.advance?'':<div  className="speedBox">
-                                        <h4 >Select a delivery speed</h4>
+                                        <h4  htmlFor='speed'>Select a delivery speed</h4>
                                         <div  className="speedSlider">
-                                                <div className={classes.root}>
-                                                    <Typography
-                                                        id="track-range-duration-slider"
-                                                        gutterBottom
-                                                        >
-                                                        track range
-                                                    </Typography>     
-                                                                
-                                                    <Slider
-                                                        color={"secondary"}
-                                                        
-                                                        
-                                                        onChange={handleSliderChange}
-                                                        defaultValue={4}
-                                                        getAriaValueText={valuetext}
-                                                        aria-labelledby="discrete-slider-custom"
-                                                        
-                                                       step={20}
-                                                        marks={marks}
-                                                    />
-                                                    </div>
+                                        
+
+                                        <select name="speed"  onChange={(e)=>this.Speed(e)}>
+                                        <option value="Relaxed" id='4'>Relaxed</option>
+                                        <option value="Slow" id='3'>Slow</option>
+                                        <option value="Standard" id='1'>Standard</option>
+                                        <option value="Fast" id='5'>Fast</option>
+                                        <option value='Speedy' id='2'>Speedy</option>
+                                        </select>
                                                 
                                         </div>
                                     </div>}
@@ -430,13 +438,13 @@ function valuetext(value) {
                     
                         <div  className="durationBox">
                             <h3>
-                                <span>Duration</span> 24 weeks
-                            </h3>
+                                <span>Duration</span>{this.state.weeks} weeks
+                            </h3>    
                         </div>
                         <div className="maxpriceBox">
                             <h3>
                                 <span >Max Price</span>
-                                <strong>₹8,38,352.00</strong>
+                                <strong>{this.state.price}</strong>
                             </h3>
                             <div  className="phasebreakBox">
                                 <div  className="phaseIcon" >

@@ -3,11 +3,13 @@ import './FeaturePage.css'
 import Left from '../appFeaturesLeft/appFeaturesLeft'
 import Right from '../appFeaturesRight/appFeaturesRight'
 import FeaturesHeader from '../featuresHeader/featuresHeader'
-import { ApiGet} from '../../api'
-import { Link } from 'react-router-dom'
+import { ApiGet, ApiPost} from '../../api'
+import { Link, Redirect } from 'react-router-dom'
+import AuthContext from '../../context/state'
 class Features extends React.Component{
-    constructor(props){
-        super(props)
+    static contextType=AuthContext
+    constructor(props,context){
+        super(props,context)
         this.state={
             hideLeft:false,name:'',
             selectedFeature:[],
@@ -20,7 +22,11 @@ class Features extends React.Component{
             selectedPlatform:[],
             platformId:[],
             bottomBar:false,
-            platformList:[]
+            platformList:[],
+            price:'',
+            weeks:'',
+            redirect:false,
+            template:''
         }
     }
     componentDidMount(){
@@ -33,13 +39,51 @@ class Features extends React.Component{
             (res) => {
               const data = res.data;
               this.setState({ data });
-              this.state.data.map(value=>value.attributes.map(info=>info.platform_ids.map(obj=>{
-                this.setState({selectedPlatform:[...this.state.selectedPlatform,this.state.platformList.map(data=>data.attributes.filter(platform=>platform.id===obj)).filter(value=>value.length).map(img=>img[0].icon)],platformId:[...this.state.platformId,obj]})
-              }) ))
+              this.state.data.map(value=>value.attributes.map(info=>{
+                  info.features.map(obj=>{
+                      this.setState({price:+this.state.price+ +obj.effective_cost,template:value.id})
+                      if(Number(obj.effective_weeks)<0.5)
+                        {
+                            this.setState({weeks:this.state.weeks})
+                        }
+                     else
+                     this.setState({weeks:+this.state.weeks+ +obj.effective_weeks})   
+                  })
+                  ApiGet(`selectedPlatform/template/?templateId=${this.state.template}`)
+                    .then(res=>{
+                        let platforms=res.data.platforms
+                        platforms.map(obj=>
+                        this.state.platformList.map(data=>data.attributes.map(platform=>{
+                            if(platform.id===obj)
+                            {
+                                this.setState({selectedPlatform:[...this.state.selectedPlatform,platform],platformId:[...this.state.platformId,obj],
+                                    price:+this.state.price* +platform.price_multiplier,weeks:Math.round(+this.state.weeks* +platform.week_multiplier)
+                                })
+                            }
+                        
+                            }))
+                    )
+                    
+                })
+                  }))
             })
     }
     platform=()=>{
         this.setState({showPlatform:!this.state.showPlatform})
+    }
+    componentWillUpdate(){
+        let value=this.context
+        if(Object.keys(value.feature).length){
+        this.state.price=+this.state.price+ +value.feature.effective_cost
+        if(Number(value.feature.effective_weeks)<0.5)
+        {
+            this.state.weeks=this.state.weeks
+        }
+        else
+        this.state.weeks=Math.round(`${+this.state.weeks+ +value.feature.effective_weeks}`)
+        }
+        
+
     }
     selectPlatform=(icon,e,id)=>{
         
@@ -76,10 +120,26 @@ class Features extends React.Component{
     showInfo=()=>{
         this.setState({bottomBar:!this.state.bottomBar})
     }
+    redirect=()=>{
+        
+        let value=this.context
+        value.setPrice(this.state.price)
+        value.setWeeks(this.state.weeks)
+        let payload={price:this.state.price,weeks:this.state.weeks,templateId:this.state.template}
+        ApiPost('priceAndDuration',payload)
+        .then(res=>
+            this.setState({redirect:true})
+            )
+        
+
+    }
     render(){
-       
+        console.log(this.state.selectedPlatform)
+        if(this.state.redirect){
+            return(<Redirect to={`/delivery/${this.state.template}`}/>)
+        }
         this.state.name=this.props.match.params.name
-       
+        console.log(this.state.price,this.state.weeks)
         return(
         <div className='wrapper'>
             <FeaturesHeader/>
@@ -98,13 +158,13 @@ class Features extends React.Component{
                 
                     <div  className="durationBox">
                         <h3>
-                            <span>Duration</span> 24 weeks
+                            <span>Duration</span>{this.state.weeks} weeks
                         </h3>
                     </div>
                     <div className="maxpriceBox">
                         <h3>
                             <span >Max Price</span>
-                            <strong>₹8,38,352.00</strong>
+                            <strong>{this.state.price}</strong>
                         </h3>
                         <div  className="phasebreakBox">
                             <div  className="phaseIcon" onClick={this.showInfo}>
@@ -160,7 +220,7 @@ class Features extends React.Component{
                                     <ul>
                                     {this.state.selectedPlatform.map(value=>
                                             <li>
-                                                <img src={value}></img>
+                                                <img src={value.icon}></img>
                                             </li>)}
                                     </ul>
                                 </div>
@@ -176,7 +236,7 @@ class Features extends React.Component{
                     </div>
                     <div  className="previewBottom">
                         <div >
-                            <button type="button" className="nextButton"><Link to={`/delivery/${this.state.name}`} > Plan Delivery </Link></button>
+                            <button type="button" className="nextButton" onClick={this.redirect}> Plan Delivery</button>
                         </div>
                         <share-url-button  >
                             <button  type="button" className="shareUrl">

@@ -1,12 +1,13 @@
 import React from 'react'
 import './appFeaturesRight.css'
-
+import AuthContext from '../../context/state'
 
 import {ApiGet, ApiPost} from '../../api'
 let features=[]
 class FeatureRight extends React.Component{
-    constructor(props){
-        super(props);
+    static contextType = AuthContext
+    constructor(props,context){
+        super(props,context);
         this.state = {
             mobileView:true,
            showAll:true,
@@ -29,6 +30,7 @@ class FeatureRight extends React.Component{
         
      
     }
+    
     componentDidMount(){
         
         ApiGet(`app/?attributes.title=${this.props.name}`)
@@ -55,17 +57,21 @@ class FeatureRight extends React.Component{
           
     }
     
-    componentWillUpdate(prevProps){
-        
+    componentUpdate(){
+        let data=this.context.feature
             let mobileImages=[]
             {this.state.app.map((value)=>
               value.attributes.map(info=>{
                 mobileImages.push(...info.features)
                 this.state.data=[...mobileImages]}))}
+        
+                if(Object.keys(data).length)this.state.app.map(value=>
+            value.attributes.map(info=>{
                 
-    
-      
-       if(this.props!=prevProps) this.setFeature()
+                info.features.push(data)
+            }))
+            
+
         
               
     }
@@ -122,18 +128,11 @@ class FeatureRight extends React.Component{
          
     }
     
-    setFeature=()=>{
-        
-       
-    if(this.props.selectedFeature.length){this.state.app.map(value=>
-        value.attributes.map(info=>
-        info.features.push(...this.props.selectedFeature[0])))}
-        if(this.props.view.length){
-            this.state.selectedItem=this.props.view[0]
-        }       
     
+
+
         
-    }
+    
     showmore=()=>{
         this.setState({more:!this.state.more})
     }
@@ -149,7 +148,7 @@ class FeatureRight extends React.Component{
         }   
     
     render(){
-        console.log(this.state.features)
+        console.log(this.state.app)
         this.state.app.map(value=>value.attributes.map(info=>info.features.map(a=>this.state.Description=[...this.state.Description,this.state.features.map(b=>b.features.filter(c=>c.id===a.id)).filter(d=>d.length>0)])))
       let desc=this.state.Description.filter(value=>value.length>0).map(value=>value[0].filter(info=>info.id===this.state.active)).filter(data=>data.length>0)
       this.state.test=desc.map(value=>value[0])[0]
@@ -168,6 +167,7 @@ class FeatureRight extends React.Component{
    
         
         return(
+            
             this.state.app.length?<div className={`studioRight ${this.props.hide?'active':''}`}>
                     <div class="iphoneToolbar">
                         <div class="backButton" onClick={this.props.show}>

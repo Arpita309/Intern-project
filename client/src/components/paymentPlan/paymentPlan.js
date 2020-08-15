@@ -4,14 +4,20 @@ import NeedHelp from '../needHelp/needHelp'
 
 import{Link} from 'react-router-dom'
 import Footer from '../footer/footer'
-
+import {ApiGet} from '../../api'
 class PaymentPlan extends React.Component{
     constructor(props){
         super(props)
         this.state={
             showDue:false,weekly:false,showDetail:false,showThis:false,expand:false,showSidebar:false,
-            builderCareinfo:false,builderCloud:false,dueNow:false,downPayment:false
+            builderCareinfo:false,builderCloud:false,dueNow:false,downPayment:false,price:'',weeks:''
         }
+    }
+    componentDidMount(){
+        ApiGet(`priceAndDuration/template/?templateId=${this.props.match.params.template}`)
+        .then(res=>{
+            this.setState({price:res.data.price,weeks:res.data.weeks})
+        })
     }
     showdue=()=>{
         this.setState({showDue:!this.state.showDue})
@@ -129,60 +135,22 @@ class PaymentPlan extends React.Component{
                                         <div>
                                             <div  className="detailRow">
                                                 <label>Total Cost <br/><small>(Including Taxes)</small></label>
-                                                <p ><strong>₹9,88,484.00 <div  className={`expand ${this.state.expand?'active':''}`} onClick={this.expand}></div></strong></p>
+                                                <p ><strong>{Number(`${this.state.price}`) + Number(`${(+this.state.price* 18)/100}`)}<div  className={`expand ${this.state.expand?'active':''}`} onClick={this.expand}></div></strong></p>
                                             </div>
                                         </div>
                                         {this.state.expand?<React.Fragment>
-                                            <div  className="detailRow "><label>Project Cost</label><p >₹8,37,698.00</p></div>
-                                            <div  className="detailRow "><label>Tax (18% GST)</label><p >₹1,50,786.00</p></div>
+                                            <div  className="detailRow "><label>Project Cost</label><p >{this.state.price}</p></div>
+                                            <div  className="detailRow "><label>Tax (18% GST)</label><p >{(+this.state.price* 18)/100}</p></div>
                                         </React.Fragment>:''}
                                         <div  className="detailRow">
                                             <label>Development duration</label>
-                                            <p> 24 weeks</p>
+                                            <p> {this.state.weeks} weeks</p>
                                         </div>
                                     </div>
                                     <div  className="applyPromo">
                                         <img  src="https://studio.builder.ai/assets/images/promotion_icon.png" alt=""></img>
                                         <button  type="button"  onClick={this.sidebar}>Apply Promotion </button>
                                     </div>
-                                    <div  className={`additionalService ${this.state.showThis?'showthis':''}`}>
-                                        <h4 >Additional Service</h4>
-                                        <div  className="builderCare">
-                                            <div  className="builderSelect">
-                                                <label  className="builderCareCheck" >Builder Care <input  type="checkbox" name="checkbox" class="check " defaultChecked></input><span  className="checkmark"></span></label>
-                                                <div  className="info"  >
-                                                    <img  src="https://studio.builder.ai/assets/images/info_blue.png" alt="" id='1' onClick={(e) => this.showInfobox(e)}></img>
-                                                   {this.state.builderCareinfo? <React.Fragment><div  className="infoBox ">
-                                                        <ul>
-                                                            <li >24/7 support and maintenance for your project year round.</li>
-                                                            <li >On demand cloud support - setup, monitoring, scalability, and migrations.</li>
-                                                            <li>Upgrade your app to support the newer iOS/ Android updates.</li>
-                                                            <li >Technical support for SDK, third party integrations, and upgrades.</li>
-                                                            <li>Support for unexpected bugs, crashes, and security issues.</li>
-                                                        </ul>
-                                                        <em  className="icon-cancel closeInfo" onClick={this.showInfobox}></em></div></React.Fragment>:''}
-                                                    </div>
-                                            </div>
-                                            <p >₹8,237.37 /Mo</p>
-                                        </div>
-                                        <div  className="builderCare ">
-                                            <div  className="builderSelect">
-                                                <label  className="builderCareCheck">Builder Cloud <input  type="checkbox" name="checkbox" class="check " checked='true'></input><span  className="checkmark"></span></label>
-                                                <div  className="info">
-                                                    <img  src="https://studio.builder.ai/assets/images/info_blue.png" alt="" id='2' onClick={(e) => this.showInfobox(e)}></img>
-                                                   {this.state.builderCloud?<div  className="infoBox ">
-                                                       <ul >
-                                                           <li ><strong>Commitment-free savings:</strong> our customers saved over $4.5m, last year.</li>
-                                                           <li ><strong >World-class analytics:</strong> Optimise your software and infrastructure.</li>
-                                                           <li ><strong >Best-in-class multicloud:</strong> AWS, Digital Ocean, Azure and more. Just one bill (for a lot less).</li>
-                                                        </ul>
-                                                        <em  className="icon-cancel closeInfo" onClick={this.showInfobox}></em></div>:''}
-                                                    </div>
-                                            </div>
-                                            <p >₹2,263.93 /Mo</p>
-                                        </div>
-                                    </div>
-                                    
                                 </div>
                                 <div  className={`paymentSummry dueNow ${this.state.showDue?'active':''}`}>
                                     <div  className="mobilehandling">
@@ -216,7 +184,7 @@ class PaymentPlan extends React.Component{
                                                 <h3> ₹1,64,747.26</h3>
                                             </div>
                                             <div  className="detailRow">
-                                                <button  type="button" class="continueBtn "><Link to='/billing-details' style={{color:'white'}}>CONTINUE</Link> </button>
+                                                <button  type="button" class="continueBtn "><Link to={`/billing-details/${this.props.match.params.template}`} style={{color:'white'}}>CONTINUE</Link> </button>
                                             </div>
                                             <p >By clicking continue button, you agree with our Terms and Conditions and the related documents will be sent to your registered email address</p>
                                         </div>
@@ -237,10 +205,10 @@ class PaymentPlan extends React.Component{
                                             </ul>
                                             <div className='billingCycleContent weekly fixHeight billingheight'>
                                                 {this.state.weekly?[this.state.showDetail?<React.Fragment><ul  className="weeklyMonthlyWise">
-                                                    <li ><label>Installment Amount</label><p >₹14,186.81</p></li>
+                                                    <li ><label>Installment Amount</label><p >{`${this.state.price}`/`${this.state.weeks}`}</p></li>
                                                     <li><label>Number of Installments</label><div  className="txt-inline"><p >24</p></div></li>
                                                     <li><label>Frequency of Installments</label><p >Weekly</p></li>
-                                                    <li><label>Date of First Payment</label><p >June 5, 2020</p></li>
+                                                    <li><label>Date of First Payment</label><p >{Date()}</p></li>
                                                     <li><label >Date of Last Payment</label><p>November 20, 2020</p></li>
                                                     </ul>
                                                     <div className='text-right'>

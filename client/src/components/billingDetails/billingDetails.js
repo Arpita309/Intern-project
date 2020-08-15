@@ -5,16 +5,23 @@ import NeedHelp from '../needHelp/needHelp'
 import Footer from '../footer/footer'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
-import {ApiPost} from '../../api'
+import {ApiPost, ApiGet} from '../../api'
 var userData={}
 class BillingDetails extends React.Component{
     constructor(props){
         super(props)
         this.state={
             billingDetails:true,contract:false,
-            paymentSummary:false,dueNow:false,security:false,firstname:'',email:'',contact:'',loaclity:'',state:'',city:'',zip:'',apartment:'',gst:'',lastname:'',company:''
+            paymentSummary:false,dueNow:false,security:false,firstname:'',email:'',contact:'',loaclity:'',state:'',city:'',zip:'',apartment:'',gst:'',lastname:'',company:'',
+            price:'',weeks:''
         }
 
+    }
+    componentDidMount(){
+        ApiGet(`priceAndDuration/template/?templateId=${this.props.match.params.template}`)
+        .then(res=>{
+            this.setState({price:res.data.price,weeks:res.data.weeks})
+        })
     }
     showBilling=()=>{
         if(this.state.contract){
@@ -261,7 +268,7 @@ class BillingDetails extends React.Component{
                                                 <label> Security Deposit <span  className="info "><img  src="https://studio.builder.ai/assets/images/info_blue.png" alt="" id='3' onClick={(e)=>{this.showinfobox(e)}}></img>
                                                 {this.state.security?<div  className="infoBox "><ul ><li >This is payed up front and reserves your development team to ensure they are ready to start on time.</li><li >This cost will be refunded at the end of the development process (we will deduct the cost from your final payment).</li></ul><em  class="icon-cancel closeInfo" onClick={this.showinfobox}></em></div>:''}
                                                 </span></label>
-                                                <p  > ₹1,39,809.16 </p>
+                                                <p> ₹1,39,809.16 </p>
                                             </div>
                                             <div  className="detailRow">
                                                 <label>Tax (18% GST) </label><p>₹25,165.65</p>
@@ -274,7 +281,7 @@ class BillingDetails extends React.Component{
                                             </div>
                                             <div className='detailRow'>
                                                 <specing-payment className='specingCompo'>
-                                                   <Link to='/payment'><button  type="button" className="payNowBtn onlyShowDesktop" > Continue </button></Link> 
+                                                   <Link to={`/payment/${this.props.match.params.template}`}><button  type="button" className="payNowBtn onlyShowDesktop" > Continue </button></Link> 
                                                     <button  type="button" className="payNowBtn onlyShowMobile"> PROCEED TO PAYMENT </button>
                                                 </specing-payment>
                                             </div>

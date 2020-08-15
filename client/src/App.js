@@ -38,11 +38,11 @@ function App() {
          <Route exact path='/prototype' component={Prototype}/>
          <Route exact path='/delivery/:name' component={Delivery}/>
          <Route exact path='/build-card/:template' component={BuildCard}/>
-         <Route exact path='/payment-plan' component={PaymentPlan}/>
-         <Route exact path='/billing-details' component={BillingDetails}/>
+         <Route exact path='/payment-plan/:template' component={PaymentPlan}/>
+         <Route exact path='/billing-details/:template' component={BillingDetails}/>
          <Route exact path='/become-a-partner' component={BecomePartner}/>
          <Route exact path='/dashboard' component={Dashboard}/>
-         <Route exact path='/payment' component={Pay}/>
+         <Route exact path='/payment/:template' component={Pay}/>
          <Route exact path='/status' component={Status}/>
 
        </Switch>

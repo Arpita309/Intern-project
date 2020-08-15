@@ -16,7 +16,8 @@ class BuildCard extends React.Component{
             invite:false,share:false,transfer:false,prototype:false,
             builderCloud:false,builderCareinfo:false,showSidebar:false,builderSummary:false,
             buildcardPayment:false,app:[],features:[],loading:true,phases:[],platforms:[],
-            teamLocation:'',similarApps:[],projectName:'My Builder Project',Edit:true
+            teamLocation:'',similarApps:[],projectName:'My Builder Project',Edit:true,
+            price:'',weeks:''
         }
     }
     componentDidMount(){
@@ -55,6 +56,11 @@ class BuildCard extends React.Component{
               const data = res.data;
               this.setState({similarApps:data });       
              } );
+
+        ApiGet(`priceAndDuration/template/?templateId=${this.props.match.params.template}`)
+        .then(res=>{
+            this.setState({price:res.data.price,weeks:res.data.weeks})
+        })
           
     }
     showDropdown=()=>{
@@ -380,16 +386,16 @@ class BuildCard extends React.Component{
                                                     <div  className="detailRow">
                                                         <label>Total Cost </label>
                                                         <p >
-                                                            <strong > ₹ 836,185.00</strong>
+                                                            <strong >{this.state.price}</strong>
                                                         </p>
                                                     </div>
                                                     <div  className="detailRow">
                                                         <label>Monthly cost</label>
-                                                        <p > ₹ 34,841.04 </p>
+                                                        <p >{Math.round(`${`${+this.state.price}`/ `${+this.state.weeks / 4}`}`)} </p>
                                                     </div>
                                                     <div  className="detailRow">
                                                         <label>Development duration</label>
-                                                        <p> 6 Months (24 weeks ) </p>
+                                                        <p>{this.state.weeks} weeks</p>
                                                     </div>
                                                     <div  className="applyPromo">
                                                         <img  src="https://studio.builder.ai/assets/images/promotion_icon.png" alt=""></img>
@@ -409,7 +415,7 @@ class BuildCard extends React.Component{
                                                         <p><label>Duration</label> 24.0 weeks</p>
                                                     </div>
                                                     <div  className="continue-btn">
-                                                        <button  type="button" className="start-pro-btn"><Link to='/payment-plan' style={{color:'white'}}>Start Project </Link></button>
+                                                        <button  type="button" className="start-pro-btn"><Link to={`/payment-plan/${this.props.match.params.template}`} style={{color:'white'}}>Start Project </Link></button>
                                                     </div>
                                                 </div>
                                             </div>
