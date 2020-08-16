@@ -5,8 +5,8 @@ const Footer =()=>{
     <div id='footerArea'>
     <div className='container'>
         <div className='row'>
-        <div className="col-xs-12 col-sm-4"><p><strong></strong> - Made with Love</p></div>
-        <div className="col-xs-12 col-sm-3"><h6>copyright © Engineer.ai 2020</h6></div>
+        <div className="col-xs-12 col-sm-4"><p><strong></strong> Made with Love</p></div>
+        <div className="col-xs-12 col-sm-3"><h6>copyright © BuilderX 2020</h6></div>
         <div className="col-xs-12 col-sm-5 pull-right">
             <div className="footerLinks">
                 <ul>

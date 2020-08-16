@@ -17,7 +17,7 @@ class BuildCard extends React.Component{
             builderCloud:false,builderCareinfo:false,showSidebar:false,builderSummary:false,
             buildcardPayment:false,app:[],features:[],loading:true,phases:[],platforms:[],
             teamLocation:'',similarApps:[],projectName:'My Builder Project',Edit:true,
-            price:'',weeks:''
+            price:'',weeks:'',speed:''
         }
     }
     componentDidMount(){
@@ -39,6 +39,7 @@ class BuildCard extends React.Component{
                         console.log(value)
                     }
                     })
+                    this.setState({speed:build.data.speed})
                 
             })
     
@@ -350,7 +351,7 @@ class BuildCard extends React.Component{
                                                                         <div  className="pro-ftr">
                                                                             <p  class="head"> Project Speed </p>
                                                                             <div  className="progress-box">
-                                                                                <div> Relaxed</div>
+                                                                                <div> {this.state.speed}</div>
                                                                                 <div  className="progress">
                                                                                     <div  role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" className="progress-bar bg-green relaxed"></div>
                                                                                 </div>

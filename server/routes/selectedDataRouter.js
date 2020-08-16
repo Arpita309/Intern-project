@@ -42,7 +42,7 @@ SelectedDataRouter.route('/')
             console.log('_id',id)
             if(features.length>0){
                 SelectedData.findOne({_id:id}).then((Selected)=>{
-                    console.log(Selected)
+                    console.log(req.body.speed)
                     Selected.phases=req.body.phases,
                     Selected.teamLocation=req.body.teamLocation,
                     Selected.platformIDs=req.body.platforms,

@@ -45,12 +45,12 @@ class Delivery extends React.Component{
             data[0].speed.map(platform=>{
                
                 if(this.state.speed===platform.title){
-                this.setState({ price:+this.state.price* +platform.price_multiplier,weeks:Math.round(+this.state.weeks* +platform.week_multiplier)})
+                this.setState({ price:+this.state.price + +this.state.price* +platform.price_multiplier,weeks:Math.round(+this.state.weeks + +this.state.weeks* +platform.week_multiplier)})
                 console.log(platform)
                 }
             })
                 this.setState({platformList: data[0].platforms });
-                this.selectPhase()
+               
           }) 
           ApiGet('teams')
           .then(res => {
@@ -86,8 +86,7 @@ class Delivery extends React.Component{
         })
 
     })}
-    componentDidUpdate(){
-    }
+    
     showPromotion=()=>{
         
         this.setState({promotion:true})
@@ -121,14 +120,14 @@ class Delivery extends React.Component{
         if(this.state.platformId.filter(value=>value===id).length){
             this.state.selectedPlatform=this.state.selectedPlatform.filter(value=>value!=icon)
             this.state.platformId=this.state.platformId.filter(value=>value!=id)
-            this.state.price= Math.round(+this.state.price/ +icon.price_multiplier)
-            this.state.weeks= +this.state.weeks/ +icon.week_multiplier
+            this.state.price= Math.round(+this.state.price - +this.state.price* +icon.price_multiplier)
+            this.state.weeks= Math.round(+this.state.weeks - +this.state.weeks* +icon.week_multiplier)
         }
         else{
         this.state.selectedPlatform=[...this.state.selectedPlatform,icon]
         this.state.platformId=[...this.state.platformId,id]
-        this.state.price= +this.state.price* +icon.price_multiplier
-        this.state.weeks= +this.state.weeks* +icon.week_multiplier
+        this.state.price= +this.state.price + +this.state.price* +icon.price_multiplier
+        this.state.weeks=+this.state.weeks + +this.state.weeks* +icon.week_multiplier
         }
     }
     showAdvance=()=>{
@@ -156,32 +155,35 @@ class Delivery extends React.Component{
     closeNavigation=()=>{
         this.setState({mobNavigation:false})
     }
-    selectPhase=()=>{
-        let value=this.context.phase
+    selectPhase=(value)=>{
+        console.log(value)
         this.setState({phases:[...this.state.phases,value]})
         this.state.configurations.build_phases.map(
             phase=>{
-                if(value.id===phase.id){
-                    console.log(value)
-                    this.state.price= +this.state.price* +phase.price_multiplier
-                    this.state.weeks=Math.round(+this.state.weeks* +phase.week_multiplier)
+                
+                if(value==phase.id){
+                    console.log(phase)
+                    this.state.price= +this.state.price + +this.state.price* +phase.price_multiplier
+                    this.state.weeks=Math.round(+this.state.weeks + +this.state.weeks* +phase.week_multiplier)
                 }
             }
         )
     }
     Speed=(e)=>{
         console.log(e.target.value)
-        this.setState({speed:e.target.id})
+        this.setState({speed:e.target.value})
         this.state.configurations.speed.map(
             phase=>{
                 if(e.target.value===phase.title){
-                    this.state.price= +this.state.price* +phase.price_multiplier
+                    console.log(phase)
+                    this.state.price= Math.round(+this.state.price* +phase.price_multiplier)
                     this.state.weeks=Math.round(+this.state.weeks* +phase.week_multiplier)
                 }
             }
         )
     }
     redirect=()=>{
+        console.log(this.state.speed)
     let payload={phases:this.state.phases,templateId:this.state.template,teamLocation:this.state.teamLocation,platforms:this.state.platformId,speed:this.state.speed}
     console.log(payload)
     ApiPost('selectedData',payload)
@@ -203,7 +205,6 @@ class Delivery extends React.Component{
         console.log(this.state.price,this.state.weeks)
     
         const classes = useStyles();     
-        console.log(this.state.speed)
         return(
            
             <div className='wrapper'>

@@ -1,10 +1,12 @@
-import React,{useState} from 'react'
+import React,{useState,useContext} from 'react'
 import './status.css'
 import Footer from '../footer/footer'
 import User from '../loggedInUser/loggedInUser'
 import LoginIcon from '../loginIcon/loginIcon'
+import AuthContext from '../../context/state'
 const Status=()=>{
     const [mobNavigation,setMobNavigation]=useState(false)
+    const context =useContext(AuthContext)
     return(
         <div className='wrapper'>
             <div className='headerPart'>
@@ -27,8 +29,8 @@ const Status=()=>{
                                         
                                     
                             </div>
-                            <LoginIcon/> 
-                    <div className='hidemobileScreen'><User/></div>
+                            <LoginIcon auth={context.auth.auth}/> 
+                    <div className='hidemobileScreen'><User auth={context.auth.auth}/></div>
                 </nav>
             </div>
             <div className='middlePart'>

@@ -22,7 +22,7 @@ let Delivery = new Schema({
   phases:[],
   templateId:Number,
   platformIDs:[],
-  speed:''
+  speed:String
 
 }
 ,{

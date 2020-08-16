@@ -54,7 +54,7 @@ export default class PhasesRow extends React.Component {
       }
       selectPhase=(e)=>{
           this.setState({selected:[...this.state.selected,e.target.id]})
-          this.context.setPhase(e.target.id)
+          this.props.selectPhase(e.target.id)
       }
 
       render(){

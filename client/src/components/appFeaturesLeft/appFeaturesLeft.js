@@ -490,7 +490,8 @@ class AppFeaturesLeft extends React.Component {
                                       <div
                                         className="featureTab"
                                         onClick={(e) =>
-                                          props.getFeature(li)
+                                          { this.selectFeature(li.id,e)
+                                            props.getFeature(li)}
                                         }
                                       >
                                         <div className="featureDetail">
