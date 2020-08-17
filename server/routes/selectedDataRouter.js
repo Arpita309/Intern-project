@@ -17,6 +17,10 @@ SelectedDataRouter.route('/')
     
     SelectedData.find({user: req.user._id})
     .populate('user')
+    .populate('template')
+    .populate('platforms')
+    .populate('phase')
+    .populate('workSpeed')
     .then((SelectedFeatures) => {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
@@ -90,6 +94,7 @@ SelectedDataRouter.route('/template')
     .populate('template')
     .populate('platforms')
     .populate('phase')
+    .populate('workSpeed')
     .then((SelectedFeatures) => {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');

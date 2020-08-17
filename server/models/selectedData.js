@@ -39,6 +39,10 @@ Delivery.virtual('phase',{
   localField:'phases',
   foreignField:'id'
 });
-
+Delivery.virtual('workSpeed',{
+  ref:'Speed',
+  localField:'speed',
+  foreignField:'title'
+});
 module.exports = mongoose.model('Delivery', Delivery)
 

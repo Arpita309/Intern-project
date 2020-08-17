@@ -51,6 +51,7 @@ const priceAndDuration=require('./routes/priceAndDurationRouter')
 const featuresRouter=require('./routes/featuresRouter')
 const platformRouter=require('./routes/platformRouter')
 const phasesRouter=require('./routes/phasesRouter')
+const speedRouter=require('./routes/speedRouter')
 const app = express();
 app.use(cors({credentials: true, origin: 'http://localhost:3000'}))
 
@@ -118,6 +119,7 @@ app.use("/selectedPlatform",selectedPlatforms)
 app.use("/priceAndDuration",priceAndDuration)
 app.use('/phases',phasesRouter)
 app.use('/platforms',platformRouter)
+app.use('/speed',speedRouter)
 app.post("/payment", (req, res) => {
   
   
