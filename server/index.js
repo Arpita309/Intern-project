@@ -48,6 +48,9 @@ const selectedFeatures=require('./routes/selectedFeaturesRouter')
 const selectedData=require('./routes/selectedDataRouter')
 const selectedPlatforms=require('./routes/selectedPlatformRouter')
 const priceAndDuration=require('./routes/priceAndDurationRouter')
+const featuresRouter=require('./routes/featuresRouter')
+const platformRouter=require('./routes/platformRouter')
+const phasesRouter=require('./routes/phasesRouter')
 const app = express();
 app.use(cors({credentials: true, origin: 'http://localhost:3000'}))
 
@@ -102,6 +105,7 @@ app.use('/applications',ApplicationsRouter);
 app.use('/trending',TrendingAppsRouter);
 app.use('/app',appDetailsRouter);
 app.use('/configurations',configurationsRouter)
+app.use('/features',featuresRouter)
 app.use('/bundle',bundleDetailsRouter);
 app.use('/filter',featureFilter);
 app.use('/billing',billing);
@@ -112,6 +116,8 @@ app.use("/selectedFeatures",selectedFeatures);
 app.use("/selectedData",selectedData)
 app.use("/selectedPlatform",selectedPlatforms)
 app.use("/priceAndDuration",priceAndDuration)
+app.use('/phases',phasesRouter)
+app.use('/platforms',platformRouter)
 app.post("/payment", (req, res) => {
   
   

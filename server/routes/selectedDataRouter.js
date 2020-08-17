@@ -1,11 +1,10 @@
+const mongoose = require('mongoose');
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const mongoose = require('mongoose');
 
 const SelectedData = require('../models/selectedData');
 var authenticate = require('../authenticate');
-
 
 
 const SelectedDataRouter = express.Router();
@@ -16,9 +15,8 @@ SelectedDataRouter.route('/')
 
 .get( (req,res,next) => {
     
-    SelectedData.find({user: req.user._id,templateId:req.query.templateId})
+    SelectedData.find({user: req.user._id})
     .populate('user')
-    
     .then((SelectedFeatures) => {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
@@ -87,10 +85,11 @@ SelectedDataRouter.route('/')
 });
 SelectedDataRouter.route('/template')
 .get( (req,res,next) => {
-    console.log(req.query.templateId)
     SelectedData.findOne({user: req.user._id,templateId:req.query.templateId})
     .populate('user')
-    
+    .populate('template')
+    .populate('platforms')
+    .populate('phase')
     .then((SelectedFeatures) => {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');

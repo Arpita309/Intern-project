@@ -1,9 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-
-  Schema = mongoose.Schema
-  
-
+  const Apps=require('./apps')
 let Delivery = new Schema({
   _id : {
     type : Schema.Types.ObjectId,
@@ -24,9 +21,23 @@ let Delivery = new Schema({
   platformIDs:[],
   speed:String
 
-}
-,{
-  timestamps : true
+},
+ { toJSON: { virtuals: true } }
+);
+Delivery.virtual('template', {
+  ref: 'App',
+  localField: 'templateId', 
+  foreignField: 'id', 
+});
+Delivery.virtual('platforms',{
+  ref:'Platform',
+  localField:'platformIDs',
+  foreignField:'id'
+});
+Delivery.virtual('phase',{
+  ref:'Phase',
+  localField:'phases',
+  foreignField:'id'
 });
 
 module.exports = mongoose.model('Delivery', Delivery)

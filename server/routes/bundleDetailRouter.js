@@ -16,6 +16,7 @@ BundleDetailsRouter.route('/')
 
 .get((req,res) => {
     BundleDetails.find(req.query)
+    .populate('features')
    .then((BundleDetails) => {
        
         res.statusCode = 200;

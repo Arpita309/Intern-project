@@ -1,13 +1,19 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const PlatformSchema=new Schema({
-    platforms:[],
+    platforms:[
+    ],
     user:{
         type:Schema.Types.ObjectId,
         ref:'User'
     },
     templateId:Number
-})
-var Platforms = mongoose.model('Platform',PlatformSchema );
+},{ toJSON: { virtuals: true } });
+PlatformSchema.virtual('platform', {
+    ref: 'Platform',
+    localField: 'platforms', 
+    foreignField: 'id', 
+  });
+var selectedPlatforms = mongoose.model('selectedPlatform',PlatformSchema );
 
-module.exports =Platforms ;
+module.exports =selectedPlatforms ;

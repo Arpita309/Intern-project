@@ -18,7 +18,7 @@ SelectedPlatformsRouter.route('/')
     
     SelectedPlatforms.find({user: req.user._id})
     .populate('user')
-    
+    .populate('platforms')
     .then((SelectedPlatforms) => {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
@@ -86,7 +86,7 @@ SelectedPlatformsRouter.route('/template')
     console.log(req.query.templateId)
     SelectedPlatforms.findOne({user: req.user._id,templateId:req.query.templateId})
     .populate('user')
-    
+    .populate('platform')
     .then((SelectedPlatforms) => {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
