@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-  const Apps=require('./apps')
 let Delivery = new Schema({
   _id : {
     type : Schema.Types.ObjectId,
@@ -17,12 +16,19 @@ let Delivery = new Schema({
     required:true
   },
   phases:[],
-  templateId:Number,
+  templateId:[],
   platformIDs:[],
-  speed:String
+  speed:String,
+  featuresPrice:String,
+  featuresDuration:String,
+  features:[]
 
-},
- { toJSON: { virtuals: true } }
+}, {
+  toObject: {
+    virtuals: true
+  }},
+ { toJSON: { virtuals: true } },
+ {timeStamps:true}
 );
 Delivery.virtual('template', {
   ref: 'App',

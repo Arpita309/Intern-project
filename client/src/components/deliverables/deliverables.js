@@ -67,16 +67,13 @@ class Delivery extends React.Component{
              
               ApiGet(`selectedPlatform/template/?templateId=${this.state.template}`)
               .then(res=>{
-                  let platforms=res.data.platforms
-                  platforms.map(obj=>
-                  this.state.platformList.map(data=>data.attributes.map(platform=>{
-                      if(platform.id===obj)
-                      {
-                          this.setState({selectedPlatform:[...this.state.selectedPlatform,platform],platformId:[...this.state.platformId,obj]})
-                      }
-                
-                    }))
-             )
+                     res.data.platform.map(
+                         value=>
+                         this.setState({selectedPlatform:[...this.state.selectedPlatform,value],platformId:[...this.state.platformId,value.id]})
+                     )
+                  
+                  
+                          
             
         })
         ApiGet(`priceAndDuration/template/?templateId=${this.state.template}`)
@@ -183,19 +180,19 @@ class Delivery extends React.Component{
         )
     }
     redirect=()=>{
-        console.log(this.state.speed)
-    let payload={phases:this.state.phases,templateId:this.state.template,teamLocation:this.state.teamLocation,platforms:this.state.platformId,speed:this.state.speed}
-    console.log(payload)
-    ApiPost('selectedData',payload)
-    .then(res=>{
-        console.log(res.data)
-        let data={price:this.state.price,weeks:this.state.weeks,templateId:this.state.template}
-        ApiPost('priceAndDuration',data)
-        .then(
-            this.setState({redirect:true})
-        )
+        let payload
         
-    })
+        ApiGet(`priceAndDuration/template/?templateId=${this.state.template}`)
+        .then(res=>{
+             payload={phases:this.state.phases,templateId:this.state.template,teamLocation:this.state.teamLocation,platforms:this.state.platformId,speed:this.state.speed,featuresPrice:res.data.price,featuresDuration:res.data.weeks,status:'saved',features:[]}
+            ApiPost('buildCard',payload)
+             .then(res=>{
+                 console.log(res.data)
+                 this.setState({redirect:true})
+                 
+             })}
+        )
+    
 }
     render(){
         if(this.state.redirect){

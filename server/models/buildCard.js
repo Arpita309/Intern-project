@@ -1,23 +1,6 @@
 const mongoose = require('mongoose'),
   Schema = mongoose.Schema
-  let phasesSchema=new Schema({
-    name:{
-        type:String,
-        required:true
-    },
-    platform:[{
-        type:String
-    }],
-    speed:String,
-    textBlock:String
-
-  },{_id:false})
-  let payementSummary=new Schema({
-    totalCost:String,
-  monthlyCost:String,
-  developmentDuration:String
   
-  },{_id:false})
 
 let BuildCard = new Schema({
   _id : {
@@ -25,35 +8,58 @@ let BuildCard = new Schema({
     auto : true,
     required : true
   },
-  _userID: {
+  user: {
     type: Schema.Types.ObjectId,
     required: true,
     ref : 'User'
   },
-  _similarAppsIDArray : [{
-    type:Number,
-    ref :'App'
-  }],
+  templateID :[],
   projectName:{
-      type:String,
-      required:true
+      type:String
   },
   projectType:{
-    type:String,
-    required:true
+    type:String
   },
   teamLocation:{
     type:String,
     required:true
   },
-  featuresArray:[{
+  features:[{
       type:Number,
       required:true
   }],
-  phases:[phasesSchema],
-  payementSummary:payementSummary
-},{
-  timestamps : true
+  phases:[],
+  speed:String,
+  status:String,
+  platformIDs:[],
+  price:String,
+  duation:String
+}, {
+  toObject: {
+    virtuals: true
+  }},
+ { toJSON: { virtuals: true } },
+ {timeStamps:true}
+);
+BuildCard.virtual('template', {
+  ref: 'App',
+  localField: 'templateId', 
+  foreignField: 'id', 
+});
+BuildCard.virtual('platforms',{
+  ref:'Platform',
+  localField:'platformIDs',
+  foreignField:'id'
+});
+BuildCard.virtual('phase',{
+  ref:'Phase',
+  localField:'phases',
+  foreignField:'id'
+});
+BuildCard.virtual('workSpeed',{
+  ref:'Speed',
+  localField:'speed',
+  foreignField:'title'
 });
 
 module.exports = mongoose.model('buildCard', BuildCard)

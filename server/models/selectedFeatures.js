@@ -11,7 +11,13 @@ const SelectedFeaturesSchema = new Schema({
     features:[],
     title:[]
     
-});
+},
+{ toJSON: { virtuals: true } });
+SelectedFeaturesSchema.virtual('feature', {
+    ref: 'Feature',
+    localField: 'features', 
+    foreignField: 'id', 
+  });
 var SelectedFeatures = mongoose.model('SelectedFeature',SelectedFeaturesSchema );
 
 module.exports =SelectedFeatures ;
