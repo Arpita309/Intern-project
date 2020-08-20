@@ -130,7 +130,8 @@ customize=()=>{
 }
   render() {
     if(this.state.redirect){
-      return(<Redirect to={`/features/${this.props.match.params.name}`}/>)
+      return(<Redirect to={{pathname:'/features',
+      state:`${this.props.match.params.name}`}}/>)
     }
     console.log(this.state.data);
     let price = this.state.platforms.map((value) => {

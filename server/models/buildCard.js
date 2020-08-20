@@ -13,7 +13,7 @@ let BuildCard = new Schema({
     required: true,
     ref : 'User'
   },
-  templateID :[],
+  templateId :[],
   projectName:{
       type:String
   },
@@ -24,22 +24,16 @@ let BuildCard = new Schema({
     type:String,
     required:true
   },
-  features:[{
-      type:Number,
-      required:true
-  }],
+  features:[],
   phases:[],
   speed:String,
   status:String,
   platformIDs:[],
   price:String,
-  duation:String
-}, {
-  toObject: {
-    virtuals: true
-  }},
- { toJSON: { virtuals: true } },
- {timeStamps:true}
+  duration:String,
+  uniqId:String
+},
+ { toJSON: { virtuals: true },toObject: { virtuals: true },timestamps:true },
 );
 BuildCard.virtual('template', {
   ref: 'App',

@@ -1,7 +1,6 @@
 import React from 'react';
 import './sectionTypeContent.css'
 import Slider from '../slider/slider'
-import axios from 'axios'
 import {ApiGet} from '../../api'
 import BottomBar from '../homepageBottombar/homepageBottombar'
 import InitialLoader from '../initialLoader/initialLoader'
@@ -11,7 +10,7 @@ class Type extends React.Component{
 		this.state={
       types:[],
       checkId:'',
-      hideBottom:false,loading:true
+      hideBottom:false,loading:true,type:''
 		}
 	}
 	componentDidMount() {
@@ -26,10 +25,11 @@ class Type extends React.Component{
       }
       handleChange=(e,id,type)=>{
         if(this.state.checkId===id){
-          this.setState({checkId:''})
+          this.setState({checkId:'',type:''})
+          this.props.setType(" ")
         }
         else
-        {this.setState({checkId:id})
+        {this.setState({checkId:id,type:type})
       
         this.props.setType(type)}
         
@@ -77,7 +77,7 @@ class Type extends React.Component{
                 </div>
               </div>
             </div>
-            {this.state.checkId?<BottomBar section='productType' activeProduct={this.state.checkId}/>:''}
+            {this.state.checkId?<BottomBar section='productType' activeProduct={this.state.type}/>:''}
              </div> 
               
               

@@ -18,8 +18,12 @@ export default (state,action)=>{
             ...state,weeks:payload
         };
         case 'GET_PHASE':
+        return{
+            ...state,phase:payload
+        };
+        case 'Product_Type':
             return{
-                ...state,phase:payload
+                ...state,productType:payload
             }
         default:
             return state;

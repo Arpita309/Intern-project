@@ -35,7 +35,7 @@ class Features extends React.Component{
             const data = res.data;
             this.setState({platformList: data[0].platforms });
           }) 
-        ApiGet(`app/?attributes.title=${this.props.match.params.name}`).then(
+        ApiGet(`app/?attributes.title=${this.props.location.state}`).then(
             (res) => {
               const data = res.data;
               this.setState({ data });
@@ -138,7 +138,7 @@ class Features extends React.Component{
         if(this.state.redirect){
             return(<Redirect to={`/delivery/${this.state.template}`}/>)
         }
-        this.state.name=this.props.match.params.name
+        this.state.name=this.props.location.state
         console.log(this.state.price,this.state.weeks)
         return(
         <div className='wrapper'>

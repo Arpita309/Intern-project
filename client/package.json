@@ -20,7 +20,8 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "react-stripe-checkout": "^2.6.3",
-    "reactstrap": "^8.4.1"
+    "reactstrap": "^8.4.1",
+    "uniqid": "^5.2.0"
   },
   "scripts": {
     "start": "react-scripts start",

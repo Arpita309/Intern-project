@@ -9,7 +9,8 @@ export const AuthState=(props)=>{
         auth:{},
         feature:{},
         price:'',weeks:'',
-        phase:{}
+        phase:{},
+        productType:''
     }
 
 const[state,dispatch]=useReducer(AuthReducer,initialState)
@@ -39,6 +40,10 @@ const setWeeks=(value)=>{
 const setPhase=(value)=>{
     dispatch({type:'GET_PHASE',payload:value})
 }
+const setProductType=(value)=>{
+    console.log(value)
+    dispatch({type:'product_Type',payload:value})
+}
 return(
     <AuthContext.Provider
     value={{
@@ -50,6 +55,8 @@ return(
         price:state.price,
         weeks:state.weeks,
         phase:state.phase,
+        productType:state.productType,
+        setProductType:setProductType,
         setPhase:setPhase
         
     }}>

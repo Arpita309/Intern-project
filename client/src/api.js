@@ -9,3 +9,7 @@ export  function ApiPost(url,payload){
      
      return axios.post(`${base_url}/${url}`,payload,{withCredentials:true})
 }
+export  function ApiPut(url,payload){
+     
+     return axios.put(`${base_url}/${url}`,payload,{withCredentials:true})
+}

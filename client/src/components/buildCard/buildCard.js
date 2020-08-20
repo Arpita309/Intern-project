@@ -1,12 +1,12 @@
 import React from 'react'
 import './buildCard.css'
 import Popup from '../buildCardPopUp/buildcardPopup'
-import {Link} from'react-router-dom'
+import {Link, Redirect} from'react-router-dom'
 import Header from '../buildcardHeader/buildcardHeader'
 import Footer from '../footer/footer'
 import axios from 'axios'
 import AuthContext from '../../context/state'
-import { ApiGet } from '../../api'
+import { ApiGet, ApiPut } from '../../api'
 import InitialLoader from '../initialLoader/initialLoader'
 class BuildCard extends React.Component{
     constructor(props){
@@ -17,50 +17,24 @@ class BuildCard extends React.Component{
             builderCloud:false,builderCareinfo:false,showSidebar:false,builderSummary:false,
             buildcardPayment:false,app:[],features:[],loading:true,phases:[],platforms:[],
             teamLocation:'',similarApps:[],projectName:'My Builder Project',Edit:true,
-            price:'',weeks:'',speed:''
+            price:'',weeks:'',speed:'',redirect:false,uniqId:''
         }
     }
     componentDidMount(){
-        ApiGet(`selectedFeatures/template/?templateId=${this.props.match.params.template}`)
-        .then(res=>{
-           this.setState({features:res.data,loading:false})
-        })
         
-        ApiGet(`configurations`)
+        ApiGet('buildCard/template')
         .then(res=>{
-           console.log(res.data)
-           ApiGet(`selectedData/template/?templateId=${this.props.match.params.template}`)
-            .then(build=>{
-            res.data[0].build_phases.map(value=>{
-                build.data.phases.map(info=>{
-                    if(info==value.id){
-
-                        this.setState({phases:[...this.state.phases,value]})
-                        console.log(value)
-                    }
-                    })
-                    this.setState({speed:build.data.speed})
+            console.log(res.data)
+            this.setState({teamLocation:res.data[0].teamLocation,price:res.data[0].price,weeks:res.data[0].duration,uniqId:res.data[0].uniqId,features:res.data[0].features[0]})
+            res.data[0].phase.map(value=>
+            this.setState({phases:[...this.state.phases,value]}))
+            res.data[0].platforms.map(value=>
+                this.setState({platforms:[...this.state.platforms,value]}))
+            res.data[0].template.map(value=>
+                this.setState({similarApps:[...this.state.similarApps,value]}))
                 
-            })
-    
-            res.data[0].platforms.map(value=>value.attributes.map(info=>{
-                build.data.platformIDs.map(data=>{
-                    if(data===info.id)
-                    this.setState({platforms:[...this.state.platforms,info]})
-                })
-            }))
-            this.setState({teamLocation:build.data.teamLocation})
-            })
-        })
-        ApiGet(`apps/?id=${this.props.match.params.template}`).then(
-            (res) => {
-              const data = res.data;
-              this.setState({similarApps:data });       
-             } );
-
-        ApiGet(`priceAndDuration/template/?templateId=${this.props.match.params.template}`)
-        .then(res=>{
-            this.setState({price:res.data.price,weeks:res.data.weeks})
+            res.data[0].workSpeed.map(value=>
+                this.setState({speed:value.title,loading:false}))
         })
           
     }
@@ -115,7 +89,19 @@ class BuildCard extends React.Component{
     Edit=()=>{
         this.setState({Edit:!this.state.Edit})
     }
+    redirect=()=>{
+        let payload={projectName:this.state.projectName,projectType:this.state.projectType,status:'completed',uniqId:this.state.uniqId,features:this.state.features}
+        ApiPut('buildCard',payload)
+        .then(res=>{
+            console.log(res)
+            this.setState({redirect:true})
+        })
+    }
     render(){
+        if(this.state.redirect){
+            return(<Redirect to={`/payment-plan/${this.props.match.params.template}`}/>)
+        }
+        console.log(this.state.uniqId)
        console.log(this.state.phases)
        console.log(this.state.platforms)
        console.log(this.state.similarApps)
@@ -416,7 +402,7 @@ class BuildCard extends React.Component{
                                                         <p><label>Duration</label> 24.0 weeks</p>
                                                     </div>
                                                     <div  className="continue-btn">
-                                                        <button  type="button" className="start-pro-btn"><Link to={`/payment-plan/${this.props.match.params.template}`} style={{color:'white'}}>Start Project </Link></button>
+                                                        <button  type="button" className="start-pro-btn" onClick={this.redirect}>Start Project</button>
                                                     </div>
                                                 </div>
                                             </div>

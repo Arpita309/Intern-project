@@ -4,6 +4,7 @@ import './appTrending.css'
 import axios from 'axios'
 import Loader from '../questionSectionLoader/loaderbox'
 import {ApiGet} from '../../api'
+import {Link}  from 'react-router-dom'
 class AppTrending extends React.Component{
     constructor(props){
         super(props)
@@ -66,7 +67,7 @@ class AppTrending extends React.Component{
                                                                         <h3>{detail.title}</h3>
                                                                         <p>{detail.description} </p>
                                                                     </div>
-                                                                    <a href={`/features/${detail.title}`}><button  type="button" class="buildAppButton">Build this App</button></a>
+                                                                    <Link to={{pathname:"/features",state:`${detail.title}`}}><button  type="button" class="buildAppButton">Build this App</button></Link>
                                                                     <div className='trendingItemFooter'>
                                                                         <h4>{detail.builder_number}<span className='span'>users building</span></h4>
                                                                         <h4>{detail.feature_count}<span className='span'>features</span></h4>

@@ -9,7 +9,7 @@ import AuthContext from '../../context/state'
 import User from '../loggedInUser/loggedInUser'
 import LoginIcon from '../loginIcon/loginIcon'
 import CurrencyBox from '../currencyBox/currencyBox'
-
+import uniqid from 'uniqid';
 import Slider from '@material-ui/core/Slider';
 import Typography from "@material-ui/core/Typography";
 import { ApiGet,ApiPost} from '../../api'
@@ -33,11 +33,12 @@ class Delivery extends React.Component{
            custom:[],count:1,platformList:[],
            selectedPlatform:[],advance:false,teams:{},dropdown:false,teamLocation:'Anywhere',search:'',mobNavigation:false,
            bottomBar:false,promotion:false,speed:'Relaxed',platformId:[],data:[],template:'',phases:[],
-           price:'',weeks:'',configurations:[]
+           price:'',weeks:'',configurations:[],features:[]
            
         }
     }
     componentDidMount(){
+        
         ApiGet('configurations')
           .then(res => {
             const data = res.data;
@@ -64,7 +65,10 @@ class Delivery extends React.Component{
               this.setState({ data });
               console.log(this.state.data)
               this.state.data.map(value=>value.attributes.map(info=>{return(this.setState({template:info.id}))} ))
-             
+              ApiGet(`selectedFeatures/template/?templateId=${this.state.template}`)
+              .then(res=>{
+                 this.setState({features:res.data})
+              })
               ApiGet(`selectedPlatform/template/?templateId=${this.state.template}`)
               .then(res=>{
                      res.data.platform.map(
@@ -184,7 +188,7 @@ class Delivery extends React.Component{
         
         ApiGet(`priceAndDuration/template/?templateId=${this.state.template}`)
         .then(res=>{
-             payload={phases:this.state.phases,templateId:this.state.template,teamLocation:this.state.teamLocation,platforms:this.state.platformId,speed:this.state.speed,featuresPrice:res.data.price,featuresDuration:res.data.weeks,status:'saved',features:[]}
+             payload={phases:this.state.phases,templateId:this.state.template,teamLocation:this.state.teamLocation,platforms:this.state.platformId,speed:this.state.speed,price:res.data.price,duration:res.data.weeks,status:'saved',features:this.state.features,uniqId:uniqid()}
             ApiPost('buildCard',payload)
              .then(res=>{
                  console.log(res.data)

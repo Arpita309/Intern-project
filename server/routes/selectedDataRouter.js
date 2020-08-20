@@ -98,7 +98,7 @@ SelectedDataRouter.route('/template')
     .populate('phase')
     .populate('workSpeed')
     .then((SelectedFeatures) => {
-        SelectedFeatures.platforms.map(value=>{
+        /*SelectedFeatures.platforms.map(value=>{
             SelectedFeatures.featuresPrice = +SelectedFeatures.featuresPrice +  +SelectedFeatures.featuresPrice* +value.price_multiplier,
             SelectedFeatures.featuresDuration= +SelectedFeatures.featuresPrice + +SelectedFeatures.featuresDuration* +value.week_multiplier
          } )
@@ -110,13 +110,12 @@ SelectedDataRouter.route('/template')
             SelectedFeatures.featuresPrice= +SelectedFeatures.featuresPrice* +value.price_multiplier,
             SelectedFeatures.featuresDuration= +SelectedFeatures.featuresDuration* +value.week_multiplier
         })
-        SelectedFeatures.save()
-        .then(cart=>{
-            console.log(cart)
+        SelectedFeatures.save()*/
+        
             res.statusCode = 200;
             res.setHeader('Content-Type', 'application/json');
-            res.json(cart)
-        })    
+            res.json(SelectedFeatures)
+            
         
       
     }, (err) => next(err))

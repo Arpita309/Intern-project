@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from 'react';
+import React,{useEffect, useState,useContext} from 'react';
 
 import Navbar from './Navbar/Navbar'
 import Type from './sectionTypeContent/sectionTypeContent'
@@ -7,12 +7,14 @@ import AppTrending from './appTrending/appTrending';
 import QuestionType from './question-type/question-type';
 import Video from './video/video'
 import Footer from './footer/footer';
-
+import AuthContext from '../context/state'
 import '../App.css'
 function Home() {
   const [type,setType]=useState();
+  const context =useContext(AuthContext)
   const set=(type)=>{
     setType(type)
+    context.setProductType(type)
   }
 
   return (

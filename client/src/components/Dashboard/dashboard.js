@@ -2,12 +2,28 @@ import React from 'react'
 import './dashboard.css'
 
 import AuthContext from '../../context/state'
+import { ApiGet } from '../../api'
 class Dashboard extends React.Component{
     constructor(props){
         super(props)
         this.state={
-            active:false
+            active:false,
+            saved:[],completed:[]
         }
+    }
+    componentDidMount(){
+        ApiGet('buildCard')
+        .then(res=>{
+            console.log(res.data)
+            res.data.map(value=>{
+                if(value.status=='saved')
+                this.setState({saved:[...this.state.saved,value]})
+                else if(value.status=='completed')
+                this.setState({completed:[...this.state.completed,value]})
+            })
+                
+        }
+           )
     }
     setActive=()=>{
         this.setState({active:!this.state.active})
@@ -111,87 +127,76 @@ class Dashboard extends React.Component{
                                 <app-complete-cards>
                                     <div  className="dashHeading">Completed Cards <button  type="button">Show all </button></div>
                                     <div className='dashProjectRow hideCard'>
-                                        <div className='progressCard'>
-                                            <div  className="cardHead">
-                                                <div  className="cardLeft">
-                                                    <h3>My Builder Project</h3>
-                                                    <h4>Last edited: 18th June 2020</h4>
-                                                </div>
-                                                <div  className="cardRight">
-                                                    <div  className="cardMore">
-                                                        <em  className="icon-more"></em>
-                                                        <div  className="cardDropDown">
-                                                            <ul >
-                                                                <li>Delete Card</li>
-                                                                <li>Sign an NDA</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div  className="shareIcon">
-                                                        <em  className="icon-share"></em>
-                                                    </div>
-                                                    <div  className="inviteIcon"><em  className="icon-invite"></em></div>
-                                                    <div  className="transferIcon"><em  className="icon-transfer-1"></em></div>
-                                                </div>
-                                            </div>
-                                            <div className='cardMiddle'>
-                                                <div  className="completeDetail">
-                                                    <div  className="completeRow">
-                                                        <div className="completeBox">
-                                                            <h3><span  className="blueText">1</span> template</h3>
-                                                            <em  className="icon-template"></em>
-                                                        </div>
-                                                        <div className="completeBox">
-                                                            <h3><span  className="pinkText">26</span> features</h3>
-                                                            <em  className="icon-feature"></em>
-                                                        </div>
-                                                    </div>
-                                                    <div  className="completeRow">
-                                                        <h4 >
-                                                            <div  className="team-dash-country">Team <span>Anywhere</span></div>
-                                                            <em  className="icon-team"></em>
-                                                        </h4>
-                                                        <h4 >
-                                                            <div>Duration <span>6 months (24 weeks)</span></div>
-                                                            <em  className="icon-speed"></em>
-                                                        </h4>
-                                                    </div>
-                                                </div>
-                                                <div className='projectPhases'>
-                                                    <ul>
+                                        {this.state.completed.map(value=>
+                                         <div className='progressCard'>
+                                         <div  className="cardHead">
+                                             <div  className="cardLeft">
+                                                 <h3>{value.projectName}</h3>
+                                                 <h4>Last edited: 18th June 2020</h4>
+                                             </div>
+                                             <div  className="cardRight">
+                                                 <div  className="cardMore">
+                                                     <em  className="icon-more"></em>
+                                                     <div  className="cardDropDown">
+                                                         <ul >
+                                                             <li>Delete Card</li>
+                                                             <li>Sign an NDA</li>
+                                                         </ul>
+                                                     </div>
+                                                 </div>
+                                                 <div  className="shareIcon">
+                                                     <em  className="icon-share"></em>
+                                                 </div>
+                                                 <div  className="inviteIcon"><em  className="icon-invite"></em></div>
+                                                 <div  className="transferIcon"><em  className="icon-transfer-1"></em></div>
+                                             </div>
+                                         </div>
+                                         <div className='cardMiddle'>
+                                             <div  className="completeDetail">
+                                                 <div  className="completeRow">
+                                                     <div className="completeBox">
+                                                         <h3><span  className="blueText">{value.templateId.length}</span> template</h3>
+                                                         <em  className="icon-template"></em>
+                                                     </div>
+                                                     <div className="completeBox">
+                                                         <h3><span  className="pinkText">{value.features[0].features.length}</span> features</h3>
+                                                         <em  className="icon-feature"></em>
+                                                     </div>
+                                                 </div>
+                                                 <div  className="completeRow">
+                                                     <h4 >
+                                                         <div  className="team-dash-country">Team <span>{value.teamLocation}</span></div>
+                                                         <em  className="icon-team"></em>
+                                                     </h4>
+                                                     <h4 >
+                                                         <div>Duration <span>6 months (24 weeks)</span></div>
+                                                         <em  className="icon-speed"></em>
+                                                     </h4>
+                                                 </div>
+                                             </div>
+                                             <div className='projectPhases'>
+                                                 <ul>
+                                                     {value.phase.map(phase=>
                                                         <li>
-                                                            <div  className="phaseTitle">Full Build</div>
+                                                            <div  className="phaseTitle">{phase.title}</div>
                                                             <div className="phaseDetail">
                                                                 <img  alt="" src="https://s3.ap-south-1.amazonaws.com/assets.engineering.ai/icon_android.png"></img>
-                                                                <div  className="morePhase">+ 2 <div  className="platformTooltip"><h5>3 Platform Selected</h5><h6><em className="icon-right"></em>Android</h6><h6><em className="icon-right"></em>iOS</h6><h6><em className="icon-right"></em>Web</h6></div></div>
+                                                                <div  className="morePhase">+ {value.platformIDs.length-1} <div  className="platformTooltip"><h5>{value.platformIDs.length} Platform Selected</h5>{value.platforms.map(platform=><h6><em className="icon-right"></em>{platform.title}</h6>)}</div></div>
                                                             </div>
                                                         </li>
-                                                        <li>
-                                                            <div  className="phaseTitle">MVP</div>
-                                                            <div  className="phaseDetail">
-                                                                <img  alt="" src="https://s3.ap-south-1.amazonaws.com/assets.engineering.ai/icon_android.png"></img>
-                                                                <div className="morePhase">+ 2 <div  className="platformTooltip"><h5 >3 Platform Selected</h5><h6><em  className="icon-right"></em>Android</h6><h6><em className="icon-right"></em>iOS</h6><h6 ><em  className="icon-right"></em>Web</h6></div></div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div  className="phaseTitle">Design</div>
-                                                            <div  className="phaseDetail">
-                                                                <img  alt="" src="https://s3.ap-south-1.amazonaws.com/assets.engineering.ai/icon_android.png"></img>
-                                                                <div className="morePhase">+ 2 <div  className="platformTooltip"><h5 >3 Platform Selected</h5><h6><em  className="icon-right"></em>Android</h6><h6><em className="icon-right"></em>iOS</h6><h6 ><em  className="icon-right"></em>Web</h6></div></div>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div  className="builderCare">
-                                                    <span ><em  className="icon-right"></em> Builder Care</span>
-                                                </div>
-                                            </div>
-                                            <div  className="cardBottom">
-                                                <div  className="priceTag"><div >₹8,47,901.00 </div></div>
-                                                <button>View </button>
-                                                <div  className="clearfix"></div>
-                                            </div>
-                                        </div>
+                                                        )}
+                                                 </ul>
+                                             </div>
+                                             
+                                         </div>
+                                         <div  className="cardBottom">
+                                             <div  className="priceTag"><div >{value.price}</div></div>
+                                             <button>View </button>
+                                             <div  className="clearfix"></div>
+                                         </div>
+                                     </div>
+                                            )}
+                                       
                                     </div>
                                 </app-complete-cards>
                                 <app-saved-cards>
@@ -199,77 +204,72 @@ class Dashboard extends React.Component{
                                         <button type="button">Show all </button>
                                     </div>
                                     <div className='dashProjectRow hideCard'>
+                                        {this.state.saved.map(value=>
                                         <div className='progressCard'>
-                                            <div  className="cardHead">
-                                                <div  className="info-card">
-                                                    <em  className="icon-cancel"></em>
-                                                    <p>Complete this card to get full information.</p>
-                                                </div>
-                                                <div  className="cardLeft">
-                                                    <h3>My Builder Project</h3>
-                                                    <h4>Last edited: 14th June 2020</h4>
-                                                </div>
-                                                <div  className="cardRight">
-                                                    <div  className="cardMore">
-                                                        <em  className="icon-more"></em>
-                                                        <div  className="cardDropDown">
-                                                            <ul>
-                                                                <li > Delete Card </li><li>Rename</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                        <div  className="cardHead">
+                                            <div  className="info-card">
+                                                <em  className="icon-cancel"></em>
+                                                <p>Complete this card to get full information.</p>
                                             </div>
-                                            <div className='cardMiddle'>
-                                                <div  className="completeDetail">
-                                                    <div  className="completeRow">
-                                                        <div  className="completeBox">
-                                                            <h3><span  className="blueText">1</span> template</h3>
-                                                            <em className="icon-template"></em>
-                                                        </div>
-                                                        <div  className="completeBox">
-                                                            <h3><span  className="pinkText">26</span> features</h3>
-                                                            <em  className="icon-feature"></em>
-                                                        </div>
-                                                    </div>
-                                                    <div  className="completeRow">
-                                                        <h4><div  className="team-dash-country">Team <span>Anywhere</span></div><em  className="icon-team"></em></h4>
-                                                        <h4><div>Duration <span>24 weeks</span></div><em  className="icon-speed"></em></h4>
-                                                    </div>
-                                                </div>
-                                                <div className='projectPhases'>
-                                                    <ul>
-                                                        <li>
-                                                            <div  className="phaseTitle">Full Build</div>
-                                                            <div className="phaseDetail">
-                                                                <img  alt="" src="https://s3.ap-south-1.amazonaws.com/assets.engineering.ai/icon_android.png"></img>
-                                                                <div  className="morePhase">+ 2 <div  className="platformTooltip"><h5>3 Platform Selected</h5><h6><em className="icon-right"></em>Android</h6><h6><em className="icon-right"></em>iOS</h6><h6><em className="icon-right"></em>Web</h6></div></div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div  className="phaseTitle">MVP</div>
-                                                            <div  className="phaseDetail">
-                                                                <img  alt="" src="https://s3.ap-south-1.amazonaws.com/assets.engineering.ai/icon_android.png"></img>
-                                                                <div className="morePhase">+ 2 <div  className="platformTooltip"><h5 >3 Platform Selected</h5><h6><em  className="icon-right"></em>Android</h6><h6><em className="icon-right"></em>iOS</h6><h6 ><em  className="icon-right"></em>Web</h6></div></div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div  className="phaseTitle">Design</div>
-                                                            <div  className="phaseDetail">
-                                                                <img  alt="" src="https://s3.ap-south-1.amazonaws.com/assets.engineering.ai/icon_android.png"></img>
-                                                                <div className="morePhase">+ 2 <div  className="platformTooltip"><h5 >3 Platform Selected</h5><h6><em  className="icon-right"></em>Android</h6><h6><em className="icon-right"></em>iOS</h6><h6 ><em  className="icon-right"></em>Web</h6></div></div>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div  className="builderCare">
-                                                    <span ><em  className="icon-right"></em> Builder Care</span>
-                                                </div>
+                                            <div  className="cardLeft">
+                                                <h3>My Builder Project</h3>
+                                                <h4>Last edited: 14th June 2020</h4>
                                             </div>
-                                            <div  className="cardBottom">
-                                                <button>Complete Card </button>
+                                            <div  className="cardRight">
+                                                <div  className="cardMore">
+                                                    <em  className="icon-more"></em>
+                                                    <div  className="cardDropDown">
+                                                        <ul>
+                                                            <li > Delete Card </li><li>Rename</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
+                                        <div className='cardMiddle'>
+                                             <div  className="completeDetail">
+                                                 <div  className="completeRow">
+                                                     <div className="completeBox">
+                                                         <h3><span  className="blueText">{value.templateId.length}</span> template</h3>
+                                                         <em  className="icon-template"></em>
+                                                     </div>
+                                                     <div className="completeBox">
+                                                         <h3><span  className="pinkText">{value.features[0].features.length}</span> features</h3>
+                                                         <em  className="icon-feature"></em>
+                                                     </div>
+                                                 </div>
+                                                 <div  className="completeRow">
+                                                     <h4 >
+                                                         <div  className="team-dash-country">Team <span>{value.teamLocation}</span></div>
+                                                         <em  className="icon-team"></em>
+                                                     </h4>
+                                                     <h4 >
+                                                         <div>Duration <span>6 months (24 weeks)</span></div>
+                                                         <em  className="icon-speed"></em>
+                                                     </h4>
+                                                 </div>
+                                             </div>
+                                             <div className='projectPhases'>
+                                                 <ul>
+                                                     {value.phase.map(phase=>
+                                                        <li>
+                                                            <div  className="phaseTitle">{phase.title}</div>
+                                                            <div className="phaseDetail">
+                                                                <img  alt="" src="https://s3.ap-south-1.amazonaws.com/assets.engineering.ai/icon_android.png"></img>
+                                                                <div  className="morePhase">+ {value.platformIDs.length-1} <div  className="platformTooltip"><h5>{value.platformIDs.length} Platform Selected</h5>{value.platforms.map(platform=><h6><em className="icon-right"></em>{platform.title}</h6>)}</div></div>
+                                                            </div>
+                                                        </li>
+                                                        )}
+                                                 </ul>
+                                             </div>
+                                             
+                                         </div>
+                                        <div  className="cardBottom">
+                                            <button>Complete Card </button>
+                                        </div>
+                                    </div>
+                                            )}
+                                        
                                     </div>
                                 </app-saved-cards>
                             </div>

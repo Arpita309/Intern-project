@@ -9,6 +9,7 @@ import { withStyles, rgbToHex } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import InitialLoader from "../initialLoader/initialLoader";
 import { ApiGet } from "../../api";
+import AuthContext from '../../context/state'
 const useStyles = (theme) => ({
   root: {
     width: 250,
@@ -18,8 +19,9 @@ const useStyles = (theme) => ({
   },
 });
 class AppPage extends React.Component {
-  constructor(props) {
-    super(props);
+  static contextType=AuthContext
+  constructor(props,context) {
+    super(props,context);
     this.state = {
       isOpen: false,
       data: [],
@@ -67,11 +69,10 @@ class AppPage extends React.Component {
   }
 
   handleCheck = (e,id) => {
-    e.preventDefault()
-    if(this.state.checkedApps.filter(value=>value===id).length)
-    this.setState({checkedApps:[]})
+    if(this.state.checkedApps.filter(value=>value==id).length)
+    this.setState({checkedApps:this.state.checkedApps.filter(value=>value!=id)})
     else
-    this.state.checkedApps=[...this.state.checkedApps,id];
+    this.setState({checkedApps:[...this.state.checkedApps,id]});
   };
 
   componentWillUnmount() {
@@ -118,7 +119,8 @@ class AppPage extends React.Component {
      this.setState({custom:!this.state.custom})
  }
   render() {
-    var filtered = this.state.data.filter((value) => {
+    console.log(this.state.checkedApps)
+    let filtered = this.state.data.filter((value) => {
       return (
         value.title.toLowerCase().indexOf(this.state.search.toLowerCase()) !==
         -1
@@ -512,7 +514,7 @@ class AppPage extends React.Component {
                       <div 
                         className={`templateBox ${
                           this.state.checkedApps.filter(
-                            (info) => info === value.id
+                            (info) => info == value.id
                           ).length
                             ? "active"
                             : ""
@@ -673,10 +675,10 @@ class AppPage extends React.Component {
                 <span> Template selected</span>
               </h3>
             </div>
-            <div className="tempRight">
+            <div className="tempRight"><Link to={{pathname:"/features",state:`${this.state.checkedApps}`}}>
               <button type="button" class="next">
                 Continue{" "}
-              </button>
+              </button></Link>
               <share-url-button>
                 <button type="button" class="shareUrl">
                   <em class="icon-share-outline"></em>

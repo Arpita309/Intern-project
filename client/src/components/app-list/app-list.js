@@ -2,7 +2,7 @@ import React from 'react'
 import './app-list.css'
 import {Link} from 'react-router-dom'
 import Loader from '../questionSectionLoader/loaderbox'
-import BottomBar from '../homepageBottombar/homepageBottombar'
+import BottomBar from '../homepageBottombar/appBottombar'
 import{ApiGet} from '../../api'
 class AppList extends React.Component{
     constructor(props){
@@ -11,7 +11,7 @@ class AppList extends React.Component{
             data:[],
             isLoading:true,
             times:6,
-            checkId:'',
+            checkId:[],
             apps:[],
 			hideBottom:false
         }
@@ -30,11 +30,11 @@ class AppList extends React.Component{
           
       }
       handleChange=(e,id)=>{
-        if(this.state.checkId===id){
-            this.setState({checkId:''})
+        if(this.state.checkId.filter(value=>value==id).length){
+            this.setState({checkId:this.state.checkId.filter(value=>value!=id)})
           }
           else
-          {this.setState({checkId:id})}
+          {this.setState({checkId:[...this.state.checkId,id]})}
           
       }
     render(){
@@ -71,7 +71,7 @@ class AppList extends React.Component{
             {this.state.isLoading?<Loader times={this.state.times}/>:
             <div className='appListRow' style={{display:'flex'}}>
             {filtered.length?filtered.slice(0,6).map(info=>
-                    <div  key={info.id} className={`appListBox ${this.state.checkId==info.id?'active':''}`}>
+                    <div  key={info.id} className={`appListBox ${this.state.checkId.filter(value=>value==info.id).length?'active':''}`}>
                     <h3>{info.title}</h3>
                     <p>{info.description}</p>
                     <div  className="tickBox" id={info.id} onClick={e=>this.handleChange(e,info.id)}></div>
@@ -84,7 +84,7 @@ class AppList extends React.Component{
                                 <span >Price</span>
                                 <strong >₹548 K</strong>
                             </div>
-                            <a  target="_blank" class="btn apps-detailbtn" href={`http://localhost:3000/apps/${info.title}`}> View Details </a>
+                            <a  target="_blank" class="btn apps-detailbtn" href={`/apps/${info.title}`}> View Details </a>
                         </div>
                     </div>
                 </div>
@@ -93,7 +93,7 @@ class AppList extends React.Component{
                    return(value.section_details.map(info=>{
                        
                                 return(
-                                    <div  key={info.id} className={`appListBox ${this.state.checkId==info.id?'active':''}`}>
+                                    <div  key={info.id} className={`appListBox ${this.state.checkId.filter(value=>value==info.id).length?'active':''}`}>
                                     <h3>{info.title}</h3>
                                     <p>{info.description}</p>
                                     <div  className="tickBox" id={info.id} onClick={e=>this.handleChange(e,info.id)}></div>
@@ -117,7 +117,7 @@ class AppList extends React.Component{
                 })}
                 </div>}
                 
-                {this.state.checkId?<BottomBar section='App' activeApp={this.state.checkId}/>:''}
+                {this.state.checkId.length?<BottomBar section='App' activeApps={this.state.checkId}/>:''}
         </div>
     )}
 }

@@ -17,10 +17,11 @@ class BottomBar extends React.Component{
 				<div  className="bottomSelectFeature-toggle" onClick={this.hideBottom}></div>
 				<div  className="leftSide">
 					<h3>Let’s Go!</h3>
-					<p>You selected <span>1 product type</span></p>
+					<p>You selected <span>{this.props.activeApps.length} similar apps</span></p>
 				</div>
 				<div  className="rightSide">
-					<div  className="viewAll"><Link to={'/apps'}  style={{color:'white'}}>Get Started</Link> </div>
+                    <div  className="viewAll"><Link to={{pathname:'/features',
+                state:this.props.activeApps}}  style={{color:'white'}}>Get Started</Link> </div>
 				</div>
 			</div>
         )

@@ -89,7 +89,8 @@ const uri=dbUrl;
  // useNewUrlParser: true
 //});
 const connect = mongoose.connect(uri, {
-    useNewUrlParser : true
+    useNewUrlParser : true,
+     useFindAndModify: false 
     /* other options */
   });
 
