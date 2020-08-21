@@ -61,24 +61,26 @@ BuildCardsRouter.route('/template')
     .populate('phase')
     .populate('workSpeed')
     .then((SelectedFeatures) => {
-        /*SelectedFeatures.platforms.map(value=>{
-            SelectedFeatures.featuresPrice = +SelectedFeatures.featuresPrice +  +SelectedFeatures.featuresPrice* +value.price_multiplier,
-            SelectedFeatures.featuresDuration= +SelectedFeatures.featuresPrice + +SelectedFeatures.featuresDuration* +value.week_multiplier
+        
+        SelectedFeatures[0].platforms.map(value=>{
+            SelectedFeatures.price = +SelectedFeatures.price +  +SelectedFeatures.price* +value.price_multiplier,
+            SelectedFeatures.duration= +SelectedFeatures.duration + +SelectedFeatures.duration* +value.week_multiplier
          } )
-        SelectedFeatures.phase.map(value=>{
-            SelectedFeatures.featuresPrice = +SelectedFeatures.featuresPrice +  +SelectedFeatures.featuresPrice* +value.price_multiplier,
-            SelectedFeatures.featuresDuration= +SelectedFeatures.featuresPrice + +SelectedFeatures.featuresDuration* +value.week_multiplier
+        SelectedFeatures[0].phase.map(value=>{
+            SelectedFeatures.price = +SelectedFeatures.price +  +SelectedFeatures.price* +value.price_multiplier,
+            SelectedFeatures.duration= +SelectedFeatures.duration + +SelectedFeatures.duration* +value.week_multiplier
         })
-        SelectedFeatures.workSpeed.map(value=>{
-            SelectedFeatures.featuresPrice= +SelectedFeatures.featuresPrice* +value.price_multiplier,
-            SelectedFeatures.featuresDuration= +SelectedFeatures.featuresDuration* +value.week_multiplier
+        SelectedFeatures[0].workSpeed.map(value=>{
+            SelectedFeatures.price= +SelectedFeatures.price* +value.price_multiplier,
+            SelectedFeatures.duration= +SelectedFeatures.duration* +value.week_multiplier
         })
-        SelectedFeatures.save()*/
-            console.log(SelectedFeatures)
+        SelectedFeatures.save()
+        .then(cart=>{
+            console.log(cart)
             res.statusCode = 200;
             res.setHeader('Content-Type', 'application/json');
-            res.json(SelectedFeatures)    
-        
+            res.json(cart)    
+        })
       
     }, (err) => next(err))
     .catch((err) => next(err));

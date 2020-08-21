@@ -36,7 +36,7 @@ function App() {
          <Route exact path='/features' component={Features}/>
          <Route exact path='/welcome' component={Welcome}/>
          <Route exact path='/prototype' component={Prototype}/>
-         <Route exact path='/delivery/:name' component={Delivery}/>
+         <Route exact path='/delivery' component={Delivery}/>
          <Route exact path='/build-card/:template' component={BuildCard}/>
          <Route exact path='/payment-plan/:template' component={PaymentPlan}/>
          <Route exact path='/billing-details/:template' component={BillingDetails}/>

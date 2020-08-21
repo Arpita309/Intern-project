@@ -40,7 +40,7 @@ class FeaturesHeader extends React.Component{
                 </div>
                 <nav id='header'>
                     <div className='container-fluid'>
-                        <div className='row'>
+                        <div >
                             <div className='logo'>
                                 <a href='http://localhost:3000/'><img width="107" height="26" alt="" class="mainLogo" src="https://studio.builder.ai/assets/images/engineer-logo.png"></img></a>
                                 <a href='http://localhost:3000/'><img width="26" height="35" alt="" class="smallLogo" src="https://studio.builder.ai/assets/images/logoSmall.png"></img></a>
@@ -57,20 +57,22 @@ class FeaturesHeader extends React.Component{
 
                                 </div>
                             </div>
-                            <div >
-                            <ProtoTypeButton />
-                            </div>
+                            
+                            
+                            
                            
+                            <LoginIcon auth={props.auth.auth}/> 
+                            {props.auth.auth?<div className='hidemobileScreen'><User auth={props.auth.auth}/></div>:
+                                
+                                    <CurrencyBox/>}
                             <div className="requestDemo hidden-xs expOnlineBx" >
                                 <div className="text text-uppercase expertavail">
                                     <span className="expert-icons"><img src="https://studio.builder.ai/assets/images/expert_btn.png" alt="experts" className="one"></img></span> 
                                     Experts online 
                                 </div>
                             </div>
-                            {props.auth.auth?<div className='hidemobileScreen'><User auth={props.auth.auth}/></div>:
-                                
-                                    <CurrencyBox/>}
-                            <LoginIcon auth={props.auth.auth}/>
+                            <ProtoTypeButton />
+                            
                             <div class="mobileClick" ><em class="icon-hamicon" onClick={this.mobNavigation}></em></div>
                             <div className={`mobNavigation ${this.state.mobNavigation?'active':''}`}>
                             <div className="mobOverlay"></div>

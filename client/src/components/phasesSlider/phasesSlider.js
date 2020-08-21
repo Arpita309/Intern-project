@@ -53,6 +53,10 @@ export default class PhasesRow extends React.Component {
         else this.setState({productRoadmap:false,mvp:false,design:false,fullBuild:false,tailor:false})
       }
       selectPhase=(e)=>{
+          if(this.state.selected.filter(value=>value==e.target.id).length){
+              this.setState({selected:this.state.selected.filter(value=>value!=e.target.id)})
+          }
+          else
           this.setState({selected:[...this.state.selected,e.target.id]})
           this.props.selectPhase(e.target.id)
       }
@@ -84,7 +88,7 @@ export default class PhasesRow extends React.Component {
                         <div className='phasesRow'>
                     <SliderComponent>
 
-                    <div className={`phasesBox Product-theme ${this.state.selected.filter(value=>value==='1').length?'active':'dactive'}`} style={{display: 'inline-block'}}>
+                    <div className={`phasesBox Product-theme ${this.state.selected.filter(value=>value=='1').length?'active':'dactive'}`} style={{display: 'inline-block'}}>
                         <div  className="phasesHead">
                             <h3>
                                 <div  className="phaseIcon">
@@ -104,30 +108,8 @@ export default class PhasesRow extends React.Component {
                         </div>
                         {this.props.advance?<React.Fragment><div  className="featureSection">
                         <h3 >Features <span  className="">View</span></h3>
-                        <p >26 Features Selected</p></div>
-                        <div className='speedSection'>
-                           <h3 >Working Speed</h3>
-                           {console.log(this.state.selected.filter(value=>value==='phaseSelected4'))}<div className='speedSlider'>
-                           
-                                                    <div className={classes.root}>
-                                                    
-                                                        
-                                                        <Slider
-                                                            color={"secondary"}
-                                                            
-                                                            
-                                                            onChange={handleSliderChange}
-                                                            defaultValue={0-500}
-                                                            getAriaValueText={valuetext}
-                                                            aria-labelledby="discrete-slider-custom"
-                                                            
-                                                           step={20}
-                                                            marks={marks}
-                                                        />
-                                                        </div>
-                                                    </div>
-                                                    <div  className="selectAll"><input  type="checkbox" id="selectallsame0"></input><label  htmlFor="selectallsame0">Same speed for all the platforms</label></div>
-                                                    </div>
+                        <p >{this.props.features.features.length} Features Selected</p></div>
+                        
                                                     <div  className="deliveryDate"><h3>
                                                         <strong >Delivered By</strong>
                                                         <span > 07 August 2020 </span></h3></div>
@@ -167,9 +149,9 @@ export default class PhasesRow extends React.Component {
                         </div>
                         {this.props.advance?<React.Fragment><div  className="featureSection">
                         <h3 >Features <span  className="">View</span></h3>
-                        <p >26 Features Selected</p></div>
+                        <p >{this.props.features.features.length} Features Selected</p></div>
                         <div  className="platformSection">
-                            <h3>Platform <span>Change</span></h3>
+                            <h3>Platform <span onClick={this.props.selectPlatform}>Change</span></h3>
                             <ul>
                                 {this.props.platform.slice(0,3).map(info=>
                                    <li><div  className="platformIcon"><img src={info.icon}></img></div>{info.title}</li>
@@ -179,30 +161,7 @@ export default class PhasesRow extends React.Component {
                                 
                             </ul>
                         </div>
-                        <div className='speedSection'>
-                           <h3 >Working Speed</h3>
-                           <div className='speedSlider'>
-                           <div className='rangeSlider'>
-                                                    <div className={classes.root}>
-                                                    
-                                                        
-                                                        <Slider
-                                                            color={"secondary"}
-                                                            
-                                                            
-                                                            onChange={handleSliderChange}
-                                                            defaultValue={0-500}
-                                                            getAriaValueText={valuetext}
-                                                            aria-labelledby="discrete-slider-custom"
-                                                            
-                                                           step={20}
-                                                            marks={marks}
-                                                        />
-                                                        </div>
-                                                    </div>
-                                                    </div>
-                                                    <div  className="selectAll"><input  type="checkbox" id="selectallsame1"></input><label  htmlFor="selectallsame1">Same speed for all the platforms</label></div>
-                                                    </div>
+                        
                                                     <div  className="deliveryDate"><h3>
                                                         <strong >Delivered By</strong>
                                                         <span > 07 August 2020 </span></h3></div>
@@ -240,9 +199,9 @@ export default class PhasesRow extends React.Component {
                             </div>
                             {this.props.advance?<React.Fragment><div  className="featureSection">
                         <h3 >Features <span  className="">View</span></h3>
-                        <p >26 Features Selected</p></div>
+                        <p >{this.props.features.features.length}  Features Selected</p></div>
                         <div  className="platformSection">
-                            <h3>Platform <span>Change</span></h3>
+                            <h3>Platform <span onClick={this.props.selectPlatform}>Change</span></h3>
                             <ul>
                                 {this.props.platform.slice(0,3).map(info=>
                                    <li><div  className="platformIcon"><img src={info.icon}></img></div>{info.title}</li>
@@ -251,30 +210,7 @@ export default class PhasesRow extends React.Component {
                                     <div  className="platformIcon moreLink"><span>+{this.props.platform.length-3}</span></div></li>:''}
                             </ul>
                         </div>
-                            <div className='speedSection'>
-                           <h3 >Working Speed</h3>
-                           <div className='speedSlider'>
-                           <div className='rangeSlider'>
-                                                    <div className={classes.root}>
-                                                    
-                                                        
-                                                        <Slider
-                                                            color={"secondary"}
-                                                            
-                                                            
-                                                            onChange={handleSliderChange}
-                                                            defaultValue={0-500}
-                                                            getAriaValueText={valuetext}
-                                                            aria-labelledby="discrete-slider-custom"
-                                                            
-                                                           step={20}
-                                                            marks={marks}
-                                                        />
-                                                        </div>
-                                                    </div>
-                                                    </div>
-                                                    <div  className="selectAll"><input  type="checkbox" id="selectallsame2"></input><label  htmlFor="selectallsame2">Same speed for all the platforms</label></div>
-                                                    </div>
+                           
                                                     <div  className="deliveryDate"><h3>
                                                         <strong >Delivered By</strong>
                                                         <span > 07 August 2020 </span></h3></div>
@@ -310,10 +246,10 @@ export default class PhasesRow extends React.Component {
                         </div>
                         <div  className="featureSection">
                             <h3 >Features <span >Change</span></h3>
-                            <p>24 Features Selected</p>
+                            <p>{this.props.mvpFeature} Features Selected</p>
                         </div>
                         <div  className="platformSection">
-                            <h3>Platform <span>Change</span></h3>
+                            <h3>Platform <span onClick={this.props.selectPlatform}> Change</span></h3>
                             <ul>
                                 {this.props.platform.slice(0,3).map(info=>
                                    <li><div  className="platformIcon"><img src={info.icon}></img></div>{info.title}</li>
@@ -323,35 +259,10 @@ export default class PhasesRow extends React.Component {
                                 
                             </ul>
                         </div>
-                        {this.props.advance?<React.Fragment>
-                        <div className='speedSection'>
-                           <h3 >Working Speed</h3>
-                           <div className='speedSlider'>
-                           <div className='rangeSlider'>
-                                                    <div className={classes.root}>
-                                                    
-                                                        
-                                                        <Slider
-                                                            color={"secondary"}
-                                                            
-                                                            
-                                                            onChange={handleSliderChange}
-                                                            defaultValue={0-500}
-                                                            getAriaValueText={valuetext}
-                                                            aria-labelledby="discrete-slider-custom"
-                                                            
-                                                           step={20}
-                                                            marks={marks}
-                                                        />
-                                                        </div>
-                                                    </div>
-                                                    </div>
-                                                    <div  className="selectAll"><input  type="checkbox" id="selectallsame3"></input><label  htmlFor="selectallsame3">Same speed for all the platforms</label></div>
-                                                    </div>
-                                                    <div  className="deliveryDate"><h3>
-                                                        <strong >Delivered By</strong>
-                                                        <span > 07 August 2020 </span></h3></div>
-                                                        </React.Fragment>:''}
+                        {this.props.advance? <div  className="deliveryDate"><h3>
+                                <strong >Delivered By</strong>
+                                <span > 07 August 2020 </span></h3></div>
+                                :''}
                         <learn-more >
                             <div  className={`phaseOverlay ${this.state.mvp?'active':''}`}></div>
                             <div  className={`phaseInfo ${this.state.mvp?'active':''}`}>
@@ -377,15 +288,15 @@ export default class PhasesRow extends React.Component {
                                 <span >28 June 2020 </span>
                             </div>}
                             <div  className="checkBox">
-                                <input  type="checkbox" id="5"></input>
+                                <input  type="checkbox" id="5" onClick={(e)=>this.selectPhase(e)}></input>
                                 <label htmlFor="5"></label>
                             </div>
                         </div>
                         {this.props.advance?<React.Fragment><div  className="featureSection">
                         <h3 >Features <span  className="">View</span></h3>
-                        <p >26 Features Selected</p></div>
+                        <p >{this.props.features.features.length}  Features Selected</p></div>
                         <div  className="platformSection">
-                            <h3>Platform <span>Change</span></h3>
+                            <h3>Platform <span onClick={this.props.selectPlatform}>Change</span></h3>
                             <ul>
                                 {this.props.platform.slice(0,3).map(info=>
                                    <li><div  className="platformIcon"><img src={info.icon}></img></div>{info.title}</li>
@@ -395,29 +306,7 @@ export default class PhasesRow extends React.Component {
                                 
                             </ul>
                         </div>
-                        <div className='speedSection'>
-                           <h3 >Working Speed</h3>
-                           <div className='speedSlider'>
-                           
-                                                    <div className={classes.root}>
-                                                    
-                                                        
-                                                        <Slider
-                                                            color={"secondary"}
-                                                            
-                                                            
-                                                            onChange={handleSliderChange}
-                                                            defaultValue={0-500}
-                                                            getAriaValueText={valuetext}
-                                                            aria-labelledby="discrete-slider-custom"
-                                                            
-                                                           step={20}
-                                                            marks={marks}
-                                                        />
-                                                        </div>
-                                                    </div>
-                                                    <div  className="selectAll"><input  type="checkbox" id="selectallsame4"></input><label  htmlFor="selectallsame4">Same speed for all the platforms</label></div>
-                                                    </div>
+                        
                                                     <div  className="deliveryDate"><h3>
                                                         <strong >Delivered By</strong>
                                                         <span > 07 August 2020 </span></h3></div>
@@ -467,31 +356,8 @@ export default class PhasesRow extends React.Component {
                         </div>
                         {this.props.advance?<React.Fragment><div  className="featureSection">
                         <h3 >Features <span  className="">View</span></h3>
-                        <p >26 Features Selected</p></div>
-                        <div className='speedSection'>
-                           <h3 >Working Speed</h3>
-                           <div className='speedSlider'>
-                           <div className='rangeSlider'>
-                                                    <div className={classes.root}>
-                                                    
-                                                        
-                                                        <Slider
-                                                            color={"secondary"}
-                                                            
-                                                            
-                                                            onChange={handleSliderChange}
-                                                            defaultValue={0-500}
-                                                            getAriaValueText={valuetext}
-                                                            aria-labelledby="discrete-slider-custom"
-                                                            
-                                                           step={20}
-                                                            marks={marks}
-                                                        />
-                                                        </div>
-                                                    </div>
-                                                    </div>
-                                                    <div  className="selectAll"><input  type="checkbox" id="selectallsame0"></input><label  htmlFor="selectallsame0">Same speed for all the platforms</label></div>
-                                                    </div>
+                        <p >{this.props.features.features.length}  Features Selected</p></div>
+                        
                                                     <div  className="deliveryDate"><h3>
                                                         <strong >Delivered By</strong>
                                                         <span > 07 August 2020 </span></h3></div>
@@ -529,9 +395,9 @@ export default class PhasesRow extends React.Component {
                         </div>
                         {this.props.advance?<React.Fragment><div  className="featureSection">
                         <h3 >Features <span  className="">View</span></h3>
-                        <p >26 Features Selected</p></div>
+                        <p >{this.props.features.features.length}  Features Selected</p></div>
                         <div  className="platformSection">
-                            <h3>Platform <span>Change</span></h3>
+                            <h3>Platform <span onClick={this.props.selectPlatform}>Change</span></h3>
                             <ul>
                                 {this.props.platform.slice(0,3).map(info=>
                                    <li><div  className="platformIcon"><img src={info.icon}></img></div>{info.title}</li>
@@ -541,30 +407,7 @@ export default class PhasesRow extends React.Component {
                                 
                             </ul>
                         </div>
-                        <div className='speedSection'>
-                           <h3 >Working Speed</h3>
-                           <div className='speedSlider'>
-                           <div className='rangeSlider'>
-                                                    <div className={classes.root}>
-                                                    
-                                                        
-                                                        <Slider
-                                                            color={"secondary"}
-                                                            
-                                                            
-                                                            onChange={handleSliderChange}
-                                                            defaultValue={0-500}
-                                                            getAriaValueText={valuetext}
-                                                            aria-labelledby="discrete-slider-custom"
-                                                            
-                                                           step={20}
-                                                            marks={marks}
-                                                        />
-                                                        </div>
-                                                    </div>
-                                                    </div>
-                                                    <div  className="selectAll"><input  type="checkbox" id="selectallsame1"></input><label  htmlFor="selectallsame1">Same speed for all the platforms</label></div>
-                                                    </div>
+                        
                                                     <div  className="deliveryDate"><h3>
                                                         <strong >Delivered By</strong>
                                                         <span > 07 August 2020 </span></h3></div>
@@ -601,9 +444,9 @@ export default class PhasesRow extends React.Component {
                             </div>
                             {this.props.advance?<React.Fragment><div  className="featureSection">
                         <h3 >Features <span  className="">View</span></h3>
-                        <p >26 Features Selected</p></div>
+                        <p >{this.props.features.features.length}  Features Selected</p></div>
                         <div  className="platformSection">
-                            <h3>Platform <span>Change</span></h3>
+                            <h3>Platform <span onClick={this.props.selectPlatform}>Change</span></h3>
                             <ul>
                                 {this.props.platform.slice(0,3).map(info=>
                                    <li><div  className="platformIcon"><img src={info.icon}></img></div>{info.title}</li>
@@ -613,44 +456,10 @@ export default class PhasesRow extends React.Component {
                                 
                             </ul>
                         </div>
-                        <div  className="platformSection">
-                            <h3>Platform <span>Change</span></h3>
-                            <ul>
-                                {this.props.platform.slice(0,3).map(value=>value.map(platform=>platform.map(info=>
-                                   <li><div  className="platformIcon"><img src={info.icon}></img></div>{info.title}</li>
-                                   )))}
-                                {this.props.platform.length>3?<li  className="lastLi">
-                                    <div  className="platformIcon moreLink"><span>+{this.props.platform.length-3}</span></div></li>:''}
-                            </ul>
-                        </div>
-                            <div className='speedSection'>
-                           <h3 >Working Speed</h3>
-                           <div className='speedSlider'>
-                           <div className='rangeSlider'>
-                                                    <div className={classes.root}>
-                                                    
-                                                        
-                                                        <Slider
-                                                            color={"secondary"}
-                                                            
-                                                            
-                                                            onChange={handleSliderChange}
-                                                            defaultValue={0-500}
-                                                            getAriaValueText={valuetext}
-                                                            aria-labelledby="discrete-slider-custom"
-                                                            
-                                                           step={20}
-                                                            marks={marks}
-                                                        />
-                                                        </div>
-                                                    </div>
-                                                    </div>
-                                                    <div  className="selectAll"><input  type="checkbox" id="selectallsame2"></input><label  htmlFor="selectallsame2">Same speed for all the platforms</label></div>
-                                                    </div>
-                                                    <div  className="deliveryDate"><h3>
-                                                        <strong >Delivered By</strong>
-                                                        <span > 07 August 2020 </span></h3></div>
-                                                    </React.Fragment>:''}
+                            <div  className="deliveryDate"><h3>
+                                <strong >Delivered By</strong>
+                                <span > 07 August 2020 </span></h3></div>
+                            </React.Fragment>:''}
                             <learn-more>
                                 <div  className={`phaseOverlay ${this.state.tailor?'active':''}`}></div>
                                 <div  className={`phaseInfo ${this.state.tailor?'active':''}`}>
@@ -683,10 +492,10 @@ export default class PhasesRow extends React.Component {
                         </div>
                         <div  className="featureSection">
                             <h3 >Features <span >Change</span></h3>
-                            <p>24 Features Selected</p>
+                            <p>{this.props.mvpFeature} Features Selected</p>
                         </div>
                         <div  className="platformSection">
-                            <h3>Platform <span>Change</span></h3>
+                            <h3>Platform <span onClick={this.props.selectPlatform}>Change</span></h3>
                             <ul>
                                 {this.props.platform.slice(0,3).map(info=>
                                    <li><div  className="platformIcon"><img src={info.icon}></img></div>{info.title}</li>
@@ -696,34 +505,10 @@ export default class PhasesRow extends React.Component {
                                 
                             </ul>
                         </div>
-                        {this.props.advance?<React.Fragment><div className='speedSection'>
-                           <h3 >Working Speed</h3>
-                           <div className='speedSlider'>
-                           <div className='rangeSlider'>
-                                                    <div className={classes.root}>
-                                                    
-                                                        
-                                                        <Slider
-                                                            color={"secondary"}
-                                                            
-                                                            
-                                                            onChange={handleSliderChange}
-                                                            defaultValue={0-500}
-                                                            getAriaValueText={valuetext}
-                                                            aria-labelledby="discrete-slider-custom"
-                                                            
-                                                           step={20}
-                                                            marks={marks}
-                                                        />
-                                                        </div>
-                                                    </div>
-                                                    </div>
-                                                    <div  className="selectAll"><input  type="checkbox" id="selectallsame3"></input><label  htmlFor="selectallsame3">Same speed for all the platforms</label></div>
-                                                    </div>
-                                                    <div  className="deliveryDate"><h3>
+                        {this.props.advance?<div  className="deliveryDate"><h3>
                                                         <strong >Delivered By</strong>
                                                         <span > 07 August 2020 </span></h3></div>
-                                                    </React.Fragment>:''}
+                                                    :''}
                         <learn-more >
                             <div  className={`phaseOverlay ${this.state.mvp?'active':''}`}></div>
                             <div  className={`phaseInfo ${this.state.mvp?'active':''}`}>
@@ -755,9 +540,9 @@ export default class PhasesRow extends React.Component {
                         </div>
                         {this.props.advance?<React.Fragment><div  className="featureSection">
                         <h3 >Features <span  className="">View</span></h3>
-                        <p >26 Features Selected</p></div>
+                        <p >{this.props.features.features.length}  Features Selected</p></div>
                         <div  className="platformSection">
-                            <h3>Platform <span>Change</span></h3>
+                            <h3>Platform <span onClick={this.props.selectPlatform}>Change</span></h3>
                             <ul>
                                 {this.props.platform.slice(0,3).map(info=>
                                    <li><div  className="platformIcon"><img src={info.icon}></img></div>{info.title}</li>
@@ -766,34 +551,11 @@ export default class PhasesRow extends React.Component {
                                     <div  className="platformIcon moreLink"><span>+{this.props.platform.length-3}</span></div></li>:''}
                             </ul>
                         </div>
-                        <div className='speedSection'>
-                           <h3 >Working Speed</h3>
-                           <div className='speedSlider'>
-                           <div className='rangeSlider'>
-                                                    <div className={classes.root}>
-                                                    
-                                                        
-                                                        <Slider
-                                                            color={"secondary"}
-                                                            
-                                                            
-                                                            onChange={handleSliderChange}
-                                                            defaultValue={0-500}
-                                                            getAriaValueText={valuetext}
-                                                            aria-labelledby="discrete-slider-custom"
-                                                            
-                                                           step={20}
-                                                            marks={marks}
-                                                        />
-                                                        </div>
-                                                    </div>
-                                                    </div>
-                                                    <div  className="selectAll"><input  type="checkbox" id="selectallsame4"></input><label  htmlFor="selectallsame4">Same speed for all the platforms</label></div>
-                                                    </div>
-                                                    <div  className="deliveryDate"><h3>
-                                                        <strong >Delivered By</strong>
-                                                        <span > 07 August 2020 </span></h3></div>
-                                                    </React.Fragment>:''}
+                        
+                        <div  className="deliveryDate"><h3>
+                            <strong >Delivered By</strong>
+                            <span > 07 August 2020 </span></h3></div>
+                        </React.Fragment>:''}
                         <learn-more>
                             <div  className={`phaseOverlay ${this.state.fullBuild?'active':''}`}></div>
                             <div  className={`phaseInfo ${this.state.fullBuild?'active':''}`}>

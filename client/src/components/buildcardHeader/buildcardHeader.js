@@ -22,19 +22,21 @@ class Header  extends React.Component{
     render(){return(
        <nav id='header'>
            <div className='container-fluid'>
-               <div className='row'>
+               <div>
                     <div className="logo">
                         <a><img width="107" height="26" alt="" className="mainLogo" src="https://studio.builder.ai/assets/images/engineer-logo.png"></img></a>
                         <a><img width="26" height="35" alt="" class="smallLogo" src="https://studio.builder.ai/assets/images/logoSmall.png"></img></a>
                     </div>
-                    <div style={{marginLeft:'720px'}} className='hidden-xs'>
+                    
+                    
+                    <div style={{marginLeft:'10px'}}>
+                    <AuthContext.Consumer>{(props)=><User auth={props.auth.auth}/>}</AuthContext.Consumer>
+                    </div>
+                    <div  className='hidden-xs'>
                     <ProtoTypeButton />
                     </div>
                     <div  className='show-xs'>
                     <NeedHelp />
-                    </div>
-                    <div style={{marginLeft:'10px'}}>
-                    <AuthContext.Consumer>{(props)=><User auth={props.auth.auth}/>}</AuthContext.Consumer>
                     </div>
                     <div class="mobuserLogin" style={{marginLeft:'5px'}}><em class="icon-usernew" id='1' onClick={(e)=>this.mobUserNav(e)}></em></div>
                     <div class="mobileClick" style={{marginLeft:'5px'}}><em class="icon-hamicon" onClick={(e)=>this.mobUserNav(e)}></em></div>

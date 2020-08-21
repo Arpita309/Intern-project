@@ -23,7 +23,7 @@ class ProblemSolveHeader extends React.Component{
                 </div>
                 <nav id='header'>
                     <div className='container-fluid'>
-                        <div className='row'>
+                        <div >
                             <div className='logo'>
                                 <a href='http://localhost:3000/'><img width="107" height="26" alt="" class="mainLogo" src="https://studio.builder.ai/assets/images/engineer-logo.png"></img></a>
                                 <a href='http://localhost:3000/'><img width="26" height="35" alt="" class="smallLogo" src="https://studio.builder.ai/assets/images/logoSmall.png"></img></a>

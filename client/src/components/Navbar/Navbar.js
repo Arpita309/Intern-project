@@ -41,13 +41,18 @@ this.state = {
                 return(<nav id='header'>
                 {console.log(props.auth.auth)}
                 <div className='container-fluid'>
-                  <div className='row'>
+                  <div>
                    <div className="logo">
                      <a><img width="107" height="26" alt="" className="mainLogo" src="https://studio.builder.ai/assets/images/engineer-logo.png"></img></a>
                      <a className="mobilehome-logo-only"><img alt="" width="107" height="26" src="https://studio.builder.ai/assets/images/engineer-logo.png"></img></a>
                      <a><img width="26" height="35" alt="" className="smallLogo" src="https://studio.builder.ai/assets/images/logoSmall.png"></img></a>
                    </div>
-                    <div className='becomePartner' style={{marginLeft:'700px'}}><Link to='become-a-partner' >BECOME A PARTNER</Link></div> 
+                   <LoginIcon auth={props.auth.auth}/>
+                 {props.auth.auth?<div className='hidemobileScreen'><User auth={props.auth.auth}/></div>:
+                   <div >
+                     <CurrencyBox/></div>}
+                     
+                      
                     <div className="requestDemo ">
                    <div className="text text-uppercase ">
                        Get help with my project
@@ -65,11 +70,7 @@ this.state = {
                        </div>
                    </div>
                </div>
-                 {props.auth.auth?<div className='hidemobileScreen'><User auth={props.auth.auth}/></div>:
-                   <div >
-                     <CurrencyBox/></div>}
-                   
-                   <LoginIcon auth={props.auth.auth}/>
+               <div className='becomePartner'><Link to='become-a-partner' >BECOME A PARTNER</Link></div>
                    <div class="mobileClick" ><em class="icon-hamicon" onClick={this.mobNavigation}></em></div>
                    <div className={`mobNavigation ${this.state.mobNavigation?'active':''}`}>
                      <div className="mobOverlay"></div>

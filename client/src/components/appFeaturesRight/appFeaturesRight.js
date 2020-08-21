@@ -33,7 +33,7 @@ class FeatureRight extends React.Component{
     
     componentDidMount(){
         
-        ApiGet(`app/?attributes.title=${this.props.name}`)
+        ApiGet(`app/?attributes.id=${this.props.name}`)
           .then(res => {
             const data = res.data;
             this.setState({ app:data,active:data.map(value=>value.attributes.map(info=>info.features[0].id)) });
@@ -236,7 +236,7 @@ class FeatureRight extends React.Component{
                                 <img src={desc.map(value=>value[0].icon)[0]}></img>
                             </div>
                             <div class="descriptionText">
-                                <h4>{desc.map(value=>value[0].title)[0]}- {desc.map(value=>value[0].price)[0]} ({Math.round(`${desc.map(value=>value[0].weeks)[0]}`*10)/10}weeks)</h4>
+                                <h4>{desc.map(value=>value[0].title)[0]}- {desc.map(value=>value[0].effective_cost)[0]} ({Math.round(`${desc.map(value=>value[0].effective_weeks)[0]}`*10)/10}weeks)</h4>
                                 <div class="webView">
                                     <p>{desc.map(value=>value[0].description)[0]}</p>
                                     

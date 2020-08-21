@@ -110,7 +110,7 @@ class LoginIcon extends React.Component{
                     
                 
                 
-              {this.props.auth?'':<div class="loginPanel ul" >
+              {this.props.auth?'':<div class="loginPanel" >
                     <Tool/>
                     
                 </div>}  

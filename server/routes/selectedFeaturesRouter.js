@@ -44,7 +44,8 @@ SelectedFeaturesRouter.route('/')
                 SelectedFeatures.findOne({_id:id}).then((Selected)=>{
                     console.log(Selected)
                     Selected.features=req.body.features,
-                    Selected.title=req.body.title
+                    Selected.title=req.body.title,
+                    Selected.mvpFeature=req.body.mvpFeature
                     Selected.save()
                     .then((Feature) => {
                         console.log('SelectedFeatures Created ', Feature);
@@ -56,7 +57,7 @@ SelectedFeaturesRouter.route('/')
                 })}
                 
                 else {
-                    SelectedFeatures.create({"user": req.user._id,"features":req.body.features,"templateId":req.body.templateId,"title":req.body.title})
+                    SelectedFeatures.create({"user": req.user._id,"features":req.body.features,"templateId":req.body.templateId,"title":req.body.title,"mvpFeature":req.body.mvpFeature})
                     .then((SelectedFeature) => {
                         console.log( SelectedFeature);
                         res.statusCode = 200;
@@ -66,7 +67,7 @@ SelectedFeaturesRouter.route('/')
                 }    
             }
         else {
-            SelectedFeatures.create({"user": req.user._id,"features":req.body.features,"templateId":req.body.templateId,'title':req.body.title})
+            SelectedFeatures.create({"user": req.user._id,"features":req.body.features,"templateId":req.body.templateId,'title':req.body.title,"mvpFeature":req.body.mvpFeature})
             .then((SelectedFeature) => {
                 console.log( SelectedFeature);
                 res.statusCode = 200;

@@ -33,12 +33,12 @@ class Delivery extends React.Component{
            custom:[],count:1,platformList:[],
            selectedPlatform:[],advance:false,teams:{},dropdown:false,teamLocation:'Anywhere',search:'',mobNavigation:false,
            bottomBar:false,promotion:false,speed:'Relaxed',platformId:[],data:[],template:'',phases:[],
-           price:'',weeks:'',configurations:[],features:[]
+           price:'',weeks:'',configurations:[],features:[],mvpFeature:0,featuresLength:0
            
         }
     }
     componentDidMount(){
-        
+        this.setState({template:this.props.location.state})
         ApiGet('configurations')
           .then(res => {
             const data = res.data;
@@ -47,7 +47,7 @@ class Delivery extends React.Component{
                
                 if(this.state.speed===platform.title){
                 this.setState({ price:+this.state.price + +this.state.price* +platform.price_multiplier,weeks:Math.round(+this.state.weeks + +this.state.weeks* +platform.week_multiplier)})
-                console.log(platform)
+                
                 }
             })
                 this.setState({platformList: data[0].platforms });
@@ -58,35 +58,26 @@ class Delivery extends React.Component{
             const data = res.data;
             this.setState({teams:data[0].teams });
           }) 
-          ApiGet(`app/?attributes.id=${this.props.match.params.name}`).then(
-            (res) => {
-              const data = res.data;
-              
-              this.setState({ data });
-              console.log(this.state.data)
-              this.state.data.map(value=>value.attributes.map(info=>{return(this.setState({template:info.id}))} ))
-              ApiGet(`selectedFeatures/template/?templateId=${this.state.template}`)
+          
+              ApiGet(`selectedFeatures/template/?templateId=${this.props.location.state}`)
               .then(res=>{
-                 this.setState({features:res.data})
+                 this.setState({features:res.data,mvpFeature:res.data.mvpFeature.length,featuresLength:res.data.features.length})
+                 
               })
-              ApiGet(`selectedPlatform/template/?templateId=${this.state.template}`)
+              ApiGet(`selectedPlatform/template/?templateId=${this.props.location.state}`)
               .then(res=>{
                      res.data.platform.map(
                          value=>
                          this.setState({selectedPlatform:[...this.state.selectedPlatform,value],platformId:[...this.state.platformId,value.id]})
                      )
-                  
-                  
-                          
-            
-        })
-        ApiGet(`priceAndDuration/template/?templateId=${this.state.template}`)
+                  })
+        ApiGet(`priceAndDuration/template/?templateId=${this.props.location.state}`)
         .then(res=>{
             console.log(res)
             this.setState({price:res.data.price,weeks:res.data.weeks})
         })
 
-    })}
+    }
     
     showPromotion=()=>{
         
@@ -157,7 +148,6 @@ class Delivery extends React.Component{
         this.setState({mobNavigation:false})
     }
     selectPhase=(value)=>{
-        console.log(value)
         this.setState({phases:[...this.state.phases,value]})
         this.state.configurations.build_phases.map(
             phase=>{
@@ -216,7 +206,7 @@ class Delivery extends React.Component{
                                 <div className='headerPart'>
                     <nav id='header'>
                         <div className='container-fluid'>
-                            <div className='row'>
+                            <div>
                                 <div className="logo">
                                     <a><img width="107" height="26" alt="" className="mainLogo" src="https://studio.builder.ai/assets/images/engineer-logo.png"></img></a>
                                     <a><img width="26" height="35" alt="" className="smallLogo" src="https://studio.builder.ai/assets/images/logoSmall.png"></img></a>
@@ -226,30 +216,13 @@ class Delivery extends React.Component{
                                     <div className="breadcrums">
                                         <ul>
                                             <li className="">Apps <span>(1)</span></li>
-                                            <li className="">Features <span>(26)</span></li>
+                                            <li className="">Features <span>({this.state.featuresLength})</span></li>
                                             <li className="active">Delivery and Deliverables</li>
                                             <li className="disablelink">Build Card</li>
                                         </ul>
                                     </div>
                                 </app-header-breadcrumb>
-                                <div className="requestDemo " style={{marginLeft:'550px'}}>
-                                    <div className="text text-uppercase need-help">
-                                        Get help with my project 
-                                        <div className="needhelpdroupdown">
-                                            <ol>
-                                                <li>
-                                                    <div className="user-icon-box"><em class="icon-newsales"></em></div>
-                                                    <div className="user-txt"> Want a demo? <span class="bold-detail"> Talk to Sales <span> (Free) </span></span></div>
-                                                </li>
-                                                <li>
-                                                    <div className="user-icon-box"><em className="icon-newexpert"></em></div>
-                                                    <div className="user-txt"> Want help with specing? <span class="bold-detail"> Talk to Expert <span> (Refundable)</span></span></div>
-                                                </li>
-                                            </ol>
-                                        </div>
-                                    </div>
-                                    
-                                </div>
+                                
                                 <div className={`priceSideBar ${this.state.promotion?'active':''}`}>
                                         <div className="priceOverflow"></div>
                                         <div className="priceBoxHold">
@@ -270,6 +243,24 @@ class Delivery extends React.Component{
                                 {props.auth.auth?<div className='hidemobileScreen'><User auth={props.auth.auth}/></div>:
                                 <div >
                                     <CurrencyBox/></div>}
+                                    <div className="requestDemo " >
+                                    <div className="text text-uppercase need-help">
+                                        Get help with my project 
+                                        <div className="needhelpdroupdown">
+                                            <ol>
+                                                <li>
+                                                    <div className="user-icon-box"><em class="icon-newsales"></em></div>
+                                                    <div className="user-txt"> Want a demo? <span class="bold-detail"> Talk to Sales <span> (Free) </span></span></div>
+                                                </li>
+                                                <li>
+                                                    <div className="user-icon-box"><em className="icon-newexpert"></em></div>
+                                                    <div className="user-txt"> Want help with specing? <span class="bold-detail"> Talk to Expert <span> (Refundable)</span></span></div>
+                                                </li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
                             <LoginIcon auth={props.auth.auth}/>
                             <div class="mobileClick" ><em class="icon-hamicon" onClick={this.mobNavigation}></em></div>
                                 <div className={`mobNavigation ${this.state.mobNavigation?'active':''}`}>
@@ -354,7 +345,7 @@ class Delivery extends React.Component{
                             </h2>
                             
                                         
-                                        <PhasesRow custom={this.state.custom}  advance={this.state.advance} platform={this.state.selectedPlatform} selectPhase={this.selectPhase} price={this.state.price} weeks={this.state.weeks}/>
+                                        <PhasesRow custom={this.state.custom}  advance={this.state.advance} platform={this.state.selectedPlatform} selectPhase={this.selectPhase} price={this.state.price} weeks={this.state.weeks} features={this.state.features} mvpFeature={this.state.mvpFeature} selectPlatform={this.platform}/>
                                         
                                         
                                         

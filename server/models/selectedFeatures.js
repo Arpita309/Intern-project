@@ -9,7 +9,8 @@ const SelectedFeaturesSchema = new Schema({
     },
     templateId:Number,
     features:[],
-    title:[]
+    title:[],
+    mvpFeature:[]
     
 },
 { toJSON: { virtuals: true } });

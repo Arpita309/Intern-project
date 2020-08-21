@@ -23,48 +23,40 @@ class Features extends React.Component{
             platformId:[],
             bottomBar:false,
             platformList:[],
-            price:'',
-            weeks:'',
+            price:0,
+            weeks:0,
             redirect:false,
-            template:''
+            template:'',
+            mvpFeature:[]
         }
     }
     componentDidMount(){
+        console.log(this.props.location.state)
+        if(this.props.location.state.length>1)
+        {
+           
+        }
         ApiGet('configurations')
           .then(res => {
             const data = res.data;
             this.setState({platformList: data[0].platforms });
           }) 
-        ApiGet(`app/?attributes.title=${this.props.location.state}`).then(
+        ApiGet(`app/?attributes.id=${this.props.location.state}`).then(
             (res) => {
               const data = res.data;
               this.setState({ data });
               this.state.data.map(value=>value.attributes.map(info=>{
-                  info.features.map(obj=>{
-                      this.setState({price:+this.state.price+ +obj.effective_cost,template:value.id})
-                      if(Number(obj.effective_weeks)<0.5)
-                        {
-                            this.setState({weeks:this.state.weeks})
-                        }
-                     else
-                     this.setState({weeks:+this.state.weeks+ +obj.effective_weeks})   
-                  })
-                  ApiGet(`selectedPlatform/template/?templateId=${this.state.template}`)
-                    .then(res=>{
-                        let platforms=res.data.platforms
-                        platforms.map(obj=>
-                        this.state.platformList.map(data=>data.attributes.map(platform=>{
-                            if(platform.id===obj)
-                            {
-                                this.setState({selectedPlatform:[...this.state.selectedPlatform,platform],platformId:[...this.state.platformId,obj],
-                                    price:+this.state.price* +platform.price_multiplier,weeks:Math.round(+this.state.weeks* +platform.week_multiplier)
-                                })
-                            }
-                        
-                            }))
-                    )
+                info.features.map(obj=>{
                     
+                    this.setState({price:+this.state.price+ +obj.effective_cost,template:value.id})
+                    if(Number(obj.effective_weeks)<0.5)
+                      {
+                          this.setState({weeks:this.state.weeks})
+                      }
+                   else
+                   this.setState({weeks:+this.state.weeks+ +obj.effective_weeks})   
                 })
+
                   }))
             })
     }
@@ -103,7 +95,17 @@ class Features extends React.Component{
         this.setState({hideLeft:false})
     }
     selectedFeature=(value)=>{
+        console.log(value[0])
           this.setState({selectedFeature:value})
+          value.map(info=>info.map(obj=>{
+            this.setState({price:+this.state.price+ +obj.effective_cost})
+            if(Number(obj.effective_weeks)<0.5)
+              {
+                  this.setState({weeks:this.state.weeks})
+              }
+           else
+           this.setState({weeks:+this.state.weeks+ +obj.effective_weeks})   
+        }))
     }
     selectedView=(value)=>{
         this.setState({selectedView:value})
@@ -134,9 +136,10 @@ class Features extends React.Component{
 
     }
     render(){
-        console.log(this.state.selectedPlatform)
+        console.log(this.state.mvpFeature)
         if(this.state.redirect){
-            return(<Redirect to={`/delivery/${this.state.template}`}/>)
+            return(<Redirect to={{pathname:'/delivery',
+        state:`${this.props.location.state}`}}/>)
         }
         this.state.name=this.props.location.state
         console.log(this.state.price,this.state.weeks)
@@ -145,7 +148,7 @@ class Features extends React.Component{
             <FeaturesHeader/>
             <div className='middlePart'>
             <div className='featureStudio'>
-                <Left hide={this.state.hideLeft} hideLeft={this.hideLeft} selectedFeature={this.selectedFeature} name={this.state.name} selectedView={this.selectedView} customFeature={this.customFeature}/>
+                <Left hide={this.state.hideLeft} hideLeft={this.hideLeft} selectedFeature={this.selectedFeature} name={this.state.name} selectedView={this.selectedView} customFeature={this.customFeature} redirect={this.state.redirect}/>
                 <Right hideLeft={this.hideLeft} hide={this.state.hideLeft} show={this.showLeft} name={this.state.name} selectedFeature={this.state.selectedFeature.filter(value=>value.length)} view={this.state.selectedView}/>
             </div></div>
             <div class="bottomSelectFeature">

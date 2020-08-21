@@ -41,13 +41,12 @@ class Dashboard extends React.Component{
                             <div className='headerPart'>
                     <nav id='header'>
                         <div className='container-fluid'>
-                            <div className='row'>
+                            <div>
                                 <div className="logo">
                                     <a><img width="107" height="26" alt="" className="mainLogo" src="https://studio.builder.ai/assets/images/engineer-logo.png"></img></a>
                                     <a><img width="26" height="35" alt="" class="smallLogo" src="https://studio.builder.ai/assets/images/logoSmall.png"></img></a>
                                 </div>
-                                <div className="selectedCurrency " style={{marginLeft:'1000px'}}><img alt="" src="https://bstudio-assets.azureedge.net/assets-builder/uploads/image/file/591a9aa714c49f7f467463f6/Rupee.svg"></img></div>
-                                <div className="newProject"><button> Price new project </button></div>
+                                
                                 <div className="userPanel">
                                     <h3> Hello <strong onClick={this.setActive}>{props.auth.auth.name}</strong></h3>
                                     <div className={`userDropdown ${this.state.active?'active':''}`} style={{zIndex:'2'}}>
@@ -60,6 +59,8 @@ class Dashboard extends React.Component{
                                         </ul>
                                     </div>
                                 </div>
+                                <div className="selectedCurrency "><img alt="" src="https://bstudio-assets.azureedge.net/assets-builder/uploads/image/file/591a9aa714c49f7f467463f6/Rupee.svg"></img></div>
+                                <div className="newProject"><button> Price new project </button></div>
                             </div>
                         </div>
                     </nav>

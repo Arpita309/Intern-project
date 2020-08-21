@@ -30,7 +30,8 @@ class AppFeaturesLeft extends React.Component {
       featureId: [],
       app: [],
       hidePanel:false,
-      activeFeatures:[]
+      activeFeatures:[],
+      mvpFeature:[],
       
     };
     window.addEventListener("resize", this.update);
@@ -44,7 +45,7 @@ class AppFeaturesLeft extends React.Component {
       const data = res.data;
       console.log(data)
       this.setState({ features: data });
-      ApiGet(`app/?attributes.title=${this.props.name}`).then((res) => {
+      ApiGet(`app/?attributes.id=${this.props.name}`).then((res) => {
         const data = res.data;
         this.setState({ app: data });
       
@@ -55,10 +56,17 @@ class AppFeaturesLeft extends React.Component {
         
         activeFeatures.map(value=>value.map(info=>info[0].map(a=>{
           this.setState({featureId:[...this.state.featureId,a.id ]})})))
-        this.state.app.map(value=>value.attributes.map(info=>info.features.map(data=>{return(features=[...features,data.id],title=[...title,data.title])})))
+        this.state.app.map(value=>value.attributes.map(info=>info.features.map(data=>{
+          if(data.is_mvp_feature){
+            this.setState({mvpFeature:[...this.state.mvpFeature,data]})
+          }
+          return(features=[...features,data.id],title=[...title,data.title])
+          
+        })))
         
         this.state.app.map(value=>template=value.id)
-        let payload={features:features,templateId:template,title:title}
+        
+        let payload={features:features,templateId:template,title:title,mvpFeature:this.state.mvpFeature}
       console.log(payload)
       ApiPost('selectedFeatures',payload)
         .then(res=>{
@@ -114,7 +122,7 @@ class AppFeaturesLeft extends React.Component {
   }
   selectFeature = (id, e) => {
     if (this.state.featureId.filter(info=>info=== id).length) {
-      this.setState({ featureId:[] });
+      this.setState({ featureId:this.state.featureId.filter(value=>value!=id) });
     } 
     else {
       this.setState({
@@ -124,22 +132,16 @@ class AppFeaturesLeft extends React.Component {
         ),
       });
       this.state.features.map(value=>value.features.map(info=>{
+        if(info.is_mvp_feature){
+          this.setState({mvpFeature:[...this.state.mvpFeature,info]})
+        }
         if(info.id===id){
           features=[...features,info.id]
           title=[...title,info.title]
         }
       }))
       
-      let payload={features:features,templateId:template,title:title}
-      console.log(payload)
-      ApiPost('selectedFeatures',payload)
-        .then(res=>{
-            console.log(res)
-        })
-        .catch(err =>
-          console.log(err.response.data)
-          
-        ); 
+      
       this.props.selectedFeature(
         this.state.data.filter((value) => value.length == 1)
       );
@@ -158,7 +160,18 @@ class AppFeaturesLeft extends React.Component {
   }
   
   render() {
-    
+    if(this.props.redirect){
+      let payload={features:features,templateId:template,title:title,mvpFeature:this.state.mvpFeature}
+      console.log(payload)
+      ApiPost('selectedFeatures',payload)
+        .then(res=>{
+            console.log(res)
+        })
+        .catch(err =>
+          console.log(err.response.data)
+          
+        ); 
+    }
     let selectedBundle=this.state.features.filter(value=>value.id===this.state.selected);
     let disFeature=[];
     disFeature=this.state.featureId.filter(value=>disFeature.filter(id=>
@@ -491,7 +504,7 @@ class AppFeaturesLeft extends React.Component {
                                         className="featureTab"
                                         onClick={(e) =>
                                           { this.selectFeature(li.id,e)
-                                            props.getFeature(li)}
+                                          }
                                         }
                                       >
                                         <div className="featureDetail">
@@ -500,8 +513,8 @@ class AppFeaturesLeft extends React.Component {
                                           </div>
                                           <div className="featureName">
                                             <h3>{li.title}</h3>
-                                            <p>{Math.round(`${li.feature_weeks}`*10)/10}</p>
-                                            <h4>{li.feature_price}</h4>
+                                            <p>{Math.round(`${li.effective_weeks}`*10)/10}</p>
+                                            <h4>{li.effective_cost}</h4>
                                           </div>
                                         </div>
                                         <div className="featureDetailRight">
@@ -512,7 +525,7 @@ class AppFeaturesLeft extends React.Component {
                                                 id={li.id}
                                                 checked={
                                                   this.state.selectAll ||
-                                                  this.state.featureId.filter(id=> id === li.id).length!=0
+                                                  this.state.featureId.filter(id=> id ==li.id).length!=0
                                                     ? true
                                                     : false
                                                 }

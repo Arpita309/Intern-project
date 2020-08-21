@@ -15,7 +15,8 @@ class QuestionType extends React.Component{
             data:[],
             isLoading:true,
             times:[3],
-            checkId:''
+            checkId:[],
+            problemType:[]
         };
     }
     toggleClass() {
@@ -29,10 +30,29 @@ class QuestionType extends React.Component{
             this.setState({ data ,isLoading:false});
           })
       }
-      handleChange=(e,id)=>{
-		this.setState({checkId:id})
-		
-	}
+      
+    handleChange=(e,id)=>{
+        console.log(id)
+    if(this.state.checkId.filter(value=>value==id).length){
+        this.setState({checkId:this.state.checkId.filter(value=>value!=id)})
+        }
+        else
+        {this.setState({checkId:[...this.state.checkId,id]})
+        
+    }
+    console.log(this.state.checkId)
+        
+    }
+    handleClick=(e,id)=>{
+        console.log(id)
+    if(this.state.problemType.filter(value=>value==id).length){
+        this.setState({problemType:this.state.problemType.filter(value=>value!=id)})
+        }
+        else
+        {this.setState({problemType:[...this.state.problemType,id]})
+        
+    }
+    console.log(this.state.problemType)}
         render() {
             return (
                
@@ -69,15 +89,15 @@ class QuestionType extends React.Component{
                                                       
                                                         <div key={info.id} className='child' style={{display:'flex'}}>
                                                     
-                                                        <div className= {`questionbox ${this.state.checked ? 'completed': '' }`} style={{display:'inline-block'}}  onChange={(e)=>this.handleChange(info.id)}>
-                                                            <h3>{info.problem_statement}</h3>
+                                                        <div className= {`questionbox ${this.state.checked ? 'completed': '' }`} style={{display:'inline-block'}}  >
+                                                            <h3 onClick={(e)=>this.handleClick(e,info.id)}>{info.problem_statement}</h3>
                                                             
                                                                     <div className='answearSet'>
                                                                     <ul>
                                                                     {info.applications.map(apps=>{
                                                                 return(
                                                                         <li>
-                                                                            <input  type="checkbox" id={apps.id} checked={this.state.checkId==info.id||this.state.checkId==apps.id} onChange={(e)=>this.handleChange(apps.id)}></input>
+                                                                            <input  type="checkbox" id={apps.id} checked={this.state.problemType.filter(value=>value==info.id).length||this.state.checkId.filter(value=>value==apps.id).length?true:false} onClick={(e)=>this.handleChange(e,apps.id)}></input>
                                                                             <label htmlFor={apps.id}>
                                                                                 <div  className="answearIcon">
                                                                                     <img  width="45" height="45" alt="" src={apps.icon}></img>
@@ -99,7 +119,7 @@ class QuestionType extends React.Component{
                                  </div>
                                     </div>}  
                         </div>
-                        {this.state.checkId?<BottomBar section='question' activeQues={this.state.checkId}/>:''}
+                        {/*this.state.checkId?<BottomBar section='question' activeQues={this.state.checkId}/>:''*/}
                      </div>
             );
         }

@@ -41,19 +41,20 @@ class AppDetailHeader extends React.Component{
                 </div>
                 <nav id='header'>
                     <div className='container-fluid'>
-                        <div className='row'>
+                        <div >
                             <div className='logo'>
                                 <a href='http://localhost:3000/'><img width="107" height="26" alt="" class="mainLogo" src="https://studio.builder.ai/assets/images/engineer-logo.png"></img></a>
                                 <a href='http://localhost:3000/'><img width="26" height="35" alt="" class="smallLogo" src="https://studio.builder.ai/assets/images/logoSmall.png"></img></a>
                             </div>
                             
-                            <div style={{marginLeft:'870px'}}>
-                            <ProtoTypeButton/>
-                            </div>
+                            
+                            
+                            
                             
                             {props.auth.auth?<div className='hidemobileScreen'><User auth={props.auth.auth}/></div>:
                                 <div >
                                     <CurrencyBox/></div>}
+                                    <ProtoTypeButton/>
                             <LoginIcon auth={props.auth.auth}/>
                             <div class="mobileClick" ><em class="icon-hamicon" onClick={this.mobNavigation}></em></div>
                                 <div className={`mobNavigation ${this.state.mobNavigation?'active':''}`}>
