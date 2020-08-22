@@ -295,6 +295,9 @@
     overflow: hidden;
     position: relative;
 }
+.view-proto-btn.active, .view-proto-btn:focus, .view-proto-btn:hover {
+    background: #fff8fc!important;
+}
 @media (max-width: 992px)
 {
 .feature-viewProto-bx, .view-proto-btn {

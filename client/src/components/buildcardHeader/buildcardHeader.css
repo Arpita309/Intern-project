@@ -23,12 +23,7 @@ margin-left: 10px !important;
 .mobileClick, .mobuserLogin {
     display: block;
 }}
-.icon-usernew:before {
-    font-weight: 900;
-    font-family: "Font Awesome\ 5 Free";
-    font-style: normal;
-    content: "";
-}
+
 .mobNavigation {
     position: fixed;
     z-index: 999;
@@ -157,12 +152,7 @@ margin-left: 10px !important;
     color: #0070e0;
     font-size: 17px;
 }}
-.icon-settings-streamline-1:before {
-    font-weight: 900;
-    font-family: "Font Awesome\ 5 Free";
-    font-style: normal;
-    content: "";
-}
+
 .mobNavigation li span:after {
     position: absolute;
     top: 50%;
@@ -180,18 +170,7 @@ margin-left: 10px !important;
     transition: all .3s ease-in-out;
     opacity: 0;
 }
-.icon-dashboard-3:before {
-    font-weight: 900;
-    font-family: "Font Awesome\ 5 Free";
-    font-style: normal;
-    content: "";
-}
-.icon-logout-1:before {
-    font-weight: 900;
-    font-family: "Font Awesome\ 5 Free";
-    font-style: normal;
-    content: "";
-}
+
 .icon-close:before {
     font-weight: 900;
     font-family: "Font Awesome\ 5 Free";

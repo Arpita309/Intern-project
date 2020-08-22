@@ -1,11 +1,12 @@
 import React from 'react'
 import './dashboard.css'
-
+import {Redirect} from 'react-router-dom'
 import AuthContext from '../../context/state'
 import { ApiGet } from '../../api'
 class Dashboard extends React.Component{
-    constructor(props){
-        super(props)
+    static contextType=AuthContext
+    constructor(props,context){
+        super(props,context)
         this.state={
             active:false,
             saved:[],completed:[]
@@ -30,7 +31,9 @@ class Dashboard extends React.Component{
         
     }
     render(){
-        
+        if(!this.context.auth.auth){
+            return(<Redirect to="/signin"/>)
+          }
         return(
             
             <div className='wrap'>
@@ -48,14 +51,14 @@ class Dashboard extends React.Component{
                                 </div>
                                 
                                 <div className="userPanel">
-                                    <h3> Hello <strong onClick={this.setActive}>{props.auth.auth.name}</strong></h3>
+                                    <h3> Hello <strong onClick={this.setActive}>{props.auth.auth.name?props.auth.auth.name.split(" ")[0] : ''}</strong></h3>
                                     <div className={`userDropdown ${this.state.active?'active':''}`} style={{zIndex:'2'}}>
                                         <ul>
                                             <li>
                                                 <span><em className="icon-pricenewproject">Price new project</em></span>
                                             </li>
                                             
-                                            <li><span className="userLogout" ><em class="icon-logout-1"></em><a href='http://localhost:4000/auth/logout'>  Log Out</a></span></li>
+                                            <li><a href='http://localhost:4000/auth/logout' style={{textDecoration:'none'}}><span className="userLogout" ><em class="icon-logout-1"></em>  Log Out</span></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -77,7 +80,7 @@ class Dashboard extends React.Component{
                         </div>
                         <div className='dashboardLeft' style={{overflow:'scroll'}}>
                             <div  className="mainTab">
-                                <em  className="icon-dashboard-1"></em>
+                                <em  className="icon-dashboard-1" style={{marginTop:'10px'}}></em>
                                 <span >Dashboard</span>
                             </div>
                             <div className='subMenu'>
@@ -85,41 +88,41 @@ class Dashboard extends React.Component{
                                 <ul>
                                     <li>
                                         <div  className="subMenuRow">
-                                            <em className="icon-finished"></em>Spec call details <strong >0</strong>
+                                            <em className="icon-finished" style={{marginTop:'10px'}}></em>Spec call details <strong >0</strong>
                                         </div>
                                     </li>
-                                    <li><div  className="subMenuRow"><em  className="icon-finished"></em> Generated Build Cards<strong >18</strong></div></li>
-                                    <li><div  className="subMenuRow"><em  className="icon-archived"></em> Incomplete Build Cards <strong >14</strong></div></li>
-                                    <li><div  className="subMenuRow"><em className="icon-archived"></em> Invited <strong>0</strong></div></li>
+                                    <li><div  className="subMenuRow"><em  className="icon-finished" style={{marginTop:'10px'}}></em> Generated Build Cards<strong >{this.state.saved.length+this.state.completed.length}</strong></div></li>
+                                    <li><div  className="subMenuRow"><em  className="icon-archived" style={{marginTop:'10px'}}></em> Incomplete Build Cards <strong >{this.state.saved.length}</strong></div></li>
+                                    <li><div  className="subMenuRow"><em className="icon-archived" style={{marginTop:'10px'}}></em> Invited <strong>0</strong></div></li>
                                 </ul>
                             </div>
                             <div className='subMenu'>
                                 <h4>PROJECTS</h4>
                                 <ul>
-                                    <li ><div  className="subMenuRow"><em  className="icon-running"></em> Running <strong >0</strong></div></li>
-                                    <li><div  className="subMenuRow"><em  className="icon-queued"></em> Queued <strong >0</strong></div></li>
-                                    <li><div  className="subMenuRow"><em  className="icon-finished"></em> Completed <strong >0</strong></div></li>
-                                    <li><div  className="subMenuRow"><em  className="icon-archived"></em> Archived <strong >0</strong></div></li></ul>
+                                    <li ><div  className="subMenuRow"><em  className="icon-running" style={{marginTop:'10px'}}></em> Running <strong >0</strong></div></li>
+                                    <li><div  className="subMenuRow"><em  className="icon-queued" style={{marginTop:'10px'}}></em> Queued <strong >0</strong></div></li>
+                                    <li><div  className="subMenuRow"><em  className="icon-finished" style={{marginTop:'10px'}}></em> Completed <strong >0</strong></div></li>
+                                    <li><div  className="subMenuRow"><em  className="icon-archived" style={{marginTop:'10px'}}></em> Archived <strong >0</strong></div></li></ul>
                             </div>
                             <div  className="subMenu">
                                 <h4>PROTOTYPE</h4>
                                 <ul>
-                                    <li ><div  className="subMenuRow"><em  className="icon-customprototype"></em> Tailor-made Prototype <strong>0</strong></div></li>
-                                    <li><div  className="subMenuRow"><em  className="icon-prototype-1"></em> Prototype <strong >10</strong></div></li>
+                                    <li ><div  className="subMenuRow"><em  className="icon-customprototype" style={{marginTop:'10px'}}></em> Tailor-made Prototype <strong>0</strong></div></li>
+                                    <li><div  className="subMenuRow"><em  className="icon-prototype-1" style={{marginTop:'10px'}}></em> Prototype <strong >0</strong></div></li>
                                 </ul>
                             </div>
                             <div  className="subMenu">
                                 <ul>
-                                    <li><div  className="subMenuRow"><em  className="icon-plus"></em> Additional Features Request<strong>0</strong></div></li>
+                                    <li><div  className="subMenuRow"><em  className="icon-pluss" style={{marginTop:'10px'}}></em> Additional Features Request<strong>0</strong></div></li>
                                 </ul>
                             </div>
                             <div  className="subMenu">
                                 <ul>
-                                    <li><div  className="subMenuRow"><span className="left-icon"><img  src="https://studio.builder.ai/assets/images/payment-icons.png"></img></span> Payment </div></li>
+                                    <li><div  className="subMenuRow"><span className="left-icon" style={{marginTop:'10px',color:'black'}}><img  src="https://studio.builder.ai/assets/images/payment-icons.png"></img></span> Payment </div></li>
                                 </ul>
                             </div>
                             <div  className="mainTab">
-                                <em  className="icon-settings"></em>
+                                <em  className="icon-settings" style={{marginTop:'10px'}}></em>
                                 <span>Settings</span>
                             </div>
                         </div>

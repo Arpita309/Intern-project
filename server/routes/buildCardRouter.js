@@ -40,7 +40,7 @@ BuildCardsRouter.route('/')
 })
 .put((req, res, next)=> {
 
-    BuildCards.updateOne({uniqId:req.body.uniqId},{$set:{projectName:req.body.projectName,status:req.body.status,projectType:req.body.projectType,features:req.body.features}}
+    BuildCards.updateOne({uniqId:req.body.uniqId},{$set:{projectName:req.body.projectName,status:req.body.status,projectType:req.body.projectType,features:req.body.features,price:req.body.price,duration:req.body.duration}}
     , {
         new: true
     })
@@ -61,29 +61,47 @@ BuildCardsRouter.route('/template')
     .populate('phase')
     .populate('workSpeed')
     .then((SelectedFeatures) => {
-        
         SelectedFeatures[0].platforms.map(value=>{
-            SelectedFeatures.price = +SelectedFeatures.price +  +SelectedFeatures.price* +value.price_multiplier,
-            SelectedFeatures.duration= +SelectedFeatures.duration + +SelectedFeatures.duration* +value.week_multiplier
+            SelectedFeatures[0].price =  +SelectedFeatures[0].price* +value.price_multiplier,
+            SelectedFeatures[0].duration= +SelectedFeatures[0].duration* +value.week_multiplier
          } )
         SelectedFeatures[0].phase.map(value=>{
-            SelectedFeatures.price = +SelectedFeatures.price +  +SelectedFeatures.price* +value.price_multiplier,
-            SelectedFeatures.duration= +SelectedFeatures.duration + +SelectedFeatures.duration* +value.week_multiplier
+            SelectedFeatures[0].price = +SelectedFeatures[0].price +  +SelectedFeatures[0].price* +value.price_multiplier,
+            SelectedFeatures[0].duration= +SelectedFeatures[0].duration + +SelectedFeatures[0].duration* +value.week_multiplier
         })
         SelectedFeatures[0].workSpeed.map(value=>{
-            SelectedFeatures.price= +SelectedFeatures.price* +value.price_multiplier,
-            SelectedFeatures.duration= +SelectedFeatures.duration* +value.week_multiplier
+            SelectedFeatures[0].price= +SelectedFeatures[0].price* +value.price_multiplier,
+            SelectedFeatures[0].duration= +SelectedFeatures[0].duration* +value.week_multiplier
         })
-        SelectedFeatures.save()
-        .then(cart=>{
-            console.log(cart)
+        
+        
+            console.log(SelectedFeatures)
             res.statusCode = 200;
             res.setHeader('Content-Type', 'application/json');
-            res.json(cart)    
-        })
+            res.json(SelectedFeatures)    
+        
       
     }, (err) => next(err))
     .catch((err) => next(err));
+    
+})
+BuildCardsRouter.route('/id')
+.get( (req,res,next) => {
+    BuildCards.find({user: req.user._id,uniqId:req.query.id})
+    
+    .then((SelectedFeatures) => {
+        
+        
+        
+            console.log(SelectedFeatures)
+            res.statusCode = 200;
+            res.setHeader('Content-Type', 'application/json');
+            res.json(SelectedFeatures)    
+        
+      
+    }, (err) => next(err))
+    .catch((err) => next(err));
+    
 })
 
 module.exports = BuildCardsRouter;

@@ -10,11 +10,13 @@ import { ApiGet, ApiPost } from "../../api";
 import InitialLoader from '../initialLoader/initialLoader'
 import axios from 'axios'
 import Contact from '../connectModal/connectModal'
+import AuthContext from '../../context/state'
 let userData={};
 let templateId
 class AppDetail extends React.Component {
-  constructor(props) {
-    super(props);
+  static contextType=AuthContext
+  constructor(props,context) {
+    super(props,context);
     this.state = {
       data: [],
       images: [],
@@ -129,6 +131,9 @@ customize=()=>{
   this.setState({customize:!this.state.customize})
 }
   render() {
+    if(!this.context.auth.auth){
+      return(<Redirect to="/signin"/>)
+    }
     if(this.state.redirect){
       return(<Redirect to={{pathname:'/features',
       state:`${templateId}`}}/>)

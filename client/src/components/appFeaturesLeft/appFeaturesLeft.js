@@ -502,10 +502,7 @@ class AppFeaturesLeft extends React.Component {
                                        
                                       <div
                                         className="featureTab"
-                                        onClick={(e) =>
-                                          { this.selectFeature(li.id,e)
-                                          }
-                                        }
+                                        
                                       >
                                         <div className="featureDetail">
                                           <div className="featureImg">
@@ -513,8 +510,8 @@ class AppFeaturesLeft extends React.Component {
                                           </div>
                                           <div className="featureName">
                                             <h3>{li.title}</h3>
-                                            <p>{Math.round(`${li.effective_weeks}`*10)/10}</p>
-                                            <h4>{li.effective_cost}</h4>
+                                            <p>{Math.round(`${li.weeks}`*10)/10}</p>
+                                            <h4>{li.feature_price}</h4>
                                           </div>
                                         </div>
                                         <div className="featureDetailRight">
@@ -528,6 +525,10 @@ class AppFeaturesLeft extends React.Component {
                                                   this.state.featureId.filter(id=> id ==li.id).length!=0
                                                     ? true
                                                     : false
+                                                }
+                                                onClick={(e) =>
+                                                  { this.selectFeature(li.id,e)
+                                                  }
                                                 }
                                               ></input>
                                               <label for={li.id}></label>

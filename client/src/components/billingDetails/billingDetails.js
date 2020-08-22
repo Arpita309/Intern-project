@@ -3,7 +3,7 @@ import React from 'react'
 import './billingDetails.css'
 import NeedHelp from '../needHelp/needHelp'
 import Footer from '../footer/footer'
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 import axios from 'axios'
 import {ApiPost, ApiGet} from '../../api'
 var userData={}
@@ -12,8 +12,8 @@ class BillingDetails extends React.Component{
         super(props)
         this.state={
             billingDetails:true,contract:false,
-            paymentSummary:false,dueNow:false,security:false,firstname:'',email:'',contact:'',loaclity:'',state:'',city:'',zip:'',apartment:'',gst:'',lastname:'',company:'',
-            price:'',weeks:''
+            paymentSummary:false,dueNow:false,security:false,firstname:'',email:'',contact:'',locality:'',state:'',city:'',zip:'',apartment:'',gst:'',lastname:'',company:'',
+            price:'',weeks:'',gstChecked:false,terms:[],disable:false
         }
 
     }
@@ -86,13 +86,35 @@ class BillingDetails extends React.Component{
             ); 
         
 }
+checkBoxes=(e)=>{
+    if(this.state.terms.filter(value=>value==e.target.id).length)
+    this.setState({terms:this.state.terms.filter(value=>value!=e.target.id)})
+    else
+    this.setState({terms:[...this.state.terms,e.target.id]})
+    
+}
+showGst=()=>{
+    this.setState({gstChecked:!this.state.gstChecked})
+}
     render(){
+        console.log(this.state.disable)
+        
+        const redirect=()=>{
+            if(this.state.terms.length!=5||this.state.firstname===''||this.state.lastname===''||this.state.contact===''||this.state.city===''||this.state.company===''||this.state.state===''||this.state.zip===''||this.state.email===''||this.state.country===''||this.state.apartment===''||this.state.locality==='')
+        {
+            this.setState({disable:true})
+        }
+        else{
+        this.setState({disable:false})
+           
+               return(<Redirect to={`/payment/${this.props.match.params.template}`}/>)
+        }}
         return(
             <div className='wrapper'>
                 <div className='headerPart'>
                     <nav id='header'>
                         <div className='container-fluid'>
-                            <div className='row'>
+                            <div >
                                 <div className='logo'>
                                     <a href='/'><img width="107" height="26" alt="" className="mainLogo" src="https://studio.builder.ai/assets/images/engineer-logo.png"></img></a>
                                     <a href='/'><img width="26" height="35" alt="" className="smallLogo" src="https://studio.builder.ai/assets/images/logoSmall.png"></img></a>
@@ -106,11 +128,13 @@ class BillingDetails extends React.Component{
                                         <li className='disablelink'>Confirm and Pay</li>
                                     </ul>
                                 </div>
+                                
+                                   
+                                
+                                <div className="secure hidden-xs " style={{marginLeft:'10px'}}><img src="https://studio.builder.ai/assets/images/shield.png" alt=""></img> 100% Secure </div>
                                 <div  className='show-xs'>
                                 <NeedHelp/>
                                 </div>
-                                   
-                                <div className="secure hidden-xs " style={{marginLeft:'10px'}}><img src="https://studio.builder.ai/assets/images/shield.png" alt=""></img> 100% Secure </div>
                             </div>
                         </div>
                     </nav>
@@ -127,13 +151,13 @@ class BillingDetails extends React.Component{
                                                 <div  className="col-md-6 col-sm-12 col-xs-12" style={{textAlign:'left'}}>
                                                     <label>First Name <strong>*</strong></label>
                                                     <div  className="inputfield">
-                                                        <input  type="text" id="firstname" placeholder="Your first name" required="" maxlength="100" minlength="1" onChange={(e)=>this.handleChange(e)}></input>
+                                                        <input  type="text" id="firstname" placeholder="Your first name" required="" maxlength="100" minlength="1" onChange={(e)=>this.handleChange(e)} value={this.state.firstname}></input>
                                                     </div>
                                                 </div>
-                                                <div  className="col-md-6 col-sm-12 col-xs-12" style={{textAlign:'left'}}>
+                                                <div  className="col-md-6 col-sm-12 col-xs-12" style={{textAlign:'left'}} >
                                                     <label>Last Name <strong>*</strong></label>
                                                     <div  className="inputfield">
-                                                        <input  type="text" id="lastname" placeholder="Your last name" required="" maxlength="100" onChange={(e)=>this.handleChange(e)}></input>
+                                                        <input  type="text" id="lastname" placeholder="Your last name" required="" maxlength="100" onChange={(e)=>this.handleChange(e)} value={this.state.lastname}></input>
                                                     </div>
                                                 </div>
                                             </div>
@@ -141,13 +165,13 @@ class BillingDetails extends React.Component{
                                                 <div  className="col-md-6 col-sm-12 col-xs-12" style={{textAlign:'left'}}>
                                                     <label>Company Name </label>
                                                     <div  className="inputfield">
-                                                        <input type="text" id="company" minlength="1" maxlength="15" placeholder="Your Company Name" onChange={(e)=>this.handleChange(e)}></input>
+                                                        <input type="text" id="company" minlength="1" maxlength="15" placeholder="Your Company Name" onChange={(e)=>this.handleChange(e)} value={this.state.company}></input>
                                                     </div>
                                                 </div>
                                                 <div  className="col-md-6 col-sm-12 col-xs-12" style={{textAlign:'left'}}>
                                                     <label>E-mail Address <strong>*</strong></label>
                                                     <div  className="inputfield">
-                                                        <input  type="text" id="email" placeholder="Your e-mail address" required="" email="" maxlength="100" disabled="" onChange={(e)=>this.handleChange(e)}></input>
+                                                        <input  type="text" id="email" placeholder="Your e-mail address" required="" email="" maxlength="100" disabled="" onChange={(e)=>this.handleChange(e)} value={this.state.email}></input>
                                                     </div>
                                                 </div>
                                             </div>
@@ -160,7 +184,7 @@ class BillingDetails extends React.Component{
                                                                 <international-phone-number  placeholder="Your phone number" name="mobileNumber" required=""  maxlength="20" >
                                                                     <div className="input-group">
                                                                         
-                                                                        <input  required="" class="form-control " placeholder="Your phone number" type="text" maxlength="20" id='contact' onChange={(e)=>this.handleChange(e)}></input>
+                                                                        <input  required="" class="form-control " placeholder="Your phone number" type="text" maxlength="20" id='contact' onChange={(e)=>this.handleChange(e)} value={this.state.contact}></input>
                                                                     </div>
                                                                 </international-phone-number>
                                                             </div>
@@ -172,13 +196,13 @@ class BillingDetails extends React.Component{
                                                 <div  className="col-md-6 col-sm-12 col-xs-12" style={{textAlign:'left'}}>
                                                     <label>Street/ Locality <strong>*</strong></label>
                                                     <div  className="inputfield">
-                                                        <input   type="text" id="locality" required="" maxlength="100" minlength="1" className=" pac-target-input" placeholder="Enter a location" autoComplete="off" onChange={(e)=>this.handleChange(e)}></input>
+                                                        <input   type="text" id="locality" required="" maxlength="100" minlength="1" className=" pac-target-input" placeholder="Enter a location" autoComplete="off" onChange={(e)=>this.handleChange(e)} value={this.state.locality}></input>
                                                     </div>
                                                 </div>
                                                 <div  className="col-md-6 col-sm-12 col-xs-12" style={{textAlign:'left'}}>
                                                     <label>City <strong >*</strong></label>
                                                     <div  className="inputfield">
-                                                        <input  type="text" id="city" placeholder="eg. Los Angeles" required="" maxlength="100" minlength="1" onChange={(e)=>this.handleChange(e)}></input>
+                                                        <input  type="text" id="city" placeholder="eg. Los Angeles" required="" maxlength="100" minlength="1" onChange={(e)=>this.handleChange(e)} value={this.state.city}></input>
                                                     </div>
                                                 </div>
                                             </div>
@@ -186,13 +210,13 @@ class BillingDetails extends React.Component{
                                                 <div  className="col-md-6 col-sm-12 col-xs-12" style={{textAlign:'left'}}>
                                                     <label >Apartment/ Unit Number <strong>*</strong></label>
                                                     <div className="inputfield">
-                                                        <input type="text" id="apartment" placeholder="eg. 1234" required="" maxlength="100" minlength="1" onChange={(e)=>this.handleChange(e)}></input>
+                                                        <input type="text" id="apartment" placeholder="eg. 1234" required="" maxlength="100" minlength="1" onChange={(e)=>this.handleChange(e)} value={this.state.apartment}></input>
                                                     </div>
                                                 </div>
                                                 <div  className="col-md-6 col-sm-12 col-xs-12 " style={{textAlign:'left'}}>
                                                     <label>State/ Territory/ Region <strong>*</strong></label>
                                                     <div  className="inputfield">
-                                                        <input  type="text" id="state" placeholder="eg. California" required="" maxlength="100" minlength="1" onChange={(e)=>this.handleChange(e)}></input>
+                                                        <input  type="text" id="state" placeholder="eg. California" required="" maxlength="100" minlength="1" onChange={(e)=>this.handleChange(e)} value={this.state.state}></input>
                                                     </div>
                                                 </div>
                                             </div>
@@ -200,24 +224,32 @@ class BillingDetails extends React.Component{
                                                 <div  className="col-md-6 col-sm-12 col-xs-12" style={{textAlign:'left'}}>
                                                     <label>ZIP Code <strong>*</strong></label>
                                                     <div  className="inputfield">
-                                                        <input  type="text" id="zip" placeholder="eg. 90051" required="" minlength="1" maxlength="12" onChange={(e)=>this.handleChange(e)}></input>
+                                                        <input  type="text" id="zip" placeholder="eg. 90051" required="" minlength="1" maxlength="12" onChange={(e)=>this.handleChange(e)} value={this.state.zip}></input>
                                                     </div>
                                                 </div>
                                                 <div  className="col-md-6 col-sm-12 col-xs-12" style={{textAlign:'left'}}>
                                                     <label >Country <strong>*</strong></label>
                                                     <div  className="inputfield">
-                                                        <input  type="text" id="country" placeholder="eg. USA" required="" maxlength="100" minlength="1" onChange={(e)=>this.handleChange(e)}></input>
+                                                        <input  type="text" id="country" placeholder="eg. USA" required="" maxlength="100" minlength="1" onChange={(e)=>this.handleChange(e)} value={this.state.country}></input>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div className="row">
                                                 <div  className="col-xs-12">
                                                     <div className="usegstin" style={{textAlign:'left'}}>
-                                                        <input  type="checkbox" name="vehicle" value="" id="gst"onChange={(e)=>this.handleChange(e)}></input>
+                                                        <input  type="checkbox" name="vehicle" value="" id="gst" onClick={this.showGst}></input>
                                                         <label  htmlFor="gst" > Use GSTIN for this project <span >(optional)</span></label>
                                                     </div>
                                                 </div>
                                             </div>
+                                            {this.state.gstChecked?<div className="row ">
+                                                <div  className="col-md-6">
+                                                    <label>GST number <strong>*</strong></label>
+                                                    <div className="inputfield">
+                                                        <input  type="text" name="gstNumber" id="gst" required="" minlength="1" maxlength="100" placeholder="eg. 06ABCDE1234F2Z5" pattern="^([0]{1}[1-9]{1}|[1-2]{1}[0-9]{1}|[3]{1}[0-7]{1})([a-zA-Z]{5}[0-9]{4}[a-zA-Z]{1}[1-9a-zA-Z]{1}[zZ]{1}[0-9a-zA-Z]{1})+$"  onChange={(e)=>this.handleChange(e)} value={this.state.gst}/>
+                                                    </div>
+                                                </div>
+                                            </div>:''}
                                             <div  className="row">
                                                 <div  className="col-md-12">
                                                     <button  type="button" onClick={(e)=>this.onSubmit(e)}>SAVE<span   className="tooltip-left-arrow">Please fill billing details</span></button>
@@ -231,24 +263,24 @@ class BillingDetails extends React.Component{
                                     {this.state.contract?<div>
                                         <div className='contractListBox'>
                                             <p >
-                                                <input  type="checkbox" id="checkboxone"></input>
-                                                <label htmlFor="checkboxone"></label> I understand that my project(s) ("Buildcard(s)") is built on a framework of potential or existing reusable features, designs, workflows and templates; and this will be licensed to me on a non exclusive basis upon my final payment; I will also be provided a copy of the source code. I agree and understand Builder.ai will be able to use any of its potential or existing reusable parts for other customers. I understand that I can only have one instance of the project running in parallel; if I wish to run more than one instance then I shall seek written permission from Builder.ai
+                                                <input  type="checkbox" id="checkboxone" onClick={(e)=>this.checkBoxes(e)}></input>
+                                                <label htmlFor="checkboxone"></label> I understand that my project(s) ("Buildcard(s)") is built on a framework of potential or existing reusable features, designs, workflows and templates; and this will be licensed to me on a non exclusive basis upon my final payment; I will also be provided a copy of the source code. I agree and understand BuilderX will be able to use any of its potential or existing reusable parts for other customers. I understand that I can only have one instance of the project running in parallel; if I wish to run more than one instance then I shall seek written permission from BuilderX.
                                             </p>
                                             <p>
-                                                <input type="checkbox" id="checkboxtwo"></input>
+                                                <input type="checkbox" id="checkboxtwo" onClick={(e)=>this.checkBoxes(e)}></input>
                                                 <label  htmlFor="checkboxtwo"></label> I understand that whatever is explicitly defined and/or billed for as customizations (design, source code, business logic, workflows or custom features) in my Buildcard(s) will remain my intellectual property and be assigned to me exclusively upon payment. I understand that the aggregate intellectual property of my Buildcard(s) will become my property upon the final payment.
                                             </p>
                                             <p >
-                                                <input  type="checkbox" id="checkboxthree"></input>
-                                                <label  htmlFor="checkboxthree"></label> I understand that any timelines given are indicative and Builder.ai will do whatever is reasonably necessary to achieve them but does not guarantee them unless otherwise provided for in writing. I understand that my timely response to questions and approvals is essential to a speedy completion of my Buildcard(s).
+                                                <input  type="checkbox" id="checkboxthree" onClick={(e)=>this.checkBoxes(e)}></input>
+                                                <label  htmlFor="checkboxthree"></label> I understand that any timelines given are indicative and BuilderX will do whatever is reasonably necessary to achieve them but does not guarantee them unless otherwise provided for in writing. I understand that my timely response to questions and approvals is essential to a speedy completion of my Buildcard(s).
                                             </p>
                                             <p>
-                                                <input  type="checkbox" id="checkboxfour"></input>
-                                                <label  htmlFor="checkboxfour"></label> I understand that Builder will retain all control of the Intellectual Property except any data entered by me or my company until all contracted payments have been made unless otherwise agreed with Builder.ai in writing. I agree that Builder.ai can delete my data if I do not make payments for 14 days from any due date.
+                                                <input  type="checkbox" id="checkboxfour" onClick={(e)=>this.checkBoxes(e)}></input>
+                                                <label  htmlFor="checkboxfour"></label> I understand that Builder will retain all control of the Intellectual Property except any data entered by me or my company until all contracted payments have been made unless otherwise agreed with BuilderX in writing. I agree that BuilderX can delete my data if I do not make payments for 14 days from any due date.
                                             </p>
                                             <p>
-                                                <input  type="checkbox" id="checkboxfive"></input>
-                                                <label  htmlFor="checkboxfive"></label> I understand and agree to the terms and conditions as outlined in the Builder.ai ( Engineer.ai's) <span>Master User Terms &amp; License Agreement</span>. I understand and agree to the <span>mutual non disclosure clauses</span> within the agreement.
+                                                <input  type="checkbox" id="checkboxfive" onClick={(e)=>this.checkBoxes(e)}></input>
+                                                <label  htmlFor="checkboxfive"></label> I understand and agree to the terms and conditions as outlined in the BuilderX  <span>Master User Terms &amp; License Agreement</span>. I understand and agree to the <span>mutual non disclosure clauses</span> within the agreement.
                                             </p>
                                         </div>
                                     </div>:''}
@@ -280,10 +312,11 @@ class BillingDetails extends React.Component{
                                                 <h3> ₹1,64,974.81 </h3>
                                             </div>
                                             <div className='detailRow'>
-                                                <specing-payment className='specingCompo'>
-                                                   <Link to={`/payment/${this.props.match.params.template}`}><button  type="button" className="payNowBtn onlyShowDesktop" > Continue </button></Link> 
+                                                <div className='specingCompo'>
+                                                   <button  type="button" className={`payNowBtn onlyShowDesktop ${this.state.disable?'disable-continue-button':''}`} onClick={redirect}> Continue </button> 
+                                                   {this.state.disable?<span  className="tooltip-right-arrow ">Please fill required billing information and tick the terms and conditions.</span>:''}
                                                     <button  type="button" className="payNowBtn onlyShowMobile"> PROCEED TO PAYMENT </button>
-                                                </specing-payment>
+                                                </div>
                                             </div>
                                             <p style={{textAlign:'left'}}>By clicking continue button, you agree with our Terms and Conditions and the related documents will be sent to your registered email address</p>
                                         </div>

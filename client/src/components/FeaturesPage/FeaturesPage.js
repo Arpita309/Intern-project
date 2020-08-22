@@ -48,17 +48,13 @@ class Features extends React.Component{
               this.state.data.map(value=>value.attributes.map(info=>{
                 info.features.map(obj=>{
                     
-                    this.setState({price:+this.state.price+ +obj.effective_cost,template:value.id})
-                    if(Number(obj.effective_weeks)<0.5)
-                      {
-                          this.setState({weeks:this.state.weeks})
-                      }
-                   else
-                   this.setState({weeks:+this.state.weeks+ +obj.effective_weeks})   
+                    this.setState({price:+this.state.price+ +obj.feature_price,template:value.id})
+                      
+                   this.setState({weeks:`${+this.state.weeks+ +`${Math.round(`${obj.weeks}`*10)/10}`}`   
                 })
 
-                  }))
-            })
+                  })}))
+                })
     }
     platform=()=>{
         this.setState({showPlatform:!this.state.showPlatform})
@@ -66,13 +62,8 @@ class Features extends React.Component{
     componentWillUpdate(){
         let value=this.context
         if(Object.keys(value.feature).length){
-        this.state.price=+this.state.price+ +value.feature.effective_cost
-        if(Number(value.feature.effective_weeks)<0.5)
-        {
-            this.state.weeks=this.state.weeks
-        }
-        else
-        this.state.weeks=Math.round(`${+this.state.weeks+ +value.feature.effective_weeks}`)
+        this.state.price=+this.state.price+ +value.feature.feature_price
+        this.state.weeks=Math.round(`${+this.state.weeks+ `${Math.round(`${value.weeks}`*10)/10}`}`)
         }
         
 
@@ -98,13 +89,8 @@ class Features extends React.Component{
         console.log(value[0])
           this.setState({selectedFeature:value})
           value.map(info=>info.map(obj=>{
-            this.setState({price:+this.state.price+ +obj.effective_cost})
-            if(Number(obj.effective_weeks)<0.5)
-              {
-                  this.setState({weeks:this.state.weeks})
-              }
-           else
-           this.setState({weeks:+this.state.weeks+ +obj.effective_weeks})   
+            this.setState({price:+this.state.price+ +obj.feature_price})
+           this.setState({weeks:+this.state.weeks+ +`${Math.round(`${obj.weeks}`*10)/10}`})   
         }))
     }
     selectedView=(value)=>{
@@ -161,7 +147,7 @@ class Features extends React.Component{
                 
                     <div  className="durationBox">
                         <h3>
-                            <span>Duration</span>{this.state.weeks} weeks
+                            <span>Duration</span>{Math.round(this.state.weeks)} weeks
                         </h3>
                     </div>
                     <div className="maxpriceBox">

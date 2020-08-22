@@ -76,11 +76,6 @@
     transition: all .3s ease-in-out;
     padding-right: 10px;
 }
-@media (max-width: 768px)
-{
-.billingheight, .fixHeight {
-    max-height: 100%;
-}}
 .paymentContainer .billingDetails label {
     color: #000;
     font-size: 12px;
@@ -135,6 +130,15 @@
     border-radius: 50px;
     margin: 0 5px 0 0;
     border: 1px solid #e2e7ed;
+}
+.paymentContainer .billingDetails .usegstin input:checked + label:before {
+    font-family:"Font Awesome\ 5 Free";
+    content: "\f00c";
+    font-weight: 900;
+    font-size: 15px;
+    background: #00c852;
+    padding-left: 5px;
+    color:white;
 }
 .paymentContainer .billingDetails .usegstin label span {
     color: rgba(0,0,0,.5);
@@ -319,13 +323,18 @@
     justify-content: center;
 }
 .paymentContainer .contracts .contractListBox p label:before {
-    content: "h";
+    font-family: "Font Awesome\ 5 Free";
+    font-weight: 900;
+    content: "\f00c";
 }
 .paymentContainer .contracts .contractListBox p span {
     cursor: pointer;
     color: #0070e0;
 }
-
+.paymentContainer .contracts .contractListBox p input:checked + label {
+    background: #0070e0;
+    border: 1px solid #0070e0;
+}
 /*payment summary*/
 .paymentSummary {
     border-radius: 10px;
@@ -745,4 +754,40 @@
     color: #0070e0;
     font-size: 11px;
     cursor: pointer;
+}
+.paymentSummary .detailRow .specingCompo .payNowBtn.disable-continue-button {
+    background: #faa1d5;
+}
+.paymentSummary .detailRow .specingCompo .tooltip-right-arrow {
+    position: absolute;
+    left: 0;
+    top: 2px;
+    transform: translateX(-100%);
+    margin-left: -20px;
+    padding: 8px 30px 8px 14px;
+    max-height: 50px;
+    border-radius: 4px;
+    box-shadow: 0 5px 10px rgba(0,0,0,.05);
+    border: 1px solid #f437a6;
+    background-color: #fef3fa;
+    color: #f31597;
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 300;
+}
+.paymentSummary .detailRow .specingCompo .tooltip-right-arrow:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -9px;
+    width: 10px;
+    height: 10px;
+    transform: rotate(315deg) translateY(-50%);
+    -webkit-transform: rotate(315deg) translateY(-50%);
+    -moz-transform: rotate(315deg) translateY(-50%);
+    -o-transform: rotate(315deg) translateY(-50%);
+    -ms-transform: rotate(315deg) translateY(-50%);
+    border-right: 1px solid #f437a6;
+    border-bottom: 1px solid #f437a6;
+    background-color: #fef3fa;
 }

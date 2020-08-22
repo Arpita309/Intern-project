@@ -236,7 +236,7 @@ class FeatureRight extends React.Component{
                                 <img src={desc.map(value=>value[0].icon)[0]}></img>
                             </div>
                             <div class="descriptionText">
-                                <h4>{desc.map(value=>value[0].title)[0]}- {desc.map(value=>value[0].effective_cost)[0]} ({Math.round(`${desc.map(value=>value[0].effective_weeks)[0]}`*10)/10}weeks)</h4>
+                                <h4>{desc.map(value=>value[0].title)[0]}- {desc.map(value=>value[0].feature_price)[0]} ({Math.round(`${desc.map(value=>value[0].weeks)[0]}`*10)/10}weeks)</h4>
                                 <div class="webView">
                                     <p>{desc.map(value=>value[0].description)[0]}</p>
                                     

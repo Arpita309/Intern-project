@@ -14,9 +14,9 @@ class PaymentPlan extends React.Component{
         }
     }
     componentDidMount(){
-        ApiGet(`priceAndDuration/template/?templateId=${this.props.match.params.template}`)
+        ApiGet(`buildCard/id/?id=${this.props.match.params.template}`)
         .then(res=>{
-            this.setState({price:res.data.price,weeks:res.data.weeks})
+            this.setState({price:res.data[0].price,weeks:res.data[0].duration})
         })
     }
     showdue=()=>{
@@ -74,7 +74,7 @@ class PaymentPlan extends React.Component{
                 <div className='headerPart'>
                     <nav id='header'>
                         <div className='container-fluid'>
-                            <div className='row'>
+                            <div >
                                 <div className='logo'>
                                     <a><img width="107" height="26" alt="" className="mainLogo" src="https://studio.builder.ai/assets/images/engineer-logo.png"></img></a>
                                     <a><img width="26" height="35" alt="" className="smallLogo" src="https://studio.builder.ai/assets/images/logoSmall.png"></img></a>
@@ -88,12 +88,12 @@ class PaymentPlan extends React.Component{
                                         <li className='disablelink'>Confirm and Pay</li>
                                     </ul>
                                 </div>
+                                
+                                   
+                                <div className="secure hidden-xs " style={{marginLeft:'10px'}}><img src="https://studio.builder.ai/assets/images/shield.png" alt=""></img> 100% Secure </div>
                                 <div  className='show-xs'>
                                 <NeedHelp/>
                                 </div>
-                                   
-                                <div className="secure hidden-xs " style={{marginLeft:'10px'}}><img src="https://studio.builder.ai/assets/images/shield.png" alt=""></img> 100% Secure </div>
-                                
                                 <div className={`priceSideBar ${this.state.showSidebar?'active':''}`}>
                                     <div className="priceOverflow"></div>
                                     <div className="priceBoxHold">
@@ -124,7 +124,7 @@ class PaymentPlan extends React.Component{
                 </div>
                 <div className='middlePart'>
                     <div className='container paymentContainer' style={{width:'100%'}} >
-                        <div className='row'>
+                        <div >
                             <div className='col-xs-12 col-md-4 col-sm-12 pull-right' style={{float:'right'}}>
                                 <div className='paymentSummary modifyPaymnt-summry'>
                                     <h3>Payment Summary 
@@ -135,16 +135,16 @@ class PaymentPlan extends React.Component{
                                         <div>
                                             <div  className="detailRow">
                                                 <label>Total Cost <br/><small>(Including Taxes)</small></label>
-                                                <p ><strong>{Number(`${this.state.price}`) + Number(`${(+this.state.price* 18)/100}`)}<div  className={`expand ${this.state.expand?'active':''}`} onClick={this.expand}></div></strong></p>
+                                                <p ><strong>{Math.round(`${this.state.price}`) + Number(`${(+this.state.price* 18)/100}`*10)/10}<div  className={`expand ${this.state.expand?'active':''}`} onClick={this.expand}></div></strong></p>
                                             </div>
                                         </div>
                                         {this.state.expand?<React.Fragment>
-                                            <div  className="detailRow "><label>Project Cost</label><p >{this.state.price}</p></div>
-                                            <div  className="detailRow "><label>Tax (18% GST)</label><p >{(+this.state.price* 18)/100}</p></div>
+                                            <div  className="detailRow "><label>Project Cost</label><p >{Math.round(this.state.price*100)/100}</p></div>
+                                            <div  className="detailRow "><label>Tax (18% GST)</label><p >{Math.round(`${+this.state.price* 18 /100}`*100)/100}</p></div>
                                         </React.Fragment>:''}
                                         <div  className="detailRow">
                                             <label>Development duration</label>
-                                            <p> {this.state.weeks} weeks</p>
+                                            <p> {Math.round(this.state.weeks)} weeks</p>
                                         </div>
                                     </div>
                                     <div  className="applyPromo">

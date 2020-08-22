@@ -90,7 +90,7 @@ class BuildCard extends React.Component{
         this.setState({Edit:!this.state.Edit})
     }
     redirect=()=>{
-        let payload={projectName:this.state.projectName,projectType:this.state.projectType,status:'completed',uniqId:this.state.uniqId,features:this.state.features}
+        let payload={projectName:this.state.projectName,projectType:this.state.projectType,status:'completed',uniqId:this.state.uniqId,features:this.state.features,price:this.state.price,duration:this.state.weeks}
         ApiPut('buildCard',payload)
         .then(res=>{
             console.log(res)
@@ -99,7 +99,7 @@ class BuildCard extends React.Component{
     }
     render(){
         if(this.state.redirect){
-            return(<Redirect to={`/payment-plan/${this.props.match.params.template}`}/>)
+            return(<Redirect to={`/payment-plan/${this.state.uniqId}`}/>)
         }
         console.log(this.state.uniqId)
        console.log(this.state.phases)
@@ -373,16 +373,16 @@ class BuildCard extends React.Component{
                                                     <div  className="detailRow">
                                                         <label>Total Cost </label>
                                                         <p >
-                                                            <strong >{this.state.price}</strong>
+                                                            <strong >{Math.round(`${this.state.price*100}`)/100}</strong>
                                                         </p>
                                                     </div>
                                                     <div  className="detailRow">
                                                         <label>Monthly cost</label>
-                                                        <p >{Math.round(`${`${+this.state.price}`/ `${+this.state.weeks / 4}`}`)} </p>
+                                                        <p >{Math.round(`${`${+this.state.price}`/ `${+this.state.weeks / 4}`*100}`)/100} </p>
                                                     </div>
                                                     <div  className="detailRow">
                                                         <label>Development duration</label>
-                                                        <p>{this.state.weeks} weeks</p>
+                                                        <p>{Math.round(this.state.weeks)} weeks</p>
                                                     </div>
                                                     <div  className="applyPromo">
                                                         <img  src="https://studio.builder.ai/assets/images/promotion_icon.png" alt=""></img>

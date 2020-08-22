@@ -53,6 +53,12 @@
     transition: all .3s ease-in-out;
     position: relative;
 }
+.dashboardArea .dashboardLeft .mainTab:hover {
+    color: #64a3ef;
+}
+.dashboardArea .dashboardLeft .mainTab:hover:before {
+    opacity: 1;
+}
 .dashboardArea .dashboardLeft .mainTab:before {
     content: "";
     left: -15px;
@@ -112,14 +118,61 @@
     border-bottom: 8px solid transparent;
     opacity: 0;
 }
+
 .dashboardArea .dashboardLeft .subMenu ul li .subMenuRow em {
     float: left;
     line-height: 0;
     display: block;
     margin: 2px 5px 0 0;
 }
+.icon-dashboard-1::before{
+   
+    font-family: "Font Awesome\ 5 Free";
+    font-weight: 900;
+    font-style: normal;
+    content: "\f200";
+}
 .icon-finished:before {
-    content: "\79";
+    font-family: "Font Awesome\ 5 Free";
+    font-weight: 900;
+    font-style: normal;
+    content: "\f560";
+}
+.icon-archived::before{
+    font-family: "Font Awesome\ 5 Free";
+    font-weight: 900;
+    font-style: normal;
+    content:'\f187'
+}
+.icon-running::before{
+    font-family: "Font Awesome\ 5 Free";
+    font-weight: 900;
+    font-style: normal;
+    content:'\f0e7'
+}
+.icon-queued::before{
+    font-family: "Font Awesome\ 5 Free";
+    font-weight: 900;
+    font-style: normal;
+    content: '\f017';
+}
+.icon-customprototype::before{
+    font-family: "Font Awesome\ 5 Free";
+    font-weight: 900;
+    font-style: normal;
+    content: '\f144';
+}
+.icon-prototype-1::before{
+    font-family: "Font Awesome\ 5 Free";
+    font-weight: 900;
+    font-style: normal;
+    content: '\f135';
+}
+.dashboardArea .dashboardLeft .subMenu ul li .subMenuRow:hover {
+    color: #64a3ef;
+}
+.dashboardArea .dashboardLeft .subMenu ul li .subMenuRow.active:before {
+    opacity: 1;
 }
 .dashboardArea .dashboardLeft .subMenu ul li .subMenuRow strong {
     float: right;
@@ -131,6 +184,18 @@
     padding: 20px 30px;
     position: relative;
     z-index: 8;
+}
+.icon-pluss::before{
+    font-family: "Font Awesome\ 5 Free";
+    font-weight: 900;
+    font-style: normal;
+    content:'\f0fe';
+}
+.icon-settings::before{
+    font-family: "Font Awesome\ 5 Free";
+    font-weight: 900;
+    font-style: normal;
+    content:'\f013';
 }
 .dashboardArea .dashboardRight .dashboardHold {
     width: 100%;
@@ -281,7 +346,10 @@
     position: relative;
 }
 .icon-more:before {
-    content: "\e02a";
+    font-family: "Font Awesome\ 5 Free";
+    font-weight: 900;
+    font-style: normal;
+    content: "\f142";
 }
 .dashboardArea .dashboardRight .progressCard .cardHead .cardRight .cardDropDown {
     box-shadow: 0 8px 27px rgba(67,117,195,.25);
@@ -350,23 +418,41 @@
     cursor: pointer;
 }
 .icon-share:before {
-    content: "\44"; 
+    font-weight: 900;
+    font-family: "Font Awesome\ 5 Free";
+    font-style: normal;
+    font-size: small;
+    content: "\f1e0"; 
 }
 .icon-invite:before {
-    content: "\56";
+    font-weight: 900;
+    font-family: "Font Awesome\ 5 Free";
+    font-style: normal;
+    font-size: smaller;
+    content: "\f234";
 }
 .dashboardArea .dashboardRight .progressCard .cardHead .cardRight .transferIcon em:before {
     float: left;
     line-height: 21px;
 }
 .icon-transfer-1:before {
-    content: "\e015";
+    font-weight: 900;
+    font-family: "Font Awesome\ 5 Free";
+    font-style: normal;
+    font-size: x-small;
+    content: "\f362";
 }
 .dashboardArea .dashboardRight .progressCard .cardMiddle {
     float: left;
     width: 100%;
     clear: both;
     margin: 0 0 12px;
+}
+.dashboardArea .dashboardRight .progressCard .cardHead .cardRight .cardMore:hover .cardDropDown {
+    transform: scale(1);
+}
+.dashboardArea .dashboardRight .progressCard .cardHead .cardRight .cardDropDown ul li:hover {
+    background: rgba(0,0,0,.05);
 }
 .dashboardArea .dashboardRight .progressCard .cardMiddle .completeDetail {
     float: left;
@@ -689,5 +775,8 @@
 }
 
 .icon-pricenewproject:before {
-    content: "\47";
+    font-family: "Font Awesome\ 5 Free";
+    font-weight: 900;
+    font-style: normal;
+    content: "\f542";
 }

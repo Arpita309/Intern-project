@@ -194,11 +194,7 @@
     transition: all .3s ease-in-out;
     padding-right: 10px;
 }
-@media (max-width: 768px)
-{
-.billingheight, .fixHeight {
-    max-height: 100%;
-}}
+
 .buildCardmain .buildcard-detail {
     margin-bottom: 15px;
     color: #000 !important;
@@ -983,25 +979,25 @@ font-style: normal;
     font-weight: 900;
     font-family: "Font Awesome\ 5 Free";
     font-style: normal;
-    content: "";
+    content: "\f064";
 }
 .icon-icontransfer:before {
     font-weight: 900;
     font-family: "Font Awesome\ 5 Free";
     font-style: normal;
-    content: "";
+    content: "\f362";
 }
 .icon-iconshare:before {
     font-weight: 900;
     font-family: "Font Awesome\ 5 Free";
     font-style: normal;
-    content: "";
+    content: "\f1e0";
 }
 .icon-prototype:before {
     font-weight: 900;
     font-family: "Font Awesome\ 5 Free";
     font-style: normal;
-    content: "";
+    content: "\f35d";
 }
 .buildCardmain .buildCardTop .userDropdownMenu ul .dropDownList span {
     padding-left: 28px;

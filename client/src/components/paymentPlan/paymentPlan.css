@@ -385,13 +385,10 @@
     transition: all .3s ease-in-out;
     padding-right: 10px;
 }
-@media (max-width: 768px)
-{
-.billingheight, .fixHeight {
-    max-height: 100%;
-}}
+
 .paymentContainer .paymentPlan .billingCycle .billingCycleMainTab .billingCycleContent {
     padding-right: 10px;
+    padding-left: 10px;
     margin: 20px 0;
 }
 .paymentContainer .paymentPlan .billingCycle .billingCycleMainTab .billingCycleContent ul.weeklyMonthlyWise {
@@ -500,7 +497,7 @@
     align-items: center;
     justify-content: flex-start;
     display: flex;
-    margin: 0 0 0 20px;
+    margin:  20px;
     float: right;
 }
 .secure img {

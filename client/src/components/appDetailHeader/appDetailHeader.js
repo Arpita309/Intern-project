@@ -50,12 +50,12 @@ class AppDetailHeader extends React.Component{
                             
                             
                             
-                            
+                            <LoginIcon auth={props.auth.auth}/>
                             {props.auth.auth?<div className='hidemobileScreen'><User auth={props.auth.auth}/></div>:
                                 <div >
                                     <CurrencyBox/></div>}
                                     <ProtoTypeButton/>
-                            <LoginIcon auth={props.auth.auth}/>
+                            
                             <div class="mobileClick" ><em class="icon-hamicon" onClick={this.mobNavigation}></em></div>
                                 <div className={`mobNavigation ${this.state.mobNavigation?'active':''}`}>
                                 <div className="mobOverlay"></div>
