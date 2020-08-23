@@ -27,15 +27,12 @@ class Features extends React.Component{
             weeks:0,
             redirect:false,
             template:'',
-            mvpFeature:[]
+            mvpFeature:[],
+            test:[]
         }
     }
     componentDidMount(){
-        console.log(this.props.location.state)
-        if(this.props.location.state.length>1)
-        {
-           
-        }
+        
         ApiGet('configurations')
           .then(res => {
             const data = res.data;
@@ -61,6 +58,7 @@ class Features extends React.Component{
     }
     componentWillUpdate(){
         let value=this.context
+        console.log(value.feature)
         if(Object.keys(value.feature).length){
         this.state.price=+this.state.price+ +value.feature.feature_price
         this.state.weeks=Math.round(`${+this.state.weeks+ `${Math.round(`${value.weeks}`*10)/10}`}`)
@@ -109,10 +107,7 @@ class Features extends React.Component{
         this.setState({bottomBar:!this.state.bottomBar})
     }
     redirect=()=>{
-        
-        let value=this.context
-        value.setPrice(this.state.price)
-        value.setWeeks(this.state.weeks)
+       
         let payload={price:this.state.price,weeks:this.state.weeks,templateId:this.state.template}
         ApiPost('priceAndDuration',payload)
         .then(res=>
@@ -135,7 +130,7 @@ class Features extends React.Component{
             <div className='middlePart'>
             <div className='featureStudio'>
                 <Left hide={this.state.hideLeft} hideLeft={this.hideLeft} selectedFeature={this.selectedFeature} name={this.state.name} selectedView={this.selectedView} customFeature={this.customFeature} redirect={this.state.redirect}/>
-                <Right hideLeft={this.hideLeft} hide={this.state.hideLeft} show={this.showLeft} name={this.state.name} selectedFeature={this.state.selectedFeature.filter(value=>value.length)} view={this.state.selectedView}/>
+                <Right hideLeft={this.hideLeft} hide={this.state.hideLeft} show={this.showLeft} name={this.state.name}  view={this.state.selectedView}/>
             </div></div>
             <div class="bottomSelectFeature">
                 <div className='appBottomBar'>

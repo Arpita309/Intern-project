@@ -1,6 +1,7 @@
 import React from 'react'
 import './homepageBottombar.css'
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
+import { ApiPost } from '../../api'
 class BottomBar extends React.Component{
     constructor(props){
         super(props)
@@ -10,8 +11,15 @@ class BottomBar extends React.Component{
     }
     hideBottom=()=>{
 		this.setState({hideBottom:!this.state.hideBottom})
-	}
+    }
+   
     render(){
+        const  postTemplates=()=>{
+            let payload={templateId:this.props.activeApps}
+            ApiPost('templates',payload)
+            .then(res=>
+                <Redirect to='/features'/>)
+        }
         return(
             <div  className={`newHomeFooterbar ${this.state.hideBottom?'hideBottomPipe':''}`}>
 				<div  className="bottomSelectFeature-toggle" onClick={this.hideBottom}></div>
@@ -20,8 +28,7 @@ class BottomBar extends React.Component{
 					<p>You selected <span>{this.props.activeApps.length} similar apps</span></p>
 				</div>
 				<div  className="rightSide">
-                    <div  className="viewAll"><Link to={{pathname:'/features',
-                state:this.props.activeApps}}  style={{color:'white'}}>Get Started</Link> </div>
+                    <div  className="viewAll" onClick={postTemplates}><Link to='/features'>Get Started</Link>  </div>
 				</div>
 			</div>
         )

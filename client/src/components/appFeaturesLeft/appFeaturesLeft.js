@@ -528,6 +528,7 @@ class AppFeaturesLeft extends React.Component {
                                                 }
                                                 onClick={(e) =>
                                                   { this.selectFeature(li.id,e)
+                                                    props.getFeature(li)
                                                   }
                                                 }
                                               ></input>

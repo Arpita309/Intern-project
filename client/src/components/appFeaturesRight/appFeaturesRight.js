@@ -57,8 +57,9 @@ class FeatureRight extends React.Component{
           
     }
     
-    componentUpdate(){
+    componentWillUpdate(){
         let data=this.context.feature
+        console.log(data)
             let mobileImages=[]
             {this.state.app.map((value)=>
               value.attributes.map(info=>{
@@ -67,9 +68,12 @@ class FeatureRight extends React.Component{
         
                 if(Object.keys(data).length)this.state.app.map(value=>
             value.attributes.map(info=>{
-                
+                if(info.features.includes(data))
+                info.features=info.features.filter(value=>value.id!=data.id)
+                else
                 info.features.push(data)
-            }))
+            })
+            )
             
 
         

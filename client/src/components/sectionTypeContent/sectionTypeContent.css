@@ -222,5 +222,14 @@ p{
     width: 190px;
     height: 215px;
 }}
+.productTypeSection .productTypeRow .productType h3:before {
+    content: "";
+    width: 35px;
+    height: 1px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-bottom: 2px solid hsla(0,0%,100%,.1);
+}
 
 
