@@ -5,6 +5,8 @@ import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { ApiGet,ApiPost } from "../../api";
 import AuthContext from '../../context/state'
+import {connect} from 'react-redux'
+import {getFeature} from '../../store/actions/actions'
 const useStyles = (theme) => ({
   root: {
     width: 250,
@@ -528,7 +530,7 @@ class AppFeaturesLeft extends React.Component {
                                                 }
                                                 onClick={(e) =>
                                                   { this.selectFeature(li.id,e)
-                                                    props.getFeature(li)
+                                                    this.props.getFeature(li)
                                                   }
                                                 }
                                               ></input>
@@ -567,4 +569,9 @@ class AppFeaturesLeft extends React.Component {
     );
   }
 }
-export default withStyles(useStyles)(AppFeaturesLeft);
+const mapDispatchToProps = (dispatch)=> {
+  return {
+    getFeature: (value) => dispatch(getFeature(value))
+  }
+}
+export default connect(null,mapDispatchToProps)(AppFeaturesLeft);

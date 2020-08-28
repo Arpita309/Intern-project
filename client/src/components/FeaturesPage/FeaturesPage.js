@@ -6,6 +6,7 @@ import FeaturesHeader from '../featuresHeader/featuresHeader'
 import { ApiGet, ApiPost} from '../../api'
 import { Link, Redirect } from 'react-router-dom'
 import AuthContext from '../../context/state'
+import {connect} from 'react-redux'
 class Features extends React.Component{
     static contextType=AuthContext
     constructor(props,context){
@@ -32,7 +33,7 @@ class Features extends React.Component{
         }
     }
     componentDidMount(){
-        
+        ApiGet('templates').then(res=>console.log(res.data))
         ApiGet('configurations')
           .then(res => {
             const data = res.data;
@@ -52,11 +53,12 @@ class Features extends React.Component{
 
                   })}))
                 })
+                
     }
     platform=()=>{
         this.setState({showPlatform:!this.state.showPlatform})
     }
-    componentWillUpdate(){
+    componentWillMount(){
         let value=this.context
         console.log(value.feature)
         if(Object.keys(value.feature).length){
@@ -65,6 +67,9 @@ class Features extends React.Component{
         }
         
 
+    }
+    componentDidUpdate(){
+        console.log(this.props.features)
     }
     selectPlatform=(icon,e,id)=>{
         
@@ -117,6 +122,7 @@ class Features extends React.Component{
 
     }
     render(){
+        
         console.log(this.state.mvpFeature)
         if(this.state.redirect){
             return(<Redirect to={{pathname:'/delivery',
@@ -410,4 +416,9 @@ class Features extends React.Component{
         )
     }
 }
-export default Features;
+const mapStateToProps = (state) => {
+    return {
+      features: state.feature
+    }
+  }
+export default connect(mapStateToProps)(Features);

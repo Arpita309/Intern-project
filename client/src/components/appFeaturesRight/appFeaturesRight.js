@@ -1,13 +1,14 @@
 import React from 'react'
 import './appFeaturesRight.css'
 import AuthContext from '../../context/state'
-
+import {connect} from 'react-redux'
 import {ApiGet, ApiPost} from '../../api'
+import {getFeature} from '../../store/actions/actions'
 let features=[]
 class FeatureRight extends React.Component{
-    static contextType = AuthContext
-    constructor(props,context){
-        super(props,context);
+   
+    constructor(props){
+        super(props);
         this.state = {
             mobileView:true,
            showAll:true,
@@ -39,8 +40,9 @@ class FeatureRight extends React.Component{
             this.setState({ app:data,active:data.map(value=>value.attributes.map(info=>info.features[0].id)) });
             this.state.app.map(value=>value.attributes.map(info=>this.setState({active:info.features[0].id})))
            
-           this.state.app.map(value=>value.attributes.map(info=>info.features.map(data=>features=[...features,data.id])))
-          
+           this.state.app.map(value=>value.attributes.map(info=>info.features.map(data=>
+               features=[...features,data.id])))
+            this.state.app.map(value=>value.attributes.map(info=>info.features.map(feature=>this.props.getFeature(feature))))
            
           })
           ApiGet('bundle')
@@ -58,27 +60,23 @@ class FeatureRight extends React.Component{
     }
     
     componentWillUpdate(){
-        let data=this.context.feature
-        console.log(data)
+        
             let mobileImages=[]
             {this.state.app.map((value)=>
               value.attributes.map(info=>{
                 mobileImages.push(...info.features)
                 this.state.data=[...mobileImages]}))}
         
-                if(Object.keys(data).length)this.state.app.map(value=>
-            value.attributes.map(info=>{
-                if(info.features.includes(data))
-                info.features=info.features.filter(value=>value.id!=data.id)
-                else
-                info.features.push(data)
-            })
-            )
+        
             
 
         
               
     }
+    componentDidUpdate(){
+        console.log(this.props.features)
+        
+    }   
     nextSlide () {
 		const lastIndex = this.state.data.length - 1;
 		const { currentImageIndex } = this.state;
@@ -152,7 +150,7 @@ class FeatureRight extends React.Component{
         }   
     
     render(){
-        console.log(this.state.app)
+        
         this.state.app.map(value=>value.attributes.map(info=>info.features.map(a=>this.state.Description=[...this.state.Description,this.state.features.map(b=>b.features.filter(c=>c.id===a.id)).filter(d=>d.length>0)])))
       let desc=this.state.Description.filter(value=>value.length>0).map(value=>value[0].filter(info=>info.id===this.state.active)).filter(data=>data.length>0)
       this.state.test=desc.map(value=>value[0])[0]
@@ -294,4 +292,15 @@ class FeatureRight extends React.Component{
         )
     }
 }
-export default FeatureRight;
+FeatureRight.contextType=AuthContext;
+const mapStateToProps = (state) => {
+    return {
+      features: state.feature
+    }
+  }
+  const mapDispatchToProps = (dispatch)=> {
+    return {
+      getFeature: (value) => dispatch(getFeature(value))
+    }
+  }
+export default connect(mapStateToProps,mapDispatchToProps)(FeatureRight);

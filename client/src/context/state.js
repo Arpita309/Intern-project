@@ -3,7 +3,7 @@ import axios from 'axios'
 import AuthReducer from './reducer'
 import {ApiGet} from '../api'
 import App from '../App'
-const AuthContext=createContext('default');
+const AuthContext=createContext();
 export const AuthState=(props)=>{
     let initialState={
         auth:{},

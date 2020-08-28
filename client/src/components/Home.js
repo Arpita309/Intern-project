@@ -15,7 +15,9 @@ function Home() {
   const set=(type)=>{
     setType(type)
     context.setProductType(type)
+    
   }
+  console.log(context.feature)
 
   return (
     <div className='wrap'>
