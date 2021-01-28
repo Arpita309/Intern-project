@@ -20,7 +20,7 @@ TemplatesRouter.route('/')
     .populate('user')
     .populate('templates')
     .then((SelectedFeatures) => {
-        console.log(SelectedFeatures)
+        console.log(SelectedFeatures.templates)
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
         res.json(SelectedFeatures);

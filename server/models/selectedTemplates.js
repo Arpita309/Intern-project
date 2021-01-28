@@ -11,7 +11,7 @@ const SelectedTemplatesSchema = new Schema({
     
     
 },
-{ toJSON: { virtuals: true } });
+{toObject:{virtuals:true}, toJSON: { virtuals: true } });
 SelectedTemplatesSchema.virtual('templates', {
     ref: 'App',
     localField: 'templateId', 

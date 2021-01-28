@@ -17,8 +17,9 @@ class BottomBar extends React.Component{
         const  postTemplates=()=>{
             let payload={templateId:this.props.activeApps}
             ApiPost('templates',payload)
-            .then(res=>
-                <Redirect to='/features'/>)
+            .then((res)=>{
+                console.log(res.data)
+           return(<Redirect to='/features'/>)})
         }
         return(
             <div  className={`newHomeFooterbar ${this.state.hideBottom?'hideBottomPipe':''}`}>
